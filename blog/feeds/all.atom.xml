@@ -619,7 +619,7 @@ then attaching this program as a filter to one of your signals.&lt;/p&gt;
 &lt;p&gt;I wrote a quick moxie disassembler in lisp (&lt;a href="https://github.com/atgreen/moxiedev/blob/master/moxie/soc/muskoka/gtkwave/gtkwave-opcodes.lisp"&gt;gtkwave-opcodes.lisp&lt;/a&gt;),
 and it is proving to be very handy!&lt;/p&gt;
 &lt;p&gt;&lt;center&gt;
-&lt;a href="http://moxielogic.org/blog/wp-content/uploads/2011/10/Screenshot-GTKWave-dump.vcd_.png"&gt;&lt;img alt="gtkwave with moxie disassembly" src="http://moxielogic.org/blog/wp-content/uploads/2011/10/Screenshot-GTKWave-dump.vcd_-300x117.png" /&gt;&lt;/a&gt;
+&lt;a href="http://moxielogic.org/images/Screenshot-GTKWave-dump.vcd_.png"&gt;&lt;img alt="gtkwave with moxie disassembly" src="http://moxielogic.org/images/Screenshot-GTKWave-dump.vcd_-300x117.png" /&gt;&lt;/a&gt;
 &lt;/center&gt;&lt;/p&gt;</summary><category term="gtkwave"></category><category term="lisp"></category></entry><entry><title>Branch delays</title><link href="http://moxielogic.github.io/blog/branch-delays.html" rel="alternate"></link><updated>2011-09-28T07:13:00-04:00</updated><author><name>green</name></author><id>tag:moxielogic.github.io/blog,2011-09-28:branch-delays.html</id><summary type="html">&lt;p&gt;I've coded up logic for more arithmetic instructions, register moves, as
 well as direct and indirect jumps. For jumps, I simply pass a branch
 signal from the execute stage back to the fetch stage, as well as the
