@@ -69,7 +69,7 @@ source code from GDB, so I need to tell you about the:&lt;/p&gt;
 &lt;li&gt;&lt;a href="http://www.nethack.org/common/license.html"&gt;License&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">green</dc:creator><pubDate>Sun, 26 Jan 2014 18:12:00 -0500</pubDate><guid>tag:moxielogic.github.io/blog,2014-01-26:nethack-in-your-browser.html</guid><category>gdb</category><category>NetHack</category><category>RTEMS</category></item><item><title>The Moxie Game Console?</title><link>http://moxielogic.github.io/blog/the-moxie-game-console.html</link><description>&lt;p&gt;Ok, not quite, but &lt;a href="https://github.com/kl7107" title="Krister"&gt;Krister Lagerström&lt;/a&gt; recently did something cool..&lt;/p&gt;
 &lt;p&gt;&lt;center&gt;
-&lt;img alt="" src="images/nethack.png" /&gt;
+&lt;img alt="nethack" src="http://moxielogic.org/images/nethack.png" /&gt;
 &lt;/center&gt;&lt;/p&gt;
 &lt;p&gt;That's &lt;a href="http://www.nethack.org/" title="NetHack"&gt;NetHack&lt;/a&gt; ported to &lt;a href="http://rtems.org" title="RTEMS"&gt;RTEMS&lt;/a&gt; running on the moxie based &lt;a href="http://github.org/atgreen/moxie-cores" title="Marin SoC"&gt;Marin
 SoC&lt;/a&gt;.&lt;/p&gt;
