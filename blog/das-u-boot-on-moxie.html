@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="u-boot">
+
+  <title>
+    The Moxie Blog
+&ndash; Das U-Boot on moxie!  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/das-u-boot-on-moxie.html">Das U-Boot on moxie!</a></h3>
+  </div>
+  <div class="article_text">
+    <p>My moxie port of <a href="http://www.denx.de/wiki/U-Boot">U-Boot</a>, the Universal Boot Loader, has started
+working!</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">qemu</span><span class="o">-</span><span class="n">system</span><span class="o">-</span><span class="n">moxie</span> <span class="o">-</span><span class="n">nographic</span> <span class="o">-</span><span class="n">kernel</span> <span class="n">u</span><span class="o">-</span><span class="n">boot</span>
+<span class="n">SDRAM</span> <span class="o">:</span>
+        <span class="n">U</span><span class="o">-</span><span class="n">Boot</span> <span class="n">Start</span><span class="o">:</span><span class="mh">0x00001000</span>
+<span class="n">Using</span> <span class="k">default</span> <span class="n">environment</span>
+
+<span class="n">U</span><span class="o">-</span><span class="n">BOOT</span> <span class="k">for</span> <span class="s">&quot;moxiesim&quot;</span>
+
+<span class="o">=&gt;</span> <span class="n">version</span>
+
+<span class="n">U</span><span class="o">-</span><span class="n">Boot</span> <span class="mf">2009.03</span><span class="o">-</span><span class="n">rc2</span><span class="o">-</span><span class="mo">00013</span><span class="o">-</span><span class="n">gefb4734</span><span class="o">-</span><span class="n">dirty</span> <span class="p">(</span><span class="n">Apr</span> <span class="mo">02</span> <span class="mi">2009</span> <span class="o">-</span> <span class="mi">20</span><span class="o">:</span><span class="mo">07</span><span class="o">:</span><span class="mi">32</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="n">printenv</span>
+<span class="n">bootargs</span><span class="o">=</span><span class="n">root</span><span class="o">=</span><span class="n">romfs</span>
+<span class="n">baudrate</span><span class="o">=</span><span class="mi">38400</span>
+<span class="n">hostname</span><span class="o">=</span><span class="s">&quot;moxiesim&quot;</span>
+
+<span class="n">Environment</span> <span class="n">size</span><span class="o">:</span> <span class="mi">55</span><span class="o">/</span><span class="mi">4092</span> <span class="n">bytes</span>
+<span class="o">=&gt;</span>
+</pre></div>
+
+
+<p>It's pretty amazing to have an interactive app running on qemu now.
+U-Boot is using the serial port for console communications (we added the
+UART to qemu <a href="qemu-says-hello-world.html">a few blog entries ago</a>). I haven't added any ethernet
+device yet, so all of the networking is configured out for now. There's
+not even a timer device, so the sleep command doesn't work. However,
+this is still a huge step forward.</p>
+<p>I haven't decided yet if the U-Boot port will live in <a href="http://moxielogic.org/wiki/index.php?title=MoxieDev">MoxieDev</a>. It's
+already quite huge, and this would add another 130MB or so. I'll sleep
+on it.</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Thu 02 April 2009</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/u-boot.html">u-boot</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="gdb, linux">
+
+  <title>
+    The Moxie Blog
+&ndash; More hello world progress with uClibc/uClinux, and a GDB question.  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/more-hello-world-progress-with-uclibcuclinux-and-a-gdb-question.html">More hello world progress with uClibc/uClinux, and a GDB question.</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Tonight I got a hello world app to use uClibc's <code>puts()</code> routine! This
+is a big deal because it's the first time I've had system calls coming
+in from userland. I haven't checked the changes in yet, because they're
+a mess, but here's a basic run-down of what I had to do...</p>
+<ul>
+<li>First, uClibc had to be taught how to make system calls to the moxie
+    uClinux kernel. This was straight forward, except I came across one
+    surprise which I'll describe below.</li>
+<li>Next, I needed to add more files to my initfs. Specifically, I
+    needed a /dev/console. Fortunately, the kernel build process makes
+    this easy. I decided to use the "text file" approach to populating
+    the initramfs as described in <a href="http://www.kernel.org/doc/Documentation/filesystems/ramfs-rootfs-initramfs.txt">this document</a>.</li>
+<li>Finally, I had to create a tty device for my default console that
+    spoke through the gdb simulator via software interrupts. Fortunately
+    the ia64 port had a similar tty device for talking through one of
+    HP's simulators that I was able to mostly copy.</li>
+</ul>
+<p>Once all this was done, I was able to build a standard Hello World app
+with moxie-uclinux-gcc, and it just worked!</p>
+<p>What about the system call surprise? Despite what I read somewhere that
+said that Linux system calls had a maximum of 5 parameters -- that's not
+quite true. Some take 6 (are there any with 7? more?). This thwarted my
+attempt to get busybox running tonight, because it uses mmap, and mmap
+is one of those 6-argument system calls. There are a few ways to fix
+this. I think I'll just hack the compiler to use 6 register arguments
+and see what that does to code size/performance.</p>
+<p>If there are any GDB hackers reading this... I have one question for
+you... The kernel is loading and relocating my "init" program, then
+execve'ing it. When I run the kernel in gdb, it would be nice for gdb to
+load the debug info for init so I could see what it's doing when I step
+into userland. Is there some way to do this manually?</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Tue 18 August 2009</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/gdb.html">gdb</a>,      <a href="http://moxielogic.github.io/blog/tag/linux.html">linux</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

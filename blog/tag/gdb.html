@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+
+  <title>
+    The Moxie Blog
+&ndash; Tag: gdb  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+&gt; Tag: gdb
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/nethack-in-your-browser.html">NetHack in your browser</a></h3>
+  </div>
+  <div class="article_text">
+    <p>This is a moxie-rtems port of NetHack running on a modified version of
+the gdb moxie simulator compiled to javascript with <a href="https://github.com/kripken/emscripten" title="emscripten">emscripten</a>.</p>
+<pre>
+<canvas id="tty" class="screen" width="640" height="384">
+                        Terminal uses canvas
+                    </canvas>
+<script src="http://kl7107.github.io/moxie-sim/c/terminal.js"></script>
+<script src="http://kl7107.github.io/moxie-sim/c/terminal-input.js"></script>
+<script src="http://kl7107.github.io/moxie-sim/c/moxie.js"></script>
+<script src="http://kl7107.github.io/moxie-sim/c/nethack.js"></script>
+</pre>
+
+<p><a href="http://github.com/kl7107">Krister Lagerström</a> is responsible for this marvellous hack.</p>
+<p>Also, I suppose this blog entry represents a distribution of some GPL'd
+source code from GDB ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/putting-it-together-on-chip-firmware.html">Putting it together: on-chip firmware</a></h3>
+  </div>
+  <div class="article_text">
+    <p>The on-chip <a href="https://github.com/atgreen/moxie-cores/blob/master/firmware/tinystub.c" title="firmware">firmware</a> for the <a href="https://github.com/atgreen/moxie-cores/tree/master/soc/marin" title="Marin SoC">Marin SoC</a> has been updated with the
+gdb stub, so now when you program the FPGA, you'll see the following on
+the serial console:</p>
+<div class="highlight"><pre><span class="n">MOXIE</span> <span class="n">On</span><span class="o">-</span><span class="n">Chip</span> <span class="n">Bootloader</span> <span class="n">v2</span><span class="mf">.0</span>
+<span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="mi">2013</span> <span class="n">Anthony</span> <span class="n">Green</span>
+
+<span class="n">Waiting</span> <span class="k">for</span> <span class="n">an</span> <span class="n">S</span><span class="o">-</span><span class="n">Record</span> <span class="n">Download</span> <span class="n">or</span> <span class="n">Remote</span> <span class="n">GDB ...</span></pre></div>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/a-really-tiny-gdb-remote-protocol-stub.html">A Really Tiny GDB Remote Protocol Stub</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I recently trimmed the Marin SoC's on-chip memory down to 4k. The
+existing firmware for downloading srecord programs into external RAM for
+execution was taking up about 2k. With 2k to spare, I was wondering if
+you could fit a GDB remote protocol stub in there as well. It ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/native-on-chip-gdb-remote-protocol-support.html">Native On-Chip GDB Remote Protocol Support</a></h3>
+  </div>
+  <div class="article_text">
+    <p>A typical software debug solution for an embedded systems might involve
+a <a href="http://en.wikipedia.org/wiki/Joint_Test_Action_Group">JTAG</a> connection to the board, and then some kind of protocol
+translation software that handles communication between GDB's remote
+serial protocol and the target JTAG port (see <a href="http://openocd.sourceforge.net/">OpenOCD</a>, for
+instance). The FPGA systems I'm working with ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/its-alive.html">It's Alive!</a></h3>
+  </div>
+  <div class="article_text">
+    <p>There's a working hardware implementation of moxie in the wild!</p>
+<p>Intrepid hacker <a href="https://twitter.com/toptensoftware" title="Brad Robinson">Brad Robinson</a> created this moxie-compatible core as
+a peripheral controller for his SoC. He had been using a simple 8-bit
+core, but needed to address more memory than was possible with the 8-bit
+part. Moxie is a ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/notes-on-a-novel-in-game-cpu-the-dcpu-16.html">Notes on a novel in-game CPU: the dcpu-16</a></h3>
+  </div>
+  <div class="article_text">
+    <p>The hacker behind the <a href="http://www.minecraft.net/">Minecraft</a> phenomena, Notch, is working on his
+<a href="http://0x10c.com/">next game</a>, most likely another hit. This one is interesting in that
+it includes an in-game 16-bit processor called the dcpu-16. Details are
+sparse, but it seems as though gamers will use this processor to control
+spacecraft and play ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/summer-is-over-so-put-away-the-white-pants-and-start-submitting-patches.html">Summer is over, so put away the white pants and start submitting patches!</a></h3>
+  </div>
+  <div class="article_text">
+    <p>It's been a while since my last update. What can I say... summer was
+nice.</p>
+<p>But now, back to business! I've just committed some long overdue patches
+to the upstream GNU tools:</p>
+<ul>
+<li><a href="http://sourceware.org/ml/gdb-patches/2009-09/msg00289.html">Add a device tree blob to the gdb simulator</a>. This lets us
+    describe the gdb sim ...</li></ul>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/more-hello-world-progress-with-uclibcuclinux-and-a-gdb-question.html">More hello world progress with uClibc/uClinux, and a GDB question.</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Tonight I got a hello world app to use uClibc's <code>puts()</code> routine! This
+is a big deal because it's the first time I've had system calls coming
+in from userland. I haven't checked the changes in yet, because they're
+a mess, but here's a ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/kernel-update-device-trees-and-kernel-threads.html">Kernel update: device trees and kernel threads</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I've spent a lot of time in airports/planes/hotels recently, which is
+good news for the moxie linux port. It runs about 6.5M instructions,
+booting up to the point where a couple of kernel threads are created.
+However, a few context switches later it all comes tumbling ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/reverse-debugging.html">Reverse debugging!</a></h3>
+  </div>
+  <div class="article_text">
+    <p>A few weeks ago I happened to be in Palo Alto and met up with my friend
+and long-time GDB hacker Michael Snyder. He told me about a new feature
+in GDB called "process recording". The basic idea is that when you tell
+GDB to enter into "record mode", it ...</p>
+  </div>
+</article>
+
+<footer>
+<div id="paginator">
+<a href="http://moxielogic.github.io/blog/tag/gdb2.html" class="button_accent">&larr; Older Posts</a>
+
+</div>
+</footer>
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

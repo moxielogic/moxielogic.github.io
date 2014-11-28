@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="gdb, marin">
+
+  <title>
+    The Moxie Blog
+&ndash; A Really Tiny GDB Remote Protocol Stub  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/a-really-tiny-gdb-remote-protocol-stub.html">A Really Tiny GDB Remote Protocol Stub</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I recently trimmed the Marin SoC's on-chip memory down to 4k. The
+existing firmware for downloading srecord programs into external RAM for
+execution was taking up about 2k. With 2k to spare, I was wondering if
+you could fit a GDB remote protocol stub in there as well. It turns out
+that you can! Here is the code for tinystub.c:
+<a href="https://raw.github.com/atgreen/moxie-cores/master/firmware/tinystub.c">https://raw.github.com/atgreen/moxie-cores/master/firmware/tinystub.c</a>.</p>
+<p>With this stub you can load programs into the target device, examine
+memory, run programs and even set breakpoints (I had to finally
+implement BRK in the moxielite core for this).</p>
+<p>A full tinystub executable (with startup code, etc), is about 2200 bytes
+of moxie code. This means I can easily merge it with the existing
+firmware, allowing people to either download an srecord program or
+connect to the device with moxie-elf-gdb. I believe everything is in
+place now to support running the GCC testsuite on hardware (dejagnu will
+use gdb to download an execute test programs).</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Thu 28 November 2013</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/gdb.html">gdb</a>,      <a href="http://moxielogic.github.io/blog/tag/marin.html">marin</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="RTEMS">
+
+  <title>
+    The Moxie Blog
+&ndash; RTEMS status update  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/rtems-status-update.html">RTEMS status update</a></h3>
+  </div>
+  <div class="article_text">
+    <p>The <a href="http://www.rtems.com">RTEMS</a> port in <a href="http://www.moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a> is looking pretty good right now.
+Here's a test of the RTEMS network loopback device running on the moxie
+gdb simulator.  The first two client connections fail in this test. 
+It's supposed to fail in the first case, but I'm not sure about the
+second case.   It's possible that this is just a result of there being
+no pre-emptive context switching in the gdb simulator (no timers!).</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">moxie</span><span class="o">-</span><span class="n">elf</span><span class="o">-</span><span class="n">run</span> <span class="n">loopback</span><span class="p">.</span><span class="n">exe</span>
+<span class="s">&quot;Network&quot;</span> <span class="n">initializing</span><span class="o">!</span>
+<span class="s">&quot;Network&quot;</span> <span class="n">initialized</span><span class="o">!</span>
+<span class="n">Try</span> <span class="n">running</span> <span class="n">client</span> <span class="n">with</span> <span class="n">no</span> <span class="n">server</span> <span class="n">present</span><span class="p">.</span>
+<span class="n">Should</span> <span class="n">fail</span> <span class="n">with</span> <span class="err">`</span><span class="n">connection</span> <span class="n">refused</span><span class="err">&#39;</span><span class="p">.</span>
+<span class="n">Connect</span> <span class="n">to</span> <span class="n">server</span><span class="p">.</span>
+<span class="n">Can</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">server</span><span class="o">:</span> <span class="n">Connection</span> <span class="n">refused</span>
+<span class="n">Client</span> <span class="n">closing</span> <span class="n">connection</span><span class="p">.</span>
+
+<span class="n">Start</span> <span class="n">server</span><span class="p">.</span>
+
+<span class="n">Try</span> <span class="n">running</span> <span class="n">client</span> <span class="n">with</span> <span class="n">server</span> <span class="n">present</span><span class="p">.</span>
+<span class="n">Connect</span> <span class="n">to</span> <span class="n">server</span><span class="p">.</span>
+<span class="n">Can</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">server</span><span class="o">:</span> <span class="n">Connection</span> <span class="n">refused</span>
+<span class="n">Client</span> <span class="n">closing</span> <span class="n">connection</span><span class="p">.</span>
+<span class="n">Client</span> <span class="n">task</span> <span class="n">terminating</span><span class="p">.</span>
+<span class="n">Create</span> <span class="n">socket</span><span class="p">.</span>
+<span class="n">Bind</span> <span class="n">socket</span><span class="p">.</span>
+
+<span class="n">Try</span> <span class="n">running</span> <span class="n">two</span> <span class="n">clients</span><span class="p">.</span>
+<span class="n">Connect</span> <span class="n">to</span> <span class="n">server</span><span class="p">.</span>
+<span class="n">Connect</span> <span class="n">to</span> <span class="n">server</span><span class="p">.</span>
+<span class="nl">ACCEPTED:</span><span class="mf">7F</span><span class="mo">000001</span>
+<span class="nl">ACCEPTED:</span><span class="mf">7F</span><span class="mo">000001</span>
+<span class="n">Write</span> <span class="mi">22</span><span class="o">-</span><span class="n">byte</span> <span class="n">message</span> <span class="n">to</span> <span class="n">server</span><span class="p">.</span>
+<span class="n">Write</span> <span class="mi">22</span><span class="o">-</span><span class="n">byte</span> <span class="n">message</span> <span class="n">to</span> <span class="n">server</span><span class="p">.</span>
+<span class="n">Read</span> <span class="mi">43</span> <span class="n">from</span> <span class="n">server</span><span class="o">:</span> <span class="n">Server</span> <span class="n">received</span> <span class="mi">22</span> <span class="p">(</span><span class="n">Hi</span> <span class="n">there</span><span class="p">,</span> <span class="n">server</span> <span class="p">(</span><span class="mi">3</span><span class="p">).)</span>
+<span class="n">Read</span> <span class="mi">43</span> <span class="n">from</span> <span class="n">server</span><span class="o">:</span> <span class="n">Server</span> <span class="n">received</span> <span class="mi">22</span> <span class="p">(</span><span class="n">Hi</span> <span class="n">there</span><span class="p">,</span> <span class="n">server</span> <span class="p">(</span><span class="mi">2</span><span class="p">).)</span>
+<span class="n">Client</span> <span class="n">closing</span> <span class="n">connection</span><span class="p">.</span>
+<span class="n">Client</span> <span class="n">task</span> <span class="n">terminating</span><span class="p">.</span>
+<span class="n">Client</span> <span class="n">closing</span> <span class="n">connection</span><span class="p">.</span>
+<span class="n">Client</span> <span class="n">task</span> <span class="n">terminating</span><span class="p">.</span>
+<span class="n">Worker</span> <span class="n">task</span> <span class="n">terminating</span><span class="p">.</span>
+<span class="n">Worker</span> <span class="n">task</span> <span class="n">terminating</span><span class="p">.</span>
+
+<span class="n">Try</span> <span class="n">running</span> <span class="n">three</span> <span class="n">clients</span><span class="p">.</span>
+<span class="n">Connect</span> <span class="n">to</span> <span class="n">server</span><span class="p">.</span>
+<span class="n">Connect</span> <span class="n">to</span> <span class="n">server</span><span class="p">.</span>
+<span class="n">Connect</span> <span class="n">to</span> <span class="n">server</span><span class="p">.</span>
+<span class="nl">ACCEPTED:</span><span class="mf">7F</span><span class="mo">000001</span>
+<span class="nl">ACCEPTED:</span><span class="mf">7F</span><span class="mo">000001</span>
+<span class="nl">ACCEPTED:</span><span class="mf">7F</span><span class="mo">000001</span>
+<span class="n">Write</span> <span class="mi">22</span><span class="o">-</span><span class="n">byte</span> <span class="n">message</span> <span class="n">to</span> <span class="n">server</span><span class="p">.</span>
+<span class="n">Write</span> <span class="mi">22</span><span class="o">-</span><span class="n">byte</span> <span class="n">message</span> <span class="n">to</span> <span class="n">server</span><span class="p">.</span>
+<span class="n">Write</span> <span class="mi">22</span><span class="o">-</span><span class="n">byte</span> <span class="n">message</span> <span class="n">to</span> <span class="n">server</span><span class="p">.</span>
+<span class="n">Read</span> <span class="mi">43</span> <span class="n">from</span> <span class="n">server</span><span class="o">:</span> <span class="n">Server</span> <span class="n">received</span> <span class="mi">22</span> <span class="p">(</span><span class="n">Hi</span> <span class="n">there</span><span class="p">,</span> <span class="n">server</span> <span class="p">(</span><span class="mi">5</span><span class="p">).)</span>
+<span class="n">Read</span> <span class="mi">43</span> <span class="n">from</span> <span class="n">server</span><span class="o">:</span> <span class="n">Server</span> <span class="n">received</span> <span class="mi">22</span> <span class="p">(</span><span class="n">Hi</span> <span class="n">there</span><span class="p">,</span> <span class="n">server</span> <span class="p">(</span><span class="mi">6</span><span class="p">).)</span>
+<span class="n">Read</span> <span class="mi">43</span> <span class="n">from</span> <span class="n">server</span><span class="o">:</span> <span class="n">Server</span> <span class="n">received</span> <span class="mi">22</span> <span class="p">(</span><span class="n">Hi</span> <span class="n">there</span><span class="p">,</span> <span class="n">server</span> <span class="p">(</span><span class="mi">4</span><span class="p">).)</span>
+<span class="n">Client</span> <span class="n">closing</span> <span class="n">connection</span><span class="p">.</span>
+<span class="n">Client</span> <span class="n">task</span> <span class="n">terminating</span><span class="p">.</span>
+<span class="n">Client</span> <span class="n">closing</span> <span class="n">connection</span><span class="p">.</span>
+<span class="n">Client</span> <span class="n">task</span> <span class="n">terminating</span><span class="p">.</span>
+<span class="n">Client</span> <span class="n">closing</span> <span class="n">connection</span><span class="p">.</span>
+<span class="n">Client</span> <span class="n">task</span> <span class="n">terminating</span><span class="p">.</span>
+<span class="n">Worker</span> <span class="n">task</span> <span class="n">terminating</span><span class="p">.</span>
+<span class="n">Worker</span> <span class="n">task</span> <span class="n">terminating</span><span class="p">.</span>
+<span class="n">Worker</span> <span class="n">task</span> <span class="n">terminating</span><span class="p">.</span>
+<span class="o">***</span> <span class="n">END</span> <span class="n">OF</span> <span class="n">LOOPBACK</span> <span class="n">TEST</span> <span class="o">***</span>
+</pre></div>
+
+
+<p>This really needs to be tested on qemu, but I think it's time to get
+back into verilog.</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Wed 15 June 2011</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/rtems.html">RTEMS</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

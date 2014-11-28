@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="ec2, gcc, git">
+
+  <title>
+    The Moxie Blog
+&ndash; Bisecting GCC  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/bisecting-gcc.html">Bisecting GCC</a></h3>
+  </div>
+  <div class="article_text">
+    <p>The thing about <a href="http://gcc.gnu.org">GCC</a> is that things break when you take your eye off
+the ball. And this is what happened during my months long hiatus from
+the moxie project. Somewhere between early March and today, the moxie
+GCC port lost the ability to compile non-trivial code, notably libgcc.
+Firing up gdb on a core file may have been illuminating to somebody who
+lived in GCC sources every day but, to the occasional hacker, it's
+difficult to see where things went wrong if you don't know what you're
+looking for. Enter <a href="http://www.kernel.org/pub/software/scm/git/docs/git-bisect.html">git bisect</a>...</p>
+<p>The git bisect tool automates finger pointing by binary searching
+through your source history for offending patches. It needs three things
+to work:</p>
+<ol>
+<li>An older known working version of the sources.</li>
+<li>A newer known broken version of the sources.</li>
+<li>A test executable (typically a shell script) that will tell whether
+    a given version of the source code is broken or not.</li>
+</ol>
+<p>Given all this, git bisect will start a binary search through the git
+history for your code, looking for the exact commit that caused the test
+to fail.</p>
+<p>The test case I used was to build moxie's C compiler and try to compile
+one of the libgcc sources that fails. If the compiler doesn't report an
+error, we're good, otherwise we know we still have the bug. Here's the
+script I used as the git bisect test:  </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/bin/sh</span>
+
+<span class="c"># My git clone of the gcc tree</span>
+<span class="nv">GCCSRC</span><span class="o">=</span>~/bisect/gcc
+
+<span class="c"># My pre-processed test case</span>
+<span class="nv">TESTSRC</span><span class="o">=</span>~/bisect/test.i
+
+<span class="nb">cd</span> ~/bisect
+
+rm -rf build
+mkdir build
+
+<span class="o">(</span><span class="nb">cd </span>build;
+ <span class="nv">$GCCSRC</span>/configure --target<span class="o">=</span>moxie-elf --enable-languages<span class="o">=</span>c;
+ make -j8 all-gcc<span class="o">)</span>
+
+<span class="k">if </span><span class="nb">test</span> -f build/gcc/cc1; <span class="k">then</span>
+  <span class="c"># build my test case</span>
+  build/gcc/cc1 -O2 <span class="nv">$TESTSRC</span>;
+  <span class="c"># cc1 returns exit codes outside of git&#39;s acceptable range, so...</span>
+  <span class="k">if </span><span class="nb">test</span> <span class="s2">&quot;$?&quot;</span> -ne <span class="s2">&quot;0&quot;</span>; <span class="k">then</span>
+<span class="k">    </span><span class="nb">exit </span>1;
+  <span class="k">fi</span>;
+  <span class="nb">exit </span>0;
+<span class="k">else</span>
+<span class="k">  </span><span class="nb">exit </span>1;
+<span class="k">fi</span>
+</pre></div>
+</td></tr></table>
+
+<p>Note that GCC is maintained in a <a href="http://gcc.gnu.org/svn.html">subversion tree</a>, but there's an
+official <a href="http://gcc.gnu.org/wiki/GitMirror">git mirror</a> that makes all of this possible. You need to
+clone it locally before you can do anything.</p>
+<p>There were over 1000 commits between my last known working version and
+today's GCC sources. My first thought was... "this is going to take
+hours". I was wrong.</p>
+<p>Running "<code>git bisect run ~/bisect/test.sh</code>" took all of 35 minutes.</p>
+<p>The smartest thing I did here was work on a <a href="http://aws.amazon.com/ec2/instance-types/">large amazon ec2
+instance</a>. It's a cloud-hosted virtual server similar to a dual-core
+system with 7GB RAM and ample fast storage all for about 34 cents an
+hour. I've taken to doing development in the cloud and, relative to my
+standard setup, it is blazingly fast! I created a Fedora 15 image, yum
+installed all my tools (don't forget <a href="http://ccache.samba.org/">ccache</a>!), git cloned
+<a href="http://github.com/atgreen/moxiedev">moxiedev</a>, gcc and my <a href="http://github.com/atgreen/emacs">emacs config</a> files, and I was bisecting in
+no time.</p>
+<p>Git bisect told me that on Monday, March 21, my old colleague Richard
+Sandiford committed some <a href="http://gcc.gnu.org/ml/gcc-patches/2011-03/msg01344.html">improvements to GCC</a> that were tripping up
+the moxie port. A few minutes later I caught up with Richard on <a href="http://gcc.gnu.org/wiki/GCConIRC">IRC</a>,
+where he explained the patch to me. Shortly after this I'm testing a
+fix. Amazing.</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Mon 06 June 2011</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/ec2.html">ec2</a>,      <a href="http://moxielogic.github.io/blog/tag/gcc.html">gcc</a>,      <a href="http://moxielogic.github.io/blog/tag/git.html">git</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

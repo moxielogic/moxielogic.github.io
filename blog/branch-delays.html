@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="architecture, gas, verilog">
+
+  <title>
+    The Moxie Blog
+&ndash; Branch delays  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/branch-delays.html">Branch delays</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I've coded up logic for more arithmetic instructions, register moves, as
+well as direct and indirect jumps. For jumps, I simply pass a branch
+signal from the execute stage back to the fetch stage, as well as the
+computed target address. Here's some code that works now:</p>
+<div class="highlight"><pre><span class="na">.text</span>
+    <span class="nf">xor</span> <span class="no">$r0</span><span class="p">,</span> <span class="no">$r0</span> <span class="c"># Zero out $r0</span>
+    <span class="nf">mov</span> <span class="no">$r1</span><span class="p">,</span> <span class="no">$r0</span>
+    <span class="nf">mov</span> <span class="no">$r2</span><span class="p">,</span> <span class="no">$r0</span>
+    <span class="nf">mov</span> <span class="no">$r3</span><span class="p">,</span> <span class="no">$r0</span>
+    <span class="nf">mov</span> <span class="no">$r4</span><span class="p">,</span> <span class="no">$r0</span>
+<span class="nl">loop:</span>   <span class="nf">inc</span> <span class="no">$r0</span><span class="p">,</span> <span class="mi">0x1</span> <span class="c"># Increment $r0</span>
+    <span class="nf">inc</span> <span class="no">$r1</span><span class="p">,</span> <span class="mi">0x1</span>
+    <span class="nf">inc</span> <span class="no">$r2</span><span class="p">,</span> <span class="mi">0x1</span>
+    <span class="nf">inc</span> <span class="no">$r3</span><span class="p">,</span> <span class="mi">0x1</span> 
+    <span class="no">inc</span> <span class="no">$r4</span><span class="p">,</span> <span class="mi">0x1</span> 
+    <span class="no">jmpa</span>    <span class="no">loop</span><span class="err">+</span><span class="mi">0x1000</span> <span class="c"># Offset hack</span>
+    <span class="nf">nop</span>
+    <span class="nf">nop</span>
+</pre></div>
+
+
+<p>A couple of things to note... Boot ROM is mapped into the address space
+at 0x1000, which explains the offset hack above. A linker script is
+probably the right way to do this. Using ".org 0x1000" at the start of
+the source appears to pad the resulting object with 0x1000 bytes of
+nothing, which means it doesn't fit into the small space I've allocated
+for bootrom.</p>
+<p>Also note that I've got to deal with branch delay slots. I'm not exactly
+sure what I want to do yet. Due to the nature of the variable width
+instruction encoding, it looks like you can have either 1 or 2 delay
+slots to fill, depending on the instruction sizes. I don't like this at
+all. I'll probably end up limiting it to one delay slot.</p>
+<p>This is one of those ugly areas where implementation informs design. I'd
+rather not have delay slots at all, but it's hard to ignore the
+performance gain.</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Wed 28 September 2011</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/architecture.html">architecture</a>,      <a href="http://moxielogic.github.io/blog/tag/gas.html">gas</a>,      <a href="http://moxielogic.github.io/blog/tag/verilog.html">verilog</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

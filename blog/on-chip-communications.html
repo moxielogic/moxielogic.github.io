@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="architecture, SoC, wishbone">
+
+  <title>
+    The Moxie Blog
+&ndash; On-chip communications  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/on-chip-communications.html">On-chip communications</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I need to build real SoC infrastructure around my developing core in
+order to test it on real hardware. For the most part, this means a
+memory controller and IO devices. I've decided to implement a shared-bus
+wishbone-style interconnect for these devices. <a href="http://en.wikipedia.org/wiki/Wishbone_%28computer_bus%29">Wishbone</a> is an open
+source on chip bus architecture that is popular with many open core
+developers. While not perfect, wishbone is a good choice for this first
+SoC due its simplicity and the ample supply of sample implementations.</p>
+<p>The main complaints about wishbone are the lack of efficient semaphore
+operations (the bus remains locked for an entire read/modify/write
+operation) and the lack of pipelined reads/writes. This doesn't bother
+me for the moment. I just need a simple interconnect so I can focus on
+debugging the moxie core part of the SoC.</p>
+<p>By the way, there's a terrific book on this subject called "On-Chip
+Communication Architectures". Chapters 2 and 3 are great introductions
+to on-chip interconnects, and it looks like Google Books has the entire
+chapter 2 online here...</p>
+<iframe frameborder="0" scrolling="no" style="border:0px" src="http://books.google.ca/books?id=uR3Vw9mYtpIC&amp;lpg=PP1&amp;ots=ZBpqbO_QDG&amp;dq=On-Chip%20Communication%20Architectures&amp;pg=PA145&amp;output=embed" width="500" height="500"></iframe>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Wed 06 October 2010</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/architecture.html">architecture</a>,      <a href="http://moxielogic.github.io/blog/tag/soc.html">SoC</a>,      <a href="http://moxielogic.github.io/blog/tag/wishbone.html">wishbone</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

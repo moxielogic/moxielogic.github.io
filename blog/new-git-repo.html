@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="releng, u-boot">
+
+  <title>
+    The Moxie Blog
+&ndash; New git repo  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/new-git-repo.html">New git repo</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I'll bottom line this one quickly:</p>
+<ul>
+<li><a href="http://moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a> is now maintained with git. Check it out like so..<br />
+<code>$ git clone http://moxielogic.org/moxiedev.git</code></li>
+<li>moxiedev now contains a partial <a href="http://moxielogic.org/blog/?p=154">u-boot port</a>. It's "partial"
+    because I fat fingered some commands and blew away four or five
+    important files. They will have to be recreated before this thing
+    builds.</li>
+</ul>
+<p>Lessons learned:</p>
+<ul>
+<li>hg is much more intuitive than git. Unfortunately hg and/or my hg
+    hoster was having problems with the size of moxiedev, necessitating
+    a change. Hosting a public git repo on my own system seemed like the
+    easiest thing.</li>
+<li>Make sure you backup <strong><em>everything</em></strong>. I am cursing myself for not
+    having pushed out the u-boot port much sooner (but I had to move off
+    of the hg system first).</li>
+</ul>
+<p>BTW - still waiting on GCC steering committee decision on inclusion of
+moxie port.</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Tue 26 May 2009</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/releng.html">releng</a>,      <a href="http://moxielogic.github.io/blog/tag/u-boot.html">u-boot</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="marin, newlib, u-boot">
+
+  <title>
+    The Moxie Blog
+&ndash; An On-Chip Bootloader  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/an-on-chip-bootloader.html">An On-Chip Bootloader</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Good news: we can access external memory! The logic for my pseudo-static
+RAM controller is working, and big programs can finally run on hardware.</p>
+<p>You may recall that I had previously only been accessing fake memory
+that was configured directly out of limited FPGA resources. I could
+squeeze a tiny C program in there, but not use anything like newlib, the
+embedded C runtime library. This new memory controller lets the
+moxie-based Marin SoC access 16MB of external RAM on the Nexys3 board.</p>
+<p>When we were limited to on-chip resources, the C binary would be coupled
+with the synthesized logic and loaded directly into the FPGA. This means
+any changes to the code meant resynthesizing the logic to rebuild the
+FPGA bitstream (I think there are ways around this, but I never got
+there with my work-flow). Now that I have access to external RAM, I can
+separate my code from my logic.</p>
+<p>The trick is to use an on-chip bootloader - code that is loaded with the
+FPGA bitstream as described above. It does some basic hardware
+initialization, and sends this message to the serial port:</p>
+<p><code>MOXIE On-Chip Bootloader v1.0 Copyright (c) 2013 Anthony Green</code></p>
+<p>Waiting for S-Record Download...<br />
+</code></p>
+<p>At which point I can send any program I like over my laptop's serial
+port in the form of an S-Record ASCII file. This generally looks
+like...  </p>
+<p><code>$ moxie-elf-gcc -Os hello.c marin.S -T../../moxie-marin.ld -o hello.elf -lnosys $ moxie-elf-objcopy -O srec --srec-forceS3 hello.elf hello.srec $ cat hello.srec &gt; /dev/ttyUSB1</code></p>
+<p>And then, back on the Nexys3 serial port I see:<br />
+<code>Jumping to code at 0x30000000. Hello World!</code></p>
+<p>A couple of things can happen now:</p>
+<ul>
+<li>with a little bit of dejagnu hacking, we can get the GCC testsuite
+    to run directly on hardware. The simple thing here is to just have
+    libgloss' _exit() jump back to the on-chip bootloader @ 0x1000.</li>
+<li>test the "stage-2" bootloader, u-boot. U-Boot was one of the first
+    programs I ever ported to moxie. I've run it on the simulator, but
+    never on hardware.</li>
+</ul>
+<p>As usual, everything is in the moxie-cores github repo here:
+<a href="http://github.com/atgreen/moxie-cores">http://github.com/atgreen/moxie-cores</a>.</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Mon 06 May 2013</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/marin.html">marin</a>,      <a href="http://moxielogic.github.io/blog/tag/newlib.html">newlib</a>,      <a href="http://moxielogic.github.io/blog/tag/u-boot.html">u-boot</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

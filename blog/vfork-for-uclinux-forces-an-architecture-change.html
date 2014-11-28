@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="architecture, linux">
+
+  <title>
+    The Moxie Blog
+&ndash; vfork() for uClinux forces an architecture change  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/vfork-for-uclinux-forces-an-architecture-change.html">vfork() for uClinux forces an architecture change</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Moxie uses a simple software interrupt instruction (<code>swi</code>) to implement
+system calls. The <code>swi</code> instruction creates a call frame on the stack
+and then jumps to a global exception handler routine. The exception
+handler for moxie-uClinux switches to the kernel stack before jumping to
+the relevant kernel routine. Returning from an exception becomes a
+simple <code>ret</code> instruction because we have a nice call frame on our stack.
+Very simple.</p>
+<p><code>vfork()</code>, a kludge that was ejected from posix, but is still required
+for MMU-less uClinux ports, throws this for a loop. The <code>vfork</code> system
+call creates a child process that shares memory with the parent,
+including a shared stack. This means that the <code>vfork</code> system call
+<em>returns twice on the shared stack</em>: once for the child, and then again
+for the parent. The problem is that the child, once returned, is going
+to write over the <code>swi</code> call frame on the shared stack as it continues
+to do work. This sends the parent off into randomland when it eventually
+returns using the corrupted call frame.</p>
+<p>Actually, it's not just the <code>swi</code> call frame. There's also the <code>vfork()</code>
+stack frame from the C library to worry about.</p>
+<p>This problem isn't unique to moxie. If you examine the x86 uClibc
+<code>vfork()</code> implementation, you'll see that it stashes all the info it
+needs for the return in registers that are preserved over the <code>vfork</code>
+system call.</p>
+<p>For moxie, I'll likely need to do the same thing in uClibc's <code>vfork()</code>,
+but I'm also going to change the semantics of the <code>swi</code> instruction.
+This means formalizing the notion of user mode and kernel mode. The
+uClinux port already does this by convention. One of the special
+registers is used to store the Linux kernel-mode stack pointer. The
+<code>swi</code> instruction will be changed to immediately switch stacks and push
+the userland return info onto the non-shared kernel stack, leaving the
+shared user stack completely untouched. The exception handler will have
+a bit more house keeping to do, but <code>vfork()</code> should work.</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Mon 03 September 2012</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/architecture.html">architecture</a>,      <a href="http://moxielogic.github.io/blog/tag/linux.html">linux</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

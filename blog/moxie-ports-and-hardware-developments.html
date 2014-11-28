@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="binutils, FreeRTOS, gcc, marin, MoxieLite, newlib, Nexys3, RTEMS">
+
+  <title>
+    The Moxie Blog
+&ndash; Moxie ports and hardware developments  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/moxie-ports-and-hardware-developments.html">Moxie ports and hardware developments</a></h3>
+  </div>
+  <div class="article_text">
+    <p>It's been a while since my last update.. let me bring you up to speed.</p>
+<p>A couple of <a href="http://sourceware.org/libffi" title="libffi">libffi</a> releases got in the way of moxie hacking
+(although libffi 3.0.13 now includes full moxie support!), but things
+are picking up speed again.</p>
+<p>On the software side of things, the moxie <a href="http://www.rtems.org" title="RTEMS">RTEMS</a> and <a href="http://www.qemu.org" title="QEMU">QEMU</a> ports
+have both been accepted upstream. So now it's possible to build, run and
+debug RTEMS applications on QEMU purely with upstream project sources.
+You may notice that I'm doing much less work in the <a href="https://github.com/atgreen/moxiedev" title="moxiedev">moxiedev</a>
+repository these days. This was mostly just a staging area for moxie
+software support (tools, OS), and there's little use for it now that
+most everything is upstream. All of the moxie HDL work now happens in
+the <a href="https://github.com/atgreen/moxie-cores" title="moxie-cores">moxie-cores</a> git tree.</p>
+<p>As for the hardware side of things, here are some of the recent changes:</p>
+<ul>
+<li>The <a href="https://github.com/atgreen/moxie-cores/tree/master/cores/MoxieLite" title="MoxieLite">MoxieLite</a> core now supports <a href="http://moxielogic.org/wiki/index.php/Instruction_Set#ssr" title="ssr"><code>ssr</code></a> and <a href="http://moxielogic.org/wiki/index.php/Instruction_Set#gsr" title="gsr"><code>gsr</code></a>
+    instructions, along with a bank of 16 special registers. The special
+    register uses are defined here:
+    <a href="http://moxielogic.org/wiki/index.php/Architecture">http://moxielogic.org/wiki/index.php/Architecture</a></li>
+<li>And now that the special register support is in place, exceptions
+    and the <a href="http://moxielogic.org/wiki/index.php/Instruction_Set#swi" title="swi"><code>swi</code></a> (software interrupt) instruction are working in
+    hardware. Semantics are defined here:
+    <a href-"http: moxielogic.org wiki index.php exceptions" title="Exceptions" target="_blank">http://moxielogic.org/wiki/index.php/Exceptions</a></li>
+<li><code>bad</code> (illegal) instructions now cause an illegal instruction
+    exception</li>
+<li>A simple interrupt controller has been added to the <a href="https://github.com/atgreen/moxie-cores/tree/master/soc/marin" title="marin">marin</a> SoC. I
+    have the Nexys3 momentary switches hooked up as interrupt sources,
+    so I can trigger interrupts and handle them in software by pressing
+    those buttons.</li>
+<li>A trivial timer has been hooked up to the interrupt controller, so I
+    can now generate 'tick' interrupts for RTEMS in support of
+    preemptive multitasking (everything was cooperative up 'til now).</li>
+</ul>
+<p>I'm actually just debugging the timer ticks right now, but it's very
+close.</p>
+<p>And on a final note... while RTEMS is a great little embedded RTOS, it's
+clear from this EE Times embedded survey that I'm going to have to
+implement FreeRTOS support next:
+<a href="http://www.eetimes.com/electronics-news/4407897/Android--FreeRTOS-top-EE-Times--2013-embedded-survey">http://www.eetimes.com/electronics-news/4407897/Android--FreeRTOS-top-EE-Times--2013-embedded-survey</a>.
+I think that's what I'll tackle after I get RTEMS running preemptively.</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Sun 24 March 2013</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/binutils.html">binutils</a>,      <a href="http://moxielogic.github.io/blog/tag/freertos.html">FreeRTOS</a>,      <a href="http://moxielogic.github.io/blog/tag/gcc.html">gcc</a>,      <a href="http://moxielogic.github.io/blog/tag/marin.html">marin</a>,      <a href="http://moxielogic.github.io/blog/tag/moxielite.html">MoxieLite</a>,      <a href="http://moxielogic.github.io/blog/tag/newlib.html">newlib</a>,      <a href="http://moxielogic.github.io/blog/tag/nexys3.html">Nexys3</a>,      <a href="http://moxielogic.github.io/blog/tag/rtems.html">RTEMS</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

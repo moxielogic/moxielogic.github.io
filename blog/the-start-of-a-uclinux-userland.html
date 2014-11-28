@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="linux">
+
+  <title>
+    The Moxie Blog
+&ndash; The start of a uClinux userland  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/the-start-of-a-uclinux-userland.html">The start of a uClinux userland</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Before we can start building <a href="http://www.busybox.net">BusyBox</a>, we need a few more bits of
+technology...</p>
+<ul>
+<li><a href="http://www.uclibc.org">uClibc</a>: this is a popular embedded C library, like newlib, but
+    used more often in Linux environments. I ported uClibc to the moxie
+    core just like every other bit of software in this project: quickly!
+    My strategy has always been to make things link as quickly as
+    possible, and then sort out the details later. This seems to be a
+    workable strategy in the presence of good testsuites and the like.</li>
+<li><a href="http://cvs.uclinux.org/cgi-bin/cvsweb.cgi/elf2flt/">elf2flt</a>: this utility turns moxie ELF binaries into the ["Binary
+    Flat" (BFLT) format][] currently required by my Linux port. The BFLT
+    format is required because: (a) we don't have an MMU yet, so there's
+    a single address space for the kernel and all applications, and (b)
+    my moxie tools port doesn't yet support something like the [FR-V's
+    FDPIC ABI][] that would allow for proper shared library support in
+    the absence of an MMU. elf2flt ends up wrapping the installed
+    linker, so builds actually produce BFLT binaries without any extra
+    step.</li>
+<li>a moxie-uclinux toolchain: I build this from the same sources as the
+    moxie-elf toolchain, but with a sysroot containing the kernel and
+    uClibc header files.</li>
+</ul>
+<p>This is all built and committed to <a href="http://moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a>, which means that you
+can check it out and build it yourself with a single "ant build". I
+haven't tried using it yet, and I know it will fail in its current
+state. The next step is to build BusyBox with the moxie-uclinux
+toolchain and create an <a href="http://www.linuxfordevices.com/c/a/Linux-For-Devices-Articles/Introducing-initramfs-a-new-model-for-initial-RAM-disks/">initramfs</a> that we can link directly to the
+kernel binary. That's when the debugging fun begins...</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Tue 28 July 2009</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/linux.html">linux</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

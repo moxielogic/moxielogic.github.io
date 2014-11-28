@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="architecture, binutils, gcc, u-boot">
+
+  <title>
+    The Moxie Blog
+&ndash; Everything is relative (finally!)  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/everything-is-relative-finally.html">Everything is relative (finally!)</a></h3>
+  </div>
+  <div class="article_text">
+    <p>The Moxie ISA still needs quite a bit of tuning. Take branches, for
+instance. A <code>beq</code> instruction currently encoded <a href="http://www.moxielogic.org/wiki/index.php?title=Instruction_Set#beq">like so</a>...  </p>
+<div class="highlight"><pre><span class="err">`</span><span class="mo">00001111</span><span class="n">xxxxxxxx</span> <span class="n">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</span><span class="err">`</span>
+</pre></div>
+
+
+<p>...where the "<code>x</code>"s represent "don't care" bits, and "<code>i</code>"s are a
+32-bit absolute branch target. That's right -- branch targets are not PC
+relative! This is hugely wasteful.</p>
+<p>I've finally got around to fixing this. Here's how I did it...</p>
+<ol>
+<li>
+<p>I recoded all branch instructions as "Form 3" instructions, and
+    tweaked the as-of-yet unused Form 3 encodings so they look like
+    this:  </p>
+<blockquote>
+<div class="highlight"><pre>  <span class="n">FORM</span> <span class="mi">3</span> <span class="n">instructions</span> <span class="n">start</span> <span class="n">with</span> <span class="n">a</span> <span class="n">bits</span> <span class="s">&quot;11&quot;</span><span class="p">...</span>
+
+    <span class="mi">11</span><span class="n">oooovvvvvvvvvv</span>                                                            
+    <span class="mi">0</span>              <span class="n">F</span>
+
+   <span class="n">oooo</span>         <span class="o">-</span> <span class="n">form</span> <span class="mi">3</span> <span class="n">opcode</span> <span class="n">number</span>                                          
+   <span class="n">vvvvvvvvvv</span>   <span class="o">-</span> <span class="mi">10</span><span class="o">-</span><span class="n">bit</span> <span class="n">immediate</span> <span class="n">value</span><span class="p">.</span>
+</pre></div>
+
+
+</blockquote>
+<p>This gives us 16 opcodes with a 10-bit immediate value. There are
+only 9 branch instructions, so we have a bit of room left in the
+Form 3 opcode space.</p>
+</li>
+<li>
+<p>I introduced a new 10-bit PC-relative Moxie relocation in BFD. This
+    tells the linker and friends how to process PC-relative relocations.</p>
+</li>
+<li>I hacked the assembler to generate these new relocations instead of
+    simply emitting a 32-bit absolute address.</li>
+<li>I hacked the disassembler to print the new Form 3 instructions out
+    nicely.</li>
+<li>
+<p>Finally, I taught the compiler how to emit valid branch
+    instructions. It's not that they look any different now; it's just
+    that you need to worry about branch targets that exceed our 10-bit
+    range. Actually, we have an 11-bit range because we know that all
+    instructions are 16-bit aligned. This lets us drop the bottom bit
+    from the encoding since we know it will always be <code>0</code>.<br />
+    An 11-bit range lets us branch about 1k backwards to 1k forwards.
+    If the compiler detects that a branch target is out of range, we
+    want it to do something like the following transformation...</p>
+<blockquote>
+<div class="highlight"><pre>    <span class="n">beq</span>    <span class="p">.</span><span class="n">FAR_TARGET</span>
+</pre></div>
+
+
+</blockquote>
+<p>...becomes...</p>
+<blockquote>
+<div class="highlight"><pre>    <span class="n">bne</span>    <span class="p">.</span> <span class="o">+</span> <span class="mi">8</span>
+    <span class="n">jmpa</span>   <span class="p">.</span><span class="n">FAR_TARGET</span>
+</pre></div>
+
+
+</blockquote>
+<p>The "<code>bne .+8</code>" line means branch forward 8 bytes from the current
+PC. This would skip the unconditional jump to <code>.FAR_TARGET</code> (a
+6-byte instruction + 2-bytes for the branch = 8). Note that we have
+to reverse the logic from "<code>beq</code>" to "<code>bne</code>" for this to make sense.</p>
+<p>This is only possible if GCC can tell how far away the branch
+targets are. Fortunately, we're able to annotate instructions in the
+machine description file (<code>moxie.md</code>) with their length; currently
+either 2 or 6 bytes long. GCC then processes these annotations to
+determine branch distances.</p>
+<p>Now that we know branch distances at compile time, the compiler can
+do smart instruction selection to deal with out-of-range branches.
+The changes were quite simple and limited to the .md file in the
+backend.</p>
+</li>
+</ol>
+<p>The savings after this ISA change are substantial. For instance, the
+consumer_jpeg_c benchmark in <a href="http://www.moxielogic.org/wiki/index.php?title=MoxieDev">MoxieDev</a> is more than 15% smaller
+when we use PC-relative branches! The <a href="http://www.denx.de/wiki/U-Boot">u-boot</a> binary, on the other
+hand, is "only" 7% smaller.</p>
+<p>I hope to commit these changes to SRC and GCC once the GCC port is
+merged upstream. Fingers crossed...</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Sun 07 June 2009</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/architecture.html">architecture</a>,      <a href="http://moxielogic.github.io/blog/tag/binutils.html">binutils</a>,      <a href="http://moxielogic.github.io/blog/tag/gcc.html">gcc</a>,      <a href="http://moxielogic.github.io/blog/tag/u-boot.html">u-boot</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

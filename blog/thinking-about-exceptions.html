@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="">
+
+  <title>
+    The Moxie Blog
+&ndash; Thinking about exceptions....  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/thinking-about-exceptions.html">Thinking about exceptions....</a></h3>
+  </div>
+  <div class="article_text">
+    <p>In reading about how other processors handle exceptions, they seem to be
+of two sorts. Some (most?) processors look into a vector of exception
+handlers based on the exception type (Divide by Zero, Software
+Interrupt, IRQ, etc), and the other sort jumps to a single exception
+address and lets the software sort it out. I'm thinking of going this
+second route, only because it seems simpler and more flexible. The
+address of the handler will live in one of the special registers, and
+will need to be initialized with a <a href="http://spindazzle.org/greenblog/index.php?/archives/120-ggx-new-instructions-and-porting-the-Linux-kernel.html">Set Special Register</a> (<code>ssr</code>)
+instruction. Next we need to decide on what calling convention to use to
+get to the handler. Is there any reason not to use the standard calling
+convention? It certainly will make things easier for the debugger and I
+maybe I can reuse the stack slot reserved for the static chain pointer
+to hold the exception type. Many processors, however, just load the
+return address into a reserved register and jump to the handler.
+Presumably this is for performance reasons. More thought required... but
+feedback welcome!</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Thu 19 March 2009</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

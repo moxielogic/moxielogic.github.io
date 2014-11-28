@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+
+  <title>
+    The Moxie Blog
+&ndash; Tag: newlib  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+&gt; Tag: newlib
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/an-on-chip-bootloader.html">An On-Chip Bootloader</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Good news: we can access external memory! The logic for my pseudo-static
+RAM controller is working, and big programs can finally run on hardware.</p>
+<p>You may recall that I had previously only been accessing fake memory
+that was configured directly out of limited FPGA resources. I could
+squeeze a tiny ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/moxie-ports-and-hardware-developments.html">Moxie ports and hardware developments</a></h3>
+  </div>
+  <div class="article_text">
+    <p>It's been a while since my last update.. let me bring you up to speed.</p>
+<p>A couple of <a href="http://sourceware.org/libffi" title="libffi">libffi</a> releases got in the way of moxie hacking
+(although libffi 3.0.13 now includes full moxie support!), but things
+are picking up speed again.</p>
+<p>On the software side of ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/running-a-c-program-on-the-marin-soc.html">Running a C Program on the Marin SoC</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I've just committed the bits required to run a <a href="https://github.com/atgreen/moxie-cores/blob/master/firmware/mdata.c">C program</a> on the
+Marin SoC.</p>
+<p>Rather than hook up the Nexys3 external RAM module, I'm using extra
+space on the FPGA itself for RAM. Most of the hard work was sorting out
+the <a href="https://github.com/atgreen/moxie-cores/blob/master/soc/marin/moxie-marin.ld">linker script</a> magic required to ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/quick-update.html">Quick update...</a></h3>
+  </div>
+  <div class="article_text">
+    <p>A few quick <a href="http://moxielogic.org/wiki/index.php?title=MoxieDev">MoxieDev</a> updates...</p>
+<ul>
+<li>The verilog output patch is in binutils</li>
+<li>The moxie ports for binutils, newlib, libgloss and gdb are all
+    upstream. Waiting on sim and gcc reviews.</li>
+<li>The upstream qemu team have switched to git, so I've rebased
+    MoxieDev's qemu against this new repository.</li>
+</ul>
+<p>Also ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/loading-programs-into-the-verilog-simulation.html">Loading programs into the verilog simulation</a></h3>
+  </div>
+  <div class="article_text">
+    <p>The moxie newlib port was <a href="http://sourceware.org/ml/newlib/2009/msg00520.html">just accepted</a>. The GCC port will take a
+little longer to review, but I hope that it will get accepted early next
+week. Already there has been some useful feedback resulting in a few
+improvements. For instance, the moxie libgcc.a now provides the soft-fp ...</p>
+  </div>
+</article>
+
+<footer>
+<div id="paginator">
+
+</div>
+</footer>
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

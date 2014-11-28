@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="gcc, gdb, linux, qemu, verilog">
+
+  <title>
+    The Moxie Blog
+&ndash; Summer is over, so put away the white pants and start submitting patches!  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/summer-is-over-so-put-away-the-white-pants-and-start-submitting-patches.html">Summer is over, so put away the white pants and start submitting patches!</a></h3>
+  </div>
+  <div class="article_text">
+    <p>It's been a while since my last update. What can I say... summer was
+nice.</p>
+<p>But now, back to business! I've just committed some long overdue patches
+to the upstream GNU tools:</p>
+<ul>
+<li><a href="http://sourceware.org/ml/gdb-patches/2009-09/msg00289.html">Add a device tree blob to the gdb simulator</a>. This lets us
+    describe the gdb sim target to our single kernel image as described
+    in <a href="http://moxielogic.org/blog/?p=310">this posting</a>.</li>
+<li>A GCC size optimization. Load 0 into a register <a href="http://gcc.gnu.org/ml/gcc-patches/2009-09/msg00651.html">via xor</a>.</li>
+<li>Improve function prologue <a href="http://gcc.gnu.org/ml/gcc-patches/2009-09/msg00652.html">code generation</a>, and a corresponding
+    <a href="http://sourceware.org/ml/gdb-patches/2009-09/msg00287.html">gdb change</a>.</li>
+<li><a href="http://gcc.gnu.org/ml/gcc-patches/2009-09/msg00653.html">Use 6 registers to pass function arguments</a> as [described
+    here][].</li>
+</ul>
+<p>This gets us to booting the kernel, loading BusyBox, running some shell
+code and... crashing on the first fork. No problemo. Nothing a small
+matter of programming can't fix. However, there are some other
+distractions...</p>
+<p>Verilog is lots of fun! It looks like regular programming, but it feels
+more like building a kinetic sculpture.</p>
+<p>There's also the small matter of not having an interrupt controller! So
+there's some work here to design an interrupt controller, implement it
+in verilog, simulate it qemu (and possibly the gdb sim), and port the
+kernel over to using it. This should be interesting...</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Thu 10 September 2009</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/gcc.html">gcc</a>,      <a href="http://moxielogic.github.io/blog/tag/gdb.html">gdb</a>,      <a href="http://moxielogic.github.io/blog/tag/linux.html">linux</a>,      <a href="http://moxielogic.github.io/blog/tag/qemu.html">qemu</a>,      <a href="http://moxielogic.github.io/blog/tag/verilog.html">verilog</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

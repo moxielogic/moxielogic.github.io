@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+
+  <title>
+    The Moxie Blog
+  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/notes-on-a-novel-in-game-cpu-the-dcpu-16.html">Notes on a novel in-game CPU: the dcpu-16</a></h3>
+  </div>
+  <div class="article_text">
+    <p>The hacker behind the <a href="http://www.minecraft.net/">Minecraft</a> phenomena, Notch, is working on his
+<a href="http://0x10c.com/">next game</a>, most likely another hit. This one is interesting in that
+it includes an in-game 16-bit processor called the dcpu-16. Details are
+sparse, but it seems as though gamers will use this processor to control
+spacecraft and play ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/using-the-altera-usb-blaster-on-fedora.html">Using the Altera USB-Blaster on Fedora</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Altera's Quartus tools include some special software to download
+bitstreams to their devices over USB (a DE-2 eval board, in my case).
+They require some tricky work to set up properly on Fedora - my dev host
+of choice. But you're in luck! I've packaged up an RPM ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/fake-ram-loadstore-and-push.html">Fake RAM, load/store and push</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Progress report time....</p>
+<p>I need RAM in order to implement/test most instructions. To that end,
+I've implemented a fake data cache that is always accessed within a
+single cycle during the WRITE pipeline stage. Eventually this will have
+to be replaced with a real data cache that reads ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/gtkwave-tip-2-translate-filter-files.html">GTKWave Tip #2: Translate Filter Files</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Tip #1 was about using an external process to perform dynamic
+translations of signal display values. GTKWave can also perform simple
+static translations of data. In the example below, for instance, moxie's
+execute unit is receiving a 4-bit signal identifying "register A"
+(riA_i) for whatever operation is about to ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/gtkwave-tip-1.html">GTKWave Tip #1</a></h3>
+  </div>
+  <div class="article_text">
+    <p>GTKWave is a new tool for me, so I'll use this space to post useful tips
+as I discover them.</p>
+<p>The first tip comes from Tony Bybell, author of <a href="http://gtkwave.sourceforge.net" title="GTKWave">GTKWave</a>, who pointed
+me at some helpful functionality in a recent <a href="http://moxielogic.org/blog/?p=511" title="blog comment">blog comment</a>. You can
+enhance GTKWave's waveform display ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/branch-delays.html">Branch delays</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I've coded up logic for more arithmetic instructions, register moves, as
+well as direct and indirect jumps. For jumps, I simply pass a branch
+signal from the execute stage back to the fetch stage, as well as the
+computed target address. Here's some code that works now:</p>
+<div class="highlight"><pre><span class="na">.text ...</span></pre></div>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/a-simulation-milestone-for-the-muskoka-soc.html">A simulation milestone for the Muskoka SoC!</a></h3>
+  </div>
+  <div class="article_text">
+    <p>A moxie-based SoC had it's first successful simulation run today....</p>
+<p><center>
+<img alt="gtkwave display of first code run" src="http://moxielogic.org/blog/wp-content/uploads/2011/09/gtkwave20110927-300x204.png" />
+</center></p>
+<p>Pretty exciting! So, here's what's happening...</p>
+<p>The SoC, code named "Muskoka", has three main components: the moxie
+core, a wishbone switch and a ROM device. The switch was easy to
+implement, as I just have a single ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/rtems-status-update.html">RTEMS status update</a></h3>
+  </div>
+  <div class="article_text">
+    <p>The <a href="http://www.rtems.com">RTEMS</a> port in <a href="http://www.moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a> is looking pretty good right now.
+Here's a test of the RTEMS network loopback device running on the moxie
+gdb simulator.  The first two client connections fail in this test. 
+It's supposed to fail in the first case, but I'm not sure ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/bisecting-gcc.html">Bisecting GCC</a></h3>
+  </div>
+  <div class="article_text">
+    <p>The thing about <a href="http://gcc.gnu.org">GCC</a> is that things break when you take your eye off
+the ball. And this is what happened during my months long hiatus from
+the moxie project. Somewhere between early March and today, the moxie
+GCC port lost the ability to compile non-trivial code, notably libgcc.
+Firing ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/on-chip-communications.html">On-chip communications</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I need to build real SoC infrastructure around my developing core in
+order to test it on real hardware. For the most part, this means a
+memory controller and IO devices. I've decided to implement a shared-bus
+wishbone-style interconnect for these devices. <a href="http://en.wikipedia.org/wiki/Wishbone_%28computer_bus%29">Wishbone</a> is an open
+source on chip ...</p>
+  </div>
+</article>
+
+<footer>
+<div id="paginator">
+<a href="http://moxielogic.github.io/blog/index4.html" class="button_accent">&larr; Older Posts</a>
+
+<a href="http://moxielogic.github.io/blog/index2.html" class="button_accent">Newer Posts &rarr;</a>
+</div>
+</footer>
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="gcc, qemu, releng">
+
+  <title>
+    The Moxie Blog
+&ndash; Progress...  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/progress.html">Progress...</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I made some progress on using moxie-elf-gdb with qemu the other day.
+Qemu has an integrated gdb stub, so GDB speaks to it via the remote
+protocol. It's still not quite there, but getting close. I'm anxious to
+get it working, as it's the last step before hacking on the Linux kernel
+port.</p>
+<p>I've also tweaked the "ant srpm" target, so it creates clean SRPMs for
+binutils, newlib, gcc, gdb and qemu. Well, sort of. When building GCC
+from scratch you actually have to build it twice: once to build newlib,
+and the second time with the installed newlib. This is easy enough to
+handle in MoxieDev where I have a single tree and full control over the
+build sequence. It's a little bit weirder in RPM-land because of the
+circular dependencies between packages. I was able to bootstrap it on my
+system, but it's a hack. I may resort to merging the newlib sources into
+the GCC SPRM, and then make newlib a subpackage of gcc. Release
+engineering is the suck!</p>
+<p>And, finally, I've merged the latest and greatest trunk revisions of gcc
+and src into MoxieDev. Woooo - it all still works! Check out the commit
+logs in the <a href="http://moxielogic.org/blog">blog sidebar</a>.</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Thu 12 March 2009</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/gcc.html">gcc</a>,      <a href="http://moxielogic.github.io/blog/tag/qemu.html">qemu</a>,      <a href="http://moxielogic.github.io/blog/tag/releng.html">releng</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

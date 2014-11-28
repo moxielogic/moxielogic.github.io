@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="linux">
+
+  <title>
+    The Moxie Blog
+&ndash; Forking bugs  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/forking-bugs.html">Forking bugs</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I found some time to look at the Linux kernel port again, and discovered
+a bug in the forking code (the child process must return 0 after a
+fork!). What we're looking at here is the start of userland, post kernel
+boot, where busybox is trying to run an init script. It's still not
+working, but some cool things are, like the stack trace. I think the
+next troubling bit is where busybox tries to exec itself
+(/proc/self/exe) and /proc isn't mounted. Or something like that.</p>
+<div class="highlight"><pre><span class="nx">___</span>  <span class="nx">___</span>           <span class="nx">_</span>              <span class="nx">_____</span> <span class="nx">_</span> <span class="nx">_</span>                  
+<span class="o">|</span>  <span class="o">\/</span>  <span class="o">|</span>          <span class="p">(</span><span class="nx">_</span><span class="p">)</span>            <span class="o">/</span>  <span class="nx">__</span> <span class="o">\</span> <span class="p">(</span><span class="nx">_</span><span class="p">)</span>                 
+<span class="o">|</span> <span class="nx">.</span>  <span class="nx">.</span> <span class="o">|</span> <span class="nx">___</span> <span class="nx">__</span>  <span class="nx">___</span>  <span class="nx">___</span>   <span class="nx">_</span>   <span class="nx">_</span><span class="o">|</span> <span class="o">/</span>  <span class="o">\/</span> <span class="o">|</span><span class="nx">_</span> <span class="nx">_</span> <span class="nx">__</span>  <span class="nx">_</span>   <span class="nx">___</span>  <span class="nx">__</span>
+<span class="o">|</span> <span class="o">|\/|</span> <span class="o">|/</span> <span class="nx">_</span> <span class="o">\\</span> <span class="o">\/</span> <span class="o">/</span> <span class="o">|/</span> <span class="nx">_</span> <span class="o">\</span> <span class="o">|</span> <span class="o">|</span> <span class="o">|</span> <span class="o">|</span> <span class="o">|</span>   <span class="o">|</span> <span class="o">|</span> <span class="o">|</span> <span class="s1">&#39;_ \| | | \ \/ /</span>
+<span class="s1">| |  | | (_) |&gt;  &lt;| |  __/ | |_| | \__/\ | | | | | |_| |&gt;  &lt; </span>
+<span class="s1">\_|  |_/\___//_/\_\_|\___|  \__,_|\____/_|_|_| |_|\__,_/_/\_</span><span class="se">\</span><span class="s1"></span>
+<span class="s1">sh: can&#39;</span><span class="nb">t</span> <span class="nb">execute</span> <span class="s1">&#39;ls&#39;</span><span class="p">:</span> <span class="nx">No</span> <span class="nx">such</span> <span class="nb">file</span> <span class="ow">or</span> <span class="nx">directory.</span>
+<span class="p">/</span><span class="nx">bin</span><span class="p">/</span><span class="nx">sh</span><span class="p">:</span> <span class="nb">option</span> <span class="nb">requires</span> <span class="nx">an</span> <span class="nx">argument</span> <span class="o">--</span> <span class="nx">c</span>
+<span class="nx">BusyBox</span> <span class="nx">v1.19.0.git</span> <span class="p">(</span><span class="mi">2012</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">14</span> <span class="mi">23</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">21</span> <span class="nx">EDT</span><span class="p">)</span> <span class="nx">multi</span><span class="na">-call</span> <span class="nx">binary.</span>
+
+<span class="nb">Usage</span><span class="p">:</span> <span class="nx">sh</span> <span class="err">[</span><span class="na">-nxl</span><span class="cp">]</span> <span class="cp">[</span><span class="na">-c</span> <span class="s1">&#39;SCRIPT&#39;</span> <span class="err">[</span><span class="nx">ARG0</span> <span class="err">[</span><span class="nx">ARGS</span><span class="cp">]</span>] / FILE <span class="cp">[</span><span class="nx">ARGS</span><span class="cp">]</span>]
+
+Unix shell interpreter
+
+Kernel panic - not syncing: Attempted to kill init!
+Rebooting in 120 seconds..
+Machine restart...
+
+Stack:
+  03819e8c ffffffff 03819fb8 ffffffff ffffffff 03819ec0 0000408a 000fdfd2 
+  0022438c 00000063 fa3c0000 00000000 00000000 03819ee4 03819ee4 0001e800 
+  03bb8d14 0002990e ffffffff ffffffff 000003e8 000fceac 0001d4bf 03819f34 
+Call Trace:
+
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">0000408</span><span class="nx">a</span><span class="o">&gt;</span><span class="cp">]</span> machine_restart+0x14/0x1a
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">000</span><span class="nx">fdfd2</span><span class="o">&gt;</span><span class="cp">]</span> bust_spinlocks+0x0/0x4a
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">0001</span><span class="nx">e800</span><span class="o">&gt;</span><span class="cp">]</span> emergency_restart+0xa/0xc
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">0002990</span><span class="nx">e</span><span class="o">&gt;</span><span class="cp">]</span> up_read+0x8/0xa
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">000</span><span class="nx">fceac</span><span class="o">&gt;</span><span class="cp">]</span> __muldi3+0x0/0x92
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">0001</span><span class="nx">d4bf</span><span class="o">&gt;</span><span class="cp">]</span> do_notify_parent+0x193/0x240
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">0004038</span><span class="nx">c</span><span class="o">&gt;</span><span class="cp">]</span> panic+0x11c/0x162
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">00012</span><span class="nx">ea8</span><span class="o">&gt;</span><span class="cp">]</span> exit_files+0x1e/0x26
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">000130</span><span class="nx">c6</span><span class="o">&gt;</span><span class="cp">]</span> do_exit+0x6e/0x706
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">0001377</span><span class="nx">a</span><span class="o">&gt;</span><span class="cp">]</span> sys_exit+0x0/0x18
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">00013792</span><span class="o">&gt;</span><span class="cp">]</span> do_group_exit+0x0/0xac
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">00057</span><span class="nx">fe2</span><span class="o">&gt;</span><span class="cp">]</span> sys_write+0x0/0x96
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">000017</span><span class="nx">fa</span><span class="o">&gt;</span><span class="cp">]</span> .return_from_exception+0x0/0x18
+</pre></div>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Wed 15 August 2012</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/linux.html">linux</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

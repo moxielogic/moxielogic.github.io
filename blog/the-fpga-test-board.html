@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="de2, fpga">
+
+  <title>
+    The Moxie Blog
+&ndash; The FPGA test board  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/the-fpga-test-board.html">The FPGA test board</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I picked up a lightly used FPGA development board from craigslist today.
+It's the <a href="http://www.altera.com/education/univ/materials/boards/unv-de2-board.html">Altera DE2</a> board with a Cyclone II FPGA.</p>
+<p><center>
+<img alt="&quot;The DE2\'s Cyclone II &quot;" src="http://moxielogic.org/blog/wp-content/uploads/2010/08/P1230549-300x225.jpg" />
+</center></p>
+<p>There are a few nice things about this board...</p>
+<ul>
+<li>It's loaded with real and useful peripherals: 16x2 LCD Panel, VGA
+    DAC, lots of LEDs, RS232, IrDA, PS/2, USB, 100/10Mbs Ethernet, audio
+    codec, NTSC TV decoder, SD card connector, etc, etc. This means I
+    can focus on the moxie microarchitecture, and not worry about
+    building a full feature rich SoC.</li>
+<li>Altera's Quartus II software runs on Linux</li>
+<li>It was relatively cheap - \$200</li>
+</ul>
+<p>When I got home I was happy to discover that the board actually powers
+on and the appropriate LEDs blink. You can never be sure with used
+hardware!</p>
+<p>As for the Quartus software... I'm running Fedora 13 x86-64. This isn't
+a supported OS for them but I'm hoping it will work since they do
+support RHEL5. Quartus appears to be a 32-bit binary, so I had to go
+through a tedious process of installing missing 32-bit libraries -
+something that could have been avoided if they would simply package this
+thing in an RPM. The good news is that after installing the appropriate
+libraries, it does appear to start up.</p>
+<p>More as it happens...</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Wed 18 August 2010</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/de2.html">de2</a>,      <a href="http://moxielogic.github.io/blog/tag/fpga.html">fpga</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

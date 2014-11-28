@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="verilog">
+
+  <title>
+    The Moxie Blog
+&ndash; A Tiny Computer  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/a-tiny-computer.html">A Tiny Computer</a></h3>
+  </div>
+  <div class="article_text">
+    <p><a href="http://lambda-the-ultimate.org/">Lambda the Ultimate</a> today posted a interesting blog entry on <a href="http://lambda-the-ultimate.org/node/3232">A Tiny
+Computer</a>. It refers to 2007 paper by Chuck Thacker at Microsoft
+Research describing a tiny 32-bit processor. Appendix A of the paper
+includes the entire synthesizeable verilog implementation in just a page
+and a half of code! Here's a direct link to the PDF:
+<a href="http://www.bottomup.co.nz/mirror/Thacker-A_Tiny_Computer-3.pdf">http://www.bottomup.co.nz/mirror/Thacker-A_Tiny_Computer-3.pdf</a>.</p>
+<p>I plan on using verilog for my initial moxie implementation. I'm told
+that it's the clear choice from a tools perspective. There's even a free
+software implementation already packaged for <a href="http://fedoraproject.org">Fedora</a>: <a href="http://www.icarus.com/eda/verilog">Icarus
+Verilog</a>. As far as eduction is concerned, I've mainly been using the
+two terrific books show below. Do you have any better suggestions? I'd
+love to hear them.</p>
+<p>Now, however, I'm still debugging GDB's interaction with qemu. It mostly
+involves watching <a href="http://sourceware.org/gdb/current/onlinedocs/gdb_34.html#SEC721">remote protocol</a> traffic, looking up the packet
+codes, and then trying to understand why the simulator is not behaving
+as expected. Good times...</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Fri 13 March 2009</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/verilog.html">verilog</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

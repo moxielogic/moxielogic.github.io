@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+
+  <title>
+    The Moxie Blog
+&ndash; Posts by: green  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+&gt; Author: green
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/quartus-ii-and-the-cloud-not-there-yet.html">Quartus II and the Cloud: Not There Yet...</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Altera's <a href="http://www.altera.com/products/software/quartus-ii/web-edition/qts-we-index.html">Quartus II</a> software is now running on my Fedora box, but I
+was really hoping to load it into a grid of <a href="http://aws.amazon.com/ec2/">Amazon EC2 instances</a> so
+I could batch out jobs for synthesis, place and route. Unfortunately the
+free-beer Quartus software requires a license file that is generated ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/pipeline-hazards.html">Pipeline hazards</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I've coded up a first go at four pipeline stages so far: <a href="http://github.com/atgreen/moxiedev/blob/master/moxie/rtl/verilog/cpu_fetch.v">Fetch</a>,
+<a href="http://github.com/atgreen/moxiedev/blob/master/moxie/rtl/verilog/cpu_decode.v">Decode</a>, <a href="http://github.com/atgreen/moxiedev/blob/master/moxie/rtl/verilog/cpu_execute.v">Execute</a>, and Write. After the relative complexity of the
+<a href="http://moxielogic.org/blog/?p=444">Fetch implementation</a>, the rest has been pretty straight forward, and
+I've started running the first bit of compiled code through the pipline.
+Here's that ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/fetching-instructions.html">Fetching instructions</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Moxie requires some interesting instruction fetch logic.</p>
+<p>For my initial implementation I'm assuming a 32-bit path to instruction
+memory. But moxie has both 16- and 48-bit instructions, so it's not like
+simple RISC cores that can feed the pipeline on every cycle. My solution
+is to feed 32-bit ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/the-fpga-test-board.html">The FPGA test board</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I picked up a lightly used FPGA development board from craigslist today.
+It's the <a href="http://www.altera.com/education/univ/materials/boards/unv-de2-board.html">Altera DE2</a> board with a Cyclone II FPGA.</p>
+<p><center>
+<img alt="&quot;The DE2\'s Cyclone II &quot;" src="http://moxielogic.org/blog/wp-content/uploads/2010/08/P1230549-300x225.jpg" />
+</center></p>
+<p>There are a few nice things about this board...</p>
+<ul>
+<li>It's loaded with real and useful peripherals: 16x2 LCD Panel, VGA
+    DAC, lots of LEDs, RS232, IrDA ...</li></ul>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/still-hacking.html">Still hacking...</a></h3>
+  </div>
+  <div class="article_text">
+    <p>...Just in case you were wondering!</p>
+<p>But it's been slow going. The good news is that moxie is front and
+centre for me again, so let's see what we can do over the next few
+weeks. And over these next few weeks I'm promising myself not to ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/the-moxielyzer.html">The Moxielyzer</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I just committed a little binary analysis tool to <a href="http://moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a>. You can
+use it to perform simple static analysis on moxie binaries. The kinds of
+things I'm looking for are compiler bugs (because I know there's still
+one there that is triggered by -frerun-cse-after-loop), and instruction
+statistics. For ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/summer-is-over-so-put-away-the-white-pants-and-start-submitting-patches.html">Summer is over, so put away the white pants and start submitting patches!</a></h3>
+  </div>
+  <div class="article_text">
+    <p>It's been a while since my last update. What can I say... summer was
+nice.</p>
+<p>But now, back to business! I've just committed some long overdue patches
+to the upstream GNU tools:</p>
+<ul>
+<li><a href="http://sourceware.org/ml/gdb-patches/2009-09/msg00289.html">Add a device tree blob to the gdb simulator</a>. This lets us
+    describe the gdb sim ...</li></ul>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/more-hello-world-progress-with-uclibcuclinux-and-a-gdb-question.html">More hello world progress with uClibc/uClinux, and a GDB question.</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Tonight I got a hello world app to use uClibc's <code>puts()</code> routine! This
+is a big deal because it's the first time I've had system calls coming
+in from userland. I haven't checked the changes in yet, because they're
+a mess, but here's a ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/first-moxie-linux-userland-app-runs.html">First moxie-linux userland app runs!</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I've been taking advantage of the nice summer weather recently, so it's
+taken me a while to get around to this... but here's the first moxie
+userland app!</p>
+<div class="highlight"><pre><span class="cp">#include &lt;string.h&gt;</span>
+
+<span class="cp">#define MSG &quot;Hello, World!\n&quot;</span>
+
+<span class="kt">void</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span> <span class="n">gloss_write</span> <span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">)</span> 
+<span class="p">{</span>
+  <span class="n">asm ...</span></pre></div>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/speed-bumps-on-the-road-to-moxie-userland.html">Speed bumps on the road to moxie userland</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Sooo..... it turns out there's lots to take care of before userland apps
+like BusyBox can run.</p>
+<ul>
+<li><strong>The root filesystem</strong>. This one is easy. I just built a short
+    Hello World application in C with moxie-uclinux-gcc. This produces
+    an executable in <a href="http://www.beyondlogic.org/uClinux/bflt.htm">BFLT format</a> which I call 'init'. The kernel ...</li></ul>
+  </div>
+</article>
+
+<footer>
+<div id="paginator">
+<a href="http://moxielogic.github.io/blog/author/green5.html" class="button_accent">&larr; Older Posts</a>
+
+<a href="http://moxielogic.github.io/blog/author/green3.html" class="button_accent">Newer Posts &rarr;</a>
+</div>
+</footer>
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

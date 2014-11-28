@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="linux">
+
+  <title>
+    The Moxie Blog
+&ndash; The first moxie linux boot output...  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/the-first-moxie-linux-boot-output.html">The first moxie linux boot output...</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Userland, here I come! Check out <a href="http://moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a>, run "ant build", then do
+the following...</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="nx">.</span><span class="p">/</span><span class="nb">root</span><span class="p">/</span><span class="nx">usr</span><span class="p">/</span><span class="nx">bin</span><span class="p">/</span><span class="nx">moxie</span><span class="na">-elf-run</span> <span class="nx">linux</span><span class="o">-</span><span class="mf">2.6</span><span class="p">/</span><span class="nx">vmlinux</span>
+<span class="nx">Linux</span> <span class="nb">version</span> <span class="mf">2.6.31</span><span class="na">-rc3-gb006656-dirty</span> <span class="p">(</span><span class="nx">green</span><span class="p">@</span><span class="nx">dev.moxielogic.com</span><span class="p">)</span> <span class="p">(</span><span class="nx">gcc</span> <span class="nb">version</span> <span class="mf">4.5.0</span> <span class="mi">20090715</span> <span class="p">(</span><span class="nx">experimental</span><span class="p">)</span> <span class="err">[</span><span class="nb">trunk</span> <span class="nx">revision</span> <span class="mi">149693</span><span class="cp">]</span> (GCC) ) #6 Sun Jul 26 12:03:14 EDT 2009
+console <span class="cp">[</span><span class="nx">earlyser0</span><span class="cp">]</span> enabled
+setup_cpuinfo: initialising
+setup_memory: Main mem: 0x0-0x1000000, size 0x01000000
+setup_memory: kernel addr=0x00001000-0x002cc000 size=0x002cb000
+setup_memory: max_mapnr: 0x1000
+setup_memory: min_low_pfn: 0x0
+setup_memory: max_low_pfn: 0x1000
+On node 0 totalpages: 4096
+free_area_init_node: node 0, pgdat 002621b0, node_mem_map 002cd000
+  Normal zone: 32 pages used for memmap
+  Normal zone: 0 pages reserved
+  Normal zone: 4064 pages, LIFO batch:0
+Built 1 zonelists in Zone order, mobility grouping off.  Total pages: 4064
+Kernel command line: lpj=1000
+PID hash table entries: 64 (order: 6, 256 bytes)
+Dentry cache hash table entries: 2048 (order: 1, 8192 bytes)
+Inode-cache hash table entries: 1024 (order: 0, 4096 bytes)
+Memory: 13376k/16384k available
+start_kernel(): bug: interrupts were enabled *very* early, fixing it
+NR_IRQS:32
+ #0 at 0x00000000, num_irq=0, edge=0x0
+ #0 at 0x00000000, irq=0
+start_kernel(): bug: interrupts were enabled early
+ODEBUG: 3 of 3 active objects replaced
+ODEBUG: selftest passed
+Calibrating delay loop (skipped) preset value.. 0.20 BogoMIPS (lpj=1000)
+Mount-cache hash table entries: 512
+NET: Registered protocol family 16
+bio: create slab  at 0
+NET: Registered protocol family 2
+IP route cache hash table entries: 1024 (order: 0, 4096 bytes)
+TCP established hash table entries: 512 (order: 0, 4096 bytes)
+TCP bind hash table entries: 512 (order: -1, 2048 bytes)
+TCP: Hash tables configured (established 512 bind 512)
+TCP reno registered
+NET: Registered protocol family 1
+ROMFS MTD (C) 2007 Red Hat, Inc.
+msgmni has been set to 26
+io scheduler noop registered
+io scheduler anticipatory registered
+io scheduler deadline registered
+io scheduler cfq registered (default)
+brd: module loaded
+nbd: registered device at major 43
+uclinux<span class="cp">[</span><span class="nx">mtd</span><span class="cp">]</span>: RAM probe address=0x2cba18 size=0x0
+Creating 1 MTD partitions on &quot;RAM&quot;:
+0x000000000000-0x000000000000 : &quot;ROMfs&quot;
+mtd: partition &quot;ROMfs&quot; is out of reach -- disabled
+TCP cubic registered
+NET: Registered protocol family 17
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+VFS: Cannot open root device &quot;&quot; or unknown-block(0,0)
+Please append a correct &quot;root=&quot; boot option; here are the available partitions:
+Rebooting in 120 seconds..
+Machine restart...
+
+Stack:
+  00823e50 00823e68 000044e6 fffffff3 002288e0 fa3c0600 00823e7c 0001e196 
+  19981fc0 00000000 0001d4bf 00823ec0 0003ef30 00000000 00229ba8 00000078 
+  00000000 19981fc0 00000000 0003ef84 000fe422 0007091a 00008001 00000018 
+Call Trace:
+
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">000044</span><span class="nx">e6</span><span class="o">&gt;</span><span class="cp">]</span> machine_restart+0x14/0x1a
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">0001</span><span class="nx">e196</span><span class="o">&gt;</span><span class="cp">]</span> emergency_restart+0xe/0x10
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">0001</span><span class="nx">d4bf</span><span class="o">&gt;</span><span class="cp">]</span> sys_rt_sigtimedwait+0x15/0x1de
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">0003</span><span class="nx">ef30</span><span class="o">&gt;</span><span class="cp">]</span> panic+0x11e/0x172
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">0003</span><span class="nx">ef84</span><span class="o">&gt;</span><span class="cp">]</span> printk+0x0/0x1a
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">000</span><span class="nx">fe422</span><span class="o">&gt;</span><span class="cp">]</span> strchr+0x0/0x4a
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">0007091</span><span class="nx">a</span><span class="o">&gt;</span><span class="cp">]</span> sys_mount+0x0/0xf4
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">00008001</span><span class="o">&gt;</span><span class="cp">]</span> update_curr.clone.4+0x115/0x178
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">0003</span><span class="nx">ef84</span><span class="o">&gt;</span><span class="cp">]</span> printk+0x0/0x1a
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">00266</span><span class="nx">bca</span><span class="o">&gt;</span><span class="cp">]</span> mount_block_root+0x2d0/0x2f4
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">00008001</span><span class="o">&gt;</span><span class="cp">]</span> update_curr.clone.4+0x115/0x178
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">00266</span><span class="nx">d94</span><span class="o">&gt;</span><span class="cp">]</span> mount_root+0x7c/0x86
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">00266</span><span class="nx">f38</span><span class="o">&gt;</span><span class="cp">]</span> prepare_namespace+0x19a/0x1e6
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">00001314</span><span class="o">&gt;</span><span class="cp">]</span> do_one_initcall+0x0/0x280
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">00001314</span><span class="o">&gt;</span><span class="cp">]</span> do_one_initcall+0x0/0x280
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">002667</span><span class="nx">ba</span><span class="o">&gt;</span><span class="cp">]</span> kernel_init+0xea/0x104
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">000025</span><span class="nx">c8</span><span class="o">&gt;</span><span class="cp">]</span> kernel_thread_helper+0x8/0x14
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">002666</span><span class="nx">d0</span><span class="o">&gt;</span><span class="cp">]</span> kernel_init+0x0/0x104
+<span class="cp">[</span><span class="o">&lt;</span><span class="mi">000025</span><span class="nx">c0</span><span class="o">&gt;</span><span class="cp">]</span> kernel_thread_helper+0x0/0x14
+
+program stopped with signal 2.
+</pre></div>
+
+
+<p>There are lots of short cuts that need to be cleaned up, but it seems
+that I'm basically at the point where I need to worry about userland.</p>
+<p><strong><a href="http://www.busybox.net">Busybox</a>, I'm looking at you!</strong></p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Sun 26 July 2009</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/linux.html">linux</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="gdb, JTAG, marin, SoC">
+
+  <title>
+    The Moxie Blog
+&ndash; Native On-Chip GDB Remote Protocol Support  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/native-on-chip-gdb-remote-protocol-support.html">Native On-Chip GDB Remote Protocol Support</a></h3>
+  </div>
+  <div class="article_text">
+    <p>A typical software debug solution for an embedded systems might involve
+a <a href="http://en.wikipedia.org/wiki/Joint_Test_Action_Group">JTAG</a> connection to the board, and then some kind of protocol
+translation software that handles communication between GDB's remote
+serial protocol and the target JTAG port (see <a href="http://openocd.sourceforge.net/">OpenOCD</a>, for
+instance). The FPGA systems I'm working with include JTAG ports, and the
+vendors also provide JTAG IP cores for interfacing them to your digital
+logic. On the other hand, these systems also have nice UARTs that are
+easy to talk to. We have the opportunity to dramatically simplify the
+debug toolchain by including support for GDB's remote protocol directly
+on chip. This would be a hardware implementation of the protocol - no
+software stubs required.</p>
+<p>The GDB Target Engine IP core is essentially a state machine that reads
+GDB packets coming over the UART (a microusb connection to my laptop).
+It has direct access to MoxieLite core through some additional wires for
+extracting register values. It also acts as a bus master to read/write
+directly to/from memory. The Marin SoC only has one bus master - the
+moxie core. The nice thing here is that we don't have to add any new bus
+arbitration logic for the second master, because only one master will
+ever be active at a time. We're either running in debug mode (active
+connection to GDB over the UART), in which case the GDB Target Engine is
+the bus master, or we're running in regular mode, where the moxie core
+is in control.</p>
+<p>The GDB remote protocol includes many commands these days, but only a
+small number are required to be supported by the target: read/write
+registers, read/write memory, step and continue.</p>
+<p>Current status is that I can connect GDB directly to the SoC using
+"target remote /dev/ttyUSB0", at which point GDB negotiates with the
+target to determine what features are supported. I can hit Ctrl-C in GDB
+to tell the SoC to enter debug mode. The Target Engine core then talks
+to MoxieLite to extract register values, converts them to ASCII text and
+sends them back to the debugger over the wire. This includes the PC, so
+GDB knows where to go. Given that this is working, I'm not too worried
+about the rest of it - but only time will tell...</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Sat 24 November 2012</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/gdb.html">gdb</a>,      <a href="http://moxielogic.github.io/blog/tag/jtag.html">JTAG</a>,      <a href="http://moxielogic.github.io/blog/tag/marin.html">marin</a>,      <a href="http://moxielogic.github.io/blog/tag/soc.html">SoC</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

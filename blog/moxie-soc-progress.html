@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="fpga, marin, MoxieLite, Nexys3, SoC, u-boot, wishbone, Xilinx">
+
+  <title>
+    The Moxie Blog
+&ndash; Moxie SoC Progress  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/moxie-soc-progress.html">Moxie SoC Progress</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Time for a quick update!</p>
+<p><center>
+<iframe width="560" height="315" src="http://www.youtube.com/embed/86-OkQcXEes" frameborder="0" allowfullscreen></iframe>
+</center></p>
+<p>"Marin" is the name of my test SoC consisting of a <a href="http://en.wikipedia.org/wiki/Wishbone_(computer_bus)" title="wishbone">wishbone</a> wrapped
+75Mhz big-endian MoxieLite bus master, along with two slave devices:
+embedded ROM and the Nexys3's 7-segment display. So, right now I can
+write some code into FPGA embedded ROM to manipulate the display. For
+example...</p>
+<div class="highlight"><pre>        <span class="p">.</span><span class="n">text</span>
+    <span class="p">.</span><span class="n">p2align</span>        <span class="mi">1</span>
+        <span class="p">.</span><span class="n">global</span> <span class="n">MarinDisplayTest</span>
+
+        <span class="p">.</span><span class="n">equ</span> <span class="n">BIG_ENDIAN</span><span class="p">,</span><span class="mi">1</span>
+
+        <span class="err">#</span> <span class="n">This</span> <span class="n">is</span> <span class="n">where</span> <span class="mi">7</span><span class="o">-</span><span class="n">segment</span> <span class="n">display</span> <span class="n">is</span> <span class="n">mapped</span> <span class="n">to</span> <span class="n">memory</span>
+        <span class="p">.</span><span class="n">equ</span> <span class="n">DISPLAY_ADDR</span><span class="p">,</span><span class="mh">0x00100000</span>
+
+<span class="nl">MarinDisplayTest:</span>
+        <span class="n">ldi</span><span class="p">.</span><span class="n">l</span>   <span class="err">$</span><span class="n">r1</span><span class="p">,</span> <span class="mh">0x1234</span>
+        <span class="n">ldi</span><span class="p">.</span><span class="n">l</span>   <span class="err">$</span><span class="n">r3</span><span class="p">,</span> <span class="mh">0x0</span>
+<span class="nl">loop:</span>   <span class="n">sta</span><span class="p">.</span><span class="n">s</span>   <span class="n">DISPLAY_ADDR</span><span class="p">,</span> <span class="err">$</span><span class="n">r1</span>
+        <span class="n">dec</span>     <span class="err">$</span><span class="n">r1</span><span class="p">,</span> <span class="mi">1</span>
+        <span class="n">ldi</span><span class="p">.</span><span class="n">l</span>   <span class="err">$</span><span class="n">r2</span><span class="p">,</span> <span class="mi">5000000</span>
+<span class="nl">delay:</span>  <span class="n">dec</span>     <span class="err">$</span><span class="n">r2</span><span class="p">,</span> <span class="mi">1</span>
+        <span class="n">cmp</span>     <span class="err">$</span><span class="n">r2</span><span class="p">,</span> <span class="err">$</span><span class="n">r3</span>
+        <span class="n">bne</span>     <span class="n">delay</span>
+        <span class="n">jmpa</span>    <span class="n">loop</span>
+</pre></div>
+
+
+<p>This displays a countdown on the hex display starting at 1234.</p>
+<p>Here's what I think will be next:</p>
+<ul>
+<li>I need to be able to access RAM, which means implementing a module
+    to support the Nexys3's <a href="http://www.micron.com/products/dram/psram-cellularram" title="CellularRAM">CellularRAM</a> device and wrapping that up
+    as a wishbone slave.</li>
+<li>Once I can access RAM, I can test C compiler output, but only small
+    code that I can embed into the FPGA's ROM.</li>
+<li>Next comes a UART wishbone slave so I can talk to it over the
+    microusb serial port from my Linux host. I'll need to hack up
+    libgloss to map I/O to my memory-mapped UART.</li>
+<li>One of the annoying things about this Xilinx toolchain is that
+    AFAICT Digilent doesn't provide the tool you need for programming
+    memory (Flash, RAM, or otherwise) from your Linux host. So I plan on
+    writing some ROMable firmware to download code (srecords?) over the
+    UART (xmodem?) to program memory. This is the point at which we
+    should be able to run larger programs. I already have a u-boot port,
+    so I think that will be first on my list.</li>
+</ul>
+<p>It's great to have Brad Robinson's MoxieLite implementation for Marin.
+It's very small but can still run at quite a clip. Once the surrounding
+infrastructure is working, however, I'm going to get back to Muskoka,
+which is my 4-stage pipelined moxie SoC to see if I can crank up the
+MHz.</p>
+<p>As usual everything is in github. However, the HDL cores and SoC designs
+are no longer embedded in the moxiedev tree. They're in a new top-level
+git repo called moxie-cores. Check it out here:
+<a href="http://github.com/atgreen/moxie-cores">http://github.com/atgreen/moxie-cores</a></p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Sat 10 November 2012</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/fpga.html">fpga</a>,      <a href="http://moxielogic.github.io/blog/tag/marin.html">marin</a>,      <a href="http://moxielogic.github.io/blog/tag/moxielite.html">MoxieLite</a>,      <a href="http://moxielogic.github.io/blog/tag/nexys3.html">Nexys3</a>,      <a href="http://moxielogic.github.io/blog/tag/soc.html">SoC</a>,      <a href="http://moxielogic.github.io/blog/tag/u-boot.html">u-boot</a>,      <a href="http://moxielogic.github.io/blog/tag/wishbone.html">wishbone</a>,      <a href="http://moxielogic.github.io/blog/tag/xilinx.html">Xilinx</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

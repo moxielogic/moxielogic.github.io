@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="binutils, gcc, newlib, verilog">
+
+  <title>
+    The Moxie Blog
+&ndash; Loading programs into the verilog simulation  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/loading-programs-into-the-verilog-simulation.html">Loading programs into the verilog simulation</a></h3>
+  </div>
+  <div class="article_text">
+    <p>The moxie newlib port was <a href="http://sourceware.org/ml/newlib/2009/msg00520.html">just accepted</a>. The GCC port will take a
+little longer to review, but I hope that it will get accepted early next
+week. Already there has been some useful feedback resulting in a few
+improvements. For instance, the moxie libgcc.a now provides the soft-fp
+floating point emulation library instead of the fpbit one. Apparently
+it's harder/better/faster/stronger, and other ports are starting to
+adopt it. See the <a href="http://ols.fedoraproject.org/GCC/Reprints-2006/sidwell-reprint.pdf">"Improving Software Floating Point Support" paper</a>
+from the 2006 GCC Summit Proceedings</a> for details.</p>
+<p><object width="425" height="344">
+<param name="movie" value="http://www.youtube.com/v/K2cYWfq--Nw&amp;hl=en&amp;fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param></p>
+<p><embed src="http://www.youtube.com/v/K2cYWfq--Nw&amp;hl=en&amp;fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344">
+</embed>
+</object></p>
+<p>On the verilog front, I have what I believe is a first pass at the
+Instruction Fetch and Decode (IF/ID) units. In order to test these, you
+actually need real code loaded into the simulated memory. Verilog
+provides a handy function, $readmemh(), that sucks ASCII hex codes from
+a text file into a register array (fake memory). The trick is that the
+input file has to be in a very special format. To that end, I've written
+a new BFD write-only backend called 'verilog' that generates this hex
+dump output. So now...  </p>
+<div class="highlight"><pre>  <span class="err">$</span> <span class="n">moxie</span><span class="o">-</span><span class="n">elf</span><span class="o">-</span><span class="n">gcc</span> <span class="o">-</span><span class="n">o</span> <span class="n">hello</span><span class="p">.</span><span class="n">x</span> <span class="n">hello</span><span class="p">.</span><span class="n">c</span>
+  <span class="err">$</span> <span class="n">moxie</span><span class="o">-</span><span class="n">elf</span><span class="o">-</span><span class="n">objcopy</span> <span class="o">-</span><span class="n">O</span> <span class="n">verilog</span> <span class="n">hello</span><span class="p">.</span><span class="n">x</span> <span class="n">hello</span><span class="p">.</span><span class="n">vh</span>
+</pre></div>
+
+
+<p>...produces a useful hello.vh, which verilog can load directly
+into memory like so...</p>
+<div class="highlight"><pre><span class="n">module</span> <span class="nf">memory</span><span class="p">();</span>
+  <span class="n">reg</span> <span class="p">[</span><span class="mi">7</span><span class="o">:</span><span class="mi">0</span><span class="p">]</span> <span class="n">my_memory</span> <span class="p">[</span><span class="mi">0</span><span class="o">:</span><span class="mi">64000</span><span class="p">];</span>
+  <span class="n">initial</span> <span class="n">begin</span>
+    <span class="err">$</span><span class="n">readmemh</span><span class="p">(</span><span class="s">&quot;hello.vh&quot;</span><span class="p">,</span> <span class="n">my_memory</span><span class="p">);</span>
+  <span class="n">end</span>
+<span class="n">endmodule</span><span class="p">;</span>
+</pre></div>
+
+
+<p>I just <a href="http://sourceware.org/ml/binutils/2009-04/msg00321.html">submitted this to the binutils list for review</a>. Keep your
+daft fingers crossed!</p>
+<p>And this means I'm just about to start testing my IF/ID units on real
+code.</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Wed 22 April 2009</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/binutils.html">binutils</a>,      <a href="http://moxielogic.github.io/blog/tag/gcc.html">gcc</a>,      <a href="http://moxielogic.github.io/blog/tag/newlib.html">newlib</a>,      <a href="http://moxielogic.github.io/blog/tag/verilog.html">verilog</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

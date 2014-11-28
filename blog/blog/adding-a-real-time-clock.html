@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="bsp, qemu">
+
+  <title>
+    The Moxie Blog
+&ndash; Adding a Real Time Clock  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/blog/adding-a-real-time-clock.html">Adding a Real Time Clock</a></h3>
+  </div>
+  <div class="article_text">
+    <p>After a UART, one of the most useful and interesting peripherals you can
+add to a board is a Real Time Clock (RTC). Qemu comes with a simulation
+of Freescale's <a href="http://www.freescale.com/files/microcontrollers/doc/data_sheet/MC146818.pdf">MC146818</a> RTC chip. Adding it to our qemu-defined
+board was as simple as....</p>
+<div class="highlight"><pre>   <span class="n">rtc_mm_init</span><span class="p">(</span><span class="mh">0x400</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+
+
+<p>This makes the MC146818 available as a memory mapped port at <code>0x400</code> on
+our target board. The simplest way to use this is to implement a qemu
+specific <code>time()</code> function in the qemu BSP that pulls the current time
+from the <code>0x400</code>-mapped port. I won't include the code here, but it's
+quite simple, and found in<br />
+<code>moxiedev/src/libgloss/moxie/qemu-time.c</code>. Now functions like
+<code>gettimeofday()</code> work as expected, making the whole platform a little
+more real.</p>
+<p>After an RTC, I think the next most interesting peripheral is an
+interrupt controller, but this will require more thought about the
+system architecture and how moxie will handle exceptions.</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Tue 17 March 2009</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/bsp.html">bsp</a>,      <a href="http://moxielogic.github.io/blog/tag/qemu.html">qemu</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

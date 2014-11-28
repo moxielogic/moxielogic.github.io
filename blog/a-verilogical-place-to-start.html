@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="verilog">
+
+  <title>
+    The Moxie Blog
+&ndash; A Verilogical Place To Start *  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/a-verilogical-place-to-start.html">A Verilogical Place To Start *</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I've written my first bit of <a href="http://en.wikipedia.org/wiki/Verilog">verilog</a> tonight. It's not much, really,
+but it's a start. I'm using <a href="http://www.icarus.com/eda/verilog/">Icarus Verilog</a> (iverlog) to compile and
+simulate the code. I also plan on using <a href="http://www.gpleda.org/tools/gtkwave/index.html">GTKWave</a> to examine timing
+dumps from the iverilog simulator. Both of these tools are part of my
+development platform, Fedora.</p>
+<p>Rather than plan everything out to the last detail, I'm going to wing it
+for a while and explore the language. To start with, I've decided to try
+to hack the core together as a simple pipelined processor consisting of
+the following four stages: Instruction Fetch, Instruction Decode,
+Execute and Write.</p>
+<p>The first complication comes from Moxie's long instructions. Moxie is
+not RISC processor, in that it does not have fixed width instructions
+that can be fetched in a single go. Most of the instructions are
+16-bits, but several of them are 48-bits, the last 32-bits being some
+kind of immediate value. We're going to have a 32-bit path to
+instruction memory, which means we may have to fetch twice in order to
+read a single instruction. This involves state machinery and some tricky
+back and forth between the Instruction Fetch and Instruction Decode
+pipeline stages. It's taking a while to get straight in my head, so I
+don't know when my next update will be.</p>
+<p>* Blog entry title borrowed from <a href="http://assets.cambridge.org/97805218/28666/excerpt/9780521828666_excerpt.pdf">this great book</a></p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Tue 07 April 2009</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/verilog.html">verilog</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

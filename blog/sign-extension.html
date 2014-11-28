@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="">
+
+  <title>
+    The Moxie Blog
+&ndash; Sign Extension  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/sign-extension.html">Sign Extension</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Moxie zero-extends all 8 and 16-bit loads from memory. Until recently,
+however, the GCC port didn't understand how loads worked, and would
+always shift loaded values back and forth to either empty out the upper
+bits or sign-extend the loaded value. While correct, it was overly
+bloated. If we're loading an unsigned char into a register, there's no
+need to force the upper bits to clear. The hardware does this for us.</p>
+<p>For instance, this simple C code....</p>
+<p>
+<script src="https://gist.github.com/atgreen/9970355.js"></script>
+</p>
+
+<p>..would compile to...</p>
+<p>
+<script src="https://gist.github.com/atgreen/9970378.js"></script>
+</p>
+
+<p>Thanks to help from hackers on the <a href="http://gcc.gnu.org/ml/gcc/2014-04/msg00008.html">GCC mailing list</a>, I was finally
+able to teach the compiler how to treat memory loads correctly. This led
+to two changes...</p>
+<ol>
+<li>The introduction of 8 and 16-bit sign extension instructions
+    (<code>sex.b</code> and <code>sex.s</code>). Sometimes we really do need to sign-extend
+    values, and logical shift left followed by arithmetic shift right is
+    a pretty expensive way to do this on moxie.</li>
+<li>The char type is now unsigned by default. If you have zero-extending
+    8-bit loads then you had better make your char type unsigned,
+    otherwise your compiler output will be littered with sign extension
+    instructions.</li>
+</ol>
+<p>
+Now for the C code above, we get this nice output....
+
+<script src="https://gist.github.com/atgreen/9970471.js"></script>
+</p>
+
+<p>I believe that this was the last major code quality issue from the GCC
+port, and the compiler output should be pretty good now</p>
+<p>I've updated the upstream GCC, binutils and gdb (sim) repositories, my
+<a href="http://github.com/atgreen/qemu-moxie">QEMU</a> fork in github, as well as the MoxieLite VHDL core in the
+<a href="http://github.com/atgreen/moxie-cores">moxie-cores</a> git repo.</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Fri 04 April 2014</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

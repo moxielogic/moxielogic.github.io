@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="architecture, verilog">
+
+  <title>
+    The Moxie Blog
+&ndash; Pipeline hazards  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/pipeline-hazards.html">Pipeline hazards</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I've coded up a first go at four pipeline stages so far: <a href="http://github.com/atgreen/moxiedev/blob/master/moxie/rtl/verilog/cpu_fetch.v">Fetch</a>,
+<a href="http://github.com/atgreen/moxiedev/blob/master/moxie/rtl/verilog/cpu_decode.v">Decode</a>, <a href="http://github.com/atgreen/moxiedev/blob/master/moxie/rtl/verilog/cpu_execute.v">Execute</a>, and Write. After the relative complexity of the
+<a href="http://moxielogic.org/blog/?p=444">Fetch implementation</a>, the rest has been pretty straight forward, and
+I've started running the first bit of compiled code through the pipline.
+Here's that start of our Hello World C application. It's <code>__start</code> from
+crt0.o:</p>
+<div class="highlight"><pre><span class="mi">00001000</span> <span class="o">&lt;</span><span class="nx">__start</span><span class="o">&gt;</span><span class="p">:</span>
+<span class="err">   </span> <span class="mi">1000</span><span class="p">:</span><span class="err">      </span> <span class="mi">01</span> <span class="mi">10</span> <span class="mi">00</span> <span class="mi">40</span><span class="err">    </span> <span class="nx">ldi.l</span><span class="err">   </span> <span class="nv">$sp</span><span class="p">,</span> <span class="mh">0x400000</span>
+<span class="err">   </span> <span class="mi">1004</span><span class="p">:</span><span class="err">      </span> <span class="mi">00</span> <span class="mi">00</span>
+<span class="err">   </span> <span class="mi">1006</span><span class="p">:</span><span class="err">      </span> <span class="mi">01</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span><span class="err">    </span> <span class="nx">ldi.l</span><span class="err">   </span> <span class="nv">$fp</span><span class="p">,</span> <span class="mh">0x0</span>
+<span class="err">   </span> <span class="mi">100</span><span class="nx">a</span><span class="p">:</span><span class="err">      </span> <span class="mi">00</span> <span class="mi">00</span>
+<span class="err">   </span> <span class="mi">100</span><span class="nx">c</span><span class="p">:</span><span class="err">      </span> <span class="mi">91</span> <span class="mi">0</span><span class="nx">c</span><span class="err">          </span> <span class="nx">dec</span><span class="err">     </span> <span class="nv">$sp</span><span class="p">,</span> <span class="mh">0xc</span>
+</pre></div>
+
+
+<p>This code simply initializes the stack and frame pointers, and makes
+room for a new stack frame (just ignore the obvious inefficiencies for
+now!).</p>
+<p>Running this through the pipline, I can see the first <code>ldi.l</code> make it's
+way through Fetch, Decode, Execute (basically nothing) and Write. The
+second <code>ldi.l</code> works similarly. Then we get to the <code>dec</code>. In order to
+decrement, we need to read the $sp from the register file in Decode,
+perform the subtraction in Execute, and save it back to the register
+file in Write. But when I first ran it through the <a href="http://www.icarus.com/eda/verilog/">verilog simulator</a>
+I saw the <code>dec</code> instruction reading <code>0x00000000</code> from $sp instead of
+<code>0x400000</code>. I'm only three instructions into my first simulation and
+I've hit my first pipeline hazard! The <code>0x400000</code> from the first
+instruction hasn't been written to $sp yet, as we're just about to
+start the Write stage for that instruction!</p>
+<p>So the next step is to add a little hazard detection to the pipeline
+control logic. I'm going to stick with <a href="http://homepage3.nifty.com/alpha-1/computer/Interlock_E.html">pipeline interlocks</a> for now
+(stuffing NOPs in the middle of the pipeline) instead of more
+complicated <a href="http://en.wikipedia.org/wiki/Hazard_%28computer_architecture%29#Register_forwarding">forwarding logic</a>.</p>
+<p>As usual, <a href="http://github.com/atgreen/moxiedev">everything is in moxiedev</a>. Just "cd
+moxiedev/moxie/rtl/verilog &amp;&amp; make &amp;&amp; ./a.out" to run the simulation.</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Fri 10 September 2010</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/architecture.html">architecture</a>,      <a href="http://moxielogic.github.io/blog/tag/verilog.html">verilog</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="">
+
+  <title>
+    The Moxie Blog
+&ndash; A Disassembler in Verilog  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/a-disassembler-in-verilog.html">A Disassembler in Verilog</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I've been playing around a little more with verilog. Here's a mostly
+complete moxie <a href="http://github.com/atgreen/moxiedev/blob/fb57efc73e47e451f18951d274c41ccda337c112/moxie/rtl/verilog/iprinter.v">disassembler module</a> written in verilog.</p>
+<p>And here's a little <a href="http://github.com/atgreen/moxiedev/blob/fb57efc73e47e451f18951d274c41ccda337c112/moxie/rtl/verilog/testsuite/moxie.modules/test-iprinter.v">driver</a> for it. The driver reads a hex dump file
+into an array representing memory. On every clock cycle it updates the
+instruction and data output registers and increments the program
+counter. The disassembler samples those values on every cycle, and tells
+the driver how far to increment the PC. Pretty basic stuff!</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">moxie</span><span class="o">-</span><span class="n">elf</span><span class="o">-</span><span class="n">gcc</span> <span class="o">-</span><span class="n">o</span> <span class="n">hello</span><span class="p">.</span><span class="n">x</span> <span class="n">hello</span><span class="p">.</span><span class="n">c</span> <span class="o">-</span><span class="n">Tsim</span><span class="p">.</span><span class="n">ld</span>
+<span class="err">$</span> <span class="n">moxie</span><span class="o">-</span><span class="n">elf</span><span class="o">-</span><span class="n">objdump</span> <span class="n">hello</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span><span class="n">O</span> <span class="n">verilog</span> <span class="n">hello</span><span class="p">.</span><span class="n">vh</span>
+<span class="err">$</span> <span class="n">iverilog</span> <span class="n">test</span><span class="o">-</span><span class="n">iprinter</span><span class="p">.</span><span class="n">v</span> <span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">iprinter</span><span class="p">.</span><span class="n">v</span>
+<span class="err">$</span> <span class="p">.</span><span class="o">/</span><span class="n">a</span><span class="p">.</span><span class="n">out</span>
+        <span class="n">ldi</span><span class="p">.</span><span class="n">l</span>   <span class="err">$</span><span class="n">sp</span> <span class="p">,</span>   <span class="mh">0x00400000</span>
+        <span class="n">ldi</span><span class="p">.</span><span class="n">l</span>   <span class="err">$</span><span class="n">fp</span> <span class="p">,</span>    <span class="mh">0x00000000</span>
+        <span class="n">dec</span>     <span class="err">$</span><span class="n">sp</span> <span class="p">,</span>     <span class="mi">12</span>
+        <span class="n">ldi</span><span class="p">.</span><span class="n">l</span>   <span class="err">$</span><span class="n">r0</span> <span class="p">,</span>    <span class="mh">0x000128b4</span>
+</pre></div>
+
+
+<p>etc etc etc</p>
+<p>Nothing too impressive really. I've stuck this test code in a directory
+hierarchy that would be useful for dejagnu, as I plan on using dejagnu
+for regression testing the various HDL modules.</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Mon 22 June 2009</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

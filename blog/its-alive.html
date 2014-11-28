@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="architecture, fpga, gcc, gdb, Nexys3, SoC, VHDL, Xilinx">
+
+  <title>
+    The Moxie Blog
+&ndash; It's Alive!  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/its-alive.html">It's Alive!</a></h3>
+  </div>
+  <div class="article_text">
+    <p>There's a working hardware implementation of moxie in the wild!</p>
+<p>Intrepid hacker <a href="https://twitter.com/toptensoftware" title="Brad Robinson">Brad Robinson</a> created this moxie-compatible core as
+a peripheral controller for his SoC. He had been using a simple 8-bit
+core, but needed to address more memory than was possible with the 8-bit
+part. Moxie is a nice alternative because it has a compact instruction
+encoding, a supported GNU toolchain and a full 32-bit address space.
+FPGA space was a real concern, so he started with a non-pipelined VHDL
+implementation, and by all accounts it is running code and flashing LEDs
+on a <a href="http://www.digilentinc.com/Products/Detail.cfm?NavPath=2,400,897&amp;Prod=NEXYS3" title="Nexys3">Nexys3 board</a>!</p>
+<p>The one major "ask" was that there be a little-endian moxie architecture
+and toolchain in addition to the default big-endian design. I had
+somewhat arbitrarily selected big-endian for moxie, noting that this is
+the natural byte order for TCP. In Brad's design, however, the moxie
+core will handling FAT filesystem duties, which is largely a
+little-endian task. At low clock speeds every cycle counts, so I agreed
+to produce a bi-endian toolchain and, for the most part, it's all
+committed in the upstream FSF repositories (with the exception of gdb
+and the simulator). <code>moxie-elf-gcc</code> is big-endian by default, but
+compile with <code>-mel</code> and you'll end up with little-endian binaries.</p>
+<p>Brad also suggested several other useful tweaks to the architecture,
+including changing the PC-relative offsets encodings for branches. They
+had originally been encoded relative to the start of the branch
+instruction. Brad noted, however, that changing them to be relative to
+the end of the branch instruction saved an adder in his design. I made
+this change throughout the toolchain and (*cough*) documentation.</p>
+<p>I'll write more about this as it develops... Have to run now.</p>
+<p>Oh. Here's the VHDL on github:
+<a href="http://github.com/toptensoftware/MoxieLite">http://github.com/toptensoftware/MoxieLite</a>. Go Brad!</p>
+<p>AG</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Fri 14 September 2012</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/architecture.html">architecture</a>,      <a href="http://moxielogic.github.io/blog/tag/fpga.html">fpga</a>,      <a href="http://moxielogic.github.io/blog/tag/gcc.html">gcc</a>,      <a href="http://moxielogic.github.io/blog/tag/gdb.html">gdb</a>,      <a href="http://moxielogic.github.io/blog/tag/nexys3.html">Nexys3</a>,      <a href="http://moxielogic.github.io/blog/tag/soc.html">SoC</a>,      <a href="http://moxielogic.github.io/blog/tag/vhdl.html">VHDL</a>,      <a href="http://moxielogic.github.io/blog/tag/xilinx.html">Xilinx</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

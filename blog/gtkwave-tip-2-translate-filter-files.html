@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="gtkwave">
+
+  <title>
+    The Moxie Blog
+&ndash; GTKWave Tip #2: Translate Filter Files  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/gtkwave-tip-2-translate-filter-files.html">GTKWave Tip #2: Translate Filter Files</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Tip #1 was about using an external process to perform dynamic
+translations of signal display values. GTKWave can also perform simple
+static translations of data. In the example below, for instance, moxie's
+execute unit is receiving a 4-bit signal identifying "register A"
+(riA_i) for whatever operation is about to happen. This waveform would
+normally just show "0", "1", "2", etc. We can replace those values by
+using a simple filter file that maps those string representations to
+alternate values. Here's the one I use for register names:
+<a href="https://github.com/atgreen/moxiedev/blob/master/moxie/soc/muskoka/gtkwave/gtkwave-regs.txt">gtkwave-regs.txt</a>. After applying the filter we see the register name
+"$r1" instead of its register file index value of "2".. a tremendous
+readability improvement!<br />
+<center>
+<img alt="gtkwave with moxie register name translation filter file" src="http://moxielogic.org/blog/wp-content/uploads/2011/10/Screenshot-GTKWave-dump.vcd-1.png" title="Screenshot-GTKWave - dump.vcd-1" />
+</center></p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Thu 06 October 2011</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/gtkwave.html">gtkwave</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

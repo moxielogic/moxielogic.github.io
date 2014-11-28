@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="Altera, cloud">
+
+  <title>
+    The Moxie Blog
+&ndash; Quartus II and the Cloud: Not There Yet...  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/quartus-ii-and-the-cloud-not-there-yet.html">Quartus II and the Cloud: Not There Yet...</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Altera's <a href="http://www.altera.com/products/software/quartus-ii/web-edition/qts-we-index.html">Quartus II</a> software is now running on my Fedora box, but I
+was really hoping to load it into a grid of <a href="http://aws.amazon.com/ec2/">Amazon EC2 instances</a> so
+I could batch out jobs for synthesis, place and route. Unfortunately the
+free-beer Quartus software requires a license file that is generated
+based on your MAC address. Bah! Amazon doesn't provide persistent MAC
+addresses AFAICT.</p>
+<p>Are they trying to prevent this kind of use, or are they just behind the
+times? Altera - please make your software cloud ready! I'd really like
+to try out <a href="http://www.redhat.com/docs/en-US/Red_Hat_Enterprise_MRG/1.1/html/Grid_User_Guide/sect-Grid_User_Guide-Cloud_Computing-EC2E.html">condor's ec2 support</a> to speed up this kind of work.</p>
+<p>It's a shame that there are no credible Free Software alternatives to
+these tools.</p>
+<p>Maybe there's some way to make this work. Please comment below if you
+have the clue that I'm missing...</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Mon 20 September 2010</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/altera.html">Altera</a>,      <a href="http://moxielogic.github.io/blog/tag/cloud.html">cloud</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

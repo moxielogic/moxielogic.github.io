@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+
+  <title>
+    The Moxie Blog
+&ndash; Category: moxie  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+&gt; Category: moxie
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/the-start-of-a-uclinux-userland.html">The start of a uClinux userland</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Before we can start building <a href="http://www.busybox.net">BusyBox</a>, we need a few more bits of
+technology...</p>
+<ul>
+<li><a href="http://www.uclibc.org">uClibc</a>: this is a popular embedded C library, like newlib, but
+    used more often in Linux environments. I ported uClibc to the moxie
+    core just like every other bit of software in this project: quickly!
+    My ...</li></ul>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/the-first-moxie-linux-boot-output.html">The first moxie linux boot output...</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Userland, here I come! Check out <a href="http://moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a>, run "ant build", then do
+the following...</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="nx">.</span><span class="p">/</span><span class="nb">root</span><span class="p">/</span><span class="nx">usr</span><span class="p">/</span><span class="nx">bin</span><span class="p">/</span><span class="nx">moxie</span><span class="na">-elf-run</span> <span class="nx">linux</span><span class="o">-</span><span class="mf">2.6</span><span class="p">/</span><span class="nx">vmlinux</span>
+<span class="nx">Linux</span> <span class="nb">version</span> <span class="mf">2.6.31</span><span class="na">-rc3-gb006656-dirty</span> <span class="p">(</span><span class="nx">green</span><span class="p">@</span><span class="nx">dev.moxielogic.com</span><span class="p">)</span> <span class="p">(</span><span class="nx">gcc</span> <span class="nb">version</span> <span class="mf">4.5.0</span> <span class="mi">20090715</span> <span class="p">(</span><span class="nx">experimental</span><span class="p">)</span> <span class="err">[</span><span class="nb">trunk</span> <span class="nx">revision</span> <span class="mi">149693</span><span class="cp">]</span> (GCC) ) #6 Sun Jul 26 12:03 ...</pre></div>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/kernel-update-device-trees-and-kernel-threads.html">Kernel update: device trees and kernel threads</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I've spent a lot of time in airports/planes/hotels recently, which is
+good news for the moxie linux port. It runs about 6.5M instructions,
+booting up to the point where a couple of kernel threads are created.
+However, a few context switches later it all comes tumbling ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/the-moxie-linux-port.html">The Moxie Linux port</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I've just checked the start of the kernel port into <a href="http://www.moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a>.
+Running "ant build" will produce tools, simulators, u-boot and now a
+vmlinux you can run with moxie-elf-run or in gdb. It crashes on startup
+right now, but that's to be expected. I just got it to the ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/reverse-debugging.html">Reverse debugging!</a></h3>
+  </div>
+  <div class="article_text">
+    <p>A few weeks ago I happened to be in Palo Alto and met up with my friend
+and long-time GDB hacker Michael Snyder. He told me about a new feature
+in GDB called "process recording". The basic idea is that when you tell
+GDB to enter into "record mode", it ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/a-disassembler-in-verilog.html">A Disassembler in Verilog</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I've been playing around a little more with verilog. Here's a mostly
+complete moxie <a href="http://github.com/atgreen/moxiedev/blob/fb57efc73e47e451f18951d274c41ccda337c112/moxie/rtl/verilog/iprinter.v">disassembler module</a> written in verilog.</p>
+<p>And here's a little <a href="http://github.com/atgreen/moxiedev/blob/fb57efc73e47e451f18951d274c41ccda337c112/moxie/rtl/verilog/testsuite/moxie.modules/test-iprinter.v">driver</a> for it. The driver reads a hex dump file
+into an array representing memory. On every clock cycle it updates the
+instruction and ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/isa-improvements.html">ISA improvements</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I've committed the PC-relative branch instruction changes upstream. But
+this is just one of many ISA improvements that need to happen. Here are
+a handful of other ideas off the top of my head. None of these projects
+should be particularly difficult.</p>
+<ul>
+<li>Shorten load/store offsets to 16-bits. They ...</li></ul>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/moxie-gcc-port-is-upstream.html">Moxie GCC port is upstream!</a></h3>
+  </div>
+  <div class="article_text">
+    <p>The moxie port has been <a href="http://gcc.gnu.org/ml/gcc/2009-06/msg00194.html">accepted by the GCC steering committee</a>!</p>
+<p>I just <a href="http://gcc.gnu.org/viewcvs?view=rev&amp;revision=148339">checked it in</a>.</p>
+<p>That is all.</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/everything-is-relative-finally.html">Everything is relative (finally!)</a></h3>
+  </div>
+  <div class="article_text">
+    <p>The Moxie ISA still needs quite a bit of tuning. Take branches, for
+instance. A <code>beq</code> instruction currently encoded <a href="http://www.moxielogic.org/wiki/index.php?title=Instruction_Set#beq">like so</a>...  </p>
+<div class="highlight"><pre><span class="err">`</span><span class="mo">00001111</span><span class="n">xxxxxxxx</span> <span class="n">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</span><span class="err">`</span>
+</pre></div>
+
+
+<p>...where the "<code>x</code>"s represent "don't care" bits, and "<code>i</code>"s are a
+32-bit absolute branch target. That's right -- branch targets are not PC ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/an-even-newer-git-repo.html">An even newer git repo</a></h3>
+  </div>
+  <div class="article_text">
+    <p>So it turns out that hosting a git repo that is only accessible via slow
+http is no fun.</p>
+<p>Fortunately, the great team at <a href="http://www.github.com">github.com</a> were willing to take this
+on, so now the real repository is accessible via this command:</p>
+<p><code>$ git clone git://github.com/atgreen/moxiedev.git ...</code></p>
+  </div>
+</article>
+
+<footer>
+<div id="paginator">
+<a href="http://moxielogic.github.io/blog/category/moxie6.html" class="button_accent">&larr; Older Posts</a>
+
+<a href="http://moxielogic.github.io/blog/category/moxie4.html" class="button_accent">Newer Posts &rarr;</a>
+</div>
+</footer>
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

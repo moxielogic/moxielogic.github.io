@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+
+  <title>
+    The Moxie Blog
+&ndash; Tag: linux  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+&gt; Tag: linux
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/vfork-for-uclinux-forces-an-architecture-change.html">vfork() for uClinux forces an architecture change</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Moxie uses a simple software interrupt instruction (<code>swi</code>) to implement
+system calls. The <code>swi</code> instruction creates a call frame on the stack
+and then jumps to a global exception handler routine. The exception
+handler for moxie-uClinux switches to the kernel stack before jumping to
+the relevant kernel routine. Returning from ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/forking-bugs.html">Forking bugs</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I found some time to look at the Linux kernel port again, and discovered
+a bug in the forking code (the child process must return 0 after a
+fork!). What we're looking at here is the start of userland, post kernel
+boot, where busybox is trying to run an ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/summer-is-over-so-put-away-the-white-pants-and-start-submitting-patches.html">Summer is over, so put away the white pants and start submitting patches!</a></h3>
+  </div>
+  <div class="article_text">
+    <p>It's been a while since my last update. What can I say... summer was
+nice.</p>
+<p>But now, back to business! I've just committed some long overdue patches
+to the upstream GNU tools:</p>
+<ul>
+<li><a href="http://sourceware.org/ml/gdb-patches/2009-09/msg00289.html">Add a device tree blob to the gdb simulator</a>. This lets us
+    describe the gdb sim ...</li></ul>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/more-hello-world-progress-with-uclibcuclinux-and-a-gdb-question.html">More hello world progress with uClibc/uClinux, and a GDB question.</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Tonight I got a hello world app to use uClibc's <code>puts()</code> routine! This
+is a big deal because it's the first time I've had system calls coming
+in from userland. I haven't checked the changes in yet, because they're
+a mess, but here's a ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/first-moxie-linux-userland-app-runs.html">First moxie-linux userland app runs!</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I've been taking advantage of the nice summer weather recently, so it's
+taken me a while to get around to this... but here's the first moxie
+userland app!</p>
+<div class="highlight"><pre><span class="cp">#include &lt;string.h&gt;</span>
+
+<span class="cp">#define MSG &quot;Hello, World!\n&quot;</span>
+
+<span class="kt">void</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span> <span class="n">gloss_write</span> <span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">)</span> 
+<span class="p">{</span>
+  <span class="n">asm ...</span></pre></div>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/speed-bumps-on-the-road-to-moxie-userland.html">Speed bumps on the road to moxie userland</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Sooo..... it turns out there's lots to take care of before userland apps
+like BusyBox can run.</p>
+<ul>
+<li><strong>The root filesystem</strong>. This one is easy. I just built a short
+    Hello World application in C with moxie-uclinux-gcc. This produces
+    an executable in <a href="http://www.beyondlogic.org/uClinux/bflt.htm">BFLT format</a> which I call 'init'. The kernel ...</li></ul>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/the-start-of-a-uclinux-userland.html">The start of a uClinux userland</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Before we can start building <a href="http://www.busybox.net">BusyBox</a>, we need a few more bits of
+technology...</p>
+<ul>
+<li><a href="http://www.uclibc.org">uClibc</a>: this is a popular embedded C library, like newlib, but
+    used more often in Linux environments. I ported uClibc to the moxie
+    core just like every other bit of software in this project: quickly!
+    My ...</li></ul>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/the-first-moxie-linux-boot-output.html">The first moxie linux boot output...</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Userland, here I come! Check out <a href="http://moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a>, run "ant build", then do
+the following...</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="nx">.</span><span class="p">/</span><span class="nb">root</span><span class="p">/</span><span class="nx">usr</span><span class="p">/</span><span class="nx">bin</span><span class="p">/</span><span class="nx">moxie</span><span class="na">-elf-run</span> <span class="nx">linux</span><span class="o">-</span><span class="mf">2.6</span><span class="p">/</span><span class="nx">vmlinux</span>
+<span class="nx">Linux</span> <span class="nb">version</span> <span class="mf">2.6.31</span><span class="na">-rc3-gb006656-dirty</span> <span class="p">(</span><span class="nx">green</span><span class="p">@</span><span class="nx">dev.moxielogic.com</span><span class="p">)</span> <span class="p">(</span><span class="nx">gcc</span> <span class="nb">version</span> <span class="mf">4.5.0</span> <span class="mi">20090715</span> <span class="p">(</span><span class="nx">experimental</span><span class="p">)</span> <span class="err">[</span><span class="nb">trunk</span> <span class="nx">revision</span> <span class="mi">149693</span><span class="cp">]</span> (GCC) ) #6 Sun Jul 26 12:03 ...</pre></div>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/kernel-update-device-trees-and-kernel-threads.html">Kernel update: device trees and kernel threads</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I've spent a lot of time in airports/planes/hotels recently, which is
+good news for the moxie linux port. It runs about 6.5M instructions,
+booting up to the point where a couple of kernel threads are created.
+However, a few context switches later it all comes tumbling ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/the-moxie-linux-port.html">The Moxie Linux port</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I've just checked the start of the kernel port into <a href="http://www.moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a>.
+Running "ant build" will produce tools, simulators, u-boot and now a
+vmlinux you can run with moxie-elf-run or in gdb. It crashes on startup
+right now, but that's to be expected. I just got it to the ...</p>
+  </div>
+</article>
+
+<footer>
+<div id="paginator">
+
+</div>
+</footer>
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

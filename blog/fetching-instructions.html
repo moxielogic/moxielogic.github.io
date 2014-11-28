@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="architecture, verilog">
+
+  <title>
+    The Moxie Blog
+&ndash; Fetching instructions  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/fetching-instructions.html">Fetching instructions</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Moxie requires some interesting instruction fetch logic.</p>
+<p>For my initial implementation I'm assuming a 32-bit path to instruction
+memory. But moxie has both 16- and 48-bit instructions, so it's not like
+simple RISC cores that can feed the pipeline on every cycle. My solution
+is to feed 32-bit instruction memory words into a Instruction FIFO. 16-
+and 48-bit instructions pop out of the other end of the FIFO on every
+cycle (or a NOP bubble when we're waiting for the last 16 bits of a
+48-bit instruction). My initial Instruction FIFO is 64-bits long. From
+my simple testing it looks like this does a reasonable job of keeping
+the instruction memory path busy, and issuing instructions as often as
+possible (I'm just eyeballing the gtkwave output, reproduced below). I
+can experiment with a longer Instruction FIFO later.</p>
+<p><img alt="" src="http://moxielogic.org/blog/wp-content/uploads/2010/09/fetch.png" title="waves from the moxie Instruction FIFO " /></p>
+<p>This image shows a few signals from the Instruction FIFO. valid_o tells
+us that we're popping off a valid instruction from the FIFO, whereas
+full_o tells us not to write any data to the FIFO because it's full. So
+far, so good - decoupling the fetching of instruction memory from the
+rest of the pipeline is obviously the right thing to do.</p>
+<p>One more complication that I'm going to punt on for now is PC tracking.
+Eventually we'll want to pass the PC down the pipeline so we get
+accurate exception addresses. Tracking the PC through the Instruction
+FIFO is just one more little complication that I'll tackle after I make
+more progress on the rest of the microarchitecture.</p>
+<p>I've only done some behavioral simulation so far, but I believe the code
+is synthesizable. The code is in github here: <a href="http://bit.ly/9yVQ7U">http://bit.ly/9yVQ7U</a>.
+Running make should build everything, then just run "a.out".</p>
+<p>Note that I'm using magic instruction memory: an array populated with a
+hello world app built like so...  </p>
+<p><code>$ moxie-elf-gcc -o hello.x -O2 hello.c -Tsim.ld $ moxie-elf-objcopy -O verilog hello.x hello.vh</code><br />
+And the verilog simulator reads hello.vh directly. Pretty cool!</p>
+<p>(I just realized I wrote about fetching instructions <a href="http://moxielogic.org/blog/?p=161">almost 18 months
+ago</a> - that took too long!)</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Tue 07 September 2010</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/architecture.html">architecture</a>,      <a href="http://moxielogic.github.io/blog/tag/verilog.html">verilog</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="gdb, qemu">
+
+  <title>
+    The Moxie Blog
+&ndash; Debugging with the moxie qemu simulator  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/debugging-with-the-moxie-qemu-simulator.html">Debugging with the moxie qemu simulator</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I've finally cracked the gdb+qemu puzzle, so now we can debug code
+running on the qemu moxie simulator!</p>
+<p>The last little gotcha was that the simulated $pc wasn't being updated
+after single-stepping. This will get you nowhere fast! But it's all
+fixed now, and here's how it works...</p>
+<p><code>$ qemu-system-moxie -s -S -kernel hello.x</code></p>
+<p>This tells qemu to load our hello world program, hello.x. The "-s"
+option tells it to wait for a connection from GDB on port 1234. The -S
+option tells it to freeze on startup, and wait for a "continue" command
+from the debugger.</p>
+<p>Now, in a different terminal, fire up moxie-elf-gdb on hello.x and
+connect to qemu like so:</p>
+<p><code>(gdb) target remote localhost:1234</code></p>
+<p>GDB and qemu should be talking now, and the debugger will report that
+the sim is waiting on <code>__start</code>, the entry point to our hello.x ELF
+file. Put a breakpoint on <code>main</code>, and hit 'c' to continue. You should be
+debugging as usual now. I normally run moxie-elf-gdb within emacs in
+order to get a nice UI, but invoking it from ddd or Eclipse should work
+just as well.</p>
+<p>Everything has been committed <a href="http://www.moxielogic.org/wiki/index.php?title=MoxieDev">MoxieDev</a>. Now it's time to enjoy this
+sunny day!</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Sat 14 March 2009</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/gdb.html">gdb</a>,      <a href="http://moxielogic.github.io/blog/tag/qemu.html">qemu</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

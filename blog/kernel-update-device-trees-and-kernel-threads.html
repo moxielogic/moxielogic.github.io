@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+<meta name="keywords" content="gdb, linux, qemu">
+
+  <title>
+    The Moxie Blog
+&ndash; Kernel update: device trees and kernel threads  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/kernel-update-device-trees-and-kernel-threads.html">Kernel update: device trees and kernel threads</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I've spent a lot of time in airports/planes/hotels recently, which is
+good news for the moxie linux port. It runs about 6.5M instructions,
+booting up to the point where a couple of kernel threads are created.
+However, a few context switches later it all comes tumbling down. I
+didn't have any of my kernel books with me, so I stopped hacking at that
+point rather than try to guess/decode how some of the internals are
+supposed to work.</p>
+<p>My port is using a device tree to describe the system architecture. This
+makes it easier to build a single kernel image that can boot on multiple
+moxie implementations. There's a good paper on this relatively new
+infrastructure here:
+<a href="http://ols.fedoraproject.org/OLS/Reprints-2008/likely2-reprint.pdf">http://ols.fedoraproject.org/OLS/Reprints-2008/likely2-reprint.pdf</a>. If
+you've been following this project, you may recall that console I/O is
+implemented differently on the gdb and qemu simulators. For the gdb
+simulator we use a software interrupt instruction (swi) to <a href="http://spindazzle.org/greenblog/index.php?/archives/107-ggx-Hello-World!.html">escape to
+the simulator</a>, but the qemu port uses a real <a href="http://moxielogic.org/blog/?p=23">simulated serial
+device</a>. This means they need different console devices in the kernel
+to print boot messages. The device tree is a nice way to describe
+differences like this and have a single kernel image to boot in both
+environments.</p>
+<p>Also, as predicted, I actually used moxie gdb's <a href="http://moxielogic.org/blog/?p=290">reverse debugging</a>
+feature to help debug my kernel bring-up. It was <em>really</em> useful a
+couple of times and has probably saved me the amount of effort required
+to implement it in the first place already!</p>
+<p>The next week is going to be very busy for me, so I don't expect to get
+much done. We'll see...</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Sat 25 July 2009</p>
+    <p>Category: <a href="http://moxielogic.github.io/blog/category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="http://moxielogic.github.io/blog/tag/gdb.html">gdb</a>,      <a href="http://moxielogic.github.io/blog/tag/linux.html">linux</a>,      <a href="http://moxielogic.github.io/blog/tag/qemu.html">qemu</a>    </p>
+  </div>
+
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+
+  <title>
+    The Moxie Blog
+  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/blog/adding-a-real-time-clock.html">Adding a Real Time Clock</a></h3>
+  </div>
+  <div class="article_text">
+    <p>After a UART, one of the most useful and interesting peripherals you can
+add to a board is a Real Time Clock (RTC). Qemu comes with a simulation
+of Freescale's <a href="http://www.freescale.com/files/microcontrollers/doc/data_sheet/MC146818.pdf">MC146818</a> RTC chip. Adding it to our qemu-defined
+board was as simple as....</p>
+<div class="highlight"><pre>   <span class="n">rtc_mm_init</span><span class="p">(</span><span class="mh">0x400</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+
+
+<p>This ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/board-support-packages.html">Board Support Packages</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Today we're introducing the notion of Board Support Packages (BSPs) to
+the <a href="http://moxielogic.org/wiki/index.php?title=Toolchain">moxie toolchain</a>.</p>
+<p>A BSP provides all of the configuration data and code requires to target
+a specific hardware platform. This mostly involves linker scripts,
+platform initialization code, and hardware abstraction support
+libraries.</p>
+<p>Until recently the gdb sim ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/debugging-with-the-moxie-qemu-simulator.html">Debugging with the moxie qemu simulator</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I've finally cracked the gdb+qemu puzzle, so now we can debug code
+running on the qemu moxie simulator!</p>
+<p>The last little gotcha was that the simulated $pc wasn't being updated
+after single-stepping. This will get you nowhere fast! But it's all
+fixed now, and here's ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/a-tiny-computer.html">A Tiny Computer</a></h3>
+  </div>
+  <div class="article_text">
+    <p><a href="http://lambda-the-ultimate.org/">Lambda the Ultimate</a> today posted a interesting blog entry on <a href="http://lambda-the-ultimate.org/node/3232">A Tiny
+Computer</a>. It refers to 2007 paper by Chuck Thacker at Microsoft
+Research describing a tiny 32-bit processor. Appendix A of the paper
+includes the entire synthesizeable verilog implementation in just a page
+and a half of code! Here ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/progress.html">Progress...</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I made some progress on using moxie-elf-gdb with qemu the other day.
+Qemu has an integrated gdb stub, so GDB speaks to it via the remote
+protocol. It's still not quite there, but getting close. I'm anxious to
+get it working, as it's the last step before ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/moxiedev-and-the-wiki.html">MoxieDev and the Wiki</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Now that the project has been renamed, the mercurial source repository
+has also changed from ggxdev to MoxieDev. This repository contains the
+entire toolchain, simulators and benchmark programs. You can check the
+entire thing out like so...</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">hg</span> <span class="n">clone</span> <span class="n">http</span><span class="o">:</span><span class="c1">//mercurial.intuxication.org/hg/moxiedev</span>
+</pre></div>
+
+
+<p>I've also created a ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/qemu-says-hello-world.html">Qemu says Hello, World!</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Virtually all of the simulation done so far was with the GDB instruction
+set simulator. As a basic instruction set simulator, it was limited to
+executing instructions found in typical "user level" applications. And,
+if you recall, all interaction with the outside world happened through
+magic software interrupts that were ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/moxie-the-ggx-reboot.html">Moxie: the ggx reboot</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Hola Amigos!  Several months ago I experimented with a new ISA design
+called <a href="http://spindazzle.org/ggx">ggx</a>. I blogged about the co-evolution of the ISA and tools,
+and it was fun.</p>
+<p>Now, after a short break, I'm ready to resume hacking.</p>
+<p>I'm also ready to put a stake in the ground ...</p>
+  </div>
+</article>
+
+<footer>
+<div id="paginator">
+
+<a href="http://moxielogic.github.io/blog/index6.html" class="button_accent">Newer Posts &rarr;</a>
+</div>
+</footer>
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>

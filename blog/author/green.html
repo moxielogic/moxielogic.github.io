@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://moxielogic.github.io/blog/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+
+
+  <title>
+    The Moxie Blog
+&ndash; Posts by: green  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://moxielogic.github.io/blog">
+        <img src="http://moxielogic.github.io/blog/ml.png" alt="logo">
+      </a>
+      <h2><a href="http://moxielogic.github.io/blog">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="http://moxielogic.github.io/blog">Index</a> &brvbar; <a href="http://moxielogic.github.io/blog/archives.html">Archives</a>
+&gt; Author: green
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/sign-extension.html">Sign Extension</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Moxie zero-extends all 8 and 16-bit loads from memory. Until recently,
+however, the GCC port didn't understand how loads worked, and would
+always shift loaded values back and forth to either empty out the upper
+bits or sign-extend the loaded value. While correct, it was overly
+bloated. If we ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/nethack-in-your-browser.html">NetHack in your browser</a></h3>
+  </div>
+  <div class="article_text">
+    <p>This is a moxie-rtems port of NetHack running on a modified version of
+the gdb moxie simulator compiled to javascript with <a href="https://github.com/kripken/emscripten" title="emscripten">emscripten</a>.</p>
+<pre>
+<canvas id="tty" class="screen" width="640" height="384">
+                        Terminal uses canvas
+                    </canvas>
+<script src="http://kl7107.github.io/moxie-sim/c/terminal.js"></script>
+<script src="http://kl7107.github.io/moxie-sim/c/terminal-input.js"></script>
+<script src="http://kl7107.github.io/moxie-sim/c/moxie.js"></script>
+<script src="http://kl7107.github.io/moxie-sim/c/nethack.js"></script>
+</pre>
+
+<p><a href="http://github.com/kl7107">Krister Lagerström</a> is responsible for this marvellous hack.</p>
+<p>Also, I suppose this blog entry represents a distribution of some GPL'd
+source code from GDB ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/the-moxie-game-console.html">The Moxie Game Console?</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Ok, not quite, but <a href="https://github.com/kl7107" title="Krister">Krister Lagerström</a> recently did something cool..</p>
+<p><a href="http://www.nethack.org/" title="NetHack"><img alt="nethack" src="http://www.nethack.org/" title="NetHack" /></a></p>
+<p>That's <a href="http://www.nethack.org/" title="NetHack">NetHack</a> ported to <a href="http://rtems.org" title="RTEMS">RTEMS</a> running on the moxie based <a href="http://github.org/atgreen/moxie-cores" title="Marin SoC">Marin
+SoC</a>.</p>
+<p>It runs on QEMU, via
+"<code>qemu-system-moxie --nographic --machine marin --kernel nethack.elf</code>",
+or on FPGA hardware. I tested with a Nexys 3 Spartan-6 board by simply
+converting ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/putting-it-together-on-chip-firmware.html">Putting it together: on-chip firmware</a></h3>
+  </div>
+  <div class="article_text">
+    <p>The on-chip <a href="https://github.com/atgreen/moxie-cores/blob/master/firmware/tinystub.c" title="firmware">firmware</a> for the <a href="https://github.com/atgreen/moxie-cores/tree/master/soc/marin" title="Marin SoC">Marin SoC</a> has been updated with the
+gdb stub, so now when you program the FPGA, you'll see the following on
+the serial console:</p>
+<div class="highlight"><pre><span class="n">MOXIE</span> <span class="n">On</span><span class="o">-</span><span class="n">Chip</span> <span class="n">Bootloader</span> <span class="n">v2</span><span class="mf">.0</span>
+<span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="mi">2013</span> <span class="n">Anthony</span> <span class="n">Green</span>
+
+<span class="n">Waiting</span> <span class="k">for</span> <span class="n">an</span> <span class="n">S</span><span class="o">-</span><span class="n">Record</span> <span class="n">Download</span> <span class="n">or</span> <span class="n">Remote</span> <span class="n">GDB ...</span></pre></div>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/a-really-tiny-gdb-remote-protocol-stub.html">A Really Tiny GDB Remote Protocol Stub</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I recently trimmed the Marin SoC's on-chip memory down to 4k. The
+existing firmware for downloading srecord programs into external RAM for
+execution was taking up about 2k. With 2k to spare, I was wondering if
+you could fit a GDB remote protocol stub in there as well. It ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/moxie-on-alteras-cyclone-ii-and-a-chance-encounter.html">Moxie on Altera's Cyclone II, and a Chance Encounter</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I recently fired up the Altera software, Quartus II, and spent a little
+time porting the Marin SoC to the popular Cyclone II based DE2 board.
+There's no external memory support yet, but on-chip memory is working,
+and it looks like the on-chip bootloader is coming up properly. As ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/qemu-1-5-includes-moxie-support.html">QEMU 1.5 includes Moxie support</a></h3>
+  </div>
+  <div class="article_text">
+    <p>QEMU 1.5 was just released the other day, and in the <a href="http://lists.nongnu.org/archive/html/qemu-devel/2013-05/msg02557.html">"And much
+more..."</a> category I'm happy to say that it includes Moxie support!</p>
+<p>This release contains basic Moxie core support, with the imaginary
+"moxiesim" board support. I have some local changes that provide Marin
+SoC emulation, and ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/an-on-chip-bootloader.html">An On-Chip Bootloader</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Good news: we can access external memory! The logic for my pseudo-static
+RAM controller is working, and big programs can finally run on hardware.</p>
+<p>You may recall that I had previously only been accessing fake memory
+that was configured directly out of limited FPGA resources. I could
+squeeze a tiny ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/and-time-ticks-on.html">And time ticks on...</a></h3>
+  </div>
+  <div class="article_text">
+    <p>The interrupt controller <a href="https://github.com/atgreen/moxie-cores/commit/0e44d0f29a2f05ef7f99fb1fc5d670d7f99d7c0b">is working now</a>, as is the timer and my
+exception handling firmware. So now I'm able to write a basic stop-watch
+application, where the 7-segment display simply increments the count
+every second. Yes, this sounds basic, but there's a lot of complexity
+under the hood ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://moxielogic.github.io/blog/moxie-ports-and-hardware-developments.html">Moxie ports and hardware developments</a></h3>
+  </div>
+  <div class="article_text">
+    <p>It's been a while since my last update.. let me bring you up to speed.</p>
+<p>A couple of <a href="http://sourceware.org/libffi" title="libffi">libffi</a> releases got in the way of moxie hacking
+(although libffi 3.0.13 now includes full moxie support!), but things
+are picking up speed again.</p>
+<p>On the software side of ...</p>
+  </div>
+</article>
+
+<footer>
+<div id="paginator">
+<a href="http://moxielogic.github.io/blog/author/green2.html" class="button_accent">&larr; Older Posts</a>
+
+</div>
+</footer>
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+    </div>
+  </main>
+</body>
+</html>
