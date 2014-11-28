@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Moxie Blog</title><link href="http://moxielogic.github.io/blog/" rel="alternate"></link><link href="http://moxielogic.github.io/blog/feeds/uncategorized.atom.xml" rel="self"></link><id>http://moxielogic.github.io/blog/</id><updated>2009-05-15T21:19:00-04:00</updated><entry><title>The Race For A New Game Machine: great book!</title><link href="http://moxielogic.github.io/blog/the-race-for-a-new-game-machine-great-book.html" rel="alternate"></link><updated>2009-05-15T21:19:00-04:00</updated><author><name>green</name></author><id>tag:moxielogic.github.io/blog,2009-05-15:the-race-for-a-new-game-machine-great-book.html</id><summary type="html">&lt;p&gt;I just read &lt;a href="http://raceforxbox360ps3.com/default.aspx"&gt;The Race For A New Game Machine&lt;/a&gt; today on a cross-country
+flight, and wow.. fun read!&lt;/p&gt;
+&lt;p&gt;If you've ever read Tracy Kidder's great book &lt;a href="http://en.wikipedia.org/wiki/The_Soul_of_a_New_Machine"&gt;The Soul of a New
+Machine&lt;/a&gt;, you'll know what to expect. But this book chronicles the
+SONY/Toshiba/IBM &lt;a href="http://en.wikipedia.org/wiki/Cell_(microprocessor)"&gt;Cell&lt;/a&gt; partnership, and the creation of the processor
+core at the heart of both the PS3 and XBOX360 from the point of view of
+lead architect David Shippy. Not only is it full of interesting
+technical details**, but it exposes a dark story of manipulation,
+deception, betrayal and broken friendships. Some of the story is so
+strange it's hard to believe.&lt;/p&gt;
+&lt;p&gt;Many years ago I was involved in a some work with Toshiba and SONY
+around the &lt;a href="http://en.wikipedia.org/wiki/Emotion_Engine"&gt;Emotion Engine&lt;/a&gt;, the MIPS-based core used in the
+PlayStation 2. The team at Cygnus/Red Hat had done lots of work on PS2
+development tools, and we all liked working with the Toshiba and SCEI
+people. It was disappointing to learn that we weren't going to
+participate in the Cell project but, after reading this, maybe it was
+for the best!&lt;/p&gt;
+&lt;p&gt;** This book introduced me to &lt;a href="http://en.wikipedia.org/wiki/Clock_gating"&gt;clock gating&lt;/a&gt;, a trick used by ASIC
+developers to save power. Shippy's core passed a "power token" through
+the processor pipeline, ensuring that at any one time the only pipeline
+logic being clocked was the logic being used. Neat trick, but apparently
+the savings aren't that great for FPGAs.&lt;/p&gt;</summary></entry></feed>
