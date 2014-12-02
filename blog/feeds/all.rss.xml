@@ -995,7 +995,7 @@ centre for me again, so let's see what we can do over the next few
 weeks. And over these next few weeks I'm promising myself not to touch a
 C compiler until the moxie HDL code starts executing a few instructions.&lt;/p&gt;
 &lt;p&gt;&lt;center&gt;
-&lt;a href="http://moxielogic.org/blog/images/yos.jpg"&gt;&lt;img alt="Half Dome at Yosemite" src="http://moxielogic.org/blog/images/yos-300x225.jpg" /&gt;&lt;/a&gt;
+&lt;a href="http://moxielogic.org/images/yos.jpg"&gt;&lt;img alt="Half Dome at Yosemite" src="http://moxielogic.org/images/yos-300x225.jpg" /&gt;&lt;/a&gt;
 &lt;/center&gt;&lt;/p&gt;
 &lt;p&gt;In other news, I visited one of my favourite places this past weekend.
 Yosemite is a great place to reset. &lt;a href="http://www.nps.gov/yose/"&gt;Go there&lt;/a&gt;!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">green</dc:creator><pubDate>Tue, 11 May 2010 06:45:00 -0400</pubDate><guid>tag:moxielogic.github.io/blog,2010-05-11:still-hacking.html</guid></item><item><title>The Moxielyzer</title><link>http://moxielogic.github.io/blog/the-moxielyzer.html</link><description>&lt;p&gt;I just committed a little binary analysis tool to &lt;a href="http://moxielogic.org/wiki/index.php?title=MoxieDev"&gt;moxiedev&lt;/a&gt;. You can
