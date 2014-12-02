@@ -81,5 +81,34 @@ Firing ...</p>
       <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
     </div>
   </main>
+  <script type='text/javascript'>
+    function clicky_gc(name) {
+    var ca = document.cookie.split(';');
+    for (var i in ca) {
+    if (ca[i].indexOf(name + '=') != -1)
+    return decodeURIComponent(ca[i].split('=')[1]);
+    }
+    return '';
+    }
+    var username_check = clicky_gc('comment_author_3a89f35dcf6e8725c9f228f27c057e70');
+    if( username_check ) var clicky_custom_session = { username: username_check };
+    </script>
+  <script type="text/javascript">
+    var clicky = { log:function () {
+    return;
+    }, goal:function () {
+    return;
+    }};
+    var clicky_site_id = 78673;
+    (function () {
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = '//static.getclicky.com/js';
+    ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild(s);
+    })();
+</script>
+<noscript><p><img alt="Clicky" width="1" height="1"
+		    src="http://in.getclicky.com/78673ns.gif"/></p></noscript>
 </body>
 </html>
