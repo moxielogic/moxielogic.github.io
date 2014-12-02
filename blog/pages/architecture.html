@@ -69,6 +69,17 @@ was originally designed to be an ideal target for the <a href="http://gcc.gnu.or
 Collection</a>, and has since evolved to include many
 supervisory level instructions required to run an embedded RTOS such
 has <a href="http://rtems.org">RTEMS</a>.</p>
+<p>Most moxie instructions are 16-bits long, while the remainder include
+an additional 32-bit immediate value resulting in 48-bit instructions.
+A variable width instruction architecture was chosen over a
+fixed-width RISC implementation in order to optimize for instruction
+memory bandwidth, a key performance limiter for many FPGA
+applications.</p>
+<p>As a fair warning to readers, it should be mentioned that the moxie
+architecture is still evolving.  That being said, there have been few
+changes in recent history.  Feedback, of course, is certainly welcome!
+Please send all comments to the
+<a href="http://moxielogic.org/blog/pages/author.html">author</a>.</p>
 <h1>Registers</h1>
 <p>Moxie defines 16 32-bit registers as follows:
 <div class="fancy">
