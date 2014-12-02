@@ -59,19 +59,6 @@
 
 <article>
   <div class="article_title">
-    <h3><a href="./an-even-newer-git-repo.html">An even newer git repo</a></h3>
-  </div>
-  <div class="article_text">
-    <p>So it turns out that hosting a git repo that is only accessible via slow
-http is no fun.</p>
-<p>Fortunately, the great team at <a href="http://www.github.com">github.com</a> were willing to take this
-on, so now the real repository is accessible via this command:</p>
-<p><code>$ git clone git://github.com/atgreen/moxiedev.git ...</code></p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
     <h3><a href="./new-git-repo.html">New git repo</a></h3>
   </div>
   <div class="article_text">
@@ -203,6 +190,19 @@ special register 1. You set the exception handler like so:</p>
 <span class="p">{</span>
   <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;Installing handler 0x%x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">unsigned</span><span class="p">)</span> <span class="n">handler</span><span class="p">);</span>
   <span class="n">asm</span><span class="p">(</span><span class="s">&quot;ssr ...</span></pre></div>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="./thinking-about-exceptions.html">Thinking about exceptions....</a></h3>
+  </div>
+  <div class="article_text">
+    <p>In reading about how other processors handle exceptions, they seem to be
+of two sorts. Some (most?) processors look into a vector of exception
+handlers based on the exception type (Divide by Zero, Software
+Interrupt, IRQ, etc), and the other sort jumps to a single exception
+address and lets the ...</p>
   </div>
 </article>
 

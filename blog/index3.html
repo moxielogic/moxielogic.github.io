@@ -59,19 +59,6 @@
 
 <article>
   <div class="article_title">
-    <h3><a href="./multiported-registers-microcode-and-register-forwarding.html">Multiported Registers, Microcode and Register Forwarding</a></h3>
-  </div>
-  <div class="article_text">
-    <p>When I last wrote about tackling the 'pop' instruction I noted that I
-needed the ability to write to multiple registers before retiring that
-one instruction - something that would require extra instruction cycles
-or loads more logic. I recently came across some work by Charles Eric
-LaForest on <a href="http://www.eecg.utoronto.ca/~laforest/multiport/index.html" title="Efficient Multi-Ported Memories for FPGAs">Efficient Multi-Ported ...</a></p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
     <h3><a href="./notes-on-a-novel-in-game-cpu-the-dcpu-16.html">Notes on a novel in-game CPU: the dcpu-16</a></h3>
   </div>
   <div class="article_text">
@@ -185,6 +172,19 @@ the ball. And this is what happened during my months long hiatus from
 the moxie project. Somewhere between early March and today, the moxie
 GCC port lost the ability to compile non-trivial code, notably libgcc.
 Firing ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="./on-chip-communications.html">On-chip communications</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I need to build real SoC infrastructure around my developing core in
+order to test it on real hardware. For the most part, this means a
+memory controller and IO devices. I've decided to implement a shared-bus
+wishbone-style interconnect for these devices. <a href="http://en.wikipedia.org/wiki/Wishbone_%28computer_bus%29">Wishbone</a> is an open
+source on chip ...</p>
   </div>
 </article>
 

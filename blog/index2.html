@@ -59,19 +59,6 @@
 
 <article>
   <div class="article_title">
-    <h3><a href="./moxie-ports-and-hardware-developments.html">Moxie ports and hardware developments</a></h3>
-  </div>
-  <div class="article_text">
-    <p>It's been a while since my last update.. let me bring you up to speed.</p>
-<p>A couple of <a href="http://sourceware.org/libffi" title="libffi">libffi</a> releases got in the way of moxie hacking
-(although libffi 3.0.13 now includes full moxie support!), but things
-are picking up speed again.</p>
-<p>On the software side of ...</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
     <h3><a href="./native-on-chip-gdb-remote-protocol-support.html">Native On-Chip GDB Remote Protocol Support</a></h3>
   </div>
   <div class="article_text">
@@ -187,6 +174,19 @@ the relevant kernel routine. Returning from ...</p>
 a bug in the forking code (the child process must return 0 after a
 fork!). What we're looking at here is the start of userland, post kernel
 boot, where busybox is trying to run an ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="./multiported-registers-microcode-and-register-forwarding.html">Multiported Registers, Microcode and Register Forwarding</a></h3>
+  </div>
+  <div class="article_text">
+    <p>When I last wrote about tackling the 'pop' instruction I noted that I
+needed the ability to write to multiple registers before retiring that
+one instruction - something that would require extra instruction cycles
+or loads more logic. I recently came across some work by Charles Eric
+LaForest on <a href="http://www.eecg.utoronto.ca/~laforest/multiport/index.html" title="Efficient Multi-Ported Memories for FPGAs">Efficient Multi-Ported ...</a></p>
   </div>
 </article>
 
