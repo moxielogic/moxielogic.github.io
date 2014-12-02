@@ -40,15 +40,17 @@ port, and the compiler output should be pretty good now&lt;/p&gt;
 &lt;a href="http://github.com/atgreen/qemu-moxie"&gt;QEMU&lt;/a&gt; fork in github, as well as the MoxieLite VHDL core in the
 &lt;a href="http://github.com/atgreen/moxie-cores"&gt;moxie-cores&lt;/a&gt; git repo.&lt;/p&gt;</summary></entry><entry><title>NetHack in your browser</title><link href="http://moxielogic.github.io/blog/nethack-in-your-browser.html" rel="alternate"></link><updated>2014-01-26T18:12:00-05:00</updated><author><name>green</name></author><id>tag:moxielogic.github.io/blog,2014-01-26:nethack-in-your-browser.html</id><summary type="html">&lt;p&gt;This is a moxie-rtems port of NetHack running on a modified version of
 the gdb moxie simulator compiled to javascript with &lt;a href="https://github.com/kripken/emscripten" title="emscripten"&gt;emscripten&lt;/a&gt;.&lt;/p&gt;
-&lt;pre&gt;
 &lt;canvas id="tty" class="screen" width="640" height="384"&gt;
                         Terminal uses canvas
                     &lt;/canvas&gt;
+
 &lt;script src="http://kl7107.github.io/moxie-sim/c/terminal.js"&gt;&lt;/script&gt;
+
 &lt;script src="http://kl7107.github.io/moxie-sim/c/terminal-input.js"&gt;&lt;/script&gt;
+
 &lt;script src="http://kl7107.github.io/moxie-sim/c/moxie.js"&gt;&lt;/script&gt;
+
 &lt;script src="http://kl7107.github.io/moxie-sim/c/nethack.js"&gt;&lt;/script&gt;
-&lt;/pre&gt;
 
 &lt;p&gt;&lt;a href="http://github.com/kl7107"&gt;Krister Lagerström&lt;/a&gt; is responsible for this marvellous hack.&lt;/p&gt;
 &lt;p&gt;Also, I suppose this blog entry represents a distribution of some GPL'd
