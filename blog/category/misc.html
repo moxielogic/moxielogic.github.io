@@ -18,10 +18,11 @@
   <link href="http://moxielogic.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Moxie Blog Atom" />
   <link href="http://moxielogic.github.io/blog/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="The Moxie Blog RSS" />
 
+<link href="http://moxielogic.github.io/blog/feeds/misc.atom.xml" type="application/atom+xml" rel="alternate" title="The Moxie Blog misc Category Atom" />
 
   <title>
     The Moxie Blog
-&ndash; Tag: cloud  </title>
+&ndash; Category: misc  </title>
 
 </head>
 
@@ -54,19 +55,30 @@
       <a href="..">Index</a> &brvbar; <a href="../archives.html">Archives</a>
       &brvbar; <a href="http://moxielogic.github.io/blog/feeds/all.atom.xml">Atom</a>
       &brvbar; <a href="http://moxielogic.github.io/blog/feeds/all.rss.xml">RSS</a>
-&gt; Tag: cloud
+&gt; Category: misc
+&brvbar; <a href="http://moxielogic.github.io/blog/feeds/misc.atom.xml">Atom</a>
       </p>
     </header>
 
 <article>
   <div class="article_title">
-    <h3><a href="../quartus-ii-and-the-cloud-not-there-yet.html">Quartus II and the Cloud: Not There Yet...</a></h3>
+    <h3><a href="../architecture.html">Architecture</a></h3>
   </div>
   <div class="article_text">
-    <p>Altera's <a href="http://www.altera.com/products/software/quartus-ii/web-edition/qts-we-index.html">Quartus II</a> software is now running on my Fedora box, but I
-was really hoping to load it into a grid of <a href="http://aws.amazon.com/ec2/">Amazon EC2 instances</a> so
-I could batch out jobs for synthesis, place and route. Unfortunately the
-free-beer Quartus software requires a license file that is generated ...</p>
+    <h1>Overview</h1>
+<h1>Registers</h1>
+<p>Moxie defines 16 32-bit registers as follows:
+<div class="fancy">
+<center>
+<table>
+<tr><th>Register</th><th>Description</th></tr>
+<tr><td><code>$fp</code></td><td>the frame pointer</td></tr>
+<tr><td><code>$sp</code></td><td>the stack pointer</td></tr>
+<tr><td><code>$r1</code> through <code>$r13</code></td><td>general purpose registers</td></tr>
+</table>
+</center>
+</div>
+In addition, there are a number of special registers whose values are accessible only with the Get Special Register (<code>gsr</code>) and Set Special Registers (<code>ssr ...</code></p>
   </div>
 </article>
 

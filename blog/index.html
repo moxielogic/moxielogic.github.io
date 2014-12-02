@@ -35,8 +35,15 @@
       <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
       <ul>
         <li><a href="./pages/about.html">About</a></li>
-        <li><a href="./pages/architecture.html">Architecture</a></li>
         <li><a href="./pages/author.html">Author</a></li>
+	<p>
+	<p>
+	<p>
+	<p>
+	<p>
+	<p>
+        <li><a href="http://moxielogic.org/blog/pages/architecture.html" target="_blank">Architecture</a></li>
+        <li><a href="http://moxielogic.org/blog/pages/toolchain.html" target="_blank">Toolchain</a></li>
       </ul>
     </div>
   </aside>
@@ -50,6 +57,28 @@
       </p>
     </header>
 
+<article>
+  <div class="article_title">
+    <h3><a href="./architecture.html">Architecture</a></h3>
+  </div>
+  <div class="article_text">
+    <h1>Overview</h1>
+<h1>Registers</h1>
+<p>Moxie defines 16 32-bit registers as follows:
+<div class="fancy">
+<center>
+<table>
+<tr><th>Register</th><th>Description</th></tr>
+<tr><td><code>$fp</code></td><td>the frame pointer</td></tr>
+<tr><td><code>$sp</code></td><td>the stack pointer</td></tr>
+<tr><td><code>$r1</code> through <code>$r13</code></td><td>general purpose registers</td></tr>
+</table>
+</center>
+</div>
+In addition, there are a number of special registers whose values are accessible only with the Get Special Register (<code>gsr</code>) and Set Special Registers (<code>ssr ...</code></p>
+  </div>
+</article>
+<hr />
 <article>
   <div class="article_title">
     <h3><a href="./sign-extension.html">Sign Extension</a></h3>
@@ -181,19 +210,6 @@ exception handling firmware. So now I'm able to write a basic stop-watch
 application, where the 7-segment display simply increments the count
 every second. Yes, this sounds basic, but there's a lot of complexity
 under the hood ...</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="./moxie-ports-and-hardware-developments.html">Moxie ports and hardware developments</a></h3>
-  </div>
-  <div class="article_text">
-    <p>It's been a while since my last update.. let me bring you up to speed.</p>
-<p>A couple of <a href="http://sourceware.org/libffi" title="libffi">libffi</a> releases got in the way of moxie hacking
-(although libffi 3.0.13 now includes full moxie support!), but things
-are picking up speed again.</p>
-<p>On the software side of ...</p>
   </div>
 </article>
 
