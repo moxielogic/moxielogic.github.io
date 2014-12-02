@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Moxie Blog</title><link href="http://moxielogic.github.io/blog/" rel="alternate"></link><link href="http://moxielogic.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>http://moxielogic.github.io/blog/</id><updated>2014-04-04T00:40:00-04:00</updated><entry><title>Sign Extension</title><link href="http://moxielogic.github.io/blog/sign-extension.html" rel="alternate"></link><updated>2014-04-04T00:40:00-04:00</updated><author><name>green</name></author><id>tag:moxielogic.github.io/blog,2014-04-04:sign-extension.html</id><summary type="html">&lt;p&gt;Moxie zero-extends all 8 and 16-bit loads from memory. Until recently,
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Moxie Blog</title><link href="http://moxielogic.github.io/blog/" rel="alternate"></link><link href="http://moxielogic.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>http://moxielogic.github.io/blog/</id><updated>2014-12-02T00:40:00-05:00</updated><entry><title>New Site</title><link href="http://moxielogic.github.io/blog/new-site.html" rel="alternate"></link><updated>2014-12-02T00:40:00-05:00</updated><author><name>green</name></author><id>tag:moxielogic.github.io/blog,2014-12-02:new-site.html</id><summary type="html">&lt;p&gt;I had finally had enough of the wiki spammers, and decided to migrate
+all of my content over to a static github hosted site.  I believe all
+of the blog entries migrated over now, and I'm in the process of
+migrating the wiki content over to pages you can link to from the
+sidebar (see
+&lt;a href="http://moxielogic.org/blog/pages/architecture.html"&gt;Architecture&lt;/a&gt;,
+for instance).&lt;/p&gt;
+&lt;p&gt;If I ever get around to learning how htaccess rewrite rules work, I
+should be able to redirect RSS feed subscribers to the new link.  But
+until then, nobody will get any new entries in their readers.&lt;/p&gt;
+&lt;p&gt;Once I get this out of the way, I'll post something new and amazing
+about moxie.&lt;/p&gt;</summary></entry><entry><title>Sign Extension</title><link href="http://moxielogic.github.io/blog/sign-extension.html" rel="alternate"></link><updated>2014-04-04T00:40:00-04:00</updated><author><name>green</name></author><id>tag:moxielogic.github.io/blog,2014-04-04:sign-extension.html</id><summary type="html">&lt;p&gt;Moxie zero-extends all 8 and 16-bit loads from memory. Until recently,
 however, the GCC port didn't understand how loads worked, and would
 always shift loaded values back and forth to either empty out the upper
 bits or sign-extend the loaded value. While correct, it was overly

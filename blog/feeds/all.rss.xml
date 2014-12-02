@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>The Moxie Blog</title><link>http://moxielogic.github.io/blog/</link><description></description><atom:link href="http://moxielogic.github.io/blog/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 04 Apr 2014 00:40:00 -0400</lastBuildDate><item><title>Sign Extension</title><link>http://moxielogic.github.io/blog/sign-extension.html</link><description>&lt;p&gt;Moxie zero-extends all 8 and 16-bit loads from memory. Until recently,
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>The Moxie Blog</title><link>http://moxielogic.github.io/blog/</link><description></description><atom:link href="http://moxielogic.github.io/blog/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 02 Dec 2014 00:40:00 -0500</lastBuildDate><item><title>New Site</title><link>http://moxielogic.github.io/blog/new-site.html</link><description>&lt;p&gt;I had finally had enough of the wiki spammers, and decided to migrate
+all of my content over to a static github hosted site.  I believe all
+of the blog entries migrated over now, and I'm in the process of
+migrating the wiki content over to pages you can link to from the
+sidebar (see
+&lt;a href="http://moxielogic.org/blog/pages/architecture.html"&gt;Architecture&lt;/a&gt;,
+for instance).&lt;/p&gt;
+&lt;p&gt;If I ever get around to learning how htaccess rewrite rules work, I
+should be able to redirect RSS feed subscribers to the new link.  But
+until then, nobody will get any new entries in their readers.&lt;/p&gt;
+&lt;p&gt;Once I get this out of the way, I'll post something new and amazing
+about moxie.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">green</dc:creator><pubDate>Tue, 02 Dec 2014 00:40:00 -0500</pubDate><guid>tag:moxielogic.github.io/blog,2014-12-02:new-site.html</guid></item><item><title>Sign Extension</title><link>http://moxielogic.github.io/blog/sign-extension.html</link><description>&lt;p&gt;Moxie zero-extends all 8 and 16-bit loads from memory. Until recently,
 however, the GCC port didn't understand how loads worked, and would
 always shift loaded values back and forth to either empty out the upper
 bits or sign-extend the loaded value. While correct, it was overly

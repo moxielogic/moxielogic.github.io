@@ -59,6 +59,20 @@
 
 <article>
   <div class="article_title">
+    <h3><a href="./speed-bumps-on-the-road-to-moxie-userland.html">Speed bumps on the road to moxie userland</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Sooo..... it turns out there's lots to take care of before userland apps
+like BusyBox can run.</p>
+<ul>
+<li><strong>The root filesystem</strong>. This one is easy. I just built a short
+    Hello World application in C with moxie-uclinux-gcc. This produces
+    an executable in <a href="http://www.beyondlogic.org/uClinux/bflt.htm">BFLT format</a> which I call 'init'. The kernel ...</li></ul>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h3><a href="./the-start-of-a-uclinux-userland.html">The start of a uClinux userland</a></h3>
   </div>
   <div class="article_text">
@@ -171,19 +185,6 @@ instance. A <code>beq</code> instruction currently encoded <a href="http://www.m
 
 <p>...where the "<code>x</code>"s represent "don't care" bits, and "<code>i</code>"s are a
 32-bit absolute branch target. That's right -- branch targets are not PC ...</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="./an-even-newer-git-repo.html">An even newer git repo</a></h3>
-  </div>
-  <div class="article_text">
-    <p>So it turns out that hosting a git repo that is only accessible via slow
-http is no fun.</p>
-<p>Fortunately, the great team at <a href="http://www.github.com">github.com</a> were willing to take this
-on, so now the real repository is accessible via this command:</p>
-<p><code>$ git clone git://github.com/atgreen/moxiedev.git ...</code></p>
   </div>
 </article>
 

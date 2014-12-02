@@ -60,6 +60,19 @@
 
 <article>
   <div class="article_title">
+    <h3><a href="../on-chip-communications.html">On-chip communications</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I need to build real SoC infrastructure around my developing core in
+order to test it on real hardware. For the most part, this means a
+memory controller and IO devices. I've decided to implement a shared-bus
+wishbone-style interconnect for these devices. <a href="http://en.wikipedia.org/wiki/Wishbone_%28computer_bus%29">Wishbone</a> is an open
+source on chip ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h3><a href="../quartus-ii-and-the-cloud-not-there-yet.html">Quartus II and the Cloud: Not There Yet...</a></h3>
   </div>
   <div class="article_text">
@@ -180,20 +193,6 @@ userland app!</p>
 <span class="kt">void</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span> <span class="n">gloss_write</span> <span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">)</span> 
 <span class="p">{</span>
   <span class="n">asm ...</span></pre></div>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="../speed-bumps-on-the-road-to-moxie-userland.html">Speed bumps on the road to moxie userland</a></h3>
-  </div>
-  <div class="article_text">
-    <p>Sooo..... it turns out there's lots to take care of before userland apps
-like BusyBox can run.</p>
-<ul>
-<li><strong>The root filesystem</strong>. This one is easy. I just built a short
-    Hello World application in C with moxie-uclinux-gcc. This produces
-    an executable in <a href="http://www.beyondlogic.org/uClinux/bflt.htm">BFLT format</a> which I call 'init'. The kernel ...</li></ul>
   </div>
 </article>
 
