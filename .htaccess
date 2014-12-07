@@ -1,0 +1,3 @@
+Options +FollowSymlinks
+RewriteEngine on
+rewriterule ^blog/?feed=rss2(.*)$ http://moxielogic.github.io/blog/feeds/all.rss.xml$1 [r=301,nc]
