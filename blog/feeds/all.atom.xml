@@ -23,10 +23,11 @@ experimental project called
 basic understanding is that moxiebox could be used to implement
 automated smart contracts.  For instance, signed moxiebox executables
 controlling a certain number of bitcoins could be distributed in the
-&lt;a href="block%20chain"&gt;http://en.wikipedia.org/wiki/Bitcoin#The_block_chain&lt;/a&gt;.  These programs would decide what to do with the bitcoins
-based on program execution against certain input.  People could
-independently verify the results of this program because it's all
-designed to be completely deterministic and reproducible.&lt;/p&gt;
+&lt;a href="http://en.wikipedia.org/wiki/Bitcoin#The_block_chain"&gt;block chain&lt;/a&gt;.
+These programs would decide what to do with the bitcoins based on
+program execution against certain input.  People could independently
+verify the results of this program because it's all designed to be
+completely deterministic and reproducible.&lt;/p&gt;
 &lt;p&gt;From a moxie tooling perspective, I added a moxiebox target to the GNU
 toolchain to simplify its use.  The moxiebox project supplies the
 simulator, as well as crt0 and some custom moxie runtime libraries.
