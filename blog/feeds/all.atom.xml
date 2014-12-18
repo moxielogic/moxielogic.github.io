@@ -3,9 +3,11 @@
 &lt;img alt="http://bitcoin.org" src="http://moxielogic.org/images/Bitcoin-logo.jpg" /&gt;
 &lt;/center&gt;&lt;/p&gt;
 &lt;p&gt;One of the more interesting developments around moxie is the adoption
-of the &lt;a href="moxie
-architecture"&gt;http://moxielogic.org/blog/pages/architecture.html&lt;/a&gt; by the core bitcoin developers (&lt;a href="Jeff%20Garzik"&gt;http://garzikrants.blogspot.ca/&lt;/a&gt;, in
-particular), for an experimental project called
+of the &lt;a href="http://moxielogic.org/blog/pages/architecture.html"&gt;moxie
+architecture&lt;/a&gt; by
+the core bitcoin developers (&lt;a href="http://garzikrants.blogspot.ca/"&gt;Jeff
+Garzik&lt;/a&gt;, in particular), for an
+experimental project called
 &lt;a href="http://github.com/jgarzik/moxiebox"&gt;'moxiebox'&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;To quote Jeff...&lt;/p&gt;
 &lt;blockquote&gt;
