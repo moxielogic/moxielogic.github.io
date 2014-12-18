@@ -62,6 +62,19 @@
 
 <article>
   <div class="article_title">
+    <h3><a href="../an-even-newer-git-repo.html">An even newer git repo</a></h3>
+  </div>
+  <div class="article_text">
+    <p>So it turns out that hosting a git repo that is only accessible via slow
+http is no fun.</p>
+<p>Fortunately, the great team at <a href="http://www.github.com">github.com</a> were willing to take this
+on, so now the real repository is accessible via this command:</p>
+<p><code>$ git clone git://github.com/atgreen/moxiedev.git ...</code></p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h3><a href="../new-git-repo.html">New git repo</a></h3>
   </div>
   <div class="article_text">
@@ -193,23 +206,6 @@ of two sorts. Some (most?) processors look into a vector of exception
 handlers based on the exception type (Divide by Zero, Software
 Interrupt, IRQ, etc), and the other sort jumps to a single exception
 address and lets the ...</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="../blog/adding-a-real-time-clock.html">Adding a Real Time Clock</a></h3>
-  </div>
-  <div class="article_text">
-    <p>After a UART, one of the most useful and interesting peripherals you can
-add to a board is a Real Time Clock (RTC). Qemu comes with a simulation
-of Freescale's <a href="http://www.freescale.com/files/microcontrollers/doc/data_sheet/MC146818.pdf">MC146818</a> RTC chip. Adding it to our qemu-defined
-board was as simple as....</p>
-<div class="highlight"><pre>   <span class="n">rtc_mm_init</span><span class="p">(</span><span class="mh">0x400</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-</pre></div>
-
-
-<p>This ...</p>
   </div>
 </article>
 

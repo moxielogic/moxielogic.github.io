@@ -37,7 +37,7 @@ library.&lt;/p&gt;
 &lt;p&gt;It's not clear how things will develop, but one thing that's come up
 is extending the moxie ISA to include new instructions in support of
 crypto activities.  We'll just have to see.  You can follow along at
-&lt;a href="http://github.com/jgarzik/moxiebox"&gt;http://github.com/jgarzik/moxiebox&lt;/a&gt;.&lt;/p&gt;</summary></entry><entry><title>New Site</title><link href="http://moxielogic.github.io/blog/new-site.html" rel="alternate"></link><updated>2014-12-02T00:40:00-05:00</updated><author><name>green</name></author><id>tag:moxielogic.github.io/blog,2014-12-02:new-site.html</id><summary type="html">&lt;p&gt;I had finally had enough of the wiki spammers, and decided to migrate
+&lt;a href="http://github.com/jgarzik/moxiebox"&gt;http://github.com/jgarzik/moxiebox&lt;/a&gt;.&lt;/p&gt;</summary><category term="moxiebox"></category><category term="bitcoin"></category></entry><entry><title>New Site</title><link href="http://moxielogic.github.io/blog/new-site.html" rel="alternate"></link><updated>2014-12-02T00:40:00-05:00</updated><author><name>green</name></author><id>tag:moxielogic.github.io/blog,2014-12-02:new-site.html</id><summary type="html">&lt;p&gt;I had finally had enough of the wiki spammers, and decided to migrate
 all of my content over to a static github hosted site.  I believe all
 of the blog entries migrated over now, and I'm in the process of
 migrating the wiki content over to pages you can link to from the
