@@ -60,6 +60,22 @@
 
 <article>
   <div class="article_title">
+    <h3><a href="../everything-is-relative-finally.html">Everything is relative (finally!)</a></h3>
+  </div>
+  <div class="article_text">
+    <p>The Moxie ISA still needs quite a bit of tuning. Take branches, for
+instance. A <code>beq</code> instruction currently encoded <a href="http://www.moxielogic.org/wiki/index.php?title=Instruction_Set#beq">like so</a>...  </p>
+<div class="highlight"><pre><span class="err">`</span><span class="mo">00001111</span><span class="n">xxxxxxxx</span> <span class="n">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</span><span class="err">`</span>
+</pre></div>
+
+
+<p>...where the "<code>x</code>"s represent "don't care" bits, and "<code>i</code>"s are a
+32-bit absolute branch target. That's right -- branch targets are not PC ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h3><a href="../an-even-newer-git-repo.html">An even newer git repo</a></h3>
   </div>
   <div class="article_text">
@@ -189,21 +205,6 @@ working!</p>
 <span class="n">U</span><span class="o">-</span><span class="n">Boot</span> <span class="mf">2009.03</span><span class="o">-</span><span class="n">rc2</span><span class="o">-</span><span class="mo">00013</span><span class="o">-</span><span class="n">gefb4734</span><span class="o">-</span><span class="n">dirty</span> <span class="p">(</span><span class="n">Apr</span> <span class="mo">02</span> <span class="mi">2009</span> <span class="o">-</span> <span class="mi">20</span><span class="o">:</span><span class="mo">07</span><span class="o">:</span><span class="mi">32</span><span class="p">)</span>
 <span class="o">=&gt;</span> <span class="n">printenv</span>
 <span class="n">bootargs</span><span class="o">=</span><span class="n">root</span><span class="o">=</span><span class="n">romfs ...</span></pre></div>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="../processor-exceptions.html">Processor Exceptions</a></h3>
-  </div>
-  <div class="article_text">
-    <p>My first go at exceptions is working well. The basic idea is that moxie
-will have a single exception handling routine whose address lives in
-special register 1. You set the exception handler like so:</p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">install_handler</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">handler</span><span class="p">)(</span><span class="kt">void</span><span class="p">))</span>
-<span class="p">{</span>
-  <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;Installing handler 0x%x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">unsigned</span><span class="p">)</span> <span class="n">handler</span><span class="p">);</span>
-  <span class="n">asm</span><span class="p">(</span><span class="s">&quot;ssr ...</span></pre></div>
   </div>
 </article>
 

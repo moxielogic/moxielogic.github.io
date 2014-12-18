@@ -60,6 +60,19 @@
 
 <article>
   <div class="article_title">
+    <h3><a href="../bisecting-gcc.html">Bisecting GCC</a></h3>
+  </div>
+  <div class="article_text">
+    <p>The thing about <a href="http://gcc.gnu.org">GCC</a> is that things break when you take your eye off
+the ball. And this is what happened during my months long hiatus from
+the moxie project. Somewhere between early March and today, the moxie
+GCC port lost the ability to compile non-trivial code, notably libgcc.
+Firing ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h3><a href="../on-chip-communications.html">On-chip communications</a></h3>
   </div>
   <div class="article_text">
@@ -175,24 +188,6 @@ to the upstream GNU tools:</p>
 is a big deal because it's the first time I've had system calls coming
 in from userland. I haven't checked the changes in yet, because they're
 a mess, but here's a ...</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="../first-moxie-linux-userland-app-runs.html">First moxie-linux userland app runs!</a></h3>
-  </div>
-  <div class="article_text">
-    <p>I've been taking advantage of the nice summer weather recently, so it's
-taken me a while to get around to this... but here's the first moxie
-userland app!</p>
-<div class="highlight"><pre><span class="cp">#include &lt;string.h&gt;</span>
-
-<span class="cp">#define MSG &quot;Hello, World!\n&quot;</span>
-
-<span class="kt">void</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span> <span class="n">gloss_write</span> <span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">)</span> 
-<span class="p">{</span>
-  <span class="n">asm ...</span></pre></div>
   </div>
 </article>
 

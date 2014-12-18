@@ -18,10 +18,11 @@
   <link href="http://moxielogic.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Moxie Blog Atom" />
   <link href="http://moxielogic.github.io/blog/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="The Moxie Blog RSS" />
 
+<meta name="keywords" content="">
 
   <title>
     The Moxie Blog
-&ndash; Categories  </title>
+&ndash; Moxiebox and bitcoin  </title>
 
 </head>
 
@@ -58,13 +59,64 @@
     </header>
 
 <article>
-  <div class="article_text">
-    <ul>
-      <li><a href="./category/misc.html">misc</a> (2)</li>
-      <li><a href="./category/moxie.html">moxie</a> (67)</li>
-      <li><a href="./category/uncategorized.html">Uncategorized</a> (1)</li>
-    </ul>
+  <div class="article_title">
+    <h3><a href="./moxiebox-and-bitcoint.html">Moxiebox and bitcoin</a></h3>
   </div>
+  <div class="article_text">
+    <p><center>
+<img alt="bitcoin" src="http://moxielogic.org/images/Bitcoin-logo.jpg" />
+</center></p>
+<p>One of the more interesting developments around moxie is the adoption
+of the moxie architecture by the core bitcoin developers (Jeff Garzik,
+in particular), for an experimental project called <a href="http://github.com/jgarzik/moxiebox">'moxiebox'</a>.</p>
+<p>To quote Jeff...</p>
+<blockquote>
+<p>The goal is to provide a secure, sandboxed execution mechanism that enables deterministic input, processing and output. Execution is separated out into distinct phases:</p>
+<ol>
+<li>Prepare and load hash-sealed program executables, data.</li>
+<li>Execute program as a black box, with no I/O capability. Runs until exit or CPU budget exhausted (or CPU exception).</li>
+<li>Gather processed data, if any.</li>
+</ol>
+<p>A single thread of execution pre-loads necessary data, then simulates a 32-bit little endian Moxie CPU, running the loaded code.</p>
+</blockquote>
+<p>I don't pretend to have deep understand bitcoin technology, but my
+basic understanding is that moxiebox could be used to implement
+automated smart contracts.  For instance, signed moxiebox executables
+controlling a certain number of bitcoins could be distributed in the
+blockchain.  These programs would decide what to do with the bitcoins
+based on program execution against certain input.  People could
+independently verify the results of this program because it's all
+designed to be completely deterministic and reproducible.</p>
+<p>From a moxie tooling perspective, I added a moxiebox target to the GNU
+toolchain to simplify it's use.  The moxiebox project supplies the
+simulator, as well as crt0 and some custom moxie runtime libraries.
+The 'moxiebox-gcc' compiler is configured to link everything in the
+right order, including newlib, the custom crt0 and sandbox runtime
+library.</p>
+<p>It's not clear how things will develop, but one thing that's come up
+is extending the moxie ISA to include new instructions to support
+crypto activities.  We'll just have to see.  You can follow along as
+well at
+<a href="http://github.com/jgarzik/moxiebox">http://github.com/jgarzik/moxiebox</a>.</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Thu 18 December 2014</p>
+    <p>Category: <a href="./category/misc.html">misc</a>
+    </p>
+  </div>
+
+  <div id="article_comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_identifier = "moxiebox-and-bitcoint.html";
+        (function() {
+             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+             dsq.src = 'http://moxieblog.disqus.com/embed.js';
+             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+         })();
+    </script>
+  </div>
+
 </article>
 
 

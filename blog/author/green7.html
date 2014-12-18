@@ -60,6 +60,21 @@
 
 <article>
   <div class="article_title">
+    <h3><a href="../processor-exceptions.html">Processor Exceptions</a></h3>
+  </div>
+  <div class="article_text">
+    <p>My first go at exceptions is working well. The basic idea is that moxie
+will have a single exception handling routine whose address lives in
+special register 1. You set the exception handler like so:</p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">install_handler</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">handler</span><span class="p">)(</span><span class="kt">void</span><span class="p">))</span>
+<span class="p">{</span>
+  <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;Installing handler 0x%x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">unsigned</span><span class="p">)</span> <span class="n">handler</span><span class="p">);</span>
+  <span class="n">asm</span><span class="p">(</span><span class="s">&quot;ssr ...</span></pre></div>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h3><a href="../thinking-about-exceptions.html">Thinking about exceptions....</a></h3>
   </div>
   <div class="article_text">

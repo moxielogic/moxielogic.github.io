@@ -59,6 +59,24 @@
 
 <article>
   <div class="article_title">
+    <h3><a href="./first-moxie-linux-userland-app-runs.html">First moxie-linux userland app runs!</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I've been taking advantage of the nice summer weather recently, so it's
+taken me a while to get around to this... but here's the first moxie
+userland app!</p>
+<div class="highlight"><pre><span class="cp">#include &lt;string.h&gt;</span>
+
+<span class="cp">#define MSG &quot;Hello, World!\n&quot;</span>
+
+<span class="kt">void</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span> <span class="n">gloss_write</span> <span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">)</span> 
+<span class="p">{</span>
+  <span class="n">asm ...</span></pre></div>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h3><a href="./speed-bumps-on-the-road-to-moxie-userland.html">Speed bumps on the road to moxie userland</a></h3>
   </div>
   <div class="article_text">
@@ -169,22 +187,6 @@ should be particularly difficult.</p>
     <p>The moxie port has been <a href="http://gcc.gnu.org/ml/gcc/2009-06/msg00194.html">accepted by the GCC steering committee</a>!</p>
 <p>I just <a href="http://gcc.gnu.org/viewcvs?view=rev&amp;revision=148339">checked it in</a>.</p>
 <p>That is all.</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="./everything-is-relative-finally.html">Everything is relative (finally!)</a></h3>
-  </div>
-  <div class="article_text">
-    <p>The Moxie ISA still needs quite a bit of tuning. Take branches, for
-instance. A <code>beq</code> instruction currently encoded <a href="http://www.moxielogic.org/wiki/index.php?title=Instruction_Set#beq">like so</a>...  </p>
-<div class="highlight"><pre><span class="err">`</span><span class="mo">00001111</span><span class="n">xxxxxxxx</span> <span class="n">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</span><span class="err">`</span>
-</pre></div>
-
-
-<p>...where the "<code>x</code>"s represent "don't care" bits, and "<code>i</code>"s are a
-32-bit absolute branch target. That's right -- branch targets are not PC ...</p>
   </div>
 </article>
 
