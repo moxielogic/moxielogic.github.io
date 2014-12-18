@@ -8,7 +8,7 @@ architecture&lt;/a&gt; by
 the core bitcoin developers (&lt;a href="http://garzikrants.blogspot.ca/"&gt;Jeff
 Garzik&lt;/a&gt;, in particular), for an
 experimental project called
-&lt;a href="http://github.com/jgarzik/moxiebox"&gt;'moxiebox'&lt;/a&gt;.&lt;/p&gt;
+&lt;a href="http://github.com/jgarzik/moxiebox"&gt;&lt;code&gt;moxiebox&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;To quote Jeff...&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The goal is to provide a secure, sandboxed execution mechanism that enables deterministic input, processing and output. Execution is separated out into distinct phases:&lt;/p&gt;
