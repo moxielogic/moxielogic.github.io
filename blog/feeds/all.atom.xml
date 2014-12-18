@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>The Moxie Blog</title><link href="http://moxielogic.github.io/blog/" rel="alternate"></link><link href="http://moxielogic.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>http://moxielogic.github.io/blog/</id><updated>2014-12-18T05:00:00-05:00</updated><entry><title>Moxiebox and bitcoin</title><link href="http://moxielogic.github.io/blog/moxiebox-and-bitcoint.html" rel="alternate"></link><updated>2014-12-18T05:00:00-05:00</updated><author><name>green</name></author><id>tag:moxielogic.github.io/blog,2014-12-18:moxiebox-and-bitcoint.html</id><summary type="html">&lt;p&gt;&lt;center&gt;
-&lt;img alt="bitcoin" src="http://moxielogic.org/images/Bitcoin-logo.jpg" /&gt;
+&lt;img alt="http://bitcoin.org" src="http://moxielogic.org/images/Bitcoin-logo.jpg" /&gt;
 &lt;/center&gt;&lt;/p&gt;
 &lt;p&gt;One of the more interesting developments around moxie is the adoption
-of the moxie architecture by the core bitcoin developers (Jeff Garzik,
-in particular), for an experimental project called &lt;a href="http://github.com/jgarzik/moxiebox"&gt;'moxiebox'&lt;/a&gt;.&lt;/p&gt;
+of the &lt;a href="moxie
+architecture"&gt;http://moxielogic.org/blog/pages/architecture.html&lt;/a&gt; by the core bitcoin developers (&lt;a href="Jeff%20Garzik"&gt;http://garzikrants.blogspot.ca/&lt;/a&gt;, in
+particular), for an experimental project called
+&lt;a href="http://github.com/jgarzik/moxiebox"&gt;'moxiebox'&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;To quote Jeff...&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The goal is to provide a secure, sandboxed execution mechanism that enables deterministic input, processing and output. Execution is separated out into distinct phases:&lt;/p&gt;
@@ -19,20 +21,19 @@ in particular), for an experimental project called &lt;a href="http://github.com
 basic understanding is that moxiebox could be used to implement
 automated smart contracts.  For instance, signed moxiebox executables
 controlling a certain number of bitcoins could be distributed in the
-blockchain.  These programs would decide what to do with the bitcoins
+&lt;a href="block%20chain"&gt;http://en.wikipedia.org/wiki/Bitcoin#The_block_chain&lt;/a&gt;.  These programs would decide what to do with the bitcoins
 based on program execution against certain input.  People could
 independently verify the results of this program because it's all
 designed to be completely deterministic and reproducible.&lt;/p&gt;
 &lt;p&gt;From a moxie tooling perspective, I added a moxiebox target to the GNU
-toolchain to simplify it's use.  The moxiebox project supplies the
+toolchain to simplify its use.  The moxiebox project supplies the
 simulator, as well as crt0 and some custom moxie runtime libraries.
 The 'moxiebox-gcc' compiler is configured to link everything in the
 right order, including newlib, the custom crt0 and sandbox runtime
 library.&lt;/p&gt;
 &lt;p&gt;It's not clear how things will develop, but one thing that's come up
-is extending the moxie ISA to include new instructions to support
-crypto activities.  We'll just have to see.  You can follow along as
-well at
+is extending the moxie ISA to include new instructions in support of
+crypto activities.  We'll just have to see.  You can follow along at
 &lt;a href="http://github.com/jgarzik/moxiebox"&gt;http://github.com/jgarzik/moxiebox&lt;/a&gt;.&lt;/p&gt;</summary></entry><entry><title>New Site</title><link href="http://moxielogic.github.io/blog/new-site.html" rel="alternate"></link><updated>2014-12-02T00:40:00-05:00</updated><author><name>green</name></author><id>tag:moxielogic.github.io/blog,2014-12-02:new-site.html</id><summary type="html">&lt;p&gt;I had finally had enough of the wiki spammers, and decided to migrate
 all of my content over to a static github hosted site.  I believe all
 of the blog entries migrated over now, and I'm in the process of
