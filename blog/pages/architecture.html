@@ -167,17 +167,17 @@ consumed by the encodings below is filled with the <code>bad</code> instruction.
 <h2><table width='100%'><tr><td><code>jsra</code></td><td align='right'><code>00000011xxxxxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
 <p>Jump to subroutine at absolute address.  Jumps to a subroutine identified by the 32-bit address following the 16-bit opcode.</p>
 <h2><table width='100%'><tr><td><code>ld.b</code></td><td align='right'><code>00011100AAAABBBB</code></td></tr></table></h2>
-<p>Load byte.  Loads the 8-bit contents stored at the address pointed to by <code>$rB</code> into <code>$rA</code>.</p>
+<p>Load byte.  Loads the 8-bit contents stored at the address pointed to by <code>$rB</code> into <code>$rA</code>.  The loaded value is zero-extended to 32-bits.</p>
 <h2><table width='100%'><tr><td><code>ld.l</code></td><td align='right'><code>00001010AAAABBBB</code></td></tr></table></h2>
 <p>Load long.  Loads the 32-bit contents stored at the address pointed to by <code>$rB</code> into <code>$rA</code>.</p>
 <h2><table width='100%'><tr><td><code>ld.s</code></td><td align='right'><code>00010001AAAABBBB</code></td></tr></table></h2>
-<p>Load short.  Loads the 16-bit contents stored at the address pointed to by <code>$rB</code> into <code>$rA</code>.</p>
+<p>Load short.  Loads the 16-bit contents stored at the address pointed to by <code>$rB</code> into <code>$rA</code>.  The loaded value is zero-extended to 32-bits.</p>
 <h2><table width='100%'><tr><td><code>lda.b</code></td><td align='right'><code>00011101AAAAxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
-<p>Load absolute, byte.  Loads the 8-bit value pointed at by the 32-bit address following the 16-bit opcode into register <code>$rA</code>.</p>
+<p>Load absolute, byte.  Loads the 8-bit value pointed at by the 32-bit address following the 16-bit opcode into register <code>$rA</code>.  The loaded value is zero-extended to 32-bits.</p>
 <h2><table width='100%'><tr><td><code>lda.l</code></td><td align='right'><code>00001000AAAAxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
 <p>Load absolute, long.  Loads the 32-bit value pointed at by the 32-bit address following the 16-bit opcode into register <code>$rA</code>.</p>
 <h2><table width='100%'><tr><td><code>lda.s</code></td><td align='right'><code>00010011AAAAxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
-<p>Load absolute, short.  Loads the 16-bit value pointed at by the 32-bit address following the 16-bit opcode into register <code>$rA</code>.</p>
+<p>Load absolute, short.  Loads the 16-bit value pointed at by the 32-bit address following the 16-bit opcode into register <code>$rA</code>.  The loaded value is zero-extended to 32-bits.</p>
 <h2><table width='100%'><tr><td><code>ldi.l</code></td><td align='right'><code>00000001AAAAxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
 <p>Load immediate, long.  Loads the 32-bit immediate following the 16-bit opcode into register %rA.</p>
 <h2><table width='100%'><tr><td><code>ldi.b</code></td><td align='right'><code>00011011AAAAxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
@@ -185,11 +185,11 @@ consumed by the encodings below is filled with the <code>bad</code> instruction.
 <h2><table width='100%'><tr><td><code>ldi.s</code></td><td align='right'><code>00100000AAAAxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
 <p>Load immediate, short.  Loads the 32-bit immediate following the 16-bit opcode into register %rA.  This is a poor encoding, as the 32-bit value really only contains 16-bits of interest.</p>
 <h2><table width='100%'><tr><td><code>ldo.b</code></td><td align='right'><code>00110110AAAABBBB iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
-<p>Load offset, byte.  Loads into <code>$rA</code> the 8-bit value from memory pointed at by the address produced by adding the 32-bit value following the 16-bit opcode to <code>$rB</code>.</p>
+<p>Load offset, byte.  Loads into <code>$rA</code> the 8-bit value from memory pointed at by the address produced by adding the 32-bit value following the 16-bit opcode to <code>$rB</code>.  The loaded value is zero-extended to 32-bits.</p>
 <h2><table width='100%'><tr><td><code>ldo.l</code></td><td align='right'><code>00001100AAAABBBB iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
 <p>Load offset, long.  Loads into <code>$rA</code> the 32-bit value from memory pointed at by the address produced by adding the 32-bit value following the 16-bit opcode to <code>$rB</code>.</p>
 <h2><table width='100%'><tr><td><code>ldo.s</code></td><td align='right'><code>00111000AAAABBBB iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
-<p>Load offset, short.  Loads into <code>$rA</code> the 16-bit value from memory pointed at by the address produced by adding the 32-bit value following the 16-bit opcode to <code>$rB</code>.</p>
+<p>Load offset, short.  Loads into <code>$rA</code> the 16-bit value from memory pointed at by the address produced by adding the 32-bit value following the 16-bit opcode to <code>$rB</code>.  The loaded value is zero-extended to 32-bits.</p>
 <h2><table width='100%'><tr><td><code>lshr</code></td><td align='right'><code>00100111AAAABBBB</code></td></tr></table></h2>
 <p>Logical shift right.  Performs a logical shift right of register <code>$rA</code> by <code>$rB</code> bits and stores the result in <code>$rA</code>.</p>
 <h2><table width='100%'><tr><td><code>mod.l</code></td><td align='right'><code>00110011AAAABBBB</code></td></tr></table></h2>
