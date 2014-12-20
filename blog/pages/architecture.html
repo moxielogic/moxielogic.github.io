@@ -212,6 +212,10 @@ consumed by the encodings below is filled with the <code>bad</code> instruction.
 <p>Push the contents of <code>$rB</code> onto a stack pointed to by <code>$rA</code> and update the stack pointer.  Stacks grown down.</p>
 <h2><table width='100%'><tr><td><code>ret</code></td><td align='right'><code>00000100xxxxxxxx</code></td></tr></table></h2>
 <p>Return from subroutine.</p>
+<h2><table width='100%'><tr><td><code>sex.b</code></td><td align='right'><code>00010000AAAABBBB</code></td></tr></table></h2>
+<p>Sign-extend byte.  Sign-extend the lower 8-bits of <code>$rB</code> into a <code>$rA</code> as a 32-bit value.</p>
+<h2><table width='100%'><tr><td><code>sex.s</code></td><td align='right'><code>00010001AAAABBBB</code></td></tr></table></h2>
+<p>Sign-extend short.  Sign-extend the lower 16-bits of <code>$rB</code> into a <code>$rA</code> as a 32-bit value.</p>
 <h2><table width='100%'><tr><td><code>ssr</code></td><td align='right'><code>1011AAAASSSSSSSS</code></td></tr></table></h2>
 <p>Set special register.  Move the contents of <code>$rA</code> into special register S.</p>
 <h2><table width='100%'><tr><td><code>st.b</code></td><td align='right'><code>00011110AAAABBBB</code></td></tr></table></h2>
@@ -242,9 +246,13 @@ consumed by the encodings below is filled with the <code>bad</code> instruction.
 <p>Modulus unsigned, long.  Compute the modulus of the unsigned contents of registers <code>$rA</code> and <code>$rB</code> and stores the result in <code>$rA</code>.</p>
 <h2><table width='100%'><tr><td><code>xor</code></td><td align='right'><code>00101110AAAABBBB</code></td></tr></table></h2>
 <p>Logical exclusive or.  Performs a logical exclusive or operation on the contents of registers <code>$rA</code> and <code>$rB</code> and stores the result in <code>$rA</code>.</p>
+<h2><table width='100%'><tr><td><code>zex.b</code></td><td align='right'><code>00010010AAAABBBB</code></td></tr></table></h2>
+<p>Zero-extend byte.  Zero-extend the lower 8-bits of <code>$rB</code> into a <code>$rA</code> as a 32-bit value.</p>
+<h2><table width='100%'><tr><td><code>zex.s</code></td><td align='right'><code>00010011AAAABBBB</code></td></tr></table></h2>
+<p>Zero-extend short.  Zero-extend the lower 16-bits of <code>$rB</code> into a <code>$rA</code> as a 32-bit value.</p>
   </div>
   <div class="article_meta">
-    <p>Updated on: Sat 29 November 2014</p>
+    <p>Updated on: Sat 20 December 2014</p>
   </div>
 </article>
 
