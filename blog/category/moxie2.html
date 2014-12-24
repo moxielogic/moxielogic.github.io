@@ -62,6 +62,19 @@
 
 <article>
   <div class="article_title">
+    <h3><a href="../and-time-ticks-on.html">And time ticks on...</a></h3>
+  </div>
+  <div class="article_text">
+    <p>The interrupt controller <a href="https://github.com/atgreen/moxie-cores/commit/0e44d0f29a2f05ef7f99fb1fc5d670d7f99d7c0b">is working now</a>, as is the timer and my
+exception handling firmware. So now I'm able to write a basic stop-watch
+application, where the 7-segment display simply increments the count
+every second. Yes, this sounds basic, but there's a lot of complexity
+under the hood ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h3><a href="../moxie-ports-and-hardware-developments.html">Moxie ports and hardware developments</a></h3>
   </div>
   <div class="article_text">
@@ -178,18 +191,6 @@ system calls. The <code>swi</code> instruction creates a call frame on the stack
 and then jumps to a global exception handler routine. The exception
 handler for moxie-uClinux switches to the kernel stack before jumping to
 the relevant kernel routine. Returning from ...</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="../forking-bugs.html">Forking bugs</a></h3>
-  </div>
-  <div class="article_text">
-    <p>I found some time to look at the Linux kernel port again, and discovered
-a bug in the forking code (the child process must return 0 after a
-fork!). What we're looking at here is the start of userland, post kernel
-boot, where busybox is trying to run an ...</p>
   </div>
 </article>
 

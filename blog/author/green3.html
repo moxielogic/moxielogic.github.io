@@ -60,6 +60,19 @@
 
 <article>
   <div class="article_title">
+    <h3><a href="../vfork-for-uclinux-forces-an-architecture-change.html">vfork() for uClinux forces an architecture change</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Moxie uses a simple software interrupt instruction (<code>swi</code>) to implement
+system calls. The <code>swi</code> instruction creates a call frame on the stack
+and then jumps to a global exception handler routine. The exception
+handler for moxie-uClinux switches to the kernel stack before jumping to
+the relevant kernel routine. Returning from ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h3><a href="../forking-bugs.html">Forking bugs</a></h3>
   </div>
   <div class="article_text">
@@ -173,18 +186,6 @@ computed target address. Here's some code that works now:</p>
 <p>The SoC, code named "Muskoka", has three main components: the moxie
 core, a wishbone switch and a ROM device. The switch was easy to
 implement, as I just have a single ...</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="../rtems-status-update.html">RTEMS status update</a></h3>
-  </div>
-  <div class="article_text">
-    <p>The <a href="http://www.rtems.com">RTEMS</a> port in <a href="http://www.moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a> is looking pretty good right now.
-Here's a test of the RTEMS network loopback device running on the moxie
-gdb simulator.  The first two client connections fail in this test. 
-It's supposed to fail in the first case, but I'm not sure ...</p>
   </div>
 </article>
 

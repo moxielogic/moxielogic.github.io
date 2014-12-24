@@ -62,6 +62,18 @@
 
 <article>
   <div class="article_title">
+    <h3><a href="../forking-bugs.html">Forking bugs</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I found some time to look at the Linux kernel port again, and discovered
+a bug in the forking code (the child process must return 0 after a
+fork!). What we're looking at here is the start of userland, post kernel
+boot, where busybox is trying to run an ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h3><a href="../multiported-registers-microcode-and-register-forwarding.html">Multiported Registers, Microcode and Register Forwarding</a></h3>
   </div>
   <div class="article_text">
@@ -175,19 +187,6 @@ implement, as I just have a single ...</p>
 Here's a test of the RTEMS network loopback device running on the moxie
 gdb simulator.  The first two client connections fail in this test. 
 It's supposed to fail in the first case, but I'm not sure ...</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="../bisecting-gcc.html">Bisecting GCC</a></h3>
-  </div>
-  <div class="article_text">
-    <p>The thing about <a href="http://gcc.gnu.org">GCC</a> is that things break when you take your eye off
-the ball. And this is what happened during my months long hiatus from
-the moxie project. Somewhere between early March and today, the moxie
-GCC port lost the ability to compile non-trivial code, notably libgcc.
-Firing ...</p>
   </div>
 </article>
 

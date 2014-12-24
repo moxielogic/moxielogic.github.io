@@ -60,6 +60,20 @@
 
 <article>
   <div class="article_title">
+    <h3><a href="../blog/real-world-multiply.html">Multiplication in the Real World</a></h3>
+  </div>
+  <div class="article_text">
+    <p>The bitcoin team has been exercising moxie in ways that it hasn't
+been stressed before.  For example, they've been examining the code
+quality for their crypto libraries like
+<a href="https://github.com/bitcoin/secp256k1">libsecp256k1</a>, an elliptical
+curve crypto library in C, and providing feedback.  Their first
+feedback here was that moxie provides no ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h3><a href="../moxie-ports-and-hardware-developments.html">Moxie ports and hardware developments</a></h3>
   </div>
   <div class="article_text">
@@ -176,22 +190,6 @@ like BusyBox can run.</p>
     <p>The moxie port has been <a href="http://gcc.gnu.org/ml/gcc/2009-06/msg00194.html">accepted by the GCC steering committee</a>!</p>
 <p>I just <a href="http://gcc.gnu.org/viewcvs?view=rev&amp;revision=148339">checked it in</a>.</p>
 <p>That is all.</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="../everything-is-relative-finally.html">Everything is relative (finally!)</a></h3>
-  </div>
-  <div class="article_text">
-    <p>The Moxie ISA still needs quite a bit of tuning. Take branches, for
-instance. A <code>beq</code> instruction currently encoded <a href="http://www.moxielogic.org/wiki/index.php?title=Instruction_Set#beq">like so</a>...  </p>
-<div class="highlight"><pre><span class="err">`</span><span class="mo">00001111</span><span class="n">xxxxxxxx</span> <span class="n">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</span><span class="err">`</span>
-</pre></div>
-
-
-<p>...where the "<code>x</code>"s represent "don't care" bits, and "<code>i</code>"s are a
-32-bit absolute branch target. That's right -- branch targets are not PC ...</p>
   </div>
 </article>
 

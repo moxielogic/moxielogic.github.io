@@ -60,6 +60,19 @@
 
 <article>
   <div class="article_title">
+    <h3><a href="../an-on-chip-bootloader.html">An On-Chip Bootloader</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Good news: we can access external memory! The logic for my pseudo-static
+RAM controller is working, and big programs can finally run on hardware.</p>
+<p>You may recall that I had previously only been accessing fake memory
+that was configured directly out of limited FPGA resources. I could
+squeeze a tiny ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h3><a href="../and-time-ticks-on.html">And time ticks on...</a></h3>
   </div>
   <div class="article_text">
@@ -176,19 +189,6 @@ Technology last fall called '<a href="http://jolt.law.harvard.edu/articles/pdf/v
 Licensing</a>'. I'm using the GPL as a place-holder in my verilog source,
 but I've always felt that the GPL/LGPL were inappropriate licenses for
 digital logic. Eli's ...</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="../vfork-for-uclinux-forces-an-architecture-change.html">vfork() for uClinux forces an architecture change</a></h3>
-  </div>
-  <div class="article_text">
-    <p>Moxie uses a simple software interrupt instruction (<code>swi</code>) to implement
-system calls. The <code>swi</code> instruction creates a call frame on the stack
-and then jumps to a global exception handler routine. The exception
-handler for moxie-uClinux switches to the kernel stack before jumping to
-the relevant kernel routine. Returning from ...</p>
   </div>
 </article>
 
