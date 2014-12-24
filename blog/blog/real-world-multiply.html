@@ -63,13 +63,13 @@
     <h3><a href="../blog/real-world-multiply.html">Multiplication in the Real World</a></h3>
   </div>
   <div class="article_text">
-    <p>The bitcoin team has been exercising moxie in ways that it hasn't
-been stressed before.  For example, they've been examining the code
-quality for their crypto libraries like
+    <p>The bitcoin team has been exercising moxie in ways that it hasn't been
+stressed before.  For example, they've been examining the code quality
+for their crypto libraries like
 <a href="https://github.com/bitcoin/secp256k1">libsecp256k1</a>, an elliptical
-curve crypto library in C, and providing feedback.  Their first
-feedback here was that moxie provides no native way to get a 64-bit
-result from a 32-bit multiply.  One of the developers noted that...</p>
+curve crypto library in C.  One of their first feedbacks here was that
+moxie provides no native way to get a 64-bit result from a 32-bit
+multiply.  One of the developers noted that...</p>
 <blockquote>
 <ol>
 <li>ARM has umull which returns results into two registers</li>
@@ -85,13 +85,12 @@ second register would have to be inferred somehow (<code>$rA</code> and
 <code>$r[A+1]</code>?).  Or maybe we could dedicate special registers for
 multiplication results?  Neither approach is very appealing.  I
 decided to go with the Power approach (also used by NIOS2 and perhaps
-others), and introduce a new instructions (mul.x and umul.x) that
+others), and introduce a new instructions (<code>mul.x</code> and <code>umul.x</code>) that
 multiply two 32-bit values and delivers the upper 32-bits of a 64-bit
 result (signed and unsigned).  The compiler change was pretty straight
-forward, and can be seen here:</p>
-<p>https://gcc.gnu.org/ml/gcc-patches/2014-12/msg01850.html</p>
+forward, and can be seen here: <a href="https://gcc.gnu.org/ml/gcc-patches/2014-12/msg01850.html">https://gcc.gnu.org/ml/gcc-patches/2014-12/msg01850.html</a>.</p>
 <p>Note that the compiler only generates these instructions when provided
-with -mmul.x, which is enabled by default for moxiebox-elf targets.</p>
+with <code>-mmul.x</code>, which is enabled by default for moxiebox-elf targets.</p>
 <p>The end result is that key functions in the secp256k1 code halved in
 length!  We'll continue looking at code quality and tweaking the
 architecture when it makes sense.</p>
