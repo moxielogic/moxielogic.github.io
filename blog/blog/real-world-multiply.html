@@ -85,7 +85,7 @@ second register would have to be inferred somehow (<code>$rA</code> and
 <code>$r[A+1]</code>?).  Or maybe we could dedicate special registers for
 multiplication results?  Neither approach is very appealing.  I
 decided to go with the Power approach (also used by NIOS2 and perhaps
-others), and introduce a new instructions (<code>mul.x</code> and <code>umul.x</code>) that
+others), and introduce new instructions (<code>mul.x</code> and <code>umul.x</code>) that
 multiply two 32-bit values and delivers the upper 32-bits of a 64-bit
 result (signed and unsigned).  The compiler change was pretty straight
 forward, and can be seen here: <a href="https://gcc.gnu.org/ml/gcc-patches/2014-12/msg01850.html">https://gcc.gnu.org/ml/gcc-patches/2014-12/msg01850.html</a>.</p>

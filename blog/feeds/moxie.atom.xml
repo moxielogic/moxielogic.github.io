@@ -21,7 +21,7 @@ second register would have to be inferred somehow (&lt;code&gt;$rA&lt;/code&gt; 
 &lt;code&gt;$r[A+1]&lt;/code&gt;?).  Or maybe we could dedicate special registers for
 multiplication results?  Neither approach is very appealing.  I
 decided to go with the Power approach (also used by NIOS2 and perhaps
-others), and introduce a new instructions (&lt;code&gt;mul.x&lt;/code&gt; and &lt;code&gt;umul.x&lt;/code&gt;) that
+others), and introduce new instructions (&lt;code&gt;mul.x&lt;/code&gt; and &lt;code&gt;umul.x&lt;/code&gt;) that
 multiply two 32-bit values and delivers the upper 32-bits of a 64-bit
 result (signed and unsigned).  The compiler change was pretty straight
 forward, and can be seen here: &lt;a href="https://gcc.gnu.org/ml/gcc-patches/2014-12/msg01850.html"&gt;https://gcc.gnu.org/ml/gcc-patches/2014-12/msg01850.html&lt;/a&gt;.&lt;/p&gt;
