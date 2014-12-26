@@ -16,15 +16,16 @@ multiply.  One of the developers noted that...&lt;/p&gt;
 &lt;p&gt;From an instruction count perspective, moxie's failing here was
 painfully obvious. But how to go about addressing this?&lt;/p&gt;
 &lt;p&gt;The MIPS and ARM approaches require register pairs to hold results.
-Moxie has two operand instructions, and if I went this way then the
-second register would have to be inferred somehow (&lt;code&gt;$rA&lt;/code&gt; and
-&lt;code&gt;$r[A+1]&lt;/code&gt;?).  Or maybe we could dedicate special registers for
-multiplication results?  Neither approach is very appealing.  I
-decided to go with the Power approach (also used by NIOS2 and perhaps
-others), and introduce new instructions (&lt;code&gt;mul.x&lt;/code&gt; and &lt;code&gt;umul.x&lt;/code&gt;) that
-multiply two 32-bit values and delivers the upper 32-bits of a 64-bit
-result (signed and unsigned).  The compiler change was pretty straight
-forward, and can be seen here: &lt;a href="https://gcc.gnu.org/ml/gcc-patches/2014-12/msg01850.html"&gt;https://gcc.gnu.org/ml/gcc-patches/2014-12/msg01850.html&lt;/a&gt;.&lt;/p&gt;
+Moxie has two-operand instructions, and if I went this way the second
+register would have to be inferred somehow (&lt;code&gt;$rA&lt;/code&gt; and &lt;code&gt;$r[A+1]&lt;/code&gt;?).  Or
+maybe we could dedicate special registers for multiplication results?
+Neither approach is very appealing.  I decided to go with the Power
+approach (also used by NIOS2 and perhaps others), and introduce new
+instructions (&lt;code&gt;mul.x&lt;/code&gt; and &lt;code&gt;umul.x&lt;/code&gt;) that multiply two 32-bit values
+and delivers the upper 32 bits of a 64-bit result (signed and
+unsigned).  The compiler change was pretty straight forward, and can
+be seen here:
+&lt;a href="https://gcc.gnu.org/ml/gcc-patches/2014-12/msg01850.html"&gt;https://gcc.gnu.org/ml/gcc-patches/2014-12/msg01850.html&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Note that the compiler only generates these instructions when provided
 with &lt;code&gt;-mmul.x&lt;/code&gt;, which is enabled by default for moxiebox-elf targets.&lt;/p&gt;
 &lt;p&gt;The end result is that key functions in the secp256k1 code halved in
