@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Moxie Blog</title><link href="http://moxielogic.github.io/blog/" rel="alternate"></link><link href="http://moxielogic.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>http://moxielogic.github.io/blog/</id><updated>2014-12-24T08:47:00-05:00</updated><entry><title>Multiplication in the Real World</title><link href="http://moxielogic.github.io/blog/blog/real-world-multiply.html" rel="alternate"></link><updated>2014-12-24T08:47:00-05:00</updated><author><name>green</name></author><id>tag:moxielogic.github.io/blog,2014-12-24:blog/real-world-multiply.html</id><summary type="html">&lt;p&gt;The bitcoin team has been exercising moxie in ways that it hasn't been
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Moxie Blog</title><link href="http://moxielogic.github.io/blog/" rel="alternate"></link><link href="http://moxielogic.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>http://moxielogic.github.io/blog/</id><updated>2014-12-24T08:47:00-05:00</updated><entry><title>Multiplication in the Real World</title><link href="http://moxielogic.github.io/blog/real-world-multiply.html" rel="alternate"></link><updated>2014-12-24T08:47:00-05:00</updated><author><name>green</name></author><id>tag:moxielogic.github.io/blog,2014-12-24:real-world-multiply.html</id><summary type="html">&lt;p&gt;The bitcoin team has been exercising moxie in ways that it hasn't been
 stressed before.  For example, they've been examining the code quality
 for their crypto libraries like
 &lt;a href="https://github.com/bitcoin/secp256k1"&gt;libsecp256k1&lt;/a&gt;, an elliptical
@@ -1831,7 +1831,7 @@ maybe I can reuse the stack slot reserved for the static chain pointer
 to hold the exception type. Many processors, however, just load the
 return address into a reserved register and jump to the handler.
 Presumably this is for performance reasons. More thought required... but
-feedback welcome!&lt;/p&gt;</summary></entry><entry><title>Adding a Real Time Clock</title><link href="http://moxielogic.github.io/blog/blog/adding-a-real-time-clock.html" rel="alternate"></link><updated>2009-03-17T15:38:00-04:00</updated><author><name>green</name></author><id>tag:moxielogic.github.io/blog,2009-03-17:blog/adding-a-real-time-clock.html</id><summary type="html">&lt;p&gt;After a UART, one of the most useful and interesting peripherals you can
+feedback welcome!&lt;/p&gt;</summary></entry><entry><title>Adding a Real Time Clock</title><link href="http://moxielogic.github.io/blog/adding-a-real-time-clock.html" rel="alternate"></link><updated>2009-03-17T15:38:00-04:00</updated><author><name>green</name></author><id>tag:moxielogic.github.io/blog,2009-03-17:adding-a-real-time-clock.html</id><summary type="html">&lt;p&gt;After a UART, one of the most useful and interesting peripherals you can
 add to a board is a Real Time Clock (RTC). Qemu comes with a simulation
 of Freescale's &lt;a href="http://www.freescale.com/files/microcontrollers/doc/data_sheet/MC146818.pdf"&gt;MC146818&lt;/a&gt; RTC chip. Adding it to our qemu-defined
 board was as simple as....&lt;/p&gt;

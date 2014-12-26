@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>The Moxie Blog</title><link>http://moxielogic.github.io/blog/</link><description></description><atom:link href="http://moxielogic.github.io/blog/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 24 Dec 2014 08:47:00 -0500</lastBuildDate><item><title>Multiplication in the Real World</title><link>http://moxielogic.github.io/blog/blog/real-world-multiply.html</link><description>&lt;p&gt;The bitcoin team has been exercising moxie in ways that it hasn't been
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>The Moxie Blog</title><link>http://moxielogic.github.io/blog/</link><description></description><atom:link href="http://moxielogic.github.io/blog/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 24 Dec 2014 08:47:00 -0500</lastBuildDate><item><title>Multiplication in the Real World</title><link>http://moxielogic.github.io/blog/real-world-multiply.html</link><description>&lt;p&gt;The bitcoin team has been exercising moxie in ways that it hasn't been
 stressed before.  For example, they've been examining the code quality
 for their crypto libraries like
 &lt;a href="https://github.com/bitcoin/secp256k1"&gt;libsecp256k1&lt;/a&gt;, an elliptical
@@ -29,7 +29,7 @@ forward, and can be seen here: &lt;a href="https://gcc.gnu.org/ml/gcc-patches/20
 with &lt;code&gt;-mmul.x&lt;/code&gt;, which is enabled by default for moxiebox-elf targets.&lt;/p&gt;
 &lt;p&gt;The end result is that key functions in the secp256k1 code halved in
 length!  We'll continue looking at code quality and tweaking the
-architecture when it makes sense.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">green</dc:creator><pubDate>Wed, 24 Dec 2014 08:47:00 -0500</pubDate><guid>tag:moxielogic.github.io/blog,2014-12-24:blog/real-world-multiply.html</guid><category>moxie</category><category>gcc</category><category>architecture</category></item><item><title>Moxiebox and bitcoin</title><link>http://moxielogic.github.io/blog/moxiebox-and-bitcoint.html</link><description>&lt;p&gt;&lt;center&gt;
+architecture when it makes sense.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">green</dc:creator><pubDate>Wed, 24 Dec 2014 08:47:00 -0500</pubDate><guid>tag:moxielogic.github.io/blog,2014-12-24:real-world-multiply.html</guid><category>moxie</category><category>gcc</category><category>architecture</category></item><item><title>Moxiebox and bitcoin</title><link>http://moxielogic.github.io/blog/moxiebox-and-bitcoint.html</link><description>&lt;p&gt;&lt;center&gt;
 &lt;img alt="http://bitcoin.org" src="http://moxielogic.org/images/Bitcoin-logo.jpg" /&gt;
 &lt;/center&gt;&lt;/p&gt;
 &lt;p&gt;One of the more interesting developments around moxie is the adoption
@@ -1831,7 +1831,7 @@ maybe I can reuse the stack slot reserved for the static chain pointer
 to hold the exception type. Many processors, however, just load the
 return address into a reserved register and jump to the handler.
 Presumably this is for performance reasons. More thought required... but
-feedback welcome!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">green</dc:creator><pubDate>Thu, 19 Mar 2009 14:01:00 -0400</pubDate><guid>tag:moxielogic.github.io/blog,2009-03-19:thinking-about-exceptions.html</guid></item><item><title>Adding a Real Time Clock</title><link>http://moxielogic.github.io/blog/blog/adding-a-real-time-clock.html</link><description>&lt;p&gt;After a UART, one of the most useful and interesting peripherals you can
+feedback welcome!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">green</dc:creator><pubDate>Thu, 19 Mar 2009 14:01:00 -0400</pubDate><guid>tag:moxielogic.github.io/blog,2009-03-19:thinking-about-exceptions.html</guid></item><item><title>Adding a Real Time Clock</title><link>http://moxielogic.github.io/blog/adding-a-real-time-clock.html</link><description>&lt;p&gt;After a UART, one of the most useful and interesting peripherals you can
 add to a board is a Real Time Clock (RTC). Qemu comes with a simulation
 of Freescale's &lt;a href="http://www.freescale.com/files/microcontrollers/doc/data_sheet/MC146818.pdf"&gt;MC146818&lt;/a&gt; RTC chip. Adding it to our qemu-defined
 board was as simple as....&lt;/p&gt;
@@ -1849,7 +1849,7 @@ quite simple, and found in&lt;br /&gt;
 more real.&lt;/p&gt;
 &lt;p&gt;After an RTC, I think the next most interesting peripheral is an
 interrupt controller, but this will require more thought about the
-system architecture and how moxie will handle exceptions.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">green</dc:creator><pubDate>Tue, 17 Mar 2009 15:38:00 -0400</pubDate><guid>tag:moxielogic.github.io/blog,2009-03-17:blog/adding-a-real-time-clock.html</guid><category>bsp</category><category>qemu</category></item><item><title>Board Support Packages</title><link>http://moxielogic.github.io/blog/board-support-packages.html</link><description>&lt;p&gt;Today we're introducing the notion of Board Support Packages (BSPs) to
+system architecture and how moxie will handle exceptions.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">green</dc:creator><pubDate>Tue, 17 Mar 2009 15:38:00 -0400</pubDate><guid>tag:moxielogic.github.io/blog,2009-03-17:adding-a-real-time-clock.html</guid><category>bsp</category><category>qemu</category></item><item><title>Board Support Packages</title><link>http://moxielogic.github.io/blog/board-support-packages.html</link><description>&lt;p&gt;Today we're introducing the notion of Board Support Packages (BSPs) to
 the &lt;a href="http://moxielogic.org/wiki/index.php?title=Toolchain"&gt;moxie toolchain&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;A BSP provides all of the configuration data and code requires to target
 a specific hardware platform. This mostly involves linker scripts,
