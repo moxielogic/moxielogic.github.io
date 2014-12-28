@@ -60,6 +60,20 @@
 
 <article>
   <div class="article_title">
+    <h3><a href="../shorter-load-store-offsets.html">Compacting the code with shorter load/store offsets</a></h3>
+  </div>
+  <div class="article_text">
+    <p>You may recall that moxie supports two instructions lengths: 16- and 48-bit.
+Today I'm introducing a few 32-bit instructions as well.</p>
+<p>Previously, moxie's "load and store with offset" instructions were
+defined as...</p>
+<h2><table width='100%'><tr><td><code>ldo.l</code></td><td align='right'><code>00001100AAAABBBB iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
+<p>Load offset, long.  Loads into <code>$rA</code> the 32-bit value from memory pointed ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h3><a href="../real-world-multiply.html">Multiplication in the Real World</a></h3>
   </div>
   <div class="article_text">

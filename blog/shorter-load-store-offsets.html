@@ -18,10 +18,11 @@
   <link href="http://moxielogic.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Moxie Blog Atom" />
   <link href="http://moxielogic.github.io/blog/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="The Moxie Blog RSS" />
 
+<meta name="keywords" content="moxie, architecture">
 
   <title>
     The Moxie Blog
-  </title>
+&ndash; Compacting the code with shorter load/store offsets  </title>
 
 </head>
 
@@ -59,36 +60,57 @@
 
 <article>
   <div class="article_title">
-    <h3><a href="./qemu-says-hello-world.html">Qemu says Hello, World!</a></h3>
+    <h3><a href="./shorter-load-store-offsets.html">Compacting the code with shorter load/store offsets</a></h3>
   </div>
   <div class="article_text">
-    <p>Virtually all of the simulation done so far was with the GDB instruction
-set simulator. As a basic instruction set simulator, it was limited to
-executing instructions found in typical "user level" applications. And,
-if you recall, all interaction with the outside world happened through
-magic software interrupts that were ...</p>
+    <p>You may recall that moxie supports two instructions lengths: 16- and 48-bit.
+Today I'm introducing a few 32-bit instructions as well.</p>
+<p>Previously, moxie's "load and store with offset" instructions were
+defined as...</p>
+<h2><table width='100%'><tr><td><code>ldo.l</code></td><td align='right'><code>00001100AAAABBBB iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
+<p>Load offset, long.  Loads into <code>$rA</code> the 32-bit value from memory pointed at by the address produced by adding the 32-bit value following the 16-bit opcode to <code>$rB</code>.</p>
+<h2><table width='100%'><tr><td><code>sto.l</code></td><td align='right'><code>00001101AAAABBBB iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
+<p>Store offset, long.  Stores the 32-bit contents of <code>$rB</code> into memory at the address roduced by adding the 32-bit value following the 16-bit opcode to <code>$rA</code>.</p>
+<p>In addition to these two, there are versions to load and store 16- and
+8-bit values.</p>
+<p>In almost every <code>ldo</code> and <code>sto</code> case, however, the upper 16 bits of
+the offset were either 0x0000 or 0xFFFF (for negative offsets).
+You'll see a lot of these when we access local C variables accessed by
+indexing off of <code>$fp</code>.</p>
+<p>Shortening the offset from 32 to 16 bits has always been on my radar
+but I was slow to implement because it's a backwards-incompatible
+change, and focus has been on tool/core correctness - not
+optimization.  But now it's time to clean things up, and I've
+implemented this change in all of the upstream moxie tools.  I'm also
+testing a MoxieLite core change as well and should be pushing it to
+github shortly.</p>
+<p>The new ldo and sto instructions look like this (for example)...</p>
+<h2><table width='100%'><tr><td><code>ldo.l</code></td><td align='right'><code>00001100AAAABBBB iiiiiiiiiiiiiiii</code></td></tr></table></h2>
+<p>Load offset, long.  Loads into <code>$rA</code> the 32-bit value from memory pointed at by the address produced by adding the 16-bit value following the 16-bit opcode to <code>$rB</code>.</p>
+<h2><table width='100%'><tr><td><code>sto.l</code></td><td align='right'><code>00001101AAAABBBB iiiiiiiiiiiiiiii</code></td></tr></table></h2>
+<p>Store offset, long.  Stores the 32-bit contents of <code>$rB</code> into memory at the address roduced by adding the 16-bit value following the 16-bit opcode to <code>$rA</code>.</p>
   </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="./moxie-the-ggx-reboot.html">Moxie: the ggx reboot</a></h3>
+  <div class="article_meta">
+    <p>Posted on: Sun 28 December 2014</p>
+    <p>Category: <a href="./category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="./tag/moxie.html">moxie</a>,      <a href="./tag/architecture.html">architecture</a>    </p>
   </div>
-  <div class="article_text">
-    <p>Hola Amigos!  Several months ago I experimented with a new ISA design
-called <a href="http://spindazzle.org/ggx">ggx</a>. I blogged about the co-evolution of the ISA and tools,
-and it was fun.</p>
-<p>Now, after a short break, I'm ready to resume hacking.</p>
-<p>I'm also ready to put a stake in the ground ...</p>
+
+  <div id="article_comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_identifier = "shorter-load-store-offsets.html";
+        (function() {
+             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+             dsq.src = 'http://moxieblog.disqus.com/embed.js';
+             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+         })();
+    </script>
   </div>
+
 </article>
 
-<footer>
-<div id="paginator">
-
-<a href="./index7.html" class="button_accent">Newer Posts &rarr;</a>
-</div>
-</footer>
 
     <div id="ending_message">
       <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>

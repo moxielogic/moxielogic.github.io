@@ -60,6 +60,20 @@
 
 <article>
   <div class="article_title">
+    <h3><a href="../shorter-load-store-offsets.html">Compacting the code with shorter load/store offsets</a></h3>
+  </div>
+  <div class="article_text">
+    <p>You may recall that moxie supports two instructions lengths: 16- and 48-bit.
+Today I'm introducing a few 32-bit instructions as well.</p>
+<p>Previously, moxie's "load and store with offset" instructions were
+defined as...</p>
+<h2><table width='100%'><tr><td><code>ldo.l</code></td><td align='right'><code>00001100AAAABBBB iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
+<p>Load offset, long.  Loads into <code>$rA</code> the 32-bit value from memory pointed ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h3><a href="../real-world-multiply.html">Multiplication in the Real World</a></h3>
   </div>
   <div class="article_text">
@@ -176,19 +190,6 @@ Here's that ...</p>
 memory. But moxie has both 16- and 48-bit instructions, so it's not like
 simple RISC cores that can feed the pipeline on every cycle. My solution
 is to feed 32-bit ...</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="../the-moxielyzer.html">The Moxielyzer</a></h3>
-  </div>
-  <div class="article_text">
-    <p>I just committed a little binary analysis tool to <a href="http://moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a>. You can
-use it to perform simple static analysis on moxie binaries. The kinds of
-things I'm looking for are compiler bugs (because I know there's still
-one there that is triggered by -frerun-cse-after-loop), and instruction
-statistics. For ...</p>
   </div>
 </article>
 

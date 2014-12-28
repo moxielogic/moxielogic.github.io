@@ -60,6 +60,20 @@
 
 <article>
   <div class="article_title">
+    <h3><a href="../shorter-load-store-offsets.html">Compacting the code with shorter load/store offsets</a></h3>
+  </div>
+  <div class="article_text">
+    <p>You may recall that moxie supports two instructions lengths: 16- and 48-bit.
+Today I'm introducing a few 32-bit instructions as well.</p>
+<p>Previously, moxie's "load and store with offset" instructions were
+defined as...</p>
+<h2><table width='100%'><tr><td><code>ldo.l</code></td><td align='right'><code>00001100AAAABBBB iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
+<p>Load offset, long.  Loads into <code>$rA</code> the 32-bit value from memory pointed ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h3><a href="../real-world-multiply.html">Multiplication in the Real World</a></h3>
   </div>
   <div class="article_text">
@@ -197,19 +211,6 @@ you could fit a GDB remote protocol stub in there as well. It ...</p>
 time porting the Marin SoC to the popular Cyclone II based DE2 board.
 There's no external memory support yet, but on-chip memory is working,
 and it looks like the on-chip bootloader is coming up properly. As ...</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="../qemu-1-5-includes-moxie-support.html">QEMU 1.5 includes Moxie support</a></h3>
-  </div>
-  <div class="article_text">
-    <p>QEMU 1.5 was just released the other day, and in the <a href="http://lists.nongnu.org/archive/html/qemu-devel/2013-05/msg02557.html">"And much
-more..."</a> category I'm happy to say that it includes Moxie support!</p>
-<p>This release contains basic Moxie core support, with the imaginary
-"moxiesim" board support. I have some local changes that provide Marin
-SoC emulation, and ...</p>
   </div>
 </article>
 
