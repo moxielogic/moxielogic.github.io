@@ -4,11 +4,11 @@ Today I'm introducing a few 32-bit instructions as well.&lt;/p&gt;
 &lt;p&gt;Previously, moxie's "load and store with offset" instructions were
 defined as...&lt;/p&gt;
 &lt;blockquote&gt;
-## &lt;table width='100%'&gt;&lt;tr&gt;&lt;td&gt;`ldo.l`&lt;/td&gt;&lt;td align='right'&gt;`00001100AAAABBBB iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii`&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-Load offset, long.  Loads into `$rA` the 32-bit value from memory pointed at by the address produced by adding the 32-bit value following the 16-bit opcode to `$rB`.
-
-## &lt;table width='100%'&gt;&lt;tr&gt;&lt;td&gt;`sto.l`&lt;/td&gt;&lt;td align='right'&gt;`00001101AAAABBBB iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii`&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-Store offset, long.  Stores the 32-bit contents of `$rB` into memory at the address roduced by adding the 32-bit value following the 16-bit opcode to `$rA`.
+&lt;table width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;ldo.l&lt;/b&gt;&lt;/td&gt;&lt;td align='right'&gt;&lt;b&gt;00001100AAAABBBB iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+Load offset, long.  Loads into &lt;b&gt;$rA&lt;/b&gt; the 32-bit value from memory pointed at by the address produced by adding the 32-bit value following the 16-bit opcode to &lt;b&gt;$rB&lt;/b&gt;.
+&lt;p&gt;
+&lt;table width='100%'&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;sto.l&lt;/b&gt;&lt;/td&gt;&lt;td align='right'&gt;&lt;b&gt;00001101AAAABBBB iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+Store offset, long.  Stores the 32-bit contents of &lt;b&gt;$rB&lt;/b&gt; into memory at the address roduced by adding the 32-bit value following the 16-bit opcode to &lt;b&gt;$rA&lt;/b&gt;.
 &lt;/blockquote&gt;
 
 &lt;p&gt;In addition to these two, there are versions to load and store 16- and
@@ -26,10 +26,10 @@ testing a MoxieLite core change as well and should be pushing it to
 github shortly.&lt;/p&gt;
 &lt;p&gt;The new ldo and sto instructions look like this (for example)...&lt;/p&gt;
 &lt;blockquote&gt;
-## &lt;table width='100%'&gt;&lt;tr&gt;&lt;td&gt;`ldo.l`&lt;/td&gt;&lt;td align='right'&gt;`00001100AAAABBBB iiiiiiiiiiiiiiii`&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;table width='100%'&gt;&lt;tr&gt;&lt;td&gt;`ldo.l`&lt;/td&gt;&lt;td align='right'&gt;`00001100AAAABBBB iiiiiiiiiiiiiiii`&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 Load offset, long.  Loads into `$rA` the 32-bit value from memory pointed at by the address produced by adding the 16-bit value following the 16-bit opcode to `$rB`.
 
-## &lt;table width='100%'&gt;&lt;tr&gt;&lt;td&gt;`sto.l`&lt;/td&gt;&lt;td align='right'&gt;`00001101AAAABBBB iiiiiiiiiiiiiiii`&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;table width='100%'&gt;&lt;tr&gt;&lt;td&gt;`sto.l`&lt;/td&gt;&lt;td align='right'&gt;`00001101AAAABBBB iiiiiiiiiiiiiiii`&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 Store offset, long.  Stores the 32-bit contents of `$rB` into memory at the address roduced by adding the 16-bit value following the 16-bit opcode to `$rA`.
 &lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">green</dc:creator><pubDate>Sun, 28 Dec 2014 08:47:00 -0500</pubDate><guid>tag:moxielogic.github.io/blog,2014-12-28:shorter-load-store-offsets.html</guid><category>moxie</category><category>architecture</category></item><item><title>Multiplication in the Real World</title><link>http://moxielogic.github.io/blog/real-world-multiply.html</link><description>&lt;p&gt;The bitcoin team has been exercising moxie in ways that it hasn't been
 stressed before.  For example, they've been examining the code quality
