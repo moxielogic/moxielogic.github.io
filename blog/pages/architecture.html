@@ -70,10 +70,10 @@ Collection</a>, and has since evolved to include many
 supervisory level instructions required to run an embedded RTOS such
 has <a href="http://rtems.org">RTEMS</a>.</p>
 <p>Most moxie instructions are 16-bits long, while the remainder include
-an additional 32-bit immediate value resulting in 48-bit instructions.
-A variable width instruction architecture was chosen over a
-fixed-width RISC implementation in order to optimize for instruction
-memory bandwidth, a key performance limiter for many FPGA
+an additional 16- or 32-bit immediate value resulting in 32- and
+48-bit instructions.  A variable width instruction architecture was
+chosen over a fixed-width RISC implementation in order to optimize for
+instruction memory bandwidth, a key performance limiter for many FPGA
 applications.</p>
 <p>As a fair warning to readers, it should be mentioned that the moxie
 architecture is still evolving.  That being said, there have been few
@@ -184,12 +184,12 @@ consumed by the encodings below is filled with the <code>bad</code> instruction.
 <p>Load immediate, byte.  Loads the 32-bit immediate following the 16-bit opcode into register %rA.  This is a poor encoding, as the 32-bit value really only contains 8-bits of interest.</p>
 <h2><table width='100%'><tr><td><code>ldi.s</code></td><td align='right'><code>00100000AAAAxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
 <p>Load immediate, short.  Loads the 32-bit immediate following the 16-bit opcode into register %rA.  This is a poor encoding, as the 32-bit value really only contains 16-bits of interest.</p>
-<h2><table width='100%'><tr><td><code>ldo.b</code></td><td align='right'><code>00110110AAAABBBB iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
-<p>Load offset, byte.  Loads into <code>$rA</code> the 8-bit value from memory pointed at by the address produced by adding the 32-bit value following the 16-bit opcode to <code>$rB</code>.  The loaded value is zero-extended to 32-bits.</p>
-<h2><table width='100%'><tr><td><code>ldo.l</code></td><td align='right'><code>00001100AAAABBBB iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
-<p>Load offset, long.  Loads into <code>$rA</code> the 32-bit value from memory pointed at by the address produced by adding the 32-bit value following the 16-bit opcode to <code>$rB</code>.</p>
-<h2><table width='100%'><tr><td><code>ldo.s</code></td><td align='right'><code>00111000AAAABBBB iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
-<p>Load offset, short.  Loads into <code>$rA</code> the 16-bit value from memory pointed at by the address produced by adding the 32-bit value following the 16-bit opcode to <code>$rB</code>.  The loaded value is zero-extended to 32-bits.</p>
+<h2><table width='100%'><tr><td><code>ldo.b</code></td><td align='right'><code>00110110AAAABBBB iiiiiiiiiiiiiiii</code></td></tr></table></h2>
+<p>Load offset, byte.  Loads into <code>$rA</code> the 8-bit value from memory pointed at by the address produced by adding the 16-bit value following the 16-bit opcode to <code>$rB</code>.  The loaded value is zero-extended to 32-bits.</p>
+<h2><table width='100%'><tr><td><code>ldo.l</code></td><td align='right'><code>00001100AAAABBBB iiiiiiiiiiiiiiii</code></td></tr></table></h2>
+<p>Load offset, long.  Loads into <code>$rA</code> the 32-bit value from memory pointed at by the address produced by adding the 16-bit value following the 16-bit opcode to <code>$rB</code>.</p>
+<h2><table width='100%'><tr><td><code>ldo.s</code></td><td align='right'><code>00111000AAAABBBB iiiiiiiiiiiiiiii</code></td></tr></table></h2>
+<p>Load offset, short.  Loads into <code>$rA</code> the 16-bit value from memory pointed at by the address produced by adding the 16-bit value following the 16-bit opcode to <code>$rB</code>.  The loaded value is zero-extended to 32-bits.</p>
 <h2><table width='100%'><tr><td><code>lshr</code></td><td align='right'><code>00100111AAAABBBB</code></td></tr></table></h2>
 <p>Logical shift right.  Performs a logical shift right of register <code>$rA</code> by <code>$rB</code> bits and stores the result in <code>$rA</code>.</p>
 <h2><table width='100%'><tr><td><code>mod</code></td><td align='right'><code>00110011AAAABBBB</code></td></tr></table></h2>
@@ -232,12 +232,12 @@ consumed by the encodings below is filled with the <code>bad</code> instruction.
 <p>Store absolute, long.  Stores the full 32-bit contents of <code>$rA</code> into memory at the 32-bit address following the 16-bit opcode.</p>
 <h2><table width='100%'><tr><td><code>sta.s</code></td><td align='right'><code>00100100AAAAxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
 <p>Store absolute, short.  Stores the lower 16-bit contents of <code>$rA</code> into memory at the 32-bit address following the 16-bit opcode.</p>
-<h2><table width='100%'><tr><td><code>sto.b</code></td><td align='right'><code>00110111AAAABBBB iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
-<p>Store offset, byte.  Stores the 8-bit contents of <code>$rB</code> into memory at the address roduced by adding the 32-bit value following the 16-bit opcode to <code>$rA</code>.</p>
-<h2><table width='100%'><tr><td><code>sto.l</code></td><td align='right'><code>00001101AAAABBBB iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
-<p>Store offset, long.  Stores the 32-bit contents of <code>$rB</code> into memory at the address roduced by adding the 32-bit value following the 16-bit opcode to <code>$rA</code>.</p>
-<h2><table width='100%'><tr><td><code>sto.s</code></td><td align='right'><code>00111001AAAABBBB iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
-<p>Store offset, short.  Stores the 16-bit contents of <code>$rB</code> into memory at the address roduced by adding the 32-bit value following the 16-bit opcode to <code>$rA</code>.</p>
+<h2><table width='100%'><tr><td><code>sto.b</code></td><td align='right'><code>00110111AAAABBBB iiiiiiiiiiiiiiii</code></td></tr></table></h2>
+<p>Store offset, byte.  Stores the 8-bit contents of <code>$rB</code> into memory at the address roduced by adding the 16-bit value following the 16-bit opcode to <code>$rA</code>.</p>
+<h2><table width='100%'><tr><td><code>sto.l</code></td><td align='right'><code>00001101AAAABBBB iiiiiiiiiiiiiiii</code></td></tr></table></h2>
+<p>Store offset, long.  Stores the 32-bit contents of <code>$rB</code> into memory at the address roduced by adding the 16-bit value following the 16-bit opcode to <code>$rA</code>.</p>
+<h2><table width='100%'><tr><td><code>sto.s</code></td><td align='right'><code>00111001AAAABBBB iiiiiiiiiiiiiiii</code></td></tr></table></h2>
+<p>Store offset, short.  Stores the 16-bit contents of <code>$rB</code> into memory at the address roduced by adding the 16-bit value following the 16-bit opcode to <code>$rA</code>.</p>
 <h2><table width='100%'><tr><td><code>sub</code></td><td align='right'><code>00101001AAAABBBB</code></td></tr></table></h2>
 <p>Subtract, long.  Subtracts the contents of registers <code>$rA</code> and <code>$rB</code> and stores the result in <code>$rA</code>.</p>
 <h2><table width='100%'><tr><td><code>swi</code></td><td align='right'><code>00110000xxxxxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
