@@ -67,12 +67,14 @@
 Today I'm introducing a few 32-bit instructions as well.</p>
 <p>Previously, moxie's "load and store with offset" instructions were
 defined as...</p>
-<p><quote></p>
-<h2><table width='100%'><tr><td><code>ldo.l</code></td><td align='right'><code>00001100AAAABBBB iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
-<p>Load offset, long.  Loads into <code>$rA</code> the 32-bit value from memory pointed at by the address produced by adding the 32-bit value following the 16-bit opcode to <code>$rB</code>.</p>
-<h2><table width='100%'><tr><td><code>sto.l</code></td><td align='right'><code>00001101AAAABBBB iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</code></td></tr></table></h2>
-<p>Store offset, long.  Stores the 32-bit contents of <code>$rB</code> into memory at the address roduced by adding the 32-bit value following the 16-bit opcode to <code>$rA</code>.
-</quote></p>
+<blockquote>
+## <table width='100%'><tr><td>`ldo.l`</td><td align='right'>`00001100AAAABBBB iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii`</td></tr></table>
+Load offset, long.  Loads into `$rA` the 32-bit value from memory pointed at by the address produced by adding the 32-bit value following the 16-bit opcode to `$rB`.
+
+## <table width='100%'><tr><td>`sto.l`</td><td align='right'>`00001101AAAABBBB iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii`</td></tr></table>
+Store offset, long.  Stores the 32-bit contents of `$rB` into memory at the address roduced by adding the 32-bit value following the 16-bit opcode to `$rA`.
+</blockquote>
+
 <p>In addition to these two, there are versions to load and store 16- and
 8-bit values.</p>
 <p>In almost every <code>ldo</code> and <code>sto</code> case, however, the upper 16 bits of
@@ -87,10 +89,13 @@ implemented this change in all of the upstream moxie tools.  I'm also
 testing a MoxieLite core change as well and should be pushing it to
 github shortly.</p>
 <p>The new ldo and sto instructions look like this (for example)...</p>
-<h2><table width='100%'><tr><td><code>ldo.l</code></td><td align='right'><code>00001100AAAABBBB iiiiiiiiiiiiiiii</code></td></tr></table></h2>
-<p>Load offset, long.  Loads into <code>$rA</code> the 32-bit value from memory pointed at by the address produced by adding the 16-bit value following the 16-bit opcode to <code>$rB</code>.</p>
-<h2><table width='100%'><tr><td><code>sto.l</code></td><td align='right'><code>00001101AAAABBBB iiiiiiiiiiiiiiii</code></td></tr></table></h2>
-<p>Store offset, long.  Stores the 32-bit contents of <code>$rB</code> into memory at the address roduced by adding the 16-bit value following the 16-bit opcode to <code>$rA</code>.</p>
+<blockquote>
+## <table width='100%'><tr><td>`ldo.l`</td><td align='right'>`00001100AAAABBBB iiiiiiiiiiiiiiii`</td></tr></table>
+Load offset, long.  Loads into `$rA` the 32-bit value from memory pointed at by the address produced by adding the 16-bit value following the 16-bit opcode to `$rB`.
+
+## <table width='100%'><tr><td>`sto.l`</td><td align='right'>`00001101AAAABBBB iiiiiiiiiiiiiiii`</td></tr></table>
+Store offset, long.  Stores the 32-bit contents of `$rB` into memory at the address roduced by adding the 16-bit value following the 16-bit opcode to `$rA`.
+</blockquote>
   </div>
   <div class="article_meta">
     <p>Posted on: Sun 28 December 2014</p>
