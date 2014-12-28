@@ -198,7 +198,7 @@ consumed by the encodings below is filled with the <code>bad</code> instruction.
 <p>Move register to register.  Move the contents of <code>$rB</code> into <code>$rA</code>.</p>
 <h2><table width='100%'><tr><td><code>mul</code></td><td align='right'><code>00101111AAAABBBB</code></td></tr></table></h2>
 <p>Multiply.  Multiplies the contents of registers <code>$rA</code> and <code>$rB</code> and stores the lower 32-bits of a 64-bit result in <code>$rA</code>.</p>
-<h2><table width='100%'><tr><td><code>mul.x</code></td><td align='right'><code>00010011AAAABBBB</code></td></tr></table></h2>
+<h2><table width='100%'><tr><td><code>mul.x</code></td><td align='right'><code>00010100AAAABBBB</code></td></tr></table></h2>
 <p>Signed multiply, upper word.  Multiplies the contents of registers <code>$rA</code> and <code>$rB</code> and stores the upper 32-bits of a 64-bit result in <code>$rA</code>.</p>
 <h2><table width='100%'><tr><td><code>neg</code></td><td align='right'><code>00101010AAAABBBB</code></td></tr></table></h2>
 <p>Negative.  Changes the sign of <code>$rB</code> and stores the result in <code>$rA</code>.</p>
@@ -246,7 +246,7 @@ consumed by the encodings below is filled with the <code>bad</code> instruction.
 <p>Divide unsigned, long.  Divides the unsigned contents of registers <code>$rA</code> and <code>$rB</code> and stores the result in <code>$rA</code>.</p>
 <h2><table width='100%'><tr><td><code>umod</code></td><td align='right'><code>00110100AAAABBBB</code></td></tr></table></h2>
 <p>Modulus unsigned, long.  Compute the modulus of the unsigned contents of registers <code>$rA</code> and <code>$rB</code> and stores the result in <code>$rA</code>.</p>
-<h2><table width='100%'><tr><td><code>umul.x</code></td><td align='right'><code>00010100AAAABBBB</code></td></tr></table></h2>
+<h2><table width='100%'><tr><td><code>umul.x</code></td><td align='right'><code>00010011AAAABBBB</code></td></tr></table></h2>
 <p>Unsigned multiply, upper word.  Multiplies the contents of registers <code>$rA</code> and <code>$rB</code> and stores the upper 32-bits of an unsigned 64-bit result in <code>$rA</code>.</p>
 <h2><table width='100%'><tr><td><code>xor</code></td><td align='right'><code>00101110AAAABBBB</code></td></tr></table></h2>
 <p>Logical exclusive or.  Performs a logical exclusive or operation on the contents of registers <code>$rA</code> and <code>$rB</code> and stores the result in <code>$rA</code>.</p>
