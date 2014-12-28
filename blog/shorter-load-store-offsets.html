@@ -90,11 +90,11 @@ testing a MoxieLite core change as well and should be pushing it to
 github shortly.</p>
 <p>The new ldo and sto instructions look like this (for example)...</p>
 <blockquote>
-<table width='100%'><tr><td>`ldo.l`</td><td align='right'>`00001100AAAABBBB iiiiiiiiiiiiiiii`</td></tr></table>
-Load offset, long.  Loads into `$rA` the 32-bit value from memory pointed at by the address produced by adding the 16-bit value following the 16-bit opcode to `$rB`.
-
-<table width='100%'><tr><td>`sto.l`</td><td align='right'>`00001101AAAABBBB iiiiiiiiiiiiiiii`</td></tr></table>
-Store offset, long.  Stores the 32-bit contents of `$rB` into memory at the address roduced by adding the 16-bit value following the 16-bit opcode to `$rA`.
+<table width='100%'><tr><td><b>ldo.l</b></td><td align='right'><b>00001100AAAABBBB iiiiiiiiiiiiiiii</b></td></tr></table>
+Load offset, long.  Loads into <b>$rA</b> the 32-bit value from memory pointed at by the address produced by adding the 16-bit value following the 16-bit opcode to <b>$rB</b>.
+<p> 
+<table width='100%'><tr><td><b>sto.l</b></td><td align='right'><b>00001101AAAABBBB iiiiiiiiiiiiiiii</b></td></tr></table>
+Store offset, long.  Stores the 32-bit contents of <b>$rB</b> into memory at the address roduced by adding the 16-bit value following the 16-bit opcode to <b>$rA</b>.
 </blockquote>
   </div>
   <div class="article_meta">
