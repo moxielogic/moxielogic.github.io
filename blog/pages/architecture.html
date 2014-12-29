@@ -88,7 +88,7 @@ Please send all comments to the
 <tr><th>Name</th><th>Description</th></tr>
 <tr><td><code>$fp</code></td><td>the frame pointer</td></tr>
 <tr><td><code>$sp</code></td><td>the stack pointer</td></tr>
-<tr><td><code>$r1</code> through <code>$r13</code></td><td>general purpose registers</td></tr>
+<tr><td><code>$r0</code> through <code>$r13</code></td><td>general purpose registers</td></tr>
 </table>
 </center>
 </div>
@@ -202,7 +202,7 @@ consumed by the encodings below is filled with the <code>bad</code> instruction.
 <p>Signed multiply, upper word.  Multiplies the contents of registers <code>$rA</code> and <code>$rB</code> and stores the upper 32-bits of a 64-bit result in <code>$rA</code>.</p>
 <h2><table width='100%'><tr><td><code>neg</code></td><td align='right'><code>00101010AAAABBBB</code></td></tr></table></h2>
 <p>Negative.  Changes the sign of <code>$rB</code> and stores the result in <code>$rA</code>.</p>
-<h2><table width='100%'><tr><td><code>nop</code></td><td align='right'><code>00000000xxxxxxxx</code></td></tr></table></h2>
+<h2><table width='100%'><tr><td><code>nop</code></td><td align='right'><code>00001111xxxxxxxx</code></td></tr></table></h2>
 <p>Do nothing.</p>
 <h2><table width='100%'><tr><td><code>not</code></td><td align='right'><code>00101100AAAABBBB</code></td></tr></table></h2>
 <p>Logical not.  Performs a logical not operation on the contents of register <code>$rB</code> and stores the result in register <code>$rA</code>.</p>
@@ -256,7 +256,7 @@ consumed by the encodings below is filled with the <code>bad</code> instruction.
 <p>Zero-extend short.  Zero-extend the lower 16-bits of <code>$rB</code> into a <code>$rA</code> as a 32-bit value.</p>
   </div>
   <div class="article_meta">
-    <p>Updated on: Fri 26 December 2014</p>
+    <p>Updated on: Mon 29 December 2014</p>
   </div>
 </article>
 
