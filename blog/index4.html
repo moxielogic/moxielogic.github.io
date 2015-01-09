@@ -59,6 +59,19 @@
 
 <article>
   <div class="article_title">
+    <h3><a href="./branch-delays.html">Branch delays</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I've coded up logic for more arithmetic instructions, register moves, as
+well as direct and indirect jumps. For jumps, I simply pass a branch
+signal from the execute stage back to the fetch stage, as well as the
+computed target address. Here's some code that works now:</p>
+<div class="highlight"><pre><span class="na">.text ...</span></pre></div>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h3><a href="./a-simulation-milestone-for-the-muskoka-soc.html">A simulation milestone for the Muskoka SoC!</a></h3>
   </div>
   <div class="article_text">
@@ -175,19 +188,6 @@ It's the <a href="http://www.altera.com/education/univ/materials/boards/unv-de2-
 <p>But it's been slow going. The good news is that moxie is front and
 centre for me again, so let's see what we can do over the next few
 weeks. And over these next few weeks I'm promising myself not to ...</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="./the-moxielyzer.html">The Moxielyzer</a></h3>
-  </div>
-  <div class="article_text">
-    <p>I just committed a little binary analysis tool to <a href="http://moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a>. You can
-use it to perform simple static analysis on moxie binaries. The kinds of
-things I'm looking for are compiler bugs (because I know there's still
-one there that is triggered by -frerun-cse-after-loop), and instruction
-statistics. For ...</p>
   </div>
 </article>
 

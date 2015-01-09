@@ -18,10 +18,11 @@
   <link href="http://moxielogic.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Moxie Blog Atom" />
   <link href="http://moxielogic.github.io/blog/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="The Moxie Blog RSS" />
 
+<meta name="keywords" content="gcc">
 
   <title>
     The Moxie Blog
-  </title>
+&ndash; An ELF Machine Number for Moxie  </title>
 
 </head>
 
@@ -59,53 +60,59 @@
 
 <article>
   <div class="article_title">
-    <h3><a href="./moxiedev-and-the-wiki.html">MoxieDev and the Wiki</a></h3>
+    <h3><a href="./elf-machine-number.html">An ELF Machine Number for Moxie</a></h3>
   </div>
   <div class="article_text">
-    <p>Now that the project has been renamed, the mercurial source repository
-has also changed from ggxdev to MoxieDev. This repository contains the
-entire toolchain, simulators and benchmark programs. You can check the
-entire thing out like so...</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">hg</span> <span class="n">clone</span> <span class="n">http</span><span class="o">:</span><span class="c1">//mercurial.intuxication.org/hg/moxiedev</span>
-</pre></div>
-
-
-<p>I've also created a ...</p>
+    <p>Moxie was assigned an official ELF machine number this week!  You can
+check it out here:
+<a href="http://www.sco.com/developers/gabi/latest/ch4.eheader.html">http://www.sco.com/developers/gabi/latest/ch4.eheader.html</a>.</p>
+<p>All ELF files start with a header describing properties of the object
+at hand.  One of the most important properties is the 'machine' type.
+The machine type identifies the basic architecture for which the given
+binary is relevant.  It is represented as a 16-bit integer, so, for
+instance, MIPS is 3, ARM is 40, AVR32 is 185, and now, I'm happy to
+say, Moxie is 223.</p>
+<p>Linkers, loaders, and similar tools examine the machine number to make
+sure they're working with the right kinds of files.  This saves us
+from linking SH4 and Sparc objects into x86_64 executables.</p>
+<p>Until recently the Moxie GNU binutils port had been using a temporary
+machine number of 0xFEED.  Every new architecture, however, should get
+an official number assigned by the System V gABI maintainers.  Just
+send a nice email requesting the number assignment to registry@sco.com
+and they'll increment their most recent number and add you to the
+list.</p>
+<p>If you look at GNU binutils you'll see that many ports, including
+Moxie, live for quite some time using arbitrary machine number values
+unlikely to conflict with the slowly incrementing official numbers.
+Others, like the FTDI FT32 port, get their numbers (222) assigned in
+advance of port submission.  If you go the same route I did, you'll
+see that binutils has a mechanism whereby you can identify the main
+machine number (223) as well as alternative numbers (0xFEED) to ease
+in the transition.  This is all that needed doing:
+<a href="https://sourceware.org/ml/binutils/2015-01/msg00105.html">https://sourceware.org/ml/binutils/2015-01/msg00105.html</a>.</p>
+<p>Happy Hacking!</p>
   </div>
+  <div class="article_meta">
+    <p>Posted on: Fri 09 January 2015</p>
+    <p>Category: <a href="./category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="./tag/gcc.html">gcc</a>    </p>
+  </div>
+
+  <div id="article_comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_identifier = "elf-machine-number.html";
+        (function() {
+             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+             dsq.src = 'http://moxieblog.disqus.com/embed.js';
+             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+         })();
+    </script>
+  </div>
+
 </article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="./qemu-says-hello-world.html">Qemu says Hello, World!</a></h3>
-  </div>
-  <div class="article_text">
-    <p>Virtually all of the simulation done so far was with the GDB instruction
-set simulator. As a basic instruction set simulator, it was limited to
-executing instructions found in typical "user level" applications. And,
-if you recall, all interaction with the outside world happened through
-magic software interrupts that were ...</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="./moxie-the-ggx-reboot.html">Moxie: the ggx reboot</a></h3>
-  </div>
-  <div class="article_text">
-    <p>Hola Amigos!  Several months ago I experimented with a new ISA design
-called <a href="http://spindazzle.org/ggx">ggx</a>. I blogged about the co-evolution of the ISA and tools,
-and it was fun.</p>
-<p>Now, after a short break, I'm ready to resume hacking.</p>
-<p>I'm also ready to put a stake in the ground ...</p>
-  </div>
-</article>
 
-<footer>
-<div id="paginator">
-
-<a href="./index7.html" class="button_accent">Newer Posts &rarr;</a>
-</div>
-</footer>
 
     <div id="ending_message">
       <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>

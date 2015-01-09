@@ -59,6 +59,19 @@
 
 <article>
   <div class="article_title">
+    <h3><a href="./the-moxielyzer.html">The Moxielyzer</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I just committed a little binary analysis tool to <a href="http://moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a>. You can
+use it to perform simple static analysis on moxie binaries. The kinds of
+things I'm looking for are compiler bugs (because I know there's still
+one there that is triggered by -frerun-cse-after-loop), and instruction
+statistics. For ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h3><a href="./summer-is-over-so-put-away-the-white-pants-and-start-submitting-patches.html">Summer is over, so put away the white pants and start submitting patches!</a></h3>
   </div>
   <div class="article_text">
@@ -176,19 +189,6 @@ right now, but that's to be expected. I just got it to the ...</p>
 and long-time GDB hacker Michael Snyder. He told me about a new feature
 in GDB called "process recording". The basic idea is that when you tell
 GDB to enter into "record mode", it ...</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="./a-disassembler-in-verilog.html">A Disassembler in Verilog</a></h3>
-  </div>
-  <div class="article_text">
-    <p>I've been playing around a little more with verilog. Here's a mostly
-complete moxie <a href="http://github.com/atgreen/moxiedev/blob/fb57efc73e47e451f18951d274c41ccda337c112/moxie/rtl/verilog/iprinter.v">disassembler module</a> written in verilog.</p>
-<p>And here's a little <a href="http://github.com/atgreen/moxiedev/blob/fb57efc73e47e451f18951d274c41ccda337c112/moxie/rtl/verilog/testsuite/moxie.modules/test-iprinter.v">driver</a> for it. The driver reads a hex dump file
-into an array representing memory. On every clock cycle it updates the
-instruction and ...</p>
   </div>
 </article>
 

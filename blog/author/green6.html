@@ -60,6 +60,19 @@
 
 <article>
   <div class="article_title">
+    <h3><a href="../a-disassembler-in-verilog.html">A Disassembler in Verilog</a></h3>
+  </div>
+  <div class="article_text">
+    <p>I've been playing around a little more with verilog. Here's a mostly
+complete moxie <a href="http://github.com/atgreen/moxiedev/blob/fb57efc73e47e451f18951d274c41ccda337c112/moxie/rtl/verilog/iprinter.v">disassembler module</a> written in verilog.</p>
+<p>And here's a little <a href="http://github.com/atgreen/moxiedev/blob/fb57efc73e47e451f18951d274c41ccda337c112/moxie/rtl/verilog/testsuite/moxie.modules/test-iprinter.v">driver</a> for it. The driver reads a hex dump file
+into an array representing memory. On every clock cycle it updates the
+instruction and ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h3><a href="../isa-improvements.html">ISA improvements</a></h3>
   </div>
   <div class="article_text">
@@ -184,18 +197,6 @@ little releng work this ...</p>
 little longer to review, but I hope that it will get accepted early next
 week. Already there has been some useful feedback resulting in a few
 improvements. For instance, the moxie libgcc.a now provides the soft-fp ...</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="../pushing-bits-upstream.html">Pushing Bits Upstream</a></h3>
-  </div>
-  <div class="article_text">
-    <p>If there's one thing I've learned about GNU tools development over the
-years, it's that attempting to maintain a tools port outside of the
-upstream tree is A Very Bad Idea! It's easy to let your private tree
-fall out of sync from upstream. And the ...</p>
   </div>
 </article>
 
