@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>The Moxie Blog</title><link>http://moxielogic.github.io/blog/</link><description></description><atom:link href="http://moxielogic.github.io/blog/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 09 Jan 2015 15:21:00 -0500</lastBuildDate><item><title>An ELF Machine Number for Moxie</title><link>http://moxielogic.github.io/blog/elf-machine-number.html</link><description>&lt;p&gt;Moxie was assigned an official ELF machine number this week!  You can
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>The Moxie Blog</title><link>http://moxielogic.github.io/blog/</link><description></description><atom:link href="http://moxielogic.github.io/blog/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 20 Feb 2015 15:18:00 -0500</lastBuildDate><item><title>Moxie talk at Bitcoin Dev Meetup</title><link>http://moxielogic.github.io/blog/moxie-talk-at-bitcoin-dev-meetup.html</link><description>&lt;p&gt;&lt;center&gt;
+&lt;img alt="http://bitcoin.org" src="http://moxielogic.org/images/bcdev.jpg" /&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;A very meta photo of me at the Toronto Bitcoin Developer Meetup,
+explaining moxie, and the value of a security oriented VM (moxiebox).&lt;/p&gt;
+&lt;p&gt;Photo used by permission from Jan Miranda.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">green</dc:creator><pubDate>Fri, 20 Feb 2015 15:18:00 -0500</pubDate><guid>tag:moxielogic.github.io/blog,2015-02-20:moxie-talk-at-bitcoin-dev-meetup.html</guid><category>bitcoin</category><category>moxiebox</category></item><item><title>An ELF Machine Number for Moxie</title><link>http://moxielogic.github.io/blog/elf-machine-number.html</link><description>&lt;p&gt;Moxie was assigned an official ELF machine number this week!  You can
 check it out here:
 &lt;a href="http://www.sco.com/developers/gabi/latest/ch4.eheader.html"&gt;http://www.sco.com/developers/gabi/latest/ch4.eheader.html&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;All ELF files start with a header describing properties of the object
