@@ -4,7 +4,7 @@
 &lt;/center&gt;&lt;/p&gt;
 &lt;p&gt;A very meta photo of me at the Toronto Bitcoin Developer Meetup
 yesterday, explaining moxie, and the value of a security oriented VM
-(moxiebox).&lt;/p&gt;
+(&lt;a href="http://github.com/jgarzik/moxiebox"&gt;moxiebox&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;Photo used by permission from Jan Miranda.&lt;/p&gt;</summary><category term="bitcoin"></category><category term="moxiebox"></category></entry><entry><title>An ELF Machine Number for Moxie</title><link href="http://moxielogic.github.io/blog/elf-machine-number.html" rel="alternate"></link><updated>2015-01-09T15:21:00-05:00</updated><author><name>green</name></author><id>tag:moxielogic.github.io/blog,2015-01-09:elf-machine-number.html</id><summary type="html">&lt;p&gt;Moxie was assigned an official ELF machine number this week!  You can
 check it out here:
 &lt;a href="http://www.sco.com/developers/gabi/latest/ch4.eheader.html"&gt;http://www.sco.com/developers/gabi/latest/ch4.eheader.html&lt;/a&gt;.&lt;/p&gt;
