@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="./theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="./theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="./theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+  <link href="http://moxielogic.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Moxie Blog Atom" />
+  <link href="http://moxielogic.github.io/blog/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="The Moxie Blog RSS" />
+
+<meta name="keywords" content="gcc">
+
+  <title>
+    The Moxie Blog
+&ndash; Moxie Mixie: Frustrating Remote Attackers with Container Specific Instruction Sets  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href=".">
+        <img src="http://moxielogic.github.io/images/ml.png" alt="logo">
+      </a>
+      <h2><a href=".">Anthony Green</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+        <li><a href="./pages/about.html">About</a></li>
+        <li><a href="./pages/author.html">Author</a></li>
+        <li><a href="http://moxielogic.org/blog/pages/architecture.html" target="_blank">Architecture</a></li>
+        <li><a href="http://moxielogic.org/blog/pages/toolchain.html" target="_blank">Toolchain</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href=".">Index</a> &brvbar; <a href="./archives.html">Archives</a>
+      &brvbar; <a href="http://moxielogic.github.io/blog/feeds/all.atom.xml">Atom</a>
+      &brvbar; <a href="http://moxielogic.github.io/blog/feeds/all.rss.xml">RSS</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="./moxie-mixie.html">Moxie Mixie: Frustrating Remote Attackers with Container Specific Instruction Sets</a></h3>
+  </div>
+  <div class="article_text">
+    <p>While there are many existing technologies to frustrate remote
+attackers, it can be fun to think up novel protections that might be
+used to layer on additional defences.</p>
+<p>Consider, for instance, that remote code execution through attacks
+like buffer overflows depends on knowledge of the remote systems'
+instruction set.  Knowledge of this instruction set allows attackers to
+carefully construct payloads designed to take over your systems
+through buffer overflow attacks and the like.  But what if we were
+able to remove knowledge of the remote system ISA by essentially
+making it unguessable?  Ladies and gentlemen, let me present to you
+the Moxie Mixie architecture...</p>
+<p>Mixie is a variant of the Moxie that uses the same instruction set as
+Moxie, but with random instruction encodings, making it difficult for
+remote attackers to generate payloads for execution.  Here's how it
+works. Consider this C source code:</p>
+<div class="highlight"><pre>int mycode (int a, int b)
+{
+  return a + b;
+}
+</pre></div>
+
+
+<p>Here's what it would assemble to normally with the moxie GNU tools:</p>
+<div class="highlight"><pre><span class="x">00000000 &lt;mycode&gt;:</span>
+<span class="x">   0:    05 23          add     </span><span class="p">$</span><span class="nv">r0</span><span class="x">, </span><span class="p">$</span><span class="nv">r1</span><span class="x"></span>
+<span class="x">   2:    04 00          ret</span>
+</pre></div>
+
+
+<p>To compile for the mixie variant, we need to assemble with the -mixie
+option, and provide a random 128-bit key through the <code>MOXIE_MIXIE_KEY</code>
+environment variable. So, for instance....</p>
+<div class="highlight"><pre><span class="nv">$ MOXIE_MIXIE_KEY</span><span class="o">=</span>123456789ABCDEF0 moxie-linux-as -mixie mycode.S
+</pre></div>
+
+
+<p>...produces...</p>
+<div class="highlight"><pre><span class="x">00000000 &lt;mycode&gt;:</span>
+<span class="x">   0:    05 23 77 5f    add     </span><span class="p">$</span><span class="nv">r0</span><span class="x">, </span><span class="p">$</span><span class="nv">r1</span><span class="x"></span>
+<span class="x">   4:    c6 1b</span>
+<span class="x">   6:    04 00 c9 23    ret</span>
+<span class="x">   a:    43 39</span>
+</pre></div>
+
+
+<p>Note that each instruction now has an extra 32-bit suffix that is
+randomly generated off of <code>MOXIE_MIXIE_KEY</code>.  We will always get those
+same suffix values when we use the same key value.  If we change the
+key...</p>
+<div class="highlight"><pre><span class="nv">$ MOXIE_MIXIE_KEY</span><span class="o">=</span>ABABABABABABABAB moxie-linux-as -mixie mycode.S
+</pre></div>
+
+
+<p>...we get different instruction encodings....</p>
+<div class="highlight"><pre><span class="x">00000000 &lt;mycode&gt;:</span>
+<span class="x">   0:    05 23 19 03    add     </span><span class="p">$</span><span class="nv">r0</span><span class="x">, </span><span class="p">$</span><span class="nv">r1</span><span class="x"></span>
+<span class="x">   4:    02 46</span>
+<span class="x">   6:    04 00 52 f1    ret</span>
+<span class="x">   a:    37 88</span>
+</pre></div>
+
+
+<p>Now on the other side of this, we need to execute the code in a
+mixie-aware virtual machine.  This can be any simulator environment,
+but QEMU in user mode is an interesting one.  In this mode, QEMU will
+emulate the moxie mixie processor on Linux, but system calls are
+passed through to the host (x86) platform.  Simply supply the same key
+to the simulator and instructions will be recognized and executed as
+expected.  Supply the wrong key, and all you'll get are illegal
+instructions.  The take away here is that remote attackers, without
+knowledge of the key, will have a difficult time generating a payload
+to initiate their attack.</p>
+<p>Run-time generated code presents a challenge that is easily
+surmounted.  For example, GCC trampolines and libffi both generate
+code at runtime and must have some way to generate instruction
+encodings based on the appropriate mixie key.  In these cases, instead
+of generating the code directly, we can generate a code generator that
+asks the runtime (simulated mixie processor) to generate the code for
+us.</p>
+<p>Note that we're not 'encrypting' the binaries.  An attacker with
+access to mixie binaries will trivially be able to map out the
+instruction suffixes and generate shell code.  All we're doing here is
+adding additional protections against remote attacks, where you have a
+reasonable chance to secure physical access to the binaries.  We also
+can't protect against DoS attacks using this technology.  If a remote
+attacker can insert instructions into the target system, illegal
+instruction crashes are certain to occur.</p>
+<p>There are many interesting use cases, from embedded devices to
+traditional web services.  Linux container technology, when combined
+with QEMU, provide the perfect mixie platform that can deployed
+anywhere regular docker containers can run.  All you need is a moxie
+mixie linux userland and QEMU.</p>
+<p>I'm interested in hearing feedack on this idea.  Thanks for reading!</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Thu 14 January 2016</p>
+    <p>Category: <a href="./category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="./tag/gcc.html">gcc</a>    </p>
+  </div>
+
+  <div id="article_comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_identifier = "moxie-mixie.html";
+        (function() {
+             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+             dsq.src = 'http://moxieblog.disqus.com/embed.js';
+             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+         })();
+    </script>
+  </div>
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. </p>
+    </div>
+  </main>
+</body>
+</html>
