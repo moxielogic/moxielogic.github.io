@@ -70,17 +70,17 @@ boot, where busybox is trying to run an init script. It's still not
 working, but some cool things are, like the stack trace. I think the
 next troubling bit is where busybox tries to exec itself
 (/proc/self/exe) and /proc isn't mounted. Or something like that.</p>
-<div class="highlight"><pre><span class="nx">___</span>  <span class="nx">___</span>           <span class="nx">_</span>              <span class="nx">_____</span> <span class="nx">_</span> <span class="nx">_</span>                  
-<span class="o">|</span>  <span class="o">\/</span>  <span class="o">|</span>          <span class="p">(</span><span class="nx">_</span><span class="p">)</span>            <span class="o">/</span>  <span class="nx">__</span> <span class="o">\</span> <span class="p">(</span><span class="nx">_</span><span class="p">)</span>                 
-<span class="o">|</span> <span class="nx">.</span>  <span class="nx">.</span> <span class="o">|</span> <span class="nx">___</span> <span class="nx">__</span>  <span class="nx">___</span>  <span class="nx">___</span>   <span class="nx">_</span>   <span class="nx">_</span><span class="o">|</span> <span class="o">/</span>  <span class="o">\/</span> <span class="o">|</span><span class="nx">_</span> <span class="nx">_</span> <span class="nx">__</span>  <span class="nx">_</span>   <span class="nx">___</span>  <span class="nx">__</span>
-<span class="o">|</span> <span class="o">|\/|</span> <span class="o">|/</span> <span class="nx">_</span> <span class="o">\\</span> <span class="o">\/</span> <span class="o">/</span> <span class="o">|/</span> <span class="nx">_</span> <span class="o">\</span> <span class="o">|</span> <span class="o">|</span> <span class="o">|</span> <span class="o">|</span> <span class="o">|</span>   <span class="o">|</span> <span class="o">|</span> <span class="o">|</span> <span class="s1">&#39;_ \| | | \ \/ /</span>
-<span class="s1">| |  | | (_) |&gt;  &lt;| |  __/ | |_| | \__/\ | | | | | |_| |&gt;  &lt; </span>
-<span class="s1">\_|  |_/\___//_/\_\_|\___|  \__,_|\____/_|_|_| |_|\__,_/_/\_</span><span class="se">\</span><span class="s1"></span>
-<span class="s1">sh: can&#39;</span><span class="nb">t</span> <span class="nb">execute</span> <span class="s1">&#39;ls&#39;</span><span class="p">:</span> <span class="nx">No</span> <span class="nx">such</span> <span class="nb">file</span> <span class="ow">or</span> <span class="nx">directory.</span>
-<span class="p">/</span><span class="nx">bin</span><span class="p">/</span><span class="nx">sh</span><span class="p">:</span> <span class="nb">option</span> <span class="nb">requires</span> <span class="nx">an</span> <span class="nx">argument</span> <span class="o">--</span> <span class="nx">c</span>
-<span class="nx">BusyBox</span> <span class="nx">v1.19.0.git</span> <span class="p">(</span><span class="mi">2012</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">14</span> <span class="mi">23</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">21</span> <span class="nx">EDT</span><span class="p">)</span> <span class="nx">multi</span><span class="na">-call</span> <span class="nx">binary.</span>
+<div class="highlight"><pre>___  ___           _              _____ _ _                  
+|  \/  |          (_)            /  __ \ (_)                 
+| .  . | ___ __  ___  ___   _   _| /  \/ |_ _ __  _   ___  __
+| |\/| |/ _ \\ \/ / |/ _ \ | | | | |   | | | &#39;_ \| | | \ \/ /
+| |  | | (_) |&gt;  &lt;| |  __/ | |_| | \__/\ | | | | | |_| |&gt;  &lt; 
+\_|  |_/\___//_/\_\_|\___|  \__,_|\____/_|_|_| |_|\__,_/_/\_\
+sh: can&#39;t execute &#39;ls&#39;: No such file or directory.
+/bin/sh: option requires an argument -- c
+BusyBox v1.19.0.git (2012-08-14 23:32:21 EDT) multi-call binary.
 
-<span class="nb">Usage</span><span class="p">:</span> <span class="nx">sh</span> <span class="err">[</span><span class="na">-nxl</span><span class="cp">]</span> <span class="cp">[</span><span class="na">-c</span> <span class="s1">&#39;SCRIPT&#39;</span> <span class="err">[</span><span class="nx">ARG0</span> <span class="err">[</span><span class="nx">ARGS</span><span class="cp">]</span>] / FILE <span class="cp">[</span><span class="nx">ARGS</span><span class="cp">]</span>]
+Usage: sh [-nxl] [-c &#39;SCRIPT&#39; [ARG0 [ARGS]] / FILE [ARGS]]
 
 Unix shell interpreter
 
@@ -94,19 +94,19 @@ Stack:
   03bb8d14 0002990e ffffffff ffffffff 000003e8 000fceac 0001d4bf 03819f34 
 Call Trace:
 
-<span class="cp">[</span><span class="o">&lt;</span><span class="mi">0000408</span><span class="nx">a</span><span class="o">&gt;</span><span class="cp">]</span> machine_restart+0x14/0x1a
-<span class="cp">[</span><span class="o">&lt;</span><span class="mi">000</span><span class="nx">fdfd2</span><span class="o">&gt;</span><span class="cp">]</span> bust_spinlocks+0x0/0x4a
-<span class="cp">[</span><span class="o">&lt;</span><span class="mi">0001</span><span class="nx">e800</span><span class="o">&gt;</span><span class="cp">]</span> emergency_restart+0xa/0xc
-<span class="cp">[</span><span class="o">&lt;</span><span class="mi">0002990</span><span class="nx">e</span><span class="o">&gt;</span><span class="cp">]</span> up_read+0x8/0xa
-<span class="cp">[</span><span class="o">&lt;</span><span class="mi">000</span><span class="nx">fceac</span><span class="o">&gt;</span><span class="cp">]</span> __muldi3+0x0/0x92
-<span class="cp">[</span><span class="o">&lt;</span><span class="mi">0001</span><span class="nx">d4bf</span><span class="o">&gt;</span><span class="cp">]</span> do_notify_parent+0x193/0x240
-<span class="cp">[</span><span class="o">&lt;</span><span class="mi">0004038</span><span class="nx">c</span><span class="o">&gt;</span><span class="cp">]</span> panic+0x11c/0x162
-<span class="cp">[</span><span class="o">&lt;</span><span class="mi">00012</span><span class="nx">ea8</span><span class="o">&gt;</span><span class="cp">]</span> exit_files+0x1e/0x26
-<span class="cp">[</span><span class="o">&lt;</span><span class="mi">000130</span><span class="nx">c6</span><span class="o">&gt;</span><span class="cp">]</span> do_exit+0x6e/0x706
-<span class="cp">[</span><span class="o">&lt;</span><span class="mi">0001377</span><span class="nx">a</span><span class="o">&gt;</span><span class="cp">]</span> sys_exit+0x0/0x18
-<span class="cp">[</span><span class="o">&lt;</span><span class="mi">00013792</span><span class="o">&gt;</span><span class="cp">]</span> do_group_exit+0x0/0xac
-<span class="cp">[</span><span class="o">&lt;</span><span class="mi">00057</span><span class="nx">fe2</span><span class="o">&gt;</span><span class="cp">]</span> sys_write+0x0/0x96
-<span class="cp">[</span><span class="o">&lt;</span><span class="mi">000017</span><span class="nx">fa</span><span class="o">&gt;</span><span class="cp">]</span> .return_from_exception+0x0/0x18
+[&lt;0000408a&gt;] machine_restart+0x14/0x1a
+[&lt;000fdfd2&gt;] bust_spinlocks+0x0/0x4a
+[&lt;0001e800&gt;] emergency_restart+0xa/0xc
+[&lt;0002990e&gt;] up_read+0x8/0xa
+[&lt;000fceac&gt;] __muldi3+0x0/0x92
+[&lt;0001d4bf&gt;] do_notify_parent+0x193/0x240
+[&lt;0004038c&gt;] panic+0x11c/0x162
+[&lt;00012ea8&gt;] exit_files+0x1e/0x26
+[&lt;000130c6&gt;] do_exit+0x6e/0x706
+[&lt;0001377a&gt;] sys_exit+0x0/0x18
+[&lt;00013792&gt;] do_group_exit+0x0/0xac
+[&lt;00057fe2&gt;] sys_write+0x0/0x96
+[&lt;000017fa&gt;] .return_from_exception+0x0/0x18
 </pre></div>
   </div>
   <div class="article_meta">

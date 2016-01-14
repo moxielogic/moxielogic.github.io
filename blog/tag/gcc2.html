@@ -60,6 +60,20 @@
 
 <article>
   <div class="article_title">
+    <h3><a href="../speed-bumps-on-the-road-to-moxie-userland.html">Speed bumps on the road to moxie userland</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Sooo..... it turns out there's lots to take care of before userland apps
+like BusyBox can run.</p>
+<ul>
+<li><strong>The root filesystem</strong>. This one is easy. I just built a short
+    Hello World application in C with moxie-uclinux-gcc. This produces
+    an executable in <a href="http://www.beyondlogic.org/uClinux/bflt.htm">BFLT format</a> which I call 'init'. The kernel ...</li></ul>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h3><a href="../moxie-gcc-port-is-upstream.html">Moxie GCC port is upstream!</a></h3>
   </div>
   <div class="article_text">
@@ -76,12 +90,13 @@
   <div class="article_text">
     <p>The Moxie ISA still needs quite a bit of tuning. Take branches, for
 instance. A <code>beq</code> instruction currently encoded <a href="http://www.moxielogic.org/wiki/index.php?title=Instruction_Set#beq">like so</a>...  </p>
-<div class="highlight"><pre><span class="err">`</span><span class="mo">00001111</span><span class="n">xxxxxxxx</span> <span class="n">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</span><span class="err">`</span>
+<div class="highlight"><pre>`00001111xxxxxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii`
 </pre></div>
 
 
 <p>...where the "<code>x</code>"s represent "don't care" bits, and "<code>i</code>"s are a
-32-bit absolute branch target. That's right -- branch targets are not PC ...</p>
+32-bit absolute branch target. That's right -- branch targets are not PC
+relative ...</p>
   </div>
 </article>
 <hr />

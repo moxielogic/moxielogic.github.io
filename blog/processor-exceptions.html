@@ -66,11 +66,11 @@
     <p>My first go at exceptions is working well. The basic idea is that moxie
 will have a single exception handling routine whose address lives in
 special register 1. You set the exception handler like so:</p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">install_handler</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">handler</span><span class="p">)(</span><span class="kt">void</span><span class="p">))</span>
-<span class="p">{</span>
-  <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;Installing handler 0x%x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">unsigned</span><span class="p">)</span> <span class="n">handler</span><span class="p">);</span>
-  <span class="n">asm</span><span class="p">(</span><span class="s">&quot;ssr %0, 1&quot;</span> <span class="o">:</span> <span class="o">:</span> <span class="s">&quot;r&quot;</span> <span class="p">(</span><span class="n">handler</span><span class="p">));</span>
-<span class="p">}</span>
+<div class="highlight"><pre>void install_handler(void (*handler)(void))
+{
+  printf (&quot;Installing handler 0x%x\n&quot;, (unsigned) handler);
+  asm(&quot;ssr %0, 1&quot; : : &quot;r&quot; (handler));
+}
 </pre></div>
 
 
@@ -79,10 +79,10 @@ call to the handler. We return from the handler just like it was any old
 function, since it currently uses the standard C ABI. The exception type
 will be found in special register 2. The current exception types are as
 follows:</p>
-<div class="highlight"><pre><span class="c">#define MOXIE_EX_DIV0 0 /* Divide by zero */</span>
-<span class="c">#define MOXIE_EX_BAD  1 /* Illegal instruction */</span>
-<span class="c">#define MOXIE_EX_IRQ  2 /* Interrupt request */</span>
-<span class="c">#define MOXIE_EX_SWI  3 /* Software interrupt */</span>
+<div class="highlight"><pre>#define MOXIE_EX_DIV0 0 /* Divide by zero */
+#define MOXIE_EX_BAD  1 /* Illegal instruction */
+#define MOXIE_EX_IRQ  2 /* Interrupt request */
+#define MOXIE_EX_SWI  3 /* Software interrupt */
 </pre></div>
 
 
@@ -90,40 +90,40 @@ follows:</p>
 found in special register 3. I don't have instructions yet to disable or
 enable interrupts, but those are an obvious next step. Here's a sample
 exception handler:</p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">handler</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="kt">int</span> <span class="n">et</span><span class="p">;</span>
+<div class="highlight"><pre>void handler (void)
+{
+  int et;
 
-  <span class="cm">/* Get the exception handler from special register 2.  */</span>
-  <span class="n">asm</span><span class="p">(</span><span class="s">&quot;gsr %0, 2&quot;</span> <span class="o">:</span> <span class="s">&quot;=r&quot;</span><span class="p">(</span><span class="n">et</span><span class="p">)</span> <span class="o">:</span> <span class="s">&quot;0&quot;</span><span class="p">(</span><span class="n">et</span><span class="p">)</span> <span class="p">);</span>
+  /* Get the exception handler from special register 2.  */
+  asm(&quot;gsr %0, 2&quot; : &quot;=r&quot;(et) : &quot;0&quot;(et) );
 
-  <span class="k">switch</span> <span class="p">(</span><span class="n">et</span><span class="p">)</span>
-    <span class="p">{</span>
-    <span class="k">case</span> <span class="n">MOXIE_EX_DIV0</span>:
-      <span class="n">printf</span><span class="p">(</span><span class="s">&quot;DIVIDE BY ZERO EXCEPTION</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-      <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="n">MOXIE_EX_BAD</span>:
-      <span class="n">printf</span><span class="p">(</span><span class="s">&quot;ILLEGAL INSTRUCTION EXCEPTION</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-      <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="n">MOXIE_EX_IRQ</span>:
-      <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">irq</span><span class="p">;</span>
-        <span class="n">asm</span><span class="p">(</span><span class="s">&quot;gsr %0, 3&quot;</span> <span class="o">:</span> <span class="s">&quot;=r&quot;</span><span class="p">(</span><span class="n">irq</span><span class="p">)</span> <span class="o">:</span> <span class="s">&quot;0&quot;</span><span class="p">(</span><span class="n">irq</span><span class="p">)</span> <span class="p">);</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;INTERRUPT REQUEST %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">irq</span><span class="p">);</span>
-      <span class="p">}</span>
-      <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="n">MOXIE_EX_SWI</span>:
-      <span class="p">{</span>
-        <span class="kt">int</span> <span class="n">swi</span><span class="p">;</span>
-        <span class="n">asm</span><span class="p">(</span><span class="s">&quot;gsr %0, 3&quot;</span> <span class="o">:</span> <span class="s">&quot;=r&quot;</span><span class="p">(</span><span class="n">swi</span><span class="p">)</span> <span class="o">:</span> <span class="s">&quot;0&quot;</span><span class="p">(</span><span class="n">swi</span><span class="p">)</span> <span class="p">);</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;SOFTWARE INTERRUPT REQUEST %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">swi</span><span class="p">);</span>
-      <span class="p">}</span>
-      <span class="k">break</span><span class="p">;</span>
-    <span class="nl">default:</span>
-      <span class="n">printf</span><span class="p">(</span><span class="s">&quot;UNKNOWN EXCEPTION 0x%x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">et</span><span class="p">);</span>
-      <span class="k">break</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+  switch (et)
+    {
+    case MOXIE_EX_DIV0:
+      printf(&quot;DIVIDE BY ZERO EXCEPTION\n&quot;);
+      break;
+    case MOXIE_EX_BAD:
+      printf(&quot;ILLEGAL INSTRUCTION EXCEPTION\n&quot;);
+      break;
+    case MOXIE_EX_IRQ:
+      {
+        int irq;
+        asm(&quot;gsr %0, 3&quot; : &quot;=r&quot;(irq) : &quot;0&quot;(irq) );
+        printf(&quot;INTERRUPT REQUEST %d\n&quot;, irq);
+      }
+      break;
+    case MOXIE_EX_SWI:
+      {
+        int swi;
+        asm(&quot;gsr %0, 3&quot; : &quot;=r&quot;(swi) : &quot;0&quot;(swi) );
+        printf(&quot;SOFTWARE INTERRUPT REQUEST %d\n&quot;, swi);
+      }
+      break;
+    default:
+      printf(&quot;UNKNOWN EXCEPTION 0x%x\n&quot;, et);
+      break;
+    }
+}
 </pre></div>
 
 

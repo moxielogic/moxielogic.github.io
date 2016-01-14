@@ -101,18 +101,27 @@ dumps from the iverilog simulator. Both of these tools are ...</p>
   <div class="article_text">
     <p>My moxie port of <a href="http://www.denx.de/wiki/U-Boot">U-Boot</a>, the Universal Boot Loader, has started
 working!</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">qemu</span><span class="o">-</span><span class="n">system</span><span class="o">-</span><span class="n">moxie</span> <span class="o">-</span><span class="n">nographic</span> <span class="o">-</span><span class="n">kernel</span> <span class="n">u</span><span class="o">-</span><span class="n">boot</span>
-<span class="n">SDRAM</span> <span class="o">:</span>
-        <span class="n">U</span><span class="o">-</span><span class="n">Boot</span> <span class="n">Start</span><span class="o">:</span><span class="mh">0x00001000</span>
-<span class="n">Using</span> <span class="k">default</span> <span class="n">environment</span>
+<div class="highlight"><pre><span class="nv">$ </span>qemu-system-moxie -nographic -kernel u-boot
+SDRAM :
+        U-Boot Start:0x00001000
+Using default environment
 
-<span class="n">U</span><span class="o">-</span><span class="n">BOOT</span> <span class="k">for</span> <span class="s">&quot;moxiesim&quot;</span>
+U-BOOT <span class="k">for</span> <span class="s2">&quot;moxiesim&quot;</span>
 
-<span class="o">=&gt;</span> <span class="n">version</span>
+<span class="o">=</span>&gt; version
 
-<span class="n">U</span><span class="o">-</span><span class="n">Boot</span> <span class="mf">2009.03</span><span class="o">-</span><span class="n">rc2</span><span class="o">-</span><span class="mo">00013</span><span class="o">-</span><span class="n">gefb4734</span><span class="o">-</span><span class="n">dirty</span> <span class="p">(</span><span class="n">Apr</span> <span class="mo">02</span> <span class="mi">2009</span> <span class="o">-</span> <span class="mi">20</span><span class="o">:</span><span class="mo">07</span><span class="o">:</span><span class="mi">32</span><span class="p">)</span>
-<span class="o">=&gt;</span> <span class="n">printenv</span>
-<span class="n">bootargs</span><span class="o">=</span><span class="n">root</span><span class="o">=</span><span class="n">romfs ...</span></pre></div>
+U-Boot 2009.03-rc2-00013-gefb4734-dirty <span class="o">(</span>Apr <span class="m">02</span> <span class="m">2009</span> - 20:07:32<span class="o">)</span>
+<span class="o">=</span>&gt; printenv
+<span class="nv">bootargs</span><span class="o">=</span><span class="nv">root</span><span class="o">=</span>romfs
+<span class="nv">baudrate</span><span class="o">=</span>38400
+<span class="nv">hostname</span><span class="o">=</span><span class="s2">&quot;moxiesim&quot;</span>
+
+Environment size: 55/4092 <span class="nv">bytes</span>
+<span class="o">=</span>&gt;
+</pre></div>
+
+
+<p>It ...</p>
   </div>
 </article>
 <hr />
@@ -124,10 +133,10 @@ working!</p>
     <p>My first go at exceptions is working well. The basic idea is that moxie
 will have a single exception handling routine whose address lives in
 special register 1. You set the exception handler like so:</p>
-<div class="highlight"><pre><span class="kt">void</span> <span class="nf">install_handler</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">handler</span><span class="p">)(</span><span class="kt">void</span><span class="p">))</span>
-<span class="p">{</span>
-  <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;Installing handler 0x%x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">unsigned</span><span class="p">)</span> <span class="n">handler</span><span class="p">);</span>
-  <span class="n">asm</span><span class="p">(</span><span class="s">&quot;ssr ...</span></pre></div>
+<div class="highlight"><pre>void install_handler(void (*handler)(void))
+{
+  printf (&quot;Installing handler 0x%x\n&quot;, (unsigned) handler);
+  asm(&quot;ssr ...</pre></div>
   </div>
 </article>
 <hr />
@@ -153,7 +162,7 @@ address and lets the ...</p>
 add to a board is a Real Time Clock (RTC). Qemu comes with a simulation
 of Freescale's <a href="http://www.freescale.com/files/microcontrollers/doc/data_sheet/MC146818.pdf">MC146818</a> RTC chip. Adding it to our qemu-defined
 board was as simple as....</p>
-<div class="highlight"><pre>   <span class="n">rtc_mm_init</span><span class="p">(</span><span class="mh">0x400</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<div class="highlight"><pre>   rtc_mm_init(0x400, 0, 0, 0);
 </pre></div>
 
 

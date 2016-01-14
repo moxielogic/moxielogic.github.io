@@ -69,64 +69,64 @@ gdb simulator.  The first two client connections fail in this test. 
 It's supposed to fail in the first case, but I'm not sure about the
 second case.   It's possible that this is just a result of there being
 no pre-emptive context switching in the gdb simulator (no timers!).</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">moxie</span><span class="o">-</span><span class="n">elf</span><span class="o">-</span><span class="n">run</span> <span class="n">loopback</span><span class="p">.</span><span class="n">exe</span>
-<span class="s">&quot;Network&quot;</span> <span class="n">initializing</span><span class="o">!</span>
-<span class="s">&quot;Network&quot;</span> <span class="n">initialized</span><span class="o">!</span>
-<span class="n">Try</span> <span class="n">running</span> <span class="n">client</span> <span class="n">with</span> <span class="n">no</span> <span class="n">server</span> <span class="n">present</span><span class="p">.</span>
-<span class="n">Should</span> <span class="n">fail</span> <span class="n">with</span> <span class="err">`</span><span class="n">connection</span> <span class="n">refused</span><span class="err">&#39;</span><span class="p">.</span>
-<span class="n">Connect</span> <span class="n">to</span> <span class="n">server</span><span class="p">.</span>
-<span class="n">Can</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">server</span><span class="o">:</span> <span class="n">Connection</span> <span class="n">refused</span>
-<span class="n">Client</span> <span class="n">closing</span> <span class="n">connection</span><span class="p">.</span>
+<div class="highlight"><pre><span class="nv">$ </span>moxie-elf-run loopback.exe
+<span class="s2">&quot;Network&quot;</span> initializing!
+<span class="s2">&quot;Network&quot;</span> initialized!
+Try running client with no server present.
+Should fail with <span class="sb">`</span>connection refused<span class="s1">&#39;.</span>
+<span class="s1">Connect to server.</span>
+<span class="s1">Can&#39;</span>t connect to server: Connection refused
+Client closing connection.
 
-<span class="n">Start</span> <span class="n">server</span><span class="p">.</span>
+Start server.
 
-<span class="n">Try</span> <span class="n">running</span> <span class="n">client</span> <span class="n">with</span> <span class="n">server</span> <span class="n">present</span><span class="p">.</span>
-<span class="n">Connect</span> <span class="n">to</span> <span class="n">server</span><span class="p">.</span>
-<span class="n">Can</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">server</span><span class="o">:</span> <span class="n">Connection</span> <span class="n">refused</span>
-<span class="n">Client</span> <span class="n">closing</span> <span class="n">connection</span><span class="p">.</span>
-<span class="n">Client</span> <span class="n">task</span> <span class="n">terminating</span><span class="p">.</span>
-<span class="n">Create</span> <span class="n">socket</span><span class="p">.</span>
-<span class="n">Bind</span> <span class="n">socket</span><span class="p">.</span>
+Try running client with server present.
+Connect to server.
+Can<span class="err">&#39;</span>t connect to server: Connection refused
+Client closing connection.
+Client task terminating.
+Create socket.
+Bind socket.
 
-<span class="n">Try</span> <span class="n">running</span> <span class="n">two</span> <span class="n">clients</span><span class="p">.</span>
-<span class="n">Connect</span> <span class="n">to</span> <span class="n">server</span><span class="p">.</span>
-<span class="n">Connect</span> <span class="n">to</span> <span class="n">server</span><span class="p">.</span>
-<span class="nl">ACCEPTED:</span><span class="mf">7F</span><span class="mo">000001</span>
-<span class="nl">ACCEPTED:</span><span class="mf">7F</span><span class="mo">000001</span>
-<span class="n">Write</span> <span class="mi">22</span><span class="o">-</span><span class="n">byte</span> <span class="n">message</span> <span class="n">to</span> <span class="n">server</span><span class="p">.</span>
-<span class="n">Write</span> <span class="mi">22</span><span class="o">-</span><span class="n">byte</span> <span class="n">message</span> <span class="n">to</span> <span class="n">server</span><span class="p">.</span>
-<span class="n">Read</span> <span class="mi">43</span> <span class="n">from</span> <span class="n">server</span><span class="o">:</span> <span class="n">Server</span> <span class="n">received</span> <span class="mi">22</span> <span class="p">(</span><span class="n">Hi</span> <span class="n">there</span><span class="p">,</span> <span class="n">server</span> <span class="p">(</span><span class="mi">3</span><span class="p">).)</span>
-<span class="n">Read</span> <span class="mi">43</span> <span class="n">from</span> <span class="n">server</span><span class="o">:</span> <span class="n">Server</span> <span class="n">received</span> <span class="mi">22</span> <span class="p">(</span><span class="n">Hi</span> <span class="n">there</span><span class="p">,</span> <span class="n">server</span> <span class="p">(</span><span class="mi">2</span><span class="p">).)</span>
-<span class="n">Client</span> <span class="n">closing</span> <span class="n">connection</span><span class="p">.</span>
-<span class="n">Client</span> <span class="n">task</span> <span class="n">terminating</span><span class="p">.</span>
-<span class="n">Client</span> <span class="n">closing</span> <span class="n">connection</span><span class="p">.</span>
-<span class="n">Client</span> <span class="n">task</span> <span class="n">terminating</span><span class="p">.</span>
-<span class="n">Worker</span> <span class="n">task</span> <span class="n">terminating</span><span class="p">.</span>
-<span class="n">Worker</span> <span class="n">task</span> <span class="n">terminating</span><span class="p">.</span>
+Try running two clients.
+Connect to server.
+Connect to server.
+ACCEPTED:7F000001
+ACCEPTED:7F000001
+Write 22-byte message to server.
+Write 22-byte message to server.
+Read <span class="m">43</span> from server: Server received <span class="m">22</span> <span class="o">(</span>Hi there, server <span class="o">(</span>3<span class="o">)</span>.<span class="o">)</span>
+Read <span class="m">43</span> from server: Server received <span class="m">22</span> <span class="o">(</span>Hi there, server <span class="o">(</span>2<span class="o">)</span>.<span class="o">)</span>
+Client closing connection.
+Client task terminating.
+Client closing connection.
+Client task terminating.
+Worker task terminating.
+Worker task terminating.
 
-<span class="n">Try</span> <span class="n">running</span> <span class="n">three</span> <span class="n">clients</span><span class="p">.</span>
-<span class="n">Connect</span> <span class="n">to</span> <span class="n">server</span><span class="p">.</span>
-<span class="n">Connect</span> <span class="n">to</span> <span class="n">server</span><span class="p">.</span>
-<span class="n">Connect</span> <span class="n">to</span> <span class="n">server</span><span class="p">.</span>
-<span class="nl">ACCEPTED:</span><span class="mf">7F</span><span class="mo">000001</span>
-<span class="nl">ACCEPTED:</span><span class="mf">7F</span><span class="mo">000001</span>
-<span class="nl">ACCEPTED:</span><span class="mf">7F</span><span class="mo">000001</span>
-<span class="n">Write</span> <span class="mi">22</span><span class="o">-</span><span class="n">byte</span> <span class="n">message</span> <span class="n">to</span> <span class="n">server</span><span class="p">.</span>
-<span class="n">Write</span> <span class="mi">22</span><span class="o">-</span><span class="n">byte</span> <span class="n">message</span> <span class="n">to</span> <span class="n">server</span><span class="p">.</span>
-<span class="n">Write</span> <span class="mi">22</span><span class="o">-</span><span class="n">byte</span> <span class="n">message</span> <span class="n">to</span> <span class="n">server</span><span class="p">.</span>
-<span class="n">Read</span> <span class="mi">43</span> <span class="n">from</span> <span class="n">server</span><span class="o">:</span> <span class="n">Server</span> <span class="n">received</span> <span class="mi">22</span> <span class="p">(</span><span class="n">Hi</span> <span class="n">there</span><span class="p">,</span> <span class="n">server</span> <span class="p">(</span><span class="mi">5</span><span class="p">).)</span>
-<span class="n">Read</span> <span class="mi">43</span> <span class="n">from</span> <span class="n">server</span><span class="o">:</span> <span class="n">Server</span> <span class="n">received</span> <span class="mi">22</span> <span class="p">(</span><span class="n">Hi</span> <span class="n">there</span><span class="p">,</span> <span class="n">server</span> <span class="p">(</span><span class="mi">6</span><span class="p">).)</span>
-<span class="n">Read</span> <span class="mi">43</span> <span class="n">from</span> <span class="n">server</span><span class="o">:</span> <span class="n">Server</span> <span class="n">received</span> <span class="mi">22</span> <span class="p">(</span><span class="n">Hi</span> <span class="n">there</span><span class="p">,</span> <span class="n">server</span> <span class="p">(</span><span class="mi">4</span><span class="p">).)</span>
-<span class="n">Client</span> <span class="n">closing</span> <span class="n">connection</span><span class="p">.</span>
-<span class="n">Client</span> <span class="n">task</span> <span class="n">terminating</span><span class="p">.</span>
-<span class="n">Client</span> <span class="n">closing</span> <span class="n">connection</span><span class="p">.</span>
-<span class="n">Client</span> <span class="n">task</span> <span class="n">terminating</span><span class="p">.</span>
-<span class="n">Client</span> <span class="n">closing</span> <span class="n">connection</span><span class="p">.</span>
-<span class="n">Client</span> <span class="n">task</span> <span class="n">terminating</span><span class="p">.</span>
-<span class="n">Worker</span> <span class="n">task</span> <span class="n">terminating</span><span class="p">.</span>
-<span class="n">Worker</span> <span class="n">task</span> <span class="n">terminating</span><span class="p">.</span>
-<span class="n">Worker</span> <span class="n">task</span> <span class="n">terminating</span><span class="p">.</span>
-<span class="o">***</span> <span class="n">END</span> <span class="n">OF</span> <span class="n">LOOPBACK</span> <span class="n">TEST</span> <span class="o">***</span>
+Try running three clients.
+Connect to server.
+Connect to server.
+Connect to server.
+ACCEPTED:7F000001
+ACCEPTED:7F000001
+ACCEPTED:7F000001
+Write 22-byte message to server.
+Write 22-byte message to server.
+Write 22-byte message to server.
+Read <span class="m">43</span> from server: Server received <span class="m">22</span> <span class="o">(</span>Hi there, server <span class="o">(</span>5<span class="o">)</span>.<span class="o">)</span>
+Read <span class="m">43</span> from server: Server received <span class="m">22</span> <span class="o">(</span>Hi there, server <span class="o">(</span>6<span class="o">)</span>.<span class="o">)</span>
+Read <span class="m">43</span> from server: Server received <span class="m">22</span> <span class="o">(</span>Hi there, server <span class="o">(</span>4<span class="o">)</span>.<span class="o">)</span>
+Client closing connection.
+Client task terminating.
+Client closing connection.
+Client task terminating.
+Client closing connection.
+Client task terminating.
+Worker task terminating.
+Worker task terminating.
+Worker task terminating.
+*** END OF LOOPBACK TEST ***
 </pre></div>
 
 

@@ -70,14 +70,14 @@ into an array representing memory. On every clock cycle it updates the
 instruction and data output registers and increments the program
 counter. The disassembler samples those values on every cycle, and tells
 the driver how far to increment the PC. Pretty basic stuff!</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">moxie</span><span class="o">-</span><span class="n">elf</span><span class="o">-</span><span class="n">gcc</span> <span class="o">-</span><span class="n">o</span> <span class="n">hello</span><span class="p">.</span><span class="n">x</span> <span class="n">hello</span><span class="p">.</span><span class="n">c</span> <span class="o">-</span><span class="n">Tsim</span><span class="p">.</span><span class="n">ld</span>
-<span class="err">$</span> <span class="n">moxie</span><span class="o">-</span><span class="n">elf</span><span class="o">-</span><span class="n">objdump</span> <span class="n">hello</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span><span class="n">O</span> <span class="n">verilog</span> <span class="n">hello</span><span class="p">.</span><span class="n">vh</span>
-<span class="err">$</span> <span class="n">iverilog</span> <span class="n">test</span><span class="o">-</span><span class="n">iprinter</span><span class="p">.</span><span class="n">v</span> <span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">iprinter</span><span class="p">.</span><span class="n">v</span>
-<span class="err">$</span> <span class="p">.</span><span class="o">/</span><span class="n">a</span><span class="p">.</span><span class="n">out</span>
-        <span class="n">ldi</span><span class="p">.</span><span class="n">l</span>   <span class="err">$</span><span class="n">sp</span> <span class="p">,</span>   <span class="mh">0x00400000</span>
-        <span class="n">ldi</span><span class="p">.</span><span class="n">l</span>   <span class="err">$</span><span class="n">fp</span> <span class="p">,</span>    <span class="mh">0x00000000</span>
-        <span class="n">dec</span>     <span class="err">$</span><span class="n">sp</span> <span class="p">,</span>     <span class="mi">12</span>
-        <span class="n">ldi</span><span class="p">.</span><span class="n">l</span>   <span class="err">$</span><span class="n">r0</span> <span class="p">,</span>    <span class="mh">0x000128b4</span>
+<div class="highlight"><pre><span class="nv">$ </span>moxie-elf-gcc -o hello.x hello.c -Tsim.ld
+<span class="nv">$ </span>moxie-elf-objdump hello.x -O verilog hello.vh
+<span class="nv">$ </span>iverilog <span class="nb">test</span>-iprinter.v ../../iprinter.v
+<span class="nv">$ </span>./a.out
+        ldi.l   <span class="nv">$sp</span> ,   0x00400000
+        ldi.l   <span class="nv">$fp</span> ,    0x00000000
+        dec     <span class="nv">$sp</span> ,     12
+        ldi.l   <span class="nv">$r0</span> ,    0x000128b4
 </pre></div>
 
 

@@ -71,18 +71,18 @@ SoC emulation, and can run the <a href="http://moxielogic.org/blog/?p=738">on-ch
 about</a>. In this example, for instance, we're sending the u-boot
 bootloader program in srecord format to qemu's emulated serial port on
 stdin. It looks just like the real hardware does...</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">cat</span> <span class="o">~/</span><span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="p">.</span><span class="n">srec</span> <span class="o">|</span> <span class="n">qemu</span><span class="o">-</span><span class="n">system</span><span class="o">-</span><span class="n">moxie</span> <span class="o">--</span><span class="n">machine</span> <span class="n">marin</span> <span class="o">--</span><span class="n">kernel</span> <span class="n">bootrom</span><span class="p">.</span><span class="n">elf</span> <span class="o">--</span><span class="n">nographic</span>
-<span class="n">MOXIE</span> <span class="n">On</span><span class="o">-</span><span class="n">Chip</span> <span class="n">Bootloader</span> <span class="n">v1</span><span class="mf">.0</span>
-<span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="mi">2013</span> <span class="n">Anthony</span> <span class="n">Green</span>
+<div class="highlight"><pre><span class="nv">$ </span>cat ~/u-boot.srec <span class="p">|</span> qemu-system-moxie --machine marin --kernel bootrom.elf --nographic
+MOXIE On-Chip Bootloader v1.0
+Copyright <span class="o">(</span>c<span class="o">)</span> <span class="m">2013</span> Anthony Green
 
-<span class="n">Waiting</span> <span class="k">for</span> <span class="n">S</span><span class="o">-</span><span class="n">Record</span> <span class="n">Download</span><span class="p">...</span>
-<span class="n">Jumping</span> <span class="n">to</span> <span class="n">code</span> <span class="n">at</span> <span class="mh">0x30000000</span><span class="p">.</span>
-<span class="n">SDRAM</span> <span class="o">:</span>
-    <span class="n">U</span><span class="o">-</span><span class="n">Boot</span> <span class="n">Start</span><span class="o">:</span><span class="mh">0x30000000</span>
-<span class="n">Using</span> <span class="k">default</span> <span class="n">environment</span>
+Waiting <span class="k">for</span> S-Record Download...
+Jumping to code at 0x30000000.
+SDRAM :
+    U-Boot Start:0x30000000
+Using default environment
 
-<span class="n">U</span><span class="o">-</span><span class="n">BOOT</span> <span class="k">for</span> <span class="s">&quot;marin&quot;</span>
-<span class="o">=&gt;</span>
+U-BOOT <span class="k">for</span> <span class="s2">&quot;marin&quot;</span>
+<span class="o">=</span>&gt;
 </pre></div>
 
 

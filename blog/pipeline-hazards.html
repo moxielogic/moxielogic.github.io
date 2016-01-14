@@ -69,12 +69,12 @@
 I've started running the first bit of compiled code through the pipline.
 Here's that start of our Hello World C application. It's <code>__start</code> from
 crt0.o:</p>
-<div class="highlight"><pre><span class="mi">00001000</span> <span class="o">&lt;</span><span class="nx">__start</span><span class="o">&gt;</span><span class="p">:</span>
-<span class="err">   </span> <span class="mi">1000</span><span class="p">:</span><span class="err">      </span> <span class="mi">01</span> <span class="mi">10</span> <span class="mi">00</span> <span class="mi">40</span><span class="err">    </span> <span class="nx">ldi.l</span><span class="err">   </span> <span class="nv">$sp</span><span class="p">,</span> <span class="mh">0x400000</span>
-<span class="err">   </span> <span class="mi">1004</span><span class="p">:</span><span class="err">      </span> <span class="mi">00</span> <span class="mi">00</span>
-<span class="err">   </span> <span class="mi">1006</span><span class="p">:</span><span class="err">      </span> <span class="mi">01</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span><span class="err">    </span> <span class="nx">ldi.l</span><span class="err">   </span> <span class="nv">$fp</span><span class="p">,</span> <span class="mh">0x0</span>
-<span class="err">   </span> <span class="mi">100</span><span class="nx">a</span><span class="p">:</span><span class="err">      </span> <span class="mi">00</span> <span class="mi">00</span>
-<span class="err">   </span> <span class="mi">100</span><span class="nx">c</span><span class="p">:</span><span class="err">      </span> <span class="mi">91</span> <span class="mi">0</span><span class="nx">c</span><span class="err">          </span> <span class="nx">dec</span><span class="err">     </span> <span class="nv">$sp</span><span class="p">,</span> <span class="mh">0xc</span>
+<div class="highlight"><pre><span class="x">00001000 &lt;__start&gt;:</span>
+<span class="x">    1000:       01 10 00 40     ldi.l    </span><span class="p">$</span><span class="nv">sp</span><span class="x">, 0x400000</span>
+<span class="x">    1004:       00 00</span>
+<span class="x">    1006:       01 00 00 00     ldi.l    </span><span class="p">$</span><span class="nv">fp</span><span class="x">, 0x0</span>
+<span class="x">    100a:       00 00</span>
+<span class="x">    100c:       91 0c           dec      </span><span class="p">$</span><span class="nv">sp</span><span class="x">, 0xc</span>
 </pre></div>
 
 

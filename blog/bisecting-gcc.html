@@ -127,20 +127,20 @@ script I used as the git bisect test:  </p>
 rm -rf build
 mkdir build
 
-<span class="o">(</span><span class="nb">cd </span>build;
- <span class="nv">$GCCSRC</span>/configure --target<span class="o">=</span>moxie-elf --enable-languages<span class="o">=</span>c;
+<span class="o">(</span><span class="nb">cd </span>build<span class="p">;</span>
+ <span class="nv">$GCCSRC</span>/configure --target<span class="o">=</span>moxie-elf --enable-languages<span class="o">=</span>c<span class="p">;</span>
  make -j8 all-gcc<span class="o">)</span>
 
-<span class="k">if </span><span class="nb">test</span> -f build/gcc/cc1; <span class="k">then</span>
+<span class="k">if</span> <span class="nb">test</span> -f build/gcc/cc1<span class="p">;</span> <span class="k">then</span>
   <span class="c"># build my test case</span>
-  build/gcc/cc1 -O2 <span class="nv">$TESTSRC</span>;
+  build/gcc/cc1 -O2 <span class="nv">$TESTSRC</span><span class="p">;</span>
   <span class="c"># cc1 returns exit codes outside of git&#39;s acceptable range, so...</span>
-  <span class="k">if </span><span class="nb">test</span> <span class="s2">&quot;$?&quot;</span> -ne <span class="s2">&quot;0&quot;</span>; <span class="k">then</span>
-<span class="k">    </span><span class="nb">exit </span>1;
-  <span class="k">fi</span>;
-  <span class="nb">exit </span>0;
+  <span class="k">if</span> <span class="nb">test</span> <span class="s2">&quot;</span><span class="nv">$?</span><span class="s2">&quot;</span> -ne <span class="s2">&quot;0&quot;</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">exit </span>1<span class="p">;</span>
+  <span class="k">fi</span><span class="p">;</span>
+  <span class="nb">exit </span>0<span class="p">;</span>
 <span class="k">else</span>
-<span class="k">  </span><span class="nb">exit </span>1;
+  <span class="nb">exit </span>1<span class="p">;</span>
 <span class="k">fi</span>
 </pre></div>
 </td></tr></table>

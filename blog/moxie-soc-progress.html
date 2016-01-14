@@ -72,25 +72,25 @@
 embedded ROM and the Nexys3's 7-segment display. So, right now I can
 write some code into FPGA embedded ROM to manipulate the display. For
 example...</p>
-<div class="highlight"><pre>        <span class="p">.</span><span class="n">text</span>
-    <span class="p">.</span><span class="n">p2align</span>        <span class="mi">1</span>
-        <span class="p">.</span><span class="n">global</span> <span class="n">MarinDisplayTest</span>
+<div class="highlight"><pre><span class="x">        .text</span>
+<span class="x">    .p2align        1</span>
+<span class="x">        .global MarinDisplayTest</span>
 
-        <span class="p">.</span><span class="n">equ</span> <span class="n">BIG_ENDIAN</span><span class="p">,</span><span class="mi">1</span>
+<span class="x">        .equ BIG_ENDIAN,1</span>
 
-        <span class="err">#</span> <span class="n">This</span> <span class="n">is</span> <span class="n">where</span> <span class="mi">7</span><span class="o">-</span><span class="n">segment</span> <span class="n">display</span> <span class="n">is</span> <span class="n">mapped</span> <span class="n">to</span> <span class="n">memory</span>
-        <span class="p">.</span><span class="n">equ</span> <span class="n">DISPLAY_ADDR</span><span class="p">,</span><span class="mh">0x00100000</span>
+<span class="x">        </span><span class="err">#</span><span class="x"> This is where 7-segment display is mapped to memory</span>
+<span class="x">        .equ DISPLAY_ADDR,0x00100000</span>
 
-<span class="nl">MarinDisplayTest:</span>
-        <span class="n">ldi</span><span class="p">.</span><span class="n">l</span>   <span class="err">$</span><span class="n">r1</span><span class="p">,</span> <span class="mh">0x1234</span>
-        <span class="n">ldi</span><span class="p">.</span><span class="n">l</span>   <span class="err">$</span><span class="n">r3</span><span class="p">,</span> <span class="mh">0x0</span>
-<span class="nl">loop:</span>   <span class="n">sta</span><span class="p">.</span><span class="n">s</span>   <span class="n">DISPLAY_ADDR</span><span class="p">,</span> <span class="err">$</span><span class="n">r1</span>
-        <span class="n">dec</span>     <span class="err">$</span><span class="n">r1</span><span class="p">,</span> <span class="mi">1</span>
-        <span class="n">ldi</span><span class="p">.</span><span class="n">l</span>   <span class="err">$</span><span class="n">r2</span><span class="p">,</span> <span class="mi">5000000</span>
-<span class="nl">delay:</span>  <span class="n">dec</span>     <span class="err">$</span><span class="n">r2</span><span class="p">,</span> <span class="mi">1</span>
-        <span class="n">cmp</span>     <span class="err">$</span><span class="n">r2</span><span class="p">,</span> <span class="err">$</span><span class="n">r3</span>
-        <span class="n">bne</span>     <span class="n">delay</span>
-        <span class="n">jmpa</span>    <span class="n">loop</span>
+<span class="x">MarinDisplayTest:</span>
+<span class="x">        ldi.l   </span><span class="p">$</span><span class="nv">r1</span><span class="x">, 0x1234</span>
+<span class="x">        ldi.l   </span><span class="p">$</span><span class="nv">r3</span><span class="x">, 0x0</span>
+<span class="x">loop:   sta.s   DISPLAY_ADDR, </span><span class="p">$</span><span class="nv">r1</span><span class="x"></span>
+<span class="x">        dec     </span><span class="p">$</span><span class="nv">r1</span><span class="x">, 1</span>
+<span class="x">        ldi.l   </span><span class="p">$</span><span class="nv">r2</span><span class="x">, 5000000</span>
+<span class="x">delay:  dec     </span><span class="p">$</span><span class="nv">r2</span><span class="x">, 1</span>
+<span class="x">        cmp     </span><span class="p">$</span><span class="nv">r2</span><span class="x">, </span><span class="p">$</span><span class="nv">r3</span><span class="x"></span>
+<span class="x">        bne     delay</span>
+<span class="x">        jmpa    loop</span>
 </pre></div>
 
 

@@ -65,7 +65,7 @@
   <div class="article_text">
     <p>The Moxie ISA still needs quite a bit of tuning. Take branches, for
 instance. A <code>beq</code> instruction currently encoded <a href="http://www.moxielogic.org/wiki/index.php?title=Instruction_Set#beq">like so</a>...  </p>
-<div class="highlight"><pre><span class="err">`</span><span class="mo">00001111</span><span class="n">xxxxxxxx</span> <span class="n">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</span><span class="err">`</span>
+<div class="highlight"><pre>`00001111xxxxxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii`
 </pre></div>
 
 
@@ -79,13 +79,13 @@ relative! This is hugely wasteful.</p>
     tweaked the as-of-yet unused Form 3 encodings so they look like
     this:  </p>
 <blockquote>
-<div class="highlight"><pre>  <span class="n">FORM</span> <span class="mi">3</span> <span class="n">instructions</span> <span class="n">start</span> <span class="n">with</span> <span class="n">a</span> <span class="n">bits</span> <span class="s">&quot;11&quot;</span><span class="p">...</span>
+<div class="highlight"><pre>  FORM 3 instructions start with a bits &quot;11&quot;...
 
-    <span class="mi">11</span><span class="n">oooovvvvvvvvvv</span>                                                            
-    <span class="mi">0</span>              <span class="n">F</span>
+    11oooovvvvvvvvvv                                                            
+    0              F
 
-   <span class="n">oooo</span>         <span class="o">-</span> <span class="n">form</span> <span class="mi">3</span> <span class="n">opcode</span> <span class="n">number</span>                                          
-   <span class="n">vvvvvvvvvv</span>   <span class="o">-</span> <span class="mi">10</span><span class="o">-</span><span class="n">bit</span> <span class="n">immediate</span> <span class="n">value</span><span class="p">.</span>
+   oooo         - form 3 opcode number                                          
+   vvvvvvvvvv   - 10-bit immediate value.
 </pre></div>
 
 
@@ -113,15 +113,15 @@ Form 3 opcode space.</p>
     If the compiler detects that a branch target is out of range, we
     want it to do something like the following transformation...</p>
 <blockquote>
-<div class="highlight"><pre>    <span class="n">beq</span>    <span class="p">.</span><span class="n">FAR_TARGET</span>
+<div class="highlight"><pre>    beq    .FAR_TARGET
 </pre></div>
 
 
 </blockquote>
 <p>...becomes...</p>
 <blockquote>
-<div class="highlight"><pre>    <span class="n">bne</span>    <span class="p">.</span> <span class="o">+</span> <span class="mi">8</span>
-    <span class="n">jmpa</span>   <span class="p">.</span><span class="n">FAR_TARGET</span>
+<div class="highlight"><pre>    bne    . + 8
+    jmpa   .FAR_TARGET
 </pre></div>
 
 

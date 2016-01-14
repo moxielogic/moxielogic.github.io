@@ -89,11 +89,11 @@ appropriate repo package below:</p>
 </ul>
 <p>The fingerprint for the signing key is <code>1D94 EA73 7436 1929 B906  804C 89D7 255C BFE9 22AD</code>.</p>
 <p>Example usage:</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">rpm</span> <span class="o">-</span><span class="n">ivh</span> <span class="n">http</span><span class="o">:</span><span class="c1">//184.106.241.209/yum/MoxieLogic/el7/RPMS/noarch/moxielogic-repo-el7-1-5.noarch.rpm</span>
-<span class="err">$</span> <span class="n">yum</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">moxielogic</span><span class="o">-</span><span class="n">moxiebox</span><span class="o">-</span><span class="n">gcc</span> <span class="n">moxielogic</span><span class="o">-</span><span class="n">moxiebox</span><span class="o">-</span><span class="n">newlib</span> <span class="n">moxielogic</span><span class="o">-</span><span class="n">moxiebox</span><span class="o">-</span><span class="n">gdb</span>
-<span class="err">$</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">moxielogic</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">moxiebox</span><span class="o">-</span><span class="n">gcc</span> 
-<span class="n">moxie</span><span class="o">-</span><span class="n">elf</span><span class="o">-</span><span class="n">gcc</span><span class="o">:</span> <span class="n">fatal</span> <span class="n">error</span><span class="o">:</span> <span class="n">no</span> <span class="n">input</span> <span class="n">files</span>
-<span class="n">compilation</span> <span class="n">terminated</span><span class="p">.</span>
+<div class="highlight"><pre><span class="nv">$ </span>rpm -ivh http://184.106.241.209/yum/MoxieLogic/el7/RPMS/noarch/moxielogic-repo-el7-1-5.noarch.rpm
+<span class="nv">$ </span>yum install -y moxielogic-moxiebox-gcc moxielogic-moxiebox-newlib moxielogic-moxiebox-gdb
+<span class="nv">$ </span>/opt/moxielogic/bin/moxiebox-gcc 
+moxie-elf-gcc: fatal error: no input files
+compilation terminated.
 </pre></div>
 
 
