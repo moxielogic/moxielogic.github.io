@@ -8,7 +8,7 @@
   -->
   <link rel="stylesheet" type="text/css" href="./theme/css/style.css">
   <link rel="stylesheet" type="text/css" href="./theme/css/pygments.css">
-  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,17 +31,11 @@
       <a href=".">
         <img src="http://moxielogic.github.io/images/ml.png" alt="logo">
       </a>
-      <h2><a href=".">The Moxie Blog</a></h2>
+      <h2><a href=".">Anthony Green</a></h2>
       <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
       <ul>
         <li><a href="./pages/about.html">About</a></li>
         <li><a href="./pages/author.html">Author</a></li>
-	<p>
-	<p>
-	<p>
-	<p>
-	<p>
-	<p>
         <li><a href="http://moxielogic.org/blog/pages/architecture.html" target="_blank">Architecture</a></li>
         <li><a href="http://moxielogic.org/blog/pages/toolchain.html" target="_blank">Toolchain</a></li>
       </ul>
@@ -57,6 +51,20 @@
       </p>
     </header>
 
+<article>
+  <div class="article_title">
+    <h3><a href="./moxie-mixie.html">Moxie Mixie: Frustrating Remote Attackers with Container Specific Instruction Sets</a></h3>
+  </div>
+  <div class="article_text">
+    <p>While there are many existing technologies to frustrate remote
+attackers, it can be fun to think up novel protections that might be
+used to layer on additional defences.</p>
+<p>Consider, for instance, that remote code execution through attacks
+like buffer overflows depends on knowledge of the remote systems'
+instruction set.  Knowledge ...</p>
+  </div>
+</article>
+<hr />
 <article>
   <div class="article_title">
     <h3><a href="./moxie-talk-at-bitcoin-dev-meetup.html">Moxie talk at Bitcoin Dev Meetup</a></h3>
@@ -202,25 +210,6 @@ or on FPGA hardware. I tested with a Nexys 3 Spartan-6 board by simply
 converting ...</p>
   </div>
 </article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="./putting-it-together-on-chip-firmware.html">Putting it together: on-chip firmware</a></h3>
-  </div>
-  <div class="article_text">
-    <p>The on-chip <a href="https://github.com/atgreen/moxie-cores/blob/master/firmware/bootrom/tinystub.c" title="firmware">firmware</a> for the <a href="https://github.com/atgreen/moxie-cores/tree/master/soc/marin" title="Marin SoC">Marin SoC</a> has been updated with the
-gdb stub, so now when you program the FPGA, you'll see the following on
-the serial console:</p>
-<div class="highlight"><pre>MOXIE On-Chip Bootloader v2.0
-Copyright (c) 2013 Anthony Green
-
-Waiting for an S-Record Download or Remote GDB Connection...
-</pre></div>
-
-
-<p>...and ...</p>
-  </div>
-</article>
 
 <footer>
 <div id="paginator">
@@ -230,37 +219,8 @@ Waiting for an S-Record Download or Remote GDB Connection...
 </footer>
 
     <div id="ending_message">
-      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. </p>
     </div>
   </main>
-  <script type='text/javascript'>
-    function clicky_gc(name) {
-    var ca = document.cookie.split(';');
-    for (var i in ca) {
-    if (ca[i].indexOf(name + '=') != -1)
-    return decodeURIComponent(ca[i].split('=')[1]);
-    }
-    return '';
-    }
-    var username_check = clicky_gc('comment_author_3a89f35dcf6e8725c9f228f27c057e70');
-    if( username_check ) var clicky_custom_session = { username: username_check };
-    </script>
-  <script type="text/javascript">
-    var clicky = { log:function () {
-    return;
-    }, goal:function () {
-    return;
-    }};
-    var clicky_site_id = 78673;
-    (function () {
-    var s = document.createElement('script');
-    s.type = 'text/javascript';
-    s.async = true;
-    s.src = '//static.getclicky.com/js';
-    ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild(s);
-    })();
-</script>
-<noscript><p><img alt="Clicky" width="1" height="1"
-		    src="http://in.getclicky.com/78673ns.gif"/></p></noscript>
 </body>
 </html>

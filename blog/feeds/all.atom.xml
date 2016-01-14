@@ -1,5 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Moxie Blog</title><link href="http://moxielogic.github.io/blog/" rel="alternate"></link><link href="http://moxielogic.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>http://moxielogic.github.io/blog/</id><updated>2015-02-15T15:21:00-05:00</updated><entry><title>Moxie talk at Bitcoin Dev Meetup</title><link href="http://moxielogic.github.io/blog/moxie-talk-at-bitcoin-dev-meetup.html" rel="alternate"></link><published>2015-02-15T15:21:00-05:00</published><author><name>green</name></author><id>tag:moxielogic.github.io,2015-02-15:blog/moxie-talk-at-bitcoin-dev-meetup.html</id><summary type="html">&lt;p&gt;&lt;center&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Moxie Blog</title><link href="http://moxielogic.github.io/blog/" rel="alternate"></link><link href="http://moxielogic.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>http://moxielogic.github.io/blog/</id><updated>2016-01-14T00:00:00-05:00</updated><entry><title>Moxie Mixie: Frustrating Remote Attackers with Container Specific Instruction Sets</title><link href="http://moxielogic.github.io/blog/moxie-mixie.html" rel="alternate"></link><published>2016-01-14T00:00:00-05:00</published><author><name>green</name></author><id>tag:moxielogic.github.io,2016-01-14:blog/moxie-mixie.html</id><summary type="html">&lt;p&gt;While there are many existing technologies to frustrate remote
+attackers, it can be fun to think up novel protections that might be
+used to layer on additional defences.&lt;/p&gt;
+&lt;p&gt;Consider, for instance, that remote code execution through attacks
+like buffer overflows depends on knowledge of the remote systems'
+instruction set.  Knowledge of this instruction set allows attackers to
+carefully construct payloads designed to take over your systems
+through buffer overflow attacks and the like.  But what if we were
+able to remove knowledge of the remote system ISA by essentially
+making it unguessable?  Ladies and gentlemen, let me present to you
+the Moxie Mixie architecture...&lt;/p&gt;
+&lt;p&gt;Mixie is a variant of the Moxie that uses the same instruction set as
+Moxie, but with random instruction encodings, making it difficult for
+remote attackers to generate payloads for execution.  Here's how it
+works. Consider this C source code:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;int mycode (int a, int b)
+{
+  return a + b;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Here's what it would assemble to normally with the moxie GNU tools:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;00000000 &amp;lt;mycode&amp;gt;:&lt;/span&gt;
+&lt;span class="x"&gt;   0:    05 23          add     &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;r0&lt;/span&gt;&lt;span class="x"&gt;, &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;r1&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;   2:    04 00          ret&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;To compile for the mixie variant, we need to assemble with the -mixie
+option, and provide a random 128-bit key through the &lt;code&gt;MOXIE_MIXIE_KEY&lt;/code&gt;
+environment variable. So, for instance....&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ MOXIE_MIXIE_KEY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;123456789ABCDEF0 moxie-linux-as -mixie mycode.S
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;...produces...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;00000000 &amp;lt;mycode&amp;gt;:&lt;/span&gt;
+&lt;span class="x"&gt;   0:    05 23 77 5f    add     &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;r0&lt;/span&gt;&lt;span class="x"&gt;, &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;r1&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;   4:    c6 1b&lt;/span&gt;
+&lt;span class="x"&gt;   6:    04 00 c9 23    ret&lt;/span&gt;
+&lt;span class="x"&gt;   a:    43 39&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note that each instruction now has an extra 32-bit suffix that is
+randomly generated off of &lt;code&gt;MOXIE_MIXIE_KEY&lt;/code&gt;.  We will always get those
+same suffix values when we use the same key value.  If we change the
+key...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ MOXIE_MIXIE_KEY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;ABABABABABABABAB moxie-linux-as -mixie mycode.S
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;...we get different instruction encodings....&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;00000000 &amp;lt;mycode&amp;gt;:&lt;/span&gt;
+&lt;span class="x"&gt;   0:    05 23 19 03    add     &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;r0&lt;/span&gt;&lt;span class="x"&gt;, &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;r1&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt;   4:    02 46&lt;/span&gt;
+&lt;span class="x"&gt;   6:    04 00 52 f1    ret&lt;/span&gt;
+&lt;span class="x"&gt;   a:    37 88&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now on the other side of this, we need to execute the code in a
+mixie-aware virtual machine.  This can be any simulator environment,
+but QEMU in user mode is an interesting one.  In this mode, QEMU will
+emulate the moxie mixie processor on Linux, but system calls are
+passed through to the host (x86) platform.  Simply supply the same key
+to the simulator and instructions will be recognized and executed as
+expected.  Supply the wrong key, and all you'll get are illegal
+instructions.  The take away here is that remote attackers, without
+knowledge of the key, will have a difficult time generating a payload
+to initiate their attack.&lt;/p&gt;
+&lt;p&gt;Run-time generated code presents a challenge that is easily
+surmounted.  For example, GCC trampolines and libffi both generate
+code at runtime and must have some way to generate instruction
+encodings based on the appropriate mixie key.  In these cases, instead
+of generating the code directly, we can generate a code generator that
+asks the runtime (simulated mixie processor) to generate the code for
+us.&lt;/p&gt;
+&lt;p&gt;Note that we're not 'encrypting' the binaries.  An attacker with
+access to mixie binaries will trivially be able to map out the
+instruction suffixes and generate shell code.  All we're doing here is
+adding additional protections against remote attacks, where you have a
+reasonable chance to secure physical access to the binaries.  We also
+can't protect against DoS attacks using this technology.  If a remote
+attacker can insert instructions into the target system, illegal
+instruction crashes are certain to occur.&lt;/p&gt;
+&lt;p&gt;There are many interesting use cases, from embedded devices to
+traditional web services.  Linux container technology, when combined
+with QEMU, provide the perfect mixie platform that can deployed
+anywhere regular docker containers can run.  All you need is a moxie
+mixie linux userland and QEMU.&lt;/p&gt;
+&lt;p&gt;I'm interested in hearing feedack on this idea.  Thanks for reading!&lt;/p&gt;</summary><category term="gcc"></category></entry><entry><title>Moxie talk at Bitcoin Dev Meetup</title><link href="http://moxielogic.github.io/blog/moxie-talk-at-bitcoin-dev-meetup.html" rel="alternate"></link><published>2015-02-15T15:21:00-05:00</published><author><name>green</name></author><id>tag:moxielogic.github.io,2015-02-15:blog/moxie-talk-at-bitcoin-dev-meetup.html</id><summary type="html">&lt;p&gt;&lt;center&gt;
 &lt;img alt="" src="http://moxielogic.github.io/images/bcdev.jpeg" /&gt;
 &lt;/center&gt;&lt;/p&gt;
 &lt;p&gt;A very meta photo of me at the Toronto Bitcoin Developer Meetup

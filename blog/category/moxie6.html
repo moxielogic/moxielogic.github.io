@@ -8,7 +8,7 @@
   -->
   <link rel="stylesheet" type="text/css" href="../theme/css/style.css">
   <link rel="stylesheet" type="text/css" href="../theme/css/pygments.css">
-  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,17 +32,11 @@
       <a href="..">
         <img src="http://moxielogic.github.io/images/ml.png" alt="logo">
       </a>
-      <h2><a href="..">The Moxie Blog</a></h2>
+      <h2><a href="..">Anthony Green</a></h2>
       <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
       <ul>
         <li><a href="../pages/about.html">About</a></li>
         <li><a href="../pages/author.html">Author</a></li>
-	<p>
-	<p>
-	<p>
-	<p>
-	<p>
-	<p>
         <li><a href="http://moxielogic.org/blog/pages/architecture.html" target="_blank">Architecture</a></li>
         <li><a href="http://moxielogic.org/blog/pages/toolchain.html" target="_blank">Toolchain</a></li>
       </ul>
@@ -60,6 +54,18 @@
       </p>
     </header>
 
+<article>
+  <div class="article_title">
+    <h3><a href="../reverse-debugging.html">Reverse debugging!</a></h3>
+  </div>
+  <div class="article_text">
+    <p>A few weeks ago I happened to be in Palo Alto and met up with my friend
+and long-time GDB hacker Michael Snyder. He told me about a new feature
+in GDB called "process recording". The basic idea is that when you tell
+GDB to enter into "record mode", it ...</p>
+  </div>
+</article>
+<hr />
 <article>
   <div class="article_title">
     <h3><a href="../a-disassembler-in-verilog.html">A Disassembler in Verilog</a></h3>
@@ -189,18 +195,6 @@ week. Already there has been some useful feedback resulting in a few
 improvements. For instance, the moxie libgcc.a now provides the soft-fp ...</p>
   </div>
 </article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="../pushing-bits-upstream.html">Pushing Bits Upstream</a></h3>
-  </div>
-  <div class="article_text">
-    <p>If there's one thing I've learned about GNU tools development over the
-years, it's that attempting to maintain a tools port outside of the
-upstream tree is A Very Bad Idea! It's easy to let your private tree
-fall out of sync from upstream. And the ...</p>
-  </div>
-</article>
 
 <footer>
 <div id="paginator">
@@ -211,37 +205,8 @@ fall out of sync from upstream. And the ...</p>
 </footer>
 
     <div id="ending_message">
-      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. .</p>
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. </p>
     </div>
   </main>
-  <script type='text/javascript'>
-    function clicky_gc(name) {
-    var ca = document.cookie.split(';');
-    for (var i in ca) {
-    if (ca[i].indexOf(name + '=') != -1)
-    return decodeURIComponent(ca[i].split('=')[1]);
-    }
-    return '';
-    }
-    var username_check = clicky_gc('comment_author_3a89f35dcf6e8725c9f228f27c057e70');
-    if( username_check ) var clicky_custom_session = { username: username_check };
-    </script>
-  <script type="text/javascript">
-    var clicky = { log:function () {
-    return;
-    }, goal:function () {
-    return;
-    }};
-    var clicky_site_id = 78673;
-    (function () {
-    var s = document.createElement('script');
-    s.type = 'text/javascript';
-    s.async = true;
-    s.src = '//static.getclicky.com/js';
-    ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild(s);
-    })();
-</script>
-<noscript><p><img alt="Clicky" width="1" height="1"
-		    src="http://in.getclicky.com/78673ns.gif"/></p></noscript>
 </body>
 </html>
