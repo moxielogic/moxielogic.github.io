@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>The Moxie Blog</title><link>http://moxielogic.github.io/blog/</link><description></description><atom:link href="http://moxielogic.github.io/blog/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 15 Feb 2015 15:21:00 -0500</lastBuildDate><item><title>Moxie talk at Bitcoin Dev Meetup</title><link>http://moxielogic.github.io/blog/moxie-talk-at-bitcoin-dev-meetup.html</link><description>&lt;p&gt;&lt;center&gt;
-&lt;img alt="" src="http://moxielogic.org/images/bcdev.jpg" /&gt;
+&lt;img alt="" src="http://moxielogic.github.io/images/bcdev.jpg" /&gt;
 &lt;/center&gt;&lt;/p&gt;
 &lt;p&gt;A very meta photo of me at the Toronto Bitcoin Developer Meetup
 yesterday, explaining moxie, and the value of a security oriented VM
