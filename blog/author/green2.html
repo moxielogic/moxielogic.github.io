@@ -67,6 +67,24 @@
 
 <article>
   <div class="article_title">
+    <h3><a href="../the-moxie-game-console.html">The Moxie Game Console?</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Ok, not quite, but <a href="https://github.com/kl7107" title="Krister">Krister Lagerström</a> recently did something cool..</p>
+<p><center>
+<img alt="nethack" src="http://moxielogic.github.io/images/nethack.png" />
+</center></p>
+<p>That's <a href="http://www.nethack.org/" title="NetHack">NetHack</a> ported to <a href="http://rtems.org" title="RTEMS">RTEMS</a> running on the moxie based <a href="http://github.org/atgreen/moxie-cores" title="Marin SoC">Marin
+SoC</a>.</p>
+<p>It runs on QEMU, via
+"<code>qemu-system-moxie --nographic --machine marin --kernel nethack.elf</code>",
+or on FPGA hardware. I tested with a Nexys 3 Spartan-6 board by simply
+converting ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h3><a href="../putting-it-together-on-chip-firmware.html">Putting it together: on-chip firmware</a></h3>
   </div>
   <div class="article_text">
@@ -183,22 +201,6 @@ Marin SoC.</p>
 <p>Rather than hook up the Nexys3 external RAM module, I'm using extra
 space on the FPGA itself for RAM. Most of the hard work was sorting out
 the <a href="https://github.com/atgreen/moxie-cores/blob/master/soc/marin/moxie-marin.ld">linker script</a> magic required to ...</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="../moxie-soc-progress.html">Moxie SoC Progress</a></h3>
-  </div>
-  <div class="article_text">
-    <p>Time for a quick update!</p>
-<p><center>
-<iframe width="560" height="315" src="http://www.youtube.com/embed/86-OkQcXEes" frameborder="0" allowfullscreen></iframe>
-</center></p>
-<p>"Marin" is the name of my test SoC consisting of a <a href="http://en.wikipedia.org/wiki/Wishbone_(computer_bus)" title="wishbone">wishbone</a> wrapped
-75Mhz big-endian MoxieLite bus master, along with two slave devices:
-embedded ROM and the Nexys3's 7-segment display. So, right now I can
-write some code into FPGA embedded ROM to manipulate ...</p>
   </div>
 </article>
 

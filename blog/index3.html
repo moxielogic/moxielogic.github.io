@@ -66,6 +66,22 @@
 
 <article>
   <div class="article_title">
+    <h3><a href="./moxie-soc-progress.html">Moxie SoC Progress</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Time for a quick update!</p>
+<p><center>
+<iframe width="560" height="315" src="http://www.youtube.com/embed/86-OkQcXEes" frameborder="0" allowfullscreen></iframe>
+</center></p>
+<p>"Marin" is the name of my test SoC consisting of a <a href="http://en.wikipedia.org/wiki/Wishbone_(computer_bus)" title="wishbone">wishbone</a> wrapped
+75Mhz big-endian MoxieLite bus master, along with two slave devices:
+embedded ROM and the Nexys3's 7-segment display. So, right now I can
+write some code into FPGA embedded ROM to manipulate ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h3><a href="./moxie-and-free-software-eda-at-fsoss.html">Moxie and Free Software EDA at FSOSS</a></h3>
   </div>
   <div class="article_text">
@@ -177,19 +193,6 @@ spacecraft and play ...</p>
 bitstreams to their devices over USB (a DE-2 eval board, in my case).
 They require some tricky work to set up properly on Fedora - my dev host
 of choice. But you're in luck! I've packaged up an RPM ...</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="./fake-ram-loadstore-and-push.html">Fake RAM, load/store and push</a></h3>
-  </div>
-  <div class="article_text">
-    <p>Progress report time....</p>
-<p>I need RAM in order to implement/test most instructions. To that end,
-I've implemented a fake data cache that is always accessed within a
-single cycle during the WRITE pipeline stage. Eventually this will have
-to be replaced with a real data cache that reads ...</p>
   </div>
 </article>
 

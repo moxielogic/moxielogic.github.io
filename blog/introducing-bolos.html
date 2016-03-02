@@ -18,10 +18,11 @@
   <link href="http://moxielogic.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Moxie Blog Atom" />
   <link href="http://moxielogic.github.io/blog/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="The Moxie Blog RSS" />
 
+<meta name="keywords" content="bitcoin">
 
   <title>
     The Moxie Blog
-&ndash; Tags  </title>
+&ndash; Ledger launches moxie-based secure VM technology for blockchain applications  </title>
 
 <script type="text/javascript">
   var _paq = _paq || [];
@@ -65,53 +66,41 @@
     </header>
 
 <article>
-  <div class="article_text">
-    <ul>          <li><a href="./tag/altera.html">Altera</a> (3)</li>
-          <li><a href="./tag/architecture.html">architecture</a> (15)</li>
-          <li><a href="./tag/binutils.html">binutils</a> (6)</li>
-          <li><a href="./tag/bitcoin.html">bitcoin</a> (2)</li>
-          <li><a href="./tag/bsp.html">bsp</a> (2)</li>
-          <li><a href="./tag/cloud.html">cloud</a> (1)</li>
-          <li><a href="./tag/copyright.html">copyright</a> (1)</li>
-          <li><a href="./tag/dcpu-16.html">dcpu-16</a> (1)</li>
-          <li><a href="./tag/de2.html">de2</a> (3)</li>
-          <li><a href="./tag/ec2.html">ec2</a> (1)</li>
-          <li><a href="./tag/fpga.html">fpga</a> (5)</li>
-          <li><a href="./tag/freertos.html">FreeRTOS</a> (1)</li>
-          <li><a href="./tag/fsoss.html">FSOSS</a> (1)</li>
-          <li><a href="./tag/gas.html">gas</a> (1)</li>
-          <li><a href="./tag/gcc.html">gcc</a> (16)</li>
-          <li><a href="./tag/gdb.html">gdb</a> (13)</li>
-          <li><a href="./tag/git.html">git</a> (1)</li>
-          <li><a href="./tag/gtkwave.html">gtkwave</a> (2)</li>
-          <li><a href="./tag/jtag.html">JTAG</a> (2)</li>
-          <li><a href="./tag/legal.html">legal</a> (1)</li>
-          <li><a href="./tag/licensing.html">licensing</a> (1)</li>
-          <li><a href="./tag/linux.html">linux</a> (10)</li>
-          <li><a href="./tag/lisp.html">lisp</a> (1)</li>
-          <li><a href="./tag/marin.html">marin</a> (11)</li>
-          <li><a href="./tag/moxie.html">moxie</a> (2)</li>
-          <li><a href="./tag/moxiebox.html">moxiebox</a> (1)</li>
-          <li><a href="./tag/moxielite.html">MoxieLite</a> (4)</li>
-          <li><a href="./tag/moxielyzer.html">moxielyzer</a> (1)</li>
-          <li><a href="./tag/muskoka.html">muskoka</a> (3)</li>
-          <li><a href="./tag/nethack.html">NetHack</a> (2)</li>
-          <li><a href="./tag/newlib.html">newlib</a> (5)</li>
-          <li><a href="./tag/nexys3.html">Nexys3</a> (6)</li>
-          <li><a href="./tag/qemu.html">qemu</a> (11)</li>
-          <li><a href="./tag/quartus.html">Quartus</a> (2)</li>
-          <li><a href="./tag/r.html">r</a> (1)</li>
-          <li><a href="./tag/releng.html">releng</a> (4)</li>
-          <li><a href="./tag/rtems.html">RTEMS</a> (5)</li>
-          <li><a href="./tag/soc.html">SoC</a> (8)</li>
-          <li><a href="./tag/u-boot.html">u-boot</a> (6)</li>
-          <li><a href="./tag/verilog.html">verilog</a> (9)</li>
-          <li><a href="./tag/vga.html">vga</a> (1)</li>
-          <li><a href="./tag/vhdl.html">VHDL</a> (1)</li>
-          <li><a href="./tag/wishbone.html">wishbone</a> (4)</li>
-          <li><a href="./tag/xilinx.html">Xilinx</a> (3)</li>
-    </ul>
+  <div class="article_title">
+    <h3><a href="./introducing-bolos.html">Ledger launches moxie-based secure VM technology for blockchain applications</a></h3>
   </div>
+  <div class="article_text">
+    <p>So here's an interesting picture from <a href="https://www.ledgerwallet.com">Ledger</a>.  Check out the chewy center on the right -- that APP is a <em>moxie</em> binary!</p>
+<p><center>
+<img alt="bolos" src="https://cdn-images-2.medium.com/max/800/1*K5LiFrZiqHWMD2QkiioIcQ.png" />
+<em>Image credit: Ledger's <a href="https://medium.com/@Ledger/introducing-bolos-blockchain-open-ledger-operating-system-b9893d09f333#.loy1hd3s3">blog</a></em>
+</center></p>
+<p><a href="https://www.ledgerwallet.com">Ledger</a>, the hardware bitcoin wallet company, just announced
+<a href="https://medium.com/@Ledger/introducing-bolos-blockchain-open-ledger-operating-system-b9893d09f333#.loy1hd3s3">BOLOS</a>, the "Blockchain Open Ledger Operating Systems".  What's
+most interesting to me, however, is that they have built on top of
+Jeff Garzik's <a href="http://github.com/jgarzik/moxiebox">moxiebox</a> work in
+order to implement application isolation in their TEE app.  It seems
+that additional info, including toolchains, should be posted soon.</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Wed 02 March 2016</p>
+    <p>Category: <a href="./category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="./tag/bitcoin.html">bitcoin</a>    </p>
+  </div>
+
+  <div id="article_comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_identifier = "introducing-bolos.html";
+        (function() {
+             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+             dsq.src = 'http://moxieblog.disqus.com/embed.js';
+             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+         })();
+    </script>
+  </div>
+
 </article>
 
 

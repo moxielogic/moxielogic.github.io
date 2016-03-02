@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>The Moxie Blog</title><link href="http://moxielogic.github.io/blog/" rel="alternate"></link><link href="http://moxielogic.github.io/blog/feeds/moxie.atom.xml" rel="self"></link><id>http://moxielogic.github.io/blog/</id><updated>2016-01-14T00:00:00-05:00</updated><entry><title>Moxie Mixie: Frustrating Remote Attackers with Container Specific Instruction Sets</title><link href="http://moxielogic.github.io/blog/moxie-mixie.html" rel="alternate"></link><published>2016-01-14T00:00:00-05:00</published><author><name>green</name></author><id>tag:moxielogic.github.io,2016-01-14:blog/moxie-mixie.html</id><summary type="html">&lt;p&gt;While there are many existing technologies to frustrate remote
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The Moxie Blog</title><link href="http://moxielogic.github.io/blog/" rel="alternate"></link><link href="http://moxielogic.github.io/blog/feeds/moxie.atom.xml" rel="self"></link><id>http://moxielogic.github.io/blog/</id><updated>2016-03-02T00:00:00-05:00</updated><entry><title>Ledger launches moxie-based secure VM technology for blockchain applications</title><link href="http://moxielogic.github.io/blog/introducing-bolos.html" rel="alternate"></link><published>2016-03-02T00:00:00-05:00</published><author><name>green</name></author><id>tag:moxielogic.github.io,2016-03-02:blog/introducing-bolos.html</id><summary type="html">&lt;p&gt;So here's an interesting picture from &lt;a href="https://www.ledgerwallet.com"&gt;Ledger&lt;/a&gt;.  Check out the chewy center on the right -- that APP is a &lt;em&gt;moxie&lt;/em&gt; binary!&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;
+&lt;img alt="bolos" src="https://cdn-images-2.medium.com/max/800/1*K5LiFrZiqHWMD2QkiioIcQ.png" /&gt;
+&lt;em&gt;Image credit: Ledger's &lt;a href="https://medium.com/@Ledger/introducing-bolos-blockchain-open-ledger-operating-system-b9893d09f333#.loy1hd3s3"&gt;blog&lt;/a&gt;&lt;/em&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.ledgerwallet.com"&gt;Ledger&lt;/a&gt;, the hardware bitcoin wallet company, just announced
+&lt;a href="https://medium.com/@Ledger/introducing-bolos-blockchain-open-ledger-operating-system-b9893d09f333#.loy1hd3s3"&gt;BOLOS&lt;/a&gt;, the "Blockchain Open Ledger Operating Systems".  What's
+most interesting to me, however, is that they have built on top of
+Jeff Garzik's &lt;a href="http://github.com/jgarzik/moxiebox"&gt;moxiebox&lt;/a&gt; work in
+order to implement application isolation in their TEE app.  It seems
+that additional info, including toolchains, should be posted soon.&lt;/p&gt;</summary><category term="bitcoin"></category></entry><entry><title>Moxie Mixie: Frustrating Remote Attackers with Container Specific Instruction Sets</title><link href="http://moxielogic.github.io/blog/moxie-mixie.html" rel="alternate"></link><published>2016-01-14T00:00:00-05:00</published><author><name>green</name></author><id>tag:moxielogic.github.io,2016-01-14:blog/moxie-mixie.html</id><summary type="html">&lt;p&gt;While there are many existing technologies to frustrate remote
 attackers, it can be fun to think up novel protections that might be
 used to layer on additional defences.&lt;/p&gt;
 &lt;p&gt;Consider, for instance, that remote code execution through attacks

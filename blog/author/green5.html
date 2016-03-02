@@ -67,6 +67,19 @@
 
 <article>
   <div class="article_title">
+    <h3><a href="../fetching-instructions.html">Fetching instructions</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Moxie requires some interesting instruction fetch logic.</p>
+<p>For my initial implementation I'm assuming a 32-bit path to instruction
+memory. But moxie has both 16- and 48-bit instructions, so it's not like
+simple RISC cores that can feed the pipeline on every cycle. My solution
+is to feed 32-bit ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h3><a href="../the-fpga-test-board.html">The FPGA test board</a></h3>
   </div>
   <div class="article_text">
@@ -190,18 +203,6 @@ technology...</p>
 the following...</p>
 <div class="highlight"><pre><span class="nv">$ </span>./root/usr/bin/moxie-elf-run linux-2.6/vmlinux
 Linux version 2.6.31-rc3-gb006656-dirty <span class="o">(</span>green@dev.moxielogic.com<span class="o">)</span> <span class="o">(</span>gcc version 4.5.0 <span class="m">20090715</span> <span class="o">(</span>experimental<span class="o">)</span> <span class="o">[</span>trunk revision 149693<span class="o">]</span> <span class="o">(</span>GCC<span class="o">)</span> <span class="o">)</span> <span class="c">#6 Sun Jul 26 12:03:14 EDT 2009 ...</span></pre></div>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="../kernel-update-device-trees-and-kernel-threads.html">Kernel update: device trees and kernel threads</a></h3>
-  </div>
-  <div class="article_text">
-    <p>I've spent a lot of time in airports/planes/hotels recently, which is
-good news for the moxie linux port. It runs about 6.5M instructions,
-booting up to the point where a couple of kernel threads are created.
-However, a few context switches later it all comes tumbling ...</p>
   </div>
 </article>
 

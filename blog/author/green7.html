@@ -67,6 +67,24 @@
 
 <article>
   <div class="article_title">
+    <h3><a href="../rpms.html">RPMs</a></h3>
+  </div>
+  <div class="article_text">
+    <p>There's a little more detail on the <a href="http://moxielogic.org/wiki/index.php?title=MoxieDev">wiki</a>, but basically...</p>
+<div class="highlight"><pre><span class="nv">$ </span>rpm -ivh http://moxielogic.org/download/moxielogic-repo-1-1.noarch.rpm
+<span class="nv">$ </span>yum groupinstall moxiedev
+</pre></div>
+
+
+<p>Your welcome.</p>
+<p>Seriously though... release engineering is at times both tedious and
+fascinating. But mostly tedious. Still, I was interested in tackling a
+little releng work this ...</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h3><a href="../quick-update.html">Quick update...</a></h3>
   </div>
   <div class="article_text">
@@ -206,19 +224,6 @@ a specific hardware platform. This mostly involves linker scripts,
 platform initialization code, and hardware abstraction support
 libraries.</p>
 <p>Until recently the gdb sim ...</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h3><a href="../debugging-with-the-moxie-qemu-simulator.html">Debugging with the moxie qemu simulator</a></h3>
-  </div>
-  <div class="article_text">
-    <p>I've finally cracked the gdb+qemu puzzle, so now we can debug code
-running on the qemu moxie simulator!</p>
-<p>The last little gotcha was that the simulated $pc wasn't being updated
-after single-stepping. This will get you nowhere fast! But it's all
-fixed now, and here's ...</p>
   </div>
 </article>
 
