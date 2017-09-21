@@ -81,22 +81,20 @@
 <p>Supported target triplets include moxie-elf, moxie-rtems (for
 <a href="http://rtems.org">RTEMS</a> application development), and moxiebox (a
 special purpose configuration for the
-<a href="http://github.com/jgarzik/moxiebox">moxiebox</a> bitcoin oracle
+<a href="http://github.com/bloq/ora">moxiebox</a> bitcoin oracle
 project).</p>
 <h1>Getting and Building the Tools</h1>
 <h2>Binary Distributions</h2>
-<p>Signed packages for moxie-elf, moxie-rtems and moxiebox are available
-for Fedora, CentOS and RHEL.  Simply download and install the
-appropriate repo package below:</p>
+<p>Packages for moxie-elf, moxie-rtems and moxiebox are available for
+64-bit x86 Linux in both RPM and DEB formats.</p>
 <ul>
-<li><a href="http://184.106.241.209/yum/MoxieLogic/f20/RPMS/noarch/moxielogic-repo-f20-1-5.noarch.rpm">Fedora 20 x86_64</a></li>
-<li><a href="http://184.106.241.209/yum/MoxieLogic/f21/RPMS/noarch/moxielogic-repo-f21-1-5.noarch.rpm">Fedora 21 x86_64</a></li>
-<li><a href="http://184.106.241.209/yum/MoxieLogic/el6/RPMS/noarch/moxielogic-repo-el6-1-5.noarch.rpm">CentOS/RHEL 6</a></li>
-<li><a href="http://184.106.241.209/yum/MoxieLogic/el7/RPMS/noarch/moxielogic-repo-el7-1-5.noarch.rpm">CentOS/RHEL 7</a></li>
+<li>RPMs: <a href="http://repos.moxielogic.org:7007/MoxieLogic">http://repos.moxielogic.org:7007/MoxieLogic</a></li>
+<li>DEBs: <a href="http://repos.moxielogic.org:7114/MoxieLogic">http://repos.moxielogic.org:7114/MoxieLogic</a></li>
 </ul>
-<p>The fingerprint for the signing key is <code>1D94 EA73 7436 1929 B906  804C 89D7 255C BFE9 22AD</code>.</p>
+<p>The binaries are statically linked and should run on a wide variety of RPM and DEB based distros.</p>
+<p>On RPM based distros like Centos, RHEL and Fedora, please install the repo file found here: <a href="http://repos.moxielogic.org:7007/MoxieLogic/noarch/moxielogic-repo-latest.noarch.rpm">http://repos.moxielogic.org:7007/MoxieLogic/noarch/moxielogic-repo-latest.noarch.rpm</a>.</p>
 <p>Example usage:</p>
-<div class="highlight"><pre><span></span>$ rpm -ivh http://184.106.241.209/yum/MoxieLogic/el7/RPMS/noarch/moxielogic-repo-el7-1-5.noarch.rpm
+<div class="highlight"><pre><span></span>$ rpm -ivh http://repos.moxielogic.org:7007/MoxieLogic/noarch/moxielogic-repo-latest.noarch.rpm
 $ yum install -y moxielogic-moxiebox-gcc moxielogic-moxiebox-newlib moxielogic-moxiebox-gdb
 $ /opt/moxielogic/bin/moxiebox-gcc 
 moxie-elf-gcc: fatal error: no input files
@@ -107,14 +105,11 @@ compilation terminated.
 <h2>Source Distributions</h2>
 <p>The <a href="http://github.com/atgreen/moxie-cores">moxie-cores</a> project
 provides scripts to download and build the toolchain on Linux hosts.
-See the tools directory for the
-<a href="https://raw.githubusercontent.com/atgreen/moxie-cores/master/tools/download-tools-sources.sh">download</a>
-and
-<a href="https://raw.githubusercontent.com/atgreen/moxie-cores/master/tools/build-elf-tools.sh">build</a>
-scripts.</p>
+The tools build scripts and source links are at
+<a href="https://github.com/atgreen/moxiedev-releng">https://github.com/atgreen/moxiedev-releng</a>.</p>
   </div>
   <div class="article_meta">
-    <p>Updated on: Thu 29 January 2015</p>
+    <p>Updated on: Wed 20 September 2017</p>
   </div>
 </article>
 
