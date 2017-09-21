@@ -93,7 +93,7 @@ like BusyBox can run.</p>
     and the kernel? The first question is easy: I'll use our trusty
     <a href="http://moxielogic.org/wiki/index.php?title=Instruction_Set#swi">software interrupt (swi) instruction</a> to invoke system calls.
     This means creating an exception handler and installing it as
-    described <a href="http://moxielogic.org/blog/?p=148">in this old post</a>. <br />
+    described <a href="http://moxielogic.org/blog/?p=148">in this old post</a>. <br>
    As an aside, the swi instruction takes a 32-bit immediate operand.
     We currently use this to identify <a href="http://spindazzle.org/greenblog/index.php?/archives/107-ggx-Hello-World!.html">calls to the simulator via
     libgloss</a>. This works well for escaping to the
@@ -104,7 +104,7 @@ like BusyBox can run.</p>
     processing the interrupt (also trashing any future data cache).
     Libgloss and the sim only need a small number of IDs, so I'm going
     to chop the swi instruction down from 48-bits to 16-bits in a future
-    build of the tools. <br />
+    build of the tools. <br>
    Passing arguments to the system calls was also interesting to sort
     out...</li>
 <li><strong>System call argument passing</strong>. The moxie ABI currently only has
@@ -115,7 +115,7 @@ like BusyBox can run.</p>
     tricky argument marshaling, I've decided to try changing the general
     ABI accordingly, so that up to 5 registers may be used to hold
     function arguments. This involves changes to the compiler, debugger
-    and a smattering of assembly language in libgloss.<br />
+    and a smattering of assembly language in libgloss.<br>
    The great thing about having integrated benchmarks into the
     <a href="http://moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a> environment is that you can easily compare before and
     after performance for ABI changes like this. Running "ant benchmark"

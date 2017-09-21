@@ -85,7 +85,7 @@ the Moxie Mixie architecture...</p>
 Moxie, but with random instruction encodings, making it difficult for
 remote attackers to generate payloads for execution.  Here's how it
 works. Consider this C source code:</p>
-<div class="highlight"><pre>int mycode (int a, int b)
+<div class="highlight"><pre><span></span>int mycode (int a, int b)
 {
   return a + b;
 }
@@ -93,25 +93,25 @@ works. Consider this C source code:</p>
 
 
 <p>Here's what it would assemble to normally with the moxie GNU tools:</p>
-<div class="highlight"><pre><span class="x">00000000 &lt;mycode&gt;:</span>
-<span class="x">   0:    05 23          add     </span><span class="p">$</span><span class="nv">r0</span><span class="x">, </span><span class="p">$</span><span class="nv">r1</span><span class="x"></span>
-<span class="x">   2:    04 00          ret</span>
+<div class="highlight"><pre><span></span>00000000 &lt;mycode&gt;:
+   0:    05 23          add     $r0, $r1
+   2:    04 00          ret
 </pre></div>
 
 
 <p>To compile for the mixie variant, we need to assemble with the -mixie
 option, and provide a random 128-bit key through the <code>MOXIE_MIXIE_KEY</code>
 environment variable. So, for instance....</p>
-<div class="highlight"><pre><span class="nv">$ MOXIE_MIXIE_KEY</span><span class="o">=</span>123456789ABCDEF0 moxie-linux-as -mixie mycode.S
+<div class="highlight"><pre><span></span>$ <span class="nv">MOXIE_MIXIE_KEY</span><span class="o">=</span>123456789ABCDEF0 moxie-linux-as -mixie mycode.S
 </pre></div>
 
 
 <p>...produces...</p>
-<div class="highlight"><pre><span class="x">00000000 &lt;mycode&gt;:</span>
-<span class="x">   0:    05 23 77 5f    add     </span><span class="p">$</span><span class="nv">r0</span><span class="x">, </span><span class="p">$</span><span class="nv">r1</span><span class="x"></span>
-<span class="x">   4:    c6 1b</span>
-<span class="x">   6:    04 00 c9 23    ret</span>
-<span class="x">   a:    43 39</span>
+<div class="highlight"><pre><span></span>00000000 &lt;mycode&gt;:
+   0:    05 23 77 5f    add     $r0, $r1
+   4:    c6 1b
+   6:    04 00 c9 23    ret
+   a:    43 39
 </pre></div>
 
 
@@ -119,16 +119,16 @@ environment variable. So, for instance....</p>
 randomly generated off of <code>MOXIE_MIXIE_KEY</code>.  We will always get those
 same suffix values when we use the same key value.  If we change the
 key...</p>
-<div class="highlight"><pre><span class="nv">$ MOXIE_MIXIE_KEY</span><span class="o">=</span>ABABABABABABABAB moxie-linux-as -mixie mycode.S
+<div class="highlight"><pre><span></span>$ <span class="nv">MOXIE_MIXIE_KEY</span><span class="o">=</span>ABABABABABABABAB moxie-linux-as -mixie mycode.S
 </pre></div>
 
 
 <p>...we get different instruction encodings....</p>
-<div class="highlight"><pre><span class="x">00000000 &lt;mycode&gt;:</span>
-<span class="x">   0:    05 23 19 03    add     </span><span class="p">$</span><span class="nv">r0</span><span class="x">, </span><span class="p">$</span><span class="nv">r1</span><span class="x"></span>
-<span class="x">   4:    02 46</span>
-<span class="x">   6:    04 00 52 f1    ret</span>
-<span class="x">   a:    37 88</span>
+<div class="highlight"><pre><span></span>00000000 &lt;mycode&gt;:
+   0:    05 23 19 03    add     $r0, $r1
+   4:    02 46
+   6:    04 00 52 f1    ret
+   a:    37 88
 </pre></div>
 
 

@@ -75,7 +75,7 @@
     <p>The moxie newlib port was <a href="http://sourceware.org/ml/newlib/2009/msg00520.html">just accepted</a>. The GCC port will take a
 little longer to review, but I hope that it will get accepted early next
 week. Already there has been some useful feedback resulting in a few
-improvements. For instance, the moxie libgcc.a now provides the soft-fp ...</p>
+improvements. For instance, the moxie libgcc.a now provides the soft-fp …</p>
   </div>
 </article>
 <hr />
@@ -87,7 +87,7 @@ improvements. For instance, the moxie libgcc.a now provides the soft-fp ...</p>
     <p>If there's one thing I've learned about GNU tools development over the
 years, it's that attempting to maintain a tools port outside of the
 upstream tree is A Very Bad Idea! It's easy to let your private tree
-fall out of sync from upstream. And the ...</p>
+fall out of sync from upstream. And the longer you wait to …</p>
   </div>
 </article>
 <hr />
@@ -99,7 +99,8 @@ fall out of sync from upstream. And the ...</p>
     <p>I've written my first bit of <a href="http://en.wikipedia.org/wiki/Verilog">verilog</a> tonight. It's not much, really,
 but it's a start. I'm using <a href="http://www.icarus.com/eda/verilog/">Icarus Verilog</a> (iverlog) to compile and
 simulate the code. I also plan on using <a href="http://www.gpleda.org/tools/gtkwave/index.html">GTKWave</a> to examine timing
-dumps from the iverilog simulator. Both of these tools are ...</p>
+dumps from the iverilog simulator. Both of these tools are part of my
+development …</p>
   </div>
 </article>
 <hr />
@@ -110,7 +111,7 @@ dumps from the iverilog simulator. Both of these tools are ...</p>
   <div class="article_text">
     <p>My moxie port of <a href="http://www.denx.de/wiki/U-Boot">U-Boot</a>, the Universal Boot Loader, has started
 working!</p>
-<div class="highlight"><pre><span class="nv">$ </span>qemu-system-moxie -nographic -kernel u-boot
+<div class="highlight"><pre><span></span>$ qemu-system-moxie -nographic -kernel u-boot
 SDRAM :
         U-Boot Start:0x00001000
 Using default environment
@@ -119,18 +120,18 @@ U-BOOT <span class="k">for</span> <span class="s2">&quot;moxiesim&quot;</span>
 
 <span class="o">=</span>&gt; version
 
-U-Boot 2009.03-rc2-00013-gefb4734-dirty <span class="o">(</span>Apr <span class="m">02</span> <span class="m">2009</span> - 20:07:32<span class="o">)</span>
+U-Boot <span class="m">2009</span>.03-rc2-00013-gefb4734-dirty <span class="o">(</span>Apr <span class="m">02</span> <span class="m">2009</span> - <span class="m">20</span>:07:32<span class="o">)</span>
 <span class="o">=</span>&gt; printenv
 <span class="nv">bootargs</span><span class="o">=</span><span class="nv">root</span><span class="o">=</span>romfs
-<span class="nv">baudrate</span><span class="o">=</span>38400
+<span class="nv">baudrate</span><span class="o">=</span><span class="m">38400</span>
 <span class="nv">hostname</span><span class="o">=</span><span class="s2">&quot;moxiesim&quot;</span>
 
-Environment size: 55/4092 <span class="nv">bytes</span>
+Environment size: <span class="m">55</span>/4092 <span class="nv">bytes</span>
 <span class="o">=</span>&gt;
 </pre></div>
 
 
-<p>It ...</p>
+<p>It's …</p>
   </div>
 </article>
 <hr />
@@ -142,10 +143,10 @@ Environment size: 55/4092 <span class="nv">bytes</span>
     <p>My first go at exceptions is working well. The basic idea is that moxie
 will have a single exception handling routine whose address lives in
 special register 1. You set the exception handler like so:</p>
-<div class="highlight"><pre>void install_handler(void (*handler)(void))
+<div class="highlight"><pre><span></span>void install_handler(void (*handler)(void))
 {
   printf (&quot;Installing handler 0x%x\n&quot;, (unsigned) handler);
-  asm(&quot;ssr ...</pre></div>
+  asm(&quot;ssr …</pre></div>
   </div>
 </article>
 <hr />
@@ -158,7 +159,7 @@ special register 1. You set the exception handler like so:</p>
 of two sorts. Some (most?) processors look into a vector of exception
 handlers based on the exception type (Divide by Zero, Software
 Interrupt, IRQ, etc), and the other sort jumps to a single exception
-address and lets the ...</p>
+address and lets the …</p>
   </div>
 </article>
 <hr />
@@ -171,11 +172,11 @@ address and lets the ...</p>
 add to a board is a Real Time Clock (RTC). Qemu comes with a simulation
 of Freescale's <a href="http://www.freescale.com/files/microcontrollers/doc/data_sheet/MC146818.pdf">MC146818</a> RTC chip. Adding it to our qemu-defined
 board was as simple as....</p>
-<div class="highlight"><pre>   rtc_mm_init(0x400, 0, 0, 0);
+<div class="highlight"><pre><span></span>   rtc_mm_init(0x400, 0, 0, 0);
 </pre></div>
 
 
-<p>This ...</p>
+<p>This makes …</p>
   </div>
 </article>
 <hr />
@@ -190,7 +191,7 @@ the <a href="http://moxielogic.org/wiki/index.php?title=Toolchain">moxie toolcha
 a specific hardware platform. This mostly involves linker scripts,
 platform initialization code, and hardware abstraction support
 libraries.</p>
-<p>Until recently the gdb sim ...</p>
+<p>Until recently the gdb sim was …</p>
   </div>
 </article>
 <hr />
@@ -203,7 +204,8 @@ libraries.</p>
 running on the qemu moxie simulator!</p>
 <p>The last little gotcha was that the simulated $pc wasn't being updated
 after single-stepping. This will get you nowhere fast! But it's all
-fixed now, and here's ...</p>
+fixed now, and here's how it works...</p>
+<p><code>$ qemu-system-moxie …</code></p>
   </div>
 </article>
 <hr />
@@ -216,7 +218,7 @@ fixed now, and here's ...</p>
 Computer</a>. It refers to 2007 paper by Chuck Thacker at Microsoft
 Research describing a tiny 32-bit processor. Appendix A of the paper
 includes the entire synthesizeable verilog implementation in just a page
-and a half of code! Here ...</p>
+and a half of code! Here's …</p>
   </div>
 </article>
 

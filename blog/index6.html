@@ -72,7 +72,7 @@
     <p>I've spent a lot of time in airports/planes/hotels recently, which is
 good news for the moxie linux port. It runs about 6.5M instructions,
 booting up to the point where a couple of kernel threads are created.
-However, a few context switches later it all comes tumbling ...</p>
+However, a few context switches later it all comes tumbling down …</p>
   </div>
 </article>
 <hr />
@@ -84,7 +84,7 @@ However, a few context switches later it all comes tumbling ...</p>
     <p>I've just checked the start of the kernel port into <a href="http://www.moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a>.
 Running "ant build" will produce tools, simulators, u-boot and now a
 vmlinux you can run with moxie-elf-run or in gdb. It crashes on startup
-right now, but that's to be expected. I just got it to the ...</p>
+right now, but that's to be expected. I just got it to the point where …</p>
   </div>
 </article>
 <hr />
@@ -96,7 +96,7 @@ right now, but that's to be expected. I just got it to the ...</p>
     <p>A few weeks ago I happened to be in Palo Alto and met up with my friend
 and long-time GDB hacker Michael Snyder. He told me about a new feature
 in GDB called "process recording". The basic idea is that when you tell
-GDB to enter into "record mode", it ...</p>
+GDB to enter into "record mode", it …</p>
   </div>
 </article>
 <hr />
@@ -109,7 +109,7 @@ GDB to enter into "record mode", it ...</p>
 complete moxie <a href="http://github.com/atgreen/moxiedev/blob/fb57efc73e47e451f18951d274c41ccda337c112/moxie/rtl/verilog/iprinter.v">disassembler module</a> written in verilog.</p>
 <p>And here's a little <a href="http://github.com/atgreen/moxiedev/blob/fb57efc73e47e451f18951d274c41ccda337c112/moxie/rtl/verilog/testsuite/moxie.modules/test-iprinter.v">driver</a> for it. The driver reads a hex dump file
 into an array representing memory. On every clock cycle it updates the
-instruction and ...</p>
+instruction and data output registers …</p>
   </div>
 </article>
 <hr />
@@ -123,7 +123,7 @@ this is just one of many ISA improvements that need to happen. Here are
 a handful of other ideas off the top of my head. None of these projects
 should be particularly difficult.</p>
 <ul>
-<li>Shorten load/store offsets to 16-bits. They ...</li></ul>
+<li>Shorten load/store offsets to 16-bits. They are …</li></ul>
   </div>
 </article>
 <hr />
@@ -145,13 +145,13 @@ should be particularly difficult.</p>
   <div class="article_text">
     <p>The Moxie ISA still needs quite a bit of tuning. Take branches, for
 instance. A <code>beq</code> instruction currently encoded <a href="http://www.moxielogic.org/wiki/index.php?title=Instruction_Set#beq">like so</a>...  </p>
-<div class="highlight"><pre>`00001111xxxxxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii`
+<div class="highlight"><pre><span></span>`00001111xxxxxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii`
 </pre></div>
 
 
 <p>...where the "<code>x</code>"s represent "don't care" bits, and "<code>i</code>"s are a
 32-bit absolute branch target. That's right -- branch targets are not PC
-relative ...</p>
+relative! This is …</p>
   </div>
 </article>
 <hr />
@@ -164,7 +164,7 @@ relative ...</p>
 http is no fun.</p>
 <p>Fortunately, the great team at <a href="http://www.github.com">github.com</a> were willing to take this
 on, so now the real repository is accessible via this command:</p>
-<p><code>$ git clone git://github.com/atgreen/moxiedev.git ...</code></p>
+<p><code>$ git clone git://github.com/atgreen/moxiedev.git …</code></p>
   </div>
 </article>
 <hr />
@@ -175,11 +175,11 @@ on, so now the real repository is accessible via this command:</p>
   <div class="article_text">
     <p>I'll bottom line this one quickly:</p>
 <ul>
-<li><a href="http://moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a> is now maintained with git. Check it out like so..<br />
+<li><a href="http://moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a> is now maintained with git. Check it out like so..<br>
 <code>$ git clone http://moxielogic.org/moxiedev.git</code></li>
 <li>moxiedev now contains a partial <a href="http://moxielogic.org/blog/?p=154">u-boot port</a>. It's "partial"
     because I fat fingered some commands and blew away four or five
-    important files. They ...</li></ul>
+    important files. They will have …</li></ul>
   </div>
 </article>
 <hr />
@@ -192,7 +192,7 @@ on, so now the real repository is accessible via this command:</p>
 flight, and wow.. fun read!</p>
 <p>If you've ever read Tracy Kidder's great book <a href="http://en.wikipedia.org/wiki/The_Soul_of_a_New_Machine">The Soul of a New
 Machine</a>, you'll know what to expect. But this book chronicles the
-SONY/Toshiba/IBM <a href="http://en.wikipedia.org/wiki/Cell_(microprocessor)">Cell ...</a></p>
+SONY/Toshiba/IBM <a href="http://en.wikipedia.org/wiki/Cell_(microprocessor)">Cell</a> partnership, and the …</p>
   </div>
 </article>
 

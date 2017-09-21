@@ -74,7 +74,7 @@
 exception handling firmware. So now I'm able to write a basic stop-watch
 application, where the 7-segment display simply increments the count
 every second. Yes, this sounds basic, but there's a lot of complexity
-under the hood ...</p>
+under the hood! This is …</p>
   </div>
 </article>
 <hr />
@@ -87,7 +87,7 @@ under the hood ...</p>
 a <a href="http://en.wikipedia.org/wiki/Joint_Test_Action_Group">JTAG</a> connection to the board, and then some kind of protocol
 translation software that handles communication between GDB's remote
 serial protocol and the target JTAG port (see <a href="http://openocd.sourceforge.net/">OpenOCD</a>, for
-instance). The FPGA systems I'm working with ...</p>
+instance). The FPGA systems I'm working with include JTAG …</p>
   </div>
 </article>
 <hr />
@@ -100,7 +100,7 @@ instance). The FPGA systems I'm working with ...</p>
 Marin SoC.</p>
 <p>Rather than hook up the Nexys3 external RAM module, I'm using extra
 space on the FPGA itself for RAM. Most of the hard work was sorting out
-the <a href="https://github.com/atgreen/moxie-cores/blob/master/soc/marin/moxie-marin.ld">linker script</a> magic required to ...</p>
+the <a href="https://github.com/atgreen/moxie-cores/blob/master/soc/marin/moxie-marin.ld">linker script</a> magic required to generate an …</p>
   </div>
 </article>
 <hr />
@@ -116,7 +116,7 @@ the <a href="https://github.com/atgreen/moxie-cores/blob/master/soc/marin/moxie-
 <p>"Marin" is the name of my test SoC consisting of a <a href="http://en.wikipedia.org/wiki/Wishbone_(computer_bus)" title="wishbone">wishbone</a> wrapped
 75Mhz big-endian MoxieLite bus master, along with two slave devices:
 embedded ROM and the Nexys3's 7-segment display. So, right now I can
-write some code into FPGA embedded ROM to manipulate ...</p>
+write some code into FPGA embedded ROM to manipulate the …</p>
   </div>
 </article>
 <hr />
@@ -129,7 +129,7 @@ write some code into FPGA embedded ROM to manipulate ...</p>
 <p>Intrepid hacker <a href="https://twitter.com/toptensoftware" title="Brad Robinson">Brad Robinson</a> created this moxie-compatible core as
 a peripheral controller for his SoC. He had been using a simple 8-bit
 core, but needed to address more memory than was possible with the 8-bit
-part. Moxie is a ...</p>
+part. Moxie is a nice …</p>
   </div>
 </article>
 <hr />
@@ -142,7 +142,7 @@ part. Moxie is a ...</p>
 <p>I need RAM in order to implement/test most instructions. To that end,
 I've implemented a fake data cache that is always accessed within a
 single cycle during the WRITE pipeline stage. Eventually this will have
-to be replaced with a real data cache that reads ...</p>
+to be replaced with a real data cache that reads/writes …</p>
   </div>
 </article>
 <hr />
@@ -153,12 +153,12 @@ to be replaced with a real data cache that reads ...</p>
   <div class="article_text">
     <p>A moxie-based SoC had it's first successful simulation run today....</p>
 <p><center>
-<img alt="gtkwave display of first code run" src="http://moxielogic.org/blog/wp-content/uploads/2011/09/gtkwave20110927-300x204.png" />
+<img alt="gtkwave display of first code run" src="http://moxielogic.org/blog/wp-content/uploads/2011/09/gtkwave20110927-300x204.png">
 </center></p>
 <p>Pretty exciting! So, here's what's happening...</p>
 <p>The SoC, code named "Muskoka", has three main components: the moxie
 core, a wishbone switch and a ROM device. The switch was easy to
-implement, as I just have a single ...</p>
+implement, as I just have a single bus master (moxie …</p>
   </div>
 </article>
 <hr />
@@ -171,7 +171,7 @@ implement, as I just have a single ...</p>
 order to test it on real hardware. For the most part, this means a
 memory controller and IO devices. I've decided to implement a shared-bus
 wishbone-style interconnect for these devices. <a href="http://en.wikipedia.org/wiki/Wishbone_%28computer_bus%29">Wishbone</a> is an open
-source on chip ...</p>
+source on chip bus …</p>
   </div>
 </article>
 

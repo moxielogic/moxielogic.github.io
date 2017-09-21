@@ -72,7 +72,7 @@
   <div class="article_text">
     <p>The Moxie ISA still needs quite a bit of tuning. Take branches, for
 instance. A <code>beq</code> instruction currently encoded <a href="http://www.moxielogic.org/wiki/index.php?title=Instruction_Set#beq">like so</a>...  </p>
-<div class="highlight"><pre>`00001111xxxxxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii`
+<div class="highlight"><pre><span></span>`00001111xxxxxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii`
 </pre></div>
 
 
@@ -86,7 +86,7 @@ relative! This is hugely wasteful.</p>
     tweaked the as-of-yet unused Form 3 encodings so they look like
     this:  </p>
 <blockquote>
-<div class="highlight"><pre>  FORM 3 instructions start with a bits &quot;11&quot;...
+<div class="highlight"><pre><span></span>  FORM 3 instructions start with a bits &quot;11&quot;...
 
     11oooovvvvvvvvvv                                                            
     0              F
@@ -115,19 +115,19 @@ Form 3 opcode space.</p>
     that you need to worry about branch targets that exceed our 10-bit
     range. Actually, we have an 11-bit range because we know that all
     instructions are 16-bit aligned. This lets us drop the bottom bit
-    from the encoding since we know it will always be <code>0</code>.<br />
+    from the encoding since we know it will always be <code>0</code>.<br>
     An 11-bit range lets us branch about 1k backwards to 1k forwards.
     If the compiler detects that a branch target is out of range, we
     want it to do something like the following transformation...</p>
 <blockquote>
-<div class="highlight"><pre>    beq    .FAR_TARGET
+<div class="highlight"><pre><span></span>    beq    .FAR_TARGET
 </pre></div>
 
 
 </blockquote>
 <p>...becomes...</p>
 <blockquote>
-<div class="highlight"><pre>    bne    . + 8
+<div class="highlight"><pre><span></span>    bne    . + 8
     jmpa   .FAR_TARGET
 </pre></div>
 

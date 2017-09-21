@@ -74,7 +74,7 @@
 <p>For my initial implementation I'm assuming a 32-bit path to instruction
 memory. But moxie has both 16- and 48-bit instructions, so it's not like
 simple RISC cores that can feed the pipeline on every cycle. My solution
-is to feed 32-bit ...</p>
+is to feed 32-bit instruction memory …</p>
   </div>
 </article>
 <hr />
@@ -86,12 +86,12 @@ is to feed 32-bit ...</p>
     <p>I picked up a lightly used FPGA development board from craigslist today.
 It's the <a href="http://www.altera.com/education/univ/materials/boards/unv-de2-board.html">Altera DE2</a> board with a Cyclone II FPGA.</p>
 <p><center>
-<img alt="&quot;The DE2\'s Cyclone II &quot;" src="http://moxielogic.org/blog/wp-content/uploads/2010/08/P1230549-300x225.jpg" />
+<img alt="&quot;The DE2\'s Cyclone II &quot;" src="http://moxielogic.org/blog/wp-content/uploads/2010/08/P1230549-300x225.jpg">
 </center></p>
 <p>There are a few nice things about this board...</p>
 <ul>
 <li>It's loaded with real and useful peripherals: 16x2 LCD Panel, VGA
-    DAC, lots of LEDs, RS232, IrDA ...</li></ul>
+    DAC, lots of LEDs, RS232, IrDA, PS/2 …</li></ul>
   </div>
 </article>
 <hr />
@@ -103,7 +103,8 @@ It's the <a href="http://www.altera.com/education/univ/materials/boards/unv-de2-
     <p>...Just in case you were wondering!</p>
 <p>But it's been slow going. The good news is that moxie is front and
 centre for me again, so let's see what we can do over the next few
-weeks. And over these next few weeks I'm promising myself not to ...</p>
+weeks. And over these next few weeks I'm promising myself not to touch a
+C …</p>
   </div>
 </article>
 <hr />
@@ -116,7 +117,7 @@ weeks. And over these next few weeks I'm promising myself not to ...</p>
 use it to perform simple static analysis on moxie binaries. The kinds of
 things I'm looking for are compiler bugs (because I know there's still
 one there that is triggered by -frerun-cse-after-loop), and instruction
-statistics. For ...</p>
+statistics. For instance, which …</p>
   </div>
 </article>
 <hr />
@@ -131,7 +132,7 @@ nice.</p>
 to the upstream GNU tools:</p>
 <ul>
 <li><a href="http://sourceware.org/ml/gdb-patches/2009-09/msg00289.html">Add a device tree blob to the gdb simulator</a>. This lets us
-    describe the gdb sim ...</li></ul>
+    describe the gdb sim target to …</li></ul>
   </div>
 </article>
 <hr />
@@ -143,7 +144,7 @@ to the upstream GNU tools:</p>
     <p>Tonight I got a hello world app to use uClibc's <code>puts()</code> routine! This
 is a big deal because it's the first time I've had system calls coming
 in from userland. I haven't checked the changes in yet, because they're
-a mess, but here's a ...</p>
+a mess, but here's a basic run-down of what I had …</p>
   </div>
 </article>
 <hr />
@@ -155,13 +156,13 @@ a mess, but here's a ...</p>
     <p>I've been taking advantage of the nice summer weather recently, so it's
 taken me a while to get around to this... but here's the first moxie
 userland app!</p>
-<div class="highlight"><pre><span class="cp">#include &lt;string.h&gt;</span>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
 
 <span class="cp">#define MSG &quot;Hello, World!\n&quot;</span>
 
 <span class="kt">void</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span> <span class="n">gloss_write</span> <span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">)</span> 
 <span class="p">{</span>
-  <span class="n">asm ...</span></pre></div>
+  <span class="k">asm</span><span class="p">(</span><span class="s">&quot;swi 5&quot;</span><span class="p">);</span> <span class="c1">// &quot;write …</span></pre></div>
   </div>
 </article>
 <hr />
@@ -175,7 +176,8 @@ like BusyBox can run.</p>
 <ul>
 <li><strong>The root filesystem</strong>. This one is easy. I just built a short
     Hello World application in C with moxie-uclinux-gcc. This produces
-    an executable in <a href="http://www.beyondlogic.org/uClinux/bflt.htm">BFLT format</a> which I call 'init'. The kernel ...</li></ul>
+    an executable in <a href="http://www.beyondlogic.org/uClinux/bflt.htm">BFLT format</a> which I call 'init'. The kernel
+    build …</li></ul>
   </div>
 </article>
 <hr />
@@ -190,7 +192,7 @@ technology...</p>
 <li><a href="http://www.uclibc.org">uClibc</a>: this is a popular embedded C library, like newlib, but
     used more often in Linux environments. I ported uClibc to the moxie
     core just like every other bit of software in this project: quickly!
-    My ...</li></ul>
+    My …</li></ul>
   </div>
 </article>
 <hr />
@@ -201,8 +203,8 @@ technology...</p>
   <div class="article_text">
     <p>Userland, here I come! Check out <a href="http://moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a>, run "ant build", then do
 the following...</p>
-<div class="highlight"><pre><span class="nv">$ </span>./root/usr/bin/moxie-elf-run linux-2.6/vmlinux
-Linux version 2.6.31-rc3-gb006656-dirty <span class="o">(</span>green@dev.moxielogic.com<span class="o">)</span> <span class="o">(</span>gcc version 4.5.0 <span class="m">20090715</span> <span class="o">(</span>experimental<span class="o">)</span> <span class="o">[</span>trunk revision 149693<span class="o">]</span> <span class="o">(</span>GCC<span class="o">)</span> <span class="o">)</span> <span class="c">#6 Sun Jul 26 12:03:14 EDT 2009 ...</span></pre></div>
+<div class="highlight"><pre><span></span>$ ./root/usr/bin/moxie-elf-run linux-2.6/vmlinux
+Linux version <span class="m">2</span>.6.31-rc3-gb006656-dirty <span class="o">(</span>green@dev.moxielogic.com<span class="o">)</span> <span class="o">(</span>gcc version <span class="m">4</span>.5.0 <span class="m">20090715</span> <span class="o">(</span>experimental<span class="o">)</span> <span class="o">[</span>trunk revision <span class="m">149693</span><span class="o">]</span> <span class="o">(</span>GCC<span class="o">)</span> <span class="o">)</span> <span class="c1">#6 Sun Jul 26 12:03:14 EDT 2009 …</span></pre></div>
   </div>
 </article>
 

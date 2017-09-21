@@ -76,7 +76,7 @@
 translations of signal display values. GTKWave can also perform simple
 static translations of data. In the example below, for instance, moxie's
 execute unit is receiving a 4-bit signal identifying "register A"
-(riA_i) for whatever operation is about to ...</p>
+(riA_i) for whatever operation is about to happen …</p>
   </div>
 </article>
 <hr />
@@ -89,7 +89,7 @@ execute unit is receiving a 4-bit signal identifying "register A"
 as I discover them.</p>
 <p>The first tip comes from Tony Bybell, author of <a href="http://gtkwave.sourceforge.net" title="GTKWave">GTKWave</a>, who pointed
 me at some helpful functionality in a recent <a href="http://moxielogic.org/blog/?p=511" title="blog comment">blog comment</a>. You can
-enhance GTKWave's waveform display ...</p>
+enhance GTKWave's waveform display by replacing …</p>
   </div>
 </article>
 <hr />
@@ -102,7 +102,8 @@ enhance GTKWave's waveform display ...</p>
 well as direct and indirect jumps. For jumps, I simply pass a branch
 signal from the execute stage back to the fetch stage, as well as the
 computed target address. Here's some code that works now:</p>
-<div class="highlight"><pre><span class="na">.text ...</span></pre></div>
+<div class="highlight"><pre><span></span><span class="na">.text</span>
+    <span class="nf">xor</span> <span class="no">$r0 …</span></pre></div>
   </div>
 </article>
 <hr />
@@ -113,12 +114,12 @@ computed target address. Here's some code that works now:</p>
   <div class="article_text">
     <p>A moxie-based SoC had it's first successful simulation run today....</p>
 <p><center>
-<img alt="gtkwave display of first code run" src="http://moxielogic.org/blog/wp-content/uploads/2011/09/gtkwave20110927-300x204.png" />
+<img alt="gtkwave display of first code run" src="http://moxielogic.org/blog/wp-content/uploads/2011/09/gtkwave20110927-300x204.png">
 </center></p>
 <p>Pretty exciting! So, here's what's happening...</p>
 <p>The SoC, code named "Muskoka", has three main components: the moxie
 core, a wishbone switch and a ROM device. The switch was easy to
-implement, as I just have a single ...</p>
+implement, as I just have a single bus master (moxie …</p>
   </div>
 </article>
 <hr />
@@ -130,7 +131,8 @@ implement, as I just have a single ...</p>
     <p>The <a href="http://www.rtems.com">RTEMS</a> port in <a href="http://www.moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a> is looking pretty good right now.
 Here's a test of the RTEMS network loopback device running on the moxie
 gdb simulator.  The first two client connections fail in this test. 
-It's supposed to fail in the first case, but I'm not sure ...</p>
+It's supposed to fail in the first case, but I'm not sure about the
+second …</p>
   </div>
 </article>
 <hr />
@@ -143,7 +145,7 @@ It's supposed to fail in the first case, but I'm not sure ...</p>
 the ball. And this is what happened during my months long hiatus from
 the moxie project. Somewhere between early March and today, the moxie
 GCC port lost the ability to compile non-trivial code, notably libgcc.
-Firing ...</p>
+Firing …</p>
   </div>
 </article>
 <hr />
@@ -156,7 +158,7 @@ Firing ...</p>
 order to test it on real hardware. For the most part, this means a
 memory controller and IO devices. I've decided to implement a shared-bus
 wishbone-style interconnect for these devices. <a href="http://en.wikipedia.org/wiki/Wishbone_%28computer_bus%29">Wishbone</a> is an open
-source on chip ...</p>
+source on chip bus …</p>
   </div>
 </article>
 <hr />
@@ -168,7 +170,8 @@ source on chip ...</p>
     <p>Altera's <a href="http://www.altera.com/products/software/quartus-ii/web-edition/qts-we-index.html">Quartus II</a> software is now running on my Fedora box, but I
 was really hoping to load it into a grid of <a href="http://aws.amazon.com/ec2/">Amazon EC2 instances</a> so
 I could batch out jobs for synthesis, place and route. Unfortunately the
-free-beer Quartus software requires a license file that is generated ...</p>
+free-beer Quartus software requires a license file that is generated
+based …</p>
   </div>
 </article>
 <hr />
@@ -181,7 +184,7 @@ free-beer Quartus software requires a license file that is generated ...</p>
 <a href="http://github.com/atgreen/moxiedev/blob/master/moxie/rtl/verilog/cpu_decode.v">Decode</a>, <a href="http://github.com/atgreen/moxiedev/blob/master/moxie/rtl/verilog/cpu_execute.v">Execute</a>, and Write. After the relative complexity of the
 <a href="http://moxielogic.org/blog/?p=444">Fetch implementation</a>, the rest has been pretty straight forward, and
 I've started running the first bit of compiled code through the pipline.
-Here's that ...</p>
+Here's that start of our …</p>
   </div>
 </article>
 <hr />
@@ -194,7 +197,7 @@ Here's that ...</p>
 <p>For my initial implementation I'm assuming a 32-bit path to instruction
 memory. But moxie has both 16- and 48-bit instructions, so it's not like
 simple RISC cores that can feed the pipeline on every cycle. My solution
-is to feed 32-bit ...</p>
+is to feed 32-bit instruction memory …</p>
   </div>
 </article>
 

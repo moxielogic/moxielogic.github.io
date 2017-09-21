@@ -74,7 +74,8 @@
 running on the qemu moxie simulator!</p>
 <p>The last little gotcha was that the simulated $pc wasn't being updated
 after single-stepping. This will get you nowhere fast! But it's all
-fixed now, and here's ...</p>
+fixed now, and here's how it works...</p>
+<p><code>$ qemu-system-moxie …</code></p>
   </div>
 </article>
 <hr />
@@ -87,7 +88,7 @@ fixed now, and here's ...</p>
 Computer</a>. It refers to 2007 paper by Chuck Thacker at Microsoft
 Research describing a tiny 32-bit processor. Appendix A of the paper
 includes the entire synthesizeable verilog implementation in just a page
-and a half of code! Here ...</p>
+and a half of code! Here's …</p>
   </div>
 </article>
 <hr />
@@ -99,7 +100,7 @@ and a half of code! Here ...</p>
     <p>I made some progress on using moxie-elf-gdb with qemu the other day.
 Qemu has an integrated gdb stub, so GDB speaks to it via the remote
 protocol. It's still not quite there, but getting close. I'm anxious to
-get it working, as it's the last step before ...</p>
+get it working, as it's the last step before hacking on the …</p>
   </div>
 </article>
 <hr />
@@ -112,11 +113,11 @@ get it working, as it's the last step before ...</p>
 has also changed from ggxdev to MoxieDev. This repository contains the
 entire toolchain, simulators and benchmark programs. You can check the
 entire thing out like so...</p>
-<div class="highlight"><pre><span class="nv">$ </span>hg clone http://mercurial.intuxication.org/hg/moxiedev
+<div class="highlight"><pre><span></span>$ hg clone http://mercurial.intuxication.org/hg/moxiedev
 </pre></div>
 
 
-<p>I've also created a ...</p>
+<p>I've also created a <a href="http://moxielogic.org/wiki">wik …</a></p>
   </div>
 </article>
 <hr />
@@ -129,7 +130,7 @@ entire thing out like so...</p>
 set simulator. As a basic instruction set simulator, it was limited to
 executing instructions found in typical "user level" applications. And,
 if you recall, all interaction with the outside world happened through
-magic software interrupts that were ...</p>
+magic software interrupts that were …</p>
   </div>
 </article>
 <hr />
@@ -142,7 +143,7 @@ magic software interrupts that were ...</p>
 called <a href="http://spindazzle.org/ggx">ggx</a>. I blogged about the co-evolution of the ISA and tools,
 and it was fun.</p>
 <p>Now, after a short break, I'm ready to resume hacking.</p>
-<p>I'm also ready to put a stake in the ground ...</p>
+<p>I'm also ready to put a stake in the ground as far …</p>
   </div>
 </article>
 

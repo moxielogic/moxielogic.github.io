@@ -91,14 +91,14 @@ a text file into a register array (fake memory). The trick is that the
 input file has to be in a very special format. To that end, I've written
 a new BFD write-only backend called 'verilog' that generates this hex
 dump output. So now...  </p>
-<div class="highlight"><pre>  $ moxie-elf-gcc -o hello.x hello.c
+<div class="highlight"><pre><span></span>  $ moxie-elf-gcc -o hello.x hello.c
   $ moxie-elf-objcopy -O verilog hello.x hello.vh
 </pre></div>
 
 
 <p>...produces a useful hello.vh, which verilog can load directly
 into memory like so...</p>
-<div class="highlight"><pre><span class="nt">module</span> <span class="nt">memory</span><span class="o">();</span>
+<div class="highlight"><pre><span></span><span class="nt">module</span> <span class="nt">memory</span><span class="o">();</span>
   <span class="nt">reg</span> <span class="cp">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">0</span><span class="cp">]</span> <span class="nt">my_memory</span> <span class="cp">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">64000</span><span class="cp">]</span><span class="o">;</span>
   <span class="nt">initial</span> <span class="nt">begin</span>
     <span class="o">$</span><span class="nt">readmemh</span><span class="o">(</span><span class="s2">&quot;hello.vh&quot;</span><span class="o">,</span> <span class="nt">my_memory</span><span class="o">);</span>

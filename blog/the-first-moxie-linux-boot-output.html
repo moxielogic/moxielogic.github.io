@@ -72,8 +72,8 @@
   <div class="article_text">
     <p>Userland, here I come! Check out <a href="http://moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a>, run "ant build", then do
 the following...</p>
-<div class="highlight"><pre><span class="nv">$ </span>./root/usr/bin/moxie-elf-run linux-2.6/vmlinux
-Linux version 2.6.31-rc3-gb006656-dirty <span class="o">(</span>green@dev.moxielogic.com<span class="o">)</span> <span class="o">(</span>gcc version 4.5.0 <span class="m">20090715</span> <span class="o">(</span>experimental<span class="o">)</span> <span class="o">[</span>trunk revision 149693<span class="o">]</span> <span class="o">(</span>GCC<span class="o">)</span> <span class="o">)</span> <span class="c">#6 Sun Jul 26 12:03:14 EDT 2009</span>
+<div class="highlight"><pre><span></span>$ ./root/usr/bin/moxie-elf-run linux-2.6/vmlinux
+Linux version <span class="m">2</span>.6.31-rc3-gb006656-dirty <span class="o">(</span>green@dev.moxielogic.com<span class="o">)</span> <span class="o">(</span>gcc version <span class="m">4</span>.5.0 <span class="m">20090715</span> <span class="o">(</span>experimental<span class="o">)</span> <span class="o">[</span>trunk revision <span class="m">149693</span><span class="o">]</span> <span class="o">(</span>GCC<span class="o">)</span> <span class="o">)</span> <span class="c1">#6 Sun Jul 26 12:03:14 EDT 2009</span>
 console <span class="o">[</span>earlyser0<span class="o">]</span> enabled
 setup_cpuinfo: initialising
 setup_memory: Main mem: 0x0-0x1000000, size 0x01000000
@@ -81,52 +81,52 @@ setup_memory: kernel <span class="nv">addr</span><span class="o">=</span>0x00001
 setup_memory: max_mapnr: 0x1000
 setup_memory: min_low_pfn: 0x0
 setup_memory: max_low_pfn: 0x1000
-On node <span class="m">0</span> totalpages: 4096
-free_area_init_node: node 0, pgdat 002621b0, node_mem_map 002cd000
+On node <span class="m">0</span> totalpages: <span class="m">4096</span>
+free_area_init_node: node <span class="m">0</span>, pgdat 002621b0, node_mem_map 002cd000
   Normal zone: <span class="m">32</span> pages used <span class="k">for</span> memmap
   Normal zone: <span class="m">0</span> pages reserved
   Normal zone: <span class="m">4064</span> pages, LIFO batch:0
-Built <span class="m">1</span> zonelists in Zone order, mobility grouping off.  Total pages: 4064
-Kernel <span class="nb">command </span>line: <span class="nv">lpj</span><span class="o">=</span>1000
-PID <span class="nb">hash </span>table entries: <span class="m">64</span> <span class="o">(</span>order: 6, <span class="m">256</span> bytes<span class="o">)</span>
-Dentry cache <span class="nb">hash </span>table entries: <span class="m">2048</span> <span class="o">(</span>order: 1, <span class="m">8192</span> bytes<span class="o">)</span>
-Inode-cache <span class="nb">hash </span>table entries: <span class="m">1024</span> <span class="o">(</span>order: 0, <span class="m">4096</span> bytes<span class="o">)</span>
+Built <span class="m">1</span> zonelists in Zone order, mobility grouping off.  Total pages: <span class="m">4064</span>
+Kernel <span class="nb">command</span> line: <span class="nv">lpj</span><span class="o">=</span><span class="m">1000</span>
+PID <span class="nb">hash</span> table entries: <span class="m">64</span> <span class="o">(</span>order: <span class="m">6</span>, <span class="m">256</span> bytes<span class="o">)</span>
+Dentry cache <span class="nb">hash</span> table entries: <span class="m">2048</span> <span class="o">(</span>order: <span class="m">1</span>, <span class="m">8192</span> bytes<span class="o">)</span>
+Inode-cache <span class="nb">hash</span> table entries: <span class="m">1024</span> <span class="o">(</span>order: <span class="m">0</span>, <span class="m">4096</span> bytes<span class="o">)</span>
 Memory: 13376k/16384k available
 start_kernel<span class="o">()</span>: bug: interrupts were enabled *very* early, fixing it
 NR_IRQS:32
- <span class="c">#0 at 0x00000000, num_irq=0, edge=0x0</span>
- <span class="c">#0 at 0x00000000, irq=0</span>
+ <span class="c1">#0 at 0x00000000, num_irq=0, edge=0x0</span>
+ <span class="c1">#0 at 0x00000000, irq=0</span>
 start_kernel<span class="o">()</span>: bug: interrupts were enabled early
 ODEBUG: <span class="m">3</span> of <span class="m">3</span> active objects replaced
 ODEBUG: selftest passed
-Calibrating delay loop <span class="o">(</span>skipped<span class="o">)</span> preset value.. 0.20 BogoMIPS <span class="o">(</span><span class="nv">lpj</span><span class="o">=</span>1000<span class="o">)</span>
-Mount-cache <span class="nb">hash </span>table entries: 512
-NET: Registered protocol family 16
-bio: create slab  at 0
-NET: Registered protocol family 2
-IP route cache <span class="nb">hash </span>table entries: <span class="m">1024</span> <span class="o">(</span>order: 0, <span class="m">4096</span> bytes<span class="o">)</span>
-TCP established <span class="nb">hash </span>table entries: <span class="m">512</span> <span class="o">(</span>order: 0, <span class="m">4096</span> bytes<span class="o">)</span>
-TCP <span class="nb">bind hash </span>table entries: <span class="m">512</span> <span class="o">(</span>order: -1, <span class="m">2048</span> bytes<span class="o">)</span>
-TCP: Hash tables configured <span class="o">(</span>established <span class="m">512</span> <span class="nb">bind </span>512<span class="o">)</span>
+Calibrating delay loop <span class="o">(</span>skipped<span class="o">)</span> preset value.. <span class="m">0</span>.20 BogoMIPS <span class="o">(</span><span class="nv">lpj</span><span class="o">=</span><span class="m">1000</span><span class="o">)</span>
+Mount-cache <span class="nb">hash</span> table entries: <span class="m">512</span>
+NET: Registered protocol family <span class="m">16</span>
+bio: create slab  at <span class="m">0</span>
+NET: Registered protocol family <span class="m">2</span>
+IP route cache <span class="nb">hash</span> table entries: <span class="m">1024</span> <span class="o">(</span>order: <span class="m">0</span>, <span class="m">4096</span> bytes<span class="o">)</span>
+TCP established <span class="nb">hash</span> table entries: <span class="m">512</span> <span class="o">(</span>order: <span class="m">0</span>, <span class="m">4096</span> bytes<span class="o">)</span>
+TCP <span class="nb">bind</span> <span class="nb">hash</span> table entries: <span class="m">512</span> <span class="o">(</span>order: -1, <span class="m">2048</span> bytes<span class="o">)</span>
+TCP: Hash tables configured <span class="o">(</span>established <span class="m">512</span> <span class="nb">bind</span> <span class="m">512</span><span class="o">)</span>
 TCP reno registered
-NET: Registered protocol family 1
+NET: Registered protocol family <span class="m">1</span>
 ROMFS MTD <span class="o">(</span>C<span class="o">)</span> <span class="m">2007</span> Red Hat, Inc.
-msgmni has been <span class="nb">set </span>to 26
+msgmni has been <span class="nb">set</span> to <span class="m">26</span>
 io scheduler noop registered
 io scheduler anticipatory registered
 io scheduler deadline registered
 io scheduler cfq registered <span class="o">(</span>default<span class="o">)</span>
 brd: module loaded
-nbd: registered device at major 43
+nbd: registered device at major <span class="m">43</span>
 uclinux<span class="o">[</span>mtd<span class="o">]</span>: RAM probe <span class="nv">address</span><span class="o">=</span>0x2cba18 <span class="nv">size</span><span class="o">=</span>0x0
 Creating <span class="m">1</span> MTD partitions on <span class="s2">&quot;RAM&quot;</span>:
 0x000000000000-0x000000000000 : <span class="s2">&quot;ROMfs&quot;</span>
 mtd: partition <span class="s2">&quot;ROMfs&quot;</span> is out of reach -- disabled
 TCP cubic registered
-NET: Registered protocol family 17
+NET: Registered protocol family <span class="m">17</span>
 RPC: Registered udp transport module.
 RPC: Registered tcp transport module.
-VFS: Cannot open root device <span class="s2">&quot;&quot;</span> or unknown-block<span class="o">(</span>0,0<span class="o">)</span>
+VFS: Cannot open root device <span class="s2">&quot;&quot;</span> or unknown-block<span class="o">(</span><span class="m">0</span>,0<span class="o">)</span>
 Please append a correct <span class="s2">&quot;root=&quot;</span> boot option<span class="p">;</span> here are the available partitions:
 Rebooting in <span class="m">120</span> seconds..
 Machine restart...
@@ -144,20 +144,20 @@ Call Trace:
 <span class="o">[</span>&lt;0003ef84&gt;<span class="o">]</span> printk+0x0/0x1a
 <span class="o">[</span>&lt;000fe422&gt;<span class="o">]</span> strchr+0x0/0x4a
 <span class="o">[</span>&lt;0007091a&gt;<span class="o">]</span> sys_mount+0x0/0xf4
-<span class="o">[</span>&lt;00008001&gt;<span class="o">]</span> update_curr.clone.4+0x115/0x178
+<span class="o">[</span>&lt;<span class="m">00008001</span>&gt;<span class="o">]</span> update_curr.clone.4+0x115/0x178
 <span class="o">[</span>&lt;0003ef84&gt;<span class="o">]</span> printk+0x0/0x1a
 <span class="o">[</span>&lt;00266bca&gt;<span class="o">]</span> mount_block_root+0x2d0/0x2f4
-<span class="o">[</span>&lt;00008001&gt;<span class="o">]</span> update_curr.clone.4+0x115/0x178
+<span class="o">[</span>&lt;<span class="m">00008001</span>&gt;<span class="o">]</span> update_curr.clone.4+0x115/0x178
 <span class="o">[</span>&lt;00266d94&gt;<span class="o">]</span> mount_root+0x7c/0x86
 <span class="o">[</span>&lt;00266f38&gt;<span class="o">]</span> prepare_namespace+0x19a/0x1e6
-<span class="o">[</span>&lt;00001314&gt;<span class="o">]</span> do_one_initcall+0x0/0x280
-<span class="o">[</span>&lt;00001314&gt;<span class="o">]</span> do_one_initcall+0x0/0x280
+<span class="o">[</span>&lt;<span class="m">00001314</span>&gt;<span class="o">]</span> do_one_initcall+0x0/0x280
+<span class="o">[</span>&lt;<span class="m">00001314</span>&gt;<span class="o">]</span> do_one_initcall+0x0/0x280
 <span class="o">[</span>&lt;002667ba&gt;<span class="o">]</span> kernel_init+0xea/0x104
 <span class="o">[</span>&lt;000025c8&gt;<span class="o">]</span> kernel_thread_helper+0x8/0x14
 <span class="o">[</span>&lt;002666d0&gt;<span class="o">]</span> kernel_init+0x0/0x104
 <span class="o">[</span>&lt;000025c0&gt;<span class="o">]</span> kernel_thread_helper+0x0/0x14
 
-program stopped with signal 2.
+program stopped with signal <span class="m">2</span>.
 </pre></div>
 
 

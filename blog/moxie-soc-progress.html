@@ -79,25 +79,25 @@
 embedded ROM and the Nexys3's 7-segment display. So, right now I can
 write some code into FPGA embedded ROM to manipulate the display. For
 example...</p>
-<div class="highlight"><pre><span class="x">        .text</span>
-<span class="x">    .p2align        1</span>
-<span class="x">        .global MarinDisplayTest</span>
+<div class="highlight"><pre><span></span>        .text
+    .p2align        1
+        .global MarinDisplayTest
 
-<span class="x">        .equ BIG_ENDIAN,1</span>
+        .equ BIG_ENDIAN,1
 
-<span class="x">        </span><span class="err">#</span><span class="x"> This is where 7-segment display is mapped to memory</span>
-<span class="x">        .equ DISPLAY_ADDR,0x00100000</span>
+        # This is where 7-segment display is mapped to memory
+        .equ DISPLAY_ADDR,0x00100000
 
-<span class="x">MarinDisplayTest:</span>
-<span class="x">        ldi.l   </span><span class="p">$</span><span class="nv">r1</span><span class="x">, 0x1234</span>
-<span class="x">        ldi.l   </span><span class="p">$</span><span class="nv">r3</span><span class="x">, 0x0</span>
-<span class="x">loop:   sta.s   DISPLAY_ADDR, </span><span class="p">$</span><span class="nv">r1</span><span class="x"></span>
-<span class="x">        dec     </span><span class="p">$</span><span class="nv">r1</span><span class="x">, 1</span>
-<span class="x">        ldi.l   </span><span class="p">$</span><span class="nv">r2</span><span class="x">, 5000000</span>
-<span class="x">delay:  dec     </span><span class="p">$</span><span class="nv">r2</span><span class="x">, 1</span>
-<span class="x">        cmp     </span><span class="p">$</span><span class="nv">r2</span><span class="x">, </span><span class="p">$</span><span class="nv">r3</span><span class="x"></span>
-<span class="x">        bne     delay</span>
-<span class="x">        jmpa    loop</span>
+MarinDisplayTest:
+        ldi.l   $r1, 0x1234
+        ldi.l   $r3, 0x0
+loop:   sta.s   DISPLAY_ADDR, $r1
+        dec     $r1, 1
+        ldi.l   $r2, 5000000
+delay:  dec     $r2, 1
+        cmp     $r2, $r3
+        bne     delay
+        jmpa    loop
 </pre></div>
 
 

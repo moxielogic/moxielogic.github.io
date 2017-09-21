@@ -86,7 +86,7 @@ the gdb moxie simulator compiled to javascript with <a href="https://github.com/
 
 <p><a href="http://github.com/kl7107">Krister Lagerström</a> is responsible for this marvellous hack.</p>
 <p>Also, I suppose this blog entry represents a distribution of some GPL'd
-source code from GDB ...</p>
+source code from GDB, so …</p>
   </div>
 </article>
 <hr />
@@ -98,14 +98,14 @@ source code from GDB ...</p>
     <p>The on-chip <a href="https://github.com/atgreen/moxie-cores/blob/master/firmware/bootrom/tinystub.c" title="firmware">firmware</a> for the <a href="https://github.com/atgreen/moxie-cores/tree/master/soc/marin" title="Marin SoC">Marin SoC</a> has been updated with the
 gdb stub, so now when you program the FPGA, you'll see the following on
 the serial console:</p>
-<div class="highlight"><pre>MOXIE On-Chip Bootloader v2.0
+<div class="highlight"><pre><span></span>MOXIE On-Chip Bootloader v2.0
 Copyright (c) 2013 Anthony Green
 
 Waiting for an S-Record Download or Remote GDB Connection...
 </pre></div>
 
 
-<p>...and ...</p>
+<p>...and the …</p>
   </div>
 </article>
 <hr />
@@ -117,7 +117,7 @@ Waiting for an S-Record Download or Remote GDB Connection...
     <p>I recently trimmed the Marin SoC's on-chip memory down to 4k. The
 existing firmware for downloading srecord programs into external RAM for
 execution was taking up about 2k. With 2k to spare, I was wondering if
-you could fit a GDB remote protocol stub in there as well. It ...</p>
+you could fit a GDB remote protocol stub in there as well. It turns …</p>
   </div>
 </article>
 <hr />
@@ -130,7 +130,7 @@ you could fit a GDB remote protocol stub in there as well. It ...</p>
 a <a href="http://en.wikipedia.org/wiki/Joint_Test_Action_Group">JTAG</a> connection to the board, and then some kind of protocol
 translation software that handles communication between GDB's remote
 serial protocol and the target JTAG port (see <a href="http://openocd.sourceforge.net/">OpenOCD</a>, for
-instance). The FPGA systems I'm working with ...</p>
+instance). The FPGA systems I'm working with include JTAG …</p>
   </div>
 </article>
 <hr />
@@ -143,7 +143,7 @@ instance). The FPGA systems I'm working with ...</p>
 <p>Intrepid hacker <a href="https://twitter.com/toptensoftware" title="Brad Robinson">Brad Robinson</a> created this moxie-compatible core as
 a peripheral controller for his SoC. He had been using a simple 8-bit
 core, but needed to address more memory than was possible with the 8-bit
-part. Moxie is a ...</p>
+part. Moxie is a nice …</p>
   </div>
 </article>
 <hr />
@@ -156,7 +156,7 @@ part. Moxie is a ...</p>
 <a href="http://0x10c.com/">next game</a>, most likely another hit. This one is interesting in that
 it includes an in-game 16-bit processor called the dcpu-16. Details are
 sparse, but it seems as though gamers will use this processor to control
-spacecraft and play ...</p>
+spacecraft and play …</p>
   </div>
 </article>
 <hr />
@@ -171,7 +171,7 @@ nice.</p>
 to the upstream GNU tools:</p>
 <ul>
 <li><a href="http://sourceware.org/ml/gdb-patches/2009-09/msg00289.html">Add a device tree blob to the gdb simulator</a>. This lets us
-    describe the gdb sim ...</li></ul>
+    describe the gdb sim target to …</li></ul>
   </div>
 </article>
 <hr />
@@ -183,7 +183,7 @@ to the upstream GNU tools:</p>
     <p>Tonight I got a hello world app to use uClibc's <code>puts()</code> routine! This
 is a big deal because it's the first time I've had system calls coming
 in from userland. I haven't checked the changes in yet, because they're
-a mess, but here's a ...</p>
+a mess, but here's a basic run-down of what I had …</p>
   </div>
 </article>
 <hr />
@@ -195,7 +195,7 @@ a mess, but here's a ...</p>
     <p>I've spent a lot of time in airports/planes/hotels recently, which is
 good news for the moxie linux port. It runs about 6.5M instructions,
 booting up to the point where a couple of kernel threads are created.
-However, a few context switches later it all comes tumbling ...</p>
+However, a few context switches later it all comes tumbling down …</p>
   </div>
 </article>
 <hr />
@@ -207,7 +207,7 @@ However, a few context switches later it all comes tumbling ...</p>
     <p>A few weeks ago I happened to be in Palo Alto and met up with my friend
 and long-time GDB hacker Michael Snyder. He told me about a new feature
 in GDB called "process recording". The basic idea is that when you tell
-GDB to enter into "record mode", it ...</p>
+GDB to enter into "record mode", it …</p>
   </div>
 </article>
 

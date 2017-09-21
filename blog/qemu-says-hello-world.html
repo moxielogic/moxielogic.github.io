@@ -98,7 +98,7 @@ compiler with simple optimization passes.</p>
 <p>In practice, this wasn't a huge amount of work. The translator still
 looks like a huge switch statement where we handle each opcode. For
 instance, here's a register-to-register move:</p>
-<div class="highlight"><pre> case 0x02:  /* mov (register-to-register) */
+<div class="highlight"><pre><span></span> case 0x02:  /* mov (register-to-register) */
    {
      int dest = (opcode &gt;&gt; 4) &amp; 0xf;
      int src = opcode &amp; 0xf;
@@ -111,16 +111,16 @@ instance, here's a register-to-register move:</p>
 between registers.</p>
 <p>Once I had implemented support for enough instructions, I was able to
 run a trivial Hello World program straight through:  </p>
-<div class="highlight"><pre><span class="nv">$ </span>cat hello.c
-<span class="c">#include &lt;stdio.h&gt;</span>
+<div class="highlight"><pre><span></span>$ cat hello.c
+<span class="c1">#include &lt;stdio.h&gt;</span>
 
 int main<span class="o">()</span>
 <span class="o">{</span>
   puts <span class="o">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="o">)</span><span class="p">;</span>
-  <span class="k">return</span> 0<span class="p">;</span>
+  <span class="k">return</span> <span class="m">0</span><span class="p">;</span>
 <span class="o">}</span>
-<span class="nv">$ </span>moxie-elf-gcc -o hello.x hello.c
-<span class="nv">$ </span>qemu-system-moxie -nographic -kernel hello.x
+$ moxie-elf-gcc -o hello.x hello.c
+$ qemu-system-moxie -nographic -kernel hello.x
 qemu: fatal: Trying to execute code outside RAM or ROM at 0x00000000
 
 <span class="nv">pc</span><span class="o">=</span>0x00000000
@@ -153,7 +153,7 @@ about qemu is that it comes with a wealth of simulated peripherals that
 you can hook up to your processor. So, for now, let's just send all
 output to a simulated serial port. Qemu makes this very simple. In the
 module that defines our hardware platform, we just add:  </p>
-<div class="highlight"><pre>    /* A single 16450 sits at offset 0x3f8.  */
+<div class="highlight"><pre><span></span>    /* A single 16450 sits at offset 0x3f8.  */
     if (serial_hds[0])
       serial_mm_init(0x3f8, 0, env-&gt;irq[4], 8000000/16, serial_hds[0], 1);
 </pre></div>
@@ -162,12 +162,12 @@ module that defines our hardware platform, we just add:  </p>
 <p>Now we just have to override the _write in libgloss to write to the
 16450 UART which has been mapped to memory at 0x3f8. Qemu's default
 setting has all serial port output going to the console. So now....</p>
-<div class="highlight"><pre><span class="nv">$ </span>cat hello.c
-<span class="c">#include &lt;stdio.h&gt;</span>
+<div class="highlight"><pre><span></span>$ cat hello.c
+<span class="c1">#include &lt;stdio.h&gt;</span>
 
 int _write <span class="o">(</span>int fd, char *buf, int len<span class="o">)</span>
 <span class="o">{</span>
-  int <span class="nv">i</span> <span class="o">=</span> 0<span class="p">;</span>
+  int <span class="nv">i</span> <span class="o">=</span> <span class="m">0</span><span class="p">;</span>
   <span class="k">while</span> <span class="o">(</span>i &lt; len<span class="o">)</span>
     *<span class="o">(</span>char *<span class="o">)</span><span class="nv">0x3f8</span> <span class="o">=</span> buf<span class="o">[</span>i++<span class="o">]</span><span class="p">;</span>
   <span class="k">return</span> len<span class="p">;</span>
@@ -176,10 +176,10 @@ int _write <span class="o">(</span>int fd, char *buf, int len<span class="o">)</
 int main<span class="o">()</span>
 <span class="o">{</span>
   puts <span class="o">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="o">)</span><span class="p">;</span>
-  <span class="k">return</span> 0<span class="p">;</span>
+  <span class="k">return</span> <span class="m">0</span><span class="p">;</span>
 <span class="o">}</span>
-<span class="nv">$ </span>moxie-elf-gcc -o hello.x hello.c
-<span class="nv">$ </span>./qemu-system-moxie -nographic -kernel hello.x
+$ moxie-elf-gcc -o hello.x hello.c
+$ ./qemu-system-moxie -nographic -kernel hello.x
 Hello World!qemu: fatal: Trying to execute code outside RAM or ROM at 0x00000000
 
 <span class="nv">pc</span><span class="o">=</span>0x00000000

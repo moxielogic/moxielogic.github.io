@@ -74,7 +74,7 @@
 use it to perform simple static analysis on moxie binaries. The kinds of
 things I'm looking for are compiler bugs (because I know there's still
 one there that is triggered by -frerun-cse-after-loop), and instruction
-statistics. For ...</p>
+statistics. For instance, which …</p>
   </div>
 </article>
 <hr />
@@ -88,7 +88,8 @@ like BusyBox can run.</p>
 <ul>
 <li><strong>The root filesystem</strong>. This one is easy. I just built a short
     Hello World application in C with moxie-uclinux-gcc. This produces
-    an executable in <a href="http://www.beyondlogic.org/uClinux/bflt.htm">BFLT format</a> which I call 'init'. The kernel ...</li></ul>
+    an executable in <a href="http://www.beyondlogic.org/uClinux/bflt.htm">BFLT format</a> which I call 'init'. The kernel
+    build …</li></ul>
   </div>
 </article>
 <hr />
@@ -102,7 +103,7 @@ this is just one of many ISA improvements that need to happen. Here are
 a handful of other ideas off the top of my head. None of these projects
 should be particularly difficult.</p>
 <ul>
-<li>Shorten load/store offsets to 16-bits. They ...</li></ul>
+<li>Shorten load/store offsets to 16-bits. They are …</li></ul>
   </div>
 </article>
 <hr />
@@ -113,13 +114,13 @@ should be particularly difficult.</p>
   <div class="article_text">
     <p>The Moxie ISA still needs quite a bit of tuning. Take branches, for
 instance. A <code>beq</code> instruction currently encoded <a href="http://www.moxielogic.org/wiki/index.php?title=Instruction_Set#beq">like so</a>...  </p>
-<div class="highlight"><pre>`00001111xxxxxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii`
+<div class="highlight"><pre><span></span>`00001111xxxxxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii`
 </pre></div>
 
 
 <p>...where the "<code>x</code>"s represent "don't care" bits, and "<code>i</code>"s are a
 32-bit absolute branch target. That's right -- branch targets are not PC
-relative ...</p>
+relative! This is …</p>
   </div>
 </article>
 <hr />
@@ -131,10 +132,10 @@ relative ...</p>
     <p>My first go at exceptions is working well. The basic idea is that moxie
 will have a single exception handling routine whose address lives in
 special register 1. You set the exception handler like so:</p>
-<div class="highlight"><pre>void install_handler(void (*handler)(void))
+<div class="highlight"><pre><span></span>void install_handler(void (*handler)(void))
 {
   printf (&quot;Installing handler 0x%x\n&quot;, (unsigned) handler);
-  asm(&quot;ssr ...</pre></div>
+  asm(&quot;ssr …</pre></div>
   </div>
 </article>
 

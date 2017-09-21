@@ -76,7 +76,7 @@ gdb simulator.  The first two client connections fail in this test. 
 It's supposed to fail in the first case, but I'm not sure about the
 second case.   It's possible that this is just a result of there being
 no pre-emptive context switching in the gdb simulator (no timers!).</p>
-<div class="highlight"><pre><span class="nv">$ </span>moxie-elf-run loopback.exe
+<div class="highlight"><pre><span></span>$ moxie-elf-run loopback.exe
 <span class="s2">&quot;Network&quot;</span> initializing!
 <span class="s2">&quot;Network&quot;</span> initialized!
 Try running client with no server present.
@@ -100,10 +100,10 @@ Connect to server.
 Connect to server.
 ACCEPTED:7F000001
 ACCEPTED:7F000001
-Write 22-byte message to server.
-Write 22-byte message to server.
-Read <span class="m">43</span> from server: Server received <span class="m">22</span> <span class="o">(</span>Hi there, server <span class="o">(</span>3<span class="o">)</span>.<span class="o">)</span>
-Read <span class="m">43</span> from server: Server received <span class="m">22</span> <span class="o">(</span>Hi there, server <span class="o">(</span>2<span class="o">)</span>.<span class="o">)</span>
+Write <span class="m">22</span>-byte message to server.
+Write <span class="m">22</span>-byte message to server.
+Read <span class="m">43</span> from server: Server received <span class="m">22</span> <span class="o">(</span>Hi there, server <span class="o">(</span><span class="m">3</span><span class="o">)</span>.<span class="o">)</span>
+Read <span class="m">43</span> from server: Server received <span class="m">22</span> <span class="o">(</span>Hi there, server <span class="o">(</span><span class="m">2</span><span class="o">)</span>.<span class="o">)</span>
 Client closing connection.
 Client task terminating.
 Client closing connection.
@@ -118,12 +118,12 @@ Connect to server.
 ACCEPTED:7F000001
 ACCEPTED:7F000001
 ACCEPTED:7F000001
-Write 22-byte message to server.
-Write 22-byte message to server.
-Write 22-byte message to server.
-Read <span class="m">43</span> from server: Server received <span class="m">22</span> <span class="o">(</span>Hi there, server <span class="o">(</span>5<span class="o">)</span>.<span class="o">)</span>
-Read <span class="m">43</span> from server: Server received <span class="m">22</span> <span class="o">(</span>Hi there, server <span class="o">(</span>6<span class="o">)</span>.<span class="o">)</span>
-Read <span class="m">43</span> from server: Server received <span class="m">22</span> <span class="o">(</span>Hi there, server <span class="o">(</span>4<span class="o">)</span>.<span class="o">)</span>
+Write <span class="m">22</span>-byte message to server.
+Write <span class="m">22</span>-byte message to server.
+Write <span class="m">22</span>-byte message to server.
+Read <span class="m">43</span> from server: Server received <span class="m">22</span> <span class="o">(</span>Hi there, server <span class="o">(</span><span class="m">5</span><span class="o">)</span>.<span class="o">)</span>
+Read <span class="m">43</span> from server: Server received <span class="m">22</span> <span class="o">(</span>Hi there, server <span class="o">(</span><span class="m">6</span><span class="o">)</span>.<span class="o">)</span>
+Read <span class="m">43</span> from server: Server received <span class="m">22</span> <span class="o">(</span>Hi there, server <span class="o">(</span><span class="m">4</span><span class="o">)</span>.<span class="o">)</span>
 Client closing connection.
 Client task terminating.
 Client closing connection.

@@ -76,7 +76,7 @@ nice.</p>
 to the upstream GNU tools:</p>
 <ul>
 <li><a href="http://sourceware.org/ml/gdb-patches/2009-09/msg00289.html">Add a device tree blob to the gdb simulator</a>. This lets us
-    describe the gdb sim ...</li></ul>
+    describe the gdb sim target to …</li></ul>
   </div>
 </article>
 <hr />
@@ -90,7 +90,8 @@ like BusyBox can run.</p>
 <ul>
 <li><strong>The root filesystem</strong>. This one is easy. I just built a short
     Hello World application in C with moxie-uclinux-gcc. This produces
-    an executable in <a href="http://www.beyondlogic.org/uClinux/bflt.htm">BFLT format</a> which I call 'init'. The kernel ...</li></ul>
+    an executable in <a href="http://www.beyondlogic.org/uClinux/bflt.htm">BFLT format</a> which I call 'init'. The kernel
+    build …</li></ul>
   </div>
 </article>
 <hr />
@@ -112,13 +113,13 @@ like BusyBox can run.</p>
   <div class="article_text">
     <p>The Moxie ISA still needs quite a bit of tuning. Take branches, for
 instance. A <code>beq</code> instruction currently encoded <a href="http://www.moxielogic.org/wiki/index.php?title=Instruction_Set#beq">like so</a>...  </p>
-<div class="highlight"><pre>`00001111xxxxxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii`
+<div class="highlight"><pre><span></span>`00001111xxxxxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii`
 </pre></div>
 
 
 <p>...where the "<code>x</code>"s represent "don't care" bits, and "<code>i</code>"s are a
 32-bit absolute branch target. That's right -- branch targets are not PC
-relative ...</p>
+relative! This is …</p>
   </div>
 </article>
 <hr />
@@ -130,7 +131,7 @@ relative ...</p>
     <p>The moxie newlib port was <a href="http://sourceware.org/ml/newlib/2009/msg00520.html">just accepted</a>. The GCC port will take a
 little longer to review, but I hope that it will get accepted early next
 week. Already there has been some useful feedback resulting in a few
-improvements. For instance, the moxie libgcc.a now provides the soft-fp ...</p>
+improvements. For instance, the moxie libgcc.a now provides the soft-fp …</p>
   </div>
 </article>
 <hr />
@@ -142,7 +143,7 @@ improvements. For instance, the moxie libgcc.a now provides the soft-fp ...</p>
     <p>I made some progress on using moxie-elf-gdb with qemu the other day.
 Qemu has an integrated gdb stub, so GDB speaks to it via the remote
 protocol. It's still not quite there, but getting close. I'm anxious to
-get it working, as it's the last step before ...</p>
+get it working, as it's the last step before hacking on the …</p>
   </div>
 </article>
 

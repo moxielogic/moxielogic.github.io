@@ -74,7 +74,7 @@
 more..."</a> category I'm happy to say that it includes Moxie support!</p>
 <p>This release contains basic Moxie core support, with the imaginary
 "moxiesim" board support. I have some local changes that provide Marin
-SoC emulation, and ...</p>
+SoC emulation, and can …</p>
   </div>
 </article>
 <hr />
@@ -87,7 +87,7 @@ SoC emulation, and ...</p>
 RAM controller is working, and big programs can finally run on hardware.</p>
 <p>You may recall that I had previously only been accessing fake memory
 that was configured directly out of limited FPGA resources. I could
-squeeze a tiny ...</p>
+squeeze a tiny …</p>
   </div>
 </article>
 <hr />
@@ -103,7 +103,7 @@ squeeze a tiny ...</p>
 <p>"Marin" is the name of my test SoC consisting of a <a href="http://en.wikipedia.org/wiki/Wishbone_(computer_bus)" title="wishbone">wishbone</a> wrapped
 75Mhz big-endian MoxieLite bus master, along with two slave devices:
 embedded ROM and the Nexys3's 7-segment display. So, right now I can
-write some code into FPGA embedded ROM to manipulate ...</p>
+write some code into FPGA embedded ROM to manipulate the …</p>
   </div>
 </article>
 <hr />
@@ -114,13 +114,13 @@ write some code into FPGA embedded ROM to manipulate ...</p>
   <div class="article_text">
     <p>The Moxie ISA still needs quite a bit of tuning. Take branches, for
 instance. A <code>beq</code> instruction currently encoded <a href="http://www.moxielogic.org/wiki/index.php?title=Instruction_Set#beq">like so</a>...  </p>
-<div class="highlight"><pre>`00001111xxxxxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii`
+<div class="highlight"><pre><span></span>`00001111xxxxxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii`
 </pre></div>
 
 
 <p>...where the "<code>x</code>"s represent "don't care" bits, and "<code>i</code>"s are a
 32-bit absolute branch target. That's right -- branch targets are not PC
-relative ...</p>
+relative! This is …</p>
   </div>
 </article>
 <hr />
@@ -131,11 +131,11 @@ relative ...</p>
   <div class="article_text">
     <p>I'll bottom line this one quickly:</p>
 <ul>
-<li><a href="http://moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a> is now maintained with git. Check it out like so..<br />
+<li><a href="http://moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a> is now maintained with git. Check it out like so..<br>
 <code>$ git clone http://moxielogic.org/moxiedev.git</code></li>
 <li>moxiedev now contains a partial <a href="http://moxielogic.org/blog/?p=154">u-boot port</a>. It's "partial"
     because I fat fingered some commands and blew away four or five
-    important files. They ...</li></ul>
+    important files. They will have …</li></ul>
   </div>
 </article>
 <hr />
@@ -146,7 +146,7 @@ relative ...</p>
   <div class="article_text">
     <p>My moxie port of <a href="http://www.denx.de/wiki/U-Boot">U-Boot</a>, the Universal Boot Loader, has started
 working!</p>
-<div class="highlight"><pre><span class="nv">$ </span>qemu-system-moxie -nographic -kernel u-boot
+<div class="highlight"><pre><span></span>$ qemu-system-moxie -nographic -kernel u-boot
 SDRAM :
         U-Boot Start:0x00001000
 Using default environment
@@ -155,18 +155,18 @@ U-BOOT <span class="k">for</span> <span class="s2">&quot;moxiesim&quot;</span>
 
 <span class="o">=</span>&gt; version
 
-U-Boot 2009.03-rc2-00013-gefb4734-dirty <span class="o">(</span>Apr <span class="m">02</span> <span class="m">2009</span> - 20:07:32<span class="o">)</span>
+U-Boot <span class="m">2009</span>.03-rc2-00013-gefb4734-dirty <span class="o">(</span>Apr <span class="m">02</span> <span class="m">2009</span> - <span class="m">20</span>:07:32<span class="o">)</span>
 <span class="o">=</span>&gt; printenv
 <span class="nv">bootargs</span><span class="o">=</span><span class="nv">root</span><span class="o">=</span>romfs
-<span class="nv">baudrate</span><span class="o">=</span>38400
+<span class="nv">baudrate</span><span class="o">=</span><span class="m">38400</span>
 <span class="nv">hostname</span><span class="o">=</span><span class="s2">&quot;moxiesim&quot;</span>
 
-Environment size: 55/4092 <span class="nv">bytes</span>
+Environment size: <span class="m">55</span>/4092 <span class="nv">bytes</span>
 <span class="o">=</span>&gt;
 </pre></div>
 
 
-<p>It ...</p>
+<p>It's …</p>
   </div>
 </article>
 

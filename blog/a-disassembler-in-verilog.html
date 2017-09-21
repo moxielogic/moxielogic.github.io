@@ -77,13 +77,13 @@ into an array representing memory. On every clock cycle it updates the
 instruction and data output registers and increments the program
 counter. The disassembler samples those values on every cycle, and tells
 the driver how far to increment the PC. Pretty basic stuff!</p>
-<div class="highlight"><pre><span class="nv">$ </span>moxie-elf-gcc -o hello.x hello.c -Tsim.ld
-<span class="nv">$ </span>moxie-elf-objdump hello.x -O verilog hello.vh
-<span class="nv">$ </span>iverilog <span class="nb">test</span>-iprinter.v ../../iprinter.v
-<span class="nv">$ </span>./a.out
+<div class="highlight"><pre><span></span>$ moxie-elf-gcc -o hello.x hello.c -Tsim.ld
+$ moxie-elf-objdump hello.x -O verilog hello.vh
+$ iverilog test-iprinter.v ../../iprinter.v
+$ ./a.out
         ldi.l   <span class="nv">$sp</span> ,   0x00400000
         ldi.l   <span class="nv">$fp</span> ,    0x00000000
-        dec     <span class="nv">$sp</span> ,     12
+        dec     <span class="nv">$sp</span> ,     <span class="m">12</span>
         ldi.l   <span class="nv">$r0</span> ,    0x000128b4
 </pre></div>
 

@@ -82,7 +82,7 @@ my simple testing it looks like this does a reasonable job of keeping
 the instruction memory path busy, and issuing instructions as often as
 possible (I'm just eyeballing the gtkwave output, reproduced below). I
 can experiment with a longer Instruction FIFO later.</p>
-<p><img alt="" src="http://moxielogic.org/blog/wp-content/uploads/2010/09/fetch.png" title="waves from the moxie Instruction FIFO " /></p>
+<p><img alt="" src="http://moxielogic.org/blog/wp-content/uploads/2010/09/fetch.png" title="waves from the moxie Instruction FIFO "></p>
 <p>This image shows a few signals from the Instruction FIFO. valid_o tells
 us that we're popping off a valid instruction from the FIFO, whereas
 full_o tells us not to write any data to the FIFO because it's full. So
@@ -98,7 +98,7 @@ is synthesizable. The code is in github here: <a href="http://bit.ly/9yVQ7U">htt
 Running make should build everything, then just run "a.out".</p>
 <p>Note that I'm using magic instruction memory: an array populated with a
 hello world app built like so...  </p>
-<p><code>$ moxie-elf-gcc -o hello.x -O2 hello.c -Tsim.ld $ moxie-elf-objcopy -O verilog hello.x hello.vh</code><br />
+<p><code>$ moxie-elf-gcc -o hello.x -O2 hello.c -Tsim.ld $ moxie-elf-objcopy -O verilog hello.x hello.vh</code><br>
 And the verilog simulator reads hello.vh directly. Pretty cool!</p>
 <p>(I just realized I wrote about fetching instructions <a href="http://moxielogic.org/blog/?p=161">almost 18 months
 ago</a> - that took too long!)</p>

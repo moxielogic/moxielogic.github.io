@@ -73,7 +73,8 @@
     <p>I recently fired up the Altera software, Quartus II, and spent a little
 time porting the Marin SoC to the popular Cyclone II based DE2 board.
 There's no external memory support yet, but on-chip memory is working,
-and it looks like the on-chip bootloader is coming up properly. As ...</p>
+and it looks like the on-chip bootloader is coming up properly. As
+usual …</p>
   </div>
 </article>
 <hr />
@@ -86,7 +87,7 @@ and it looks like the on-chip bootloader is coming up properly. As ...</p>
 more..."</a> category I'm happy to say that it includes Moxie support!</p>
 <p>This release contains basic Moxie core support, with the imaginary
 "moxiesim" board support. I have some local changes that provide Marin
-SoC emulation, and ...</p>
+SoC emulation, and can …</p>
   </div>
 </article>
 <hr />
@@ -99,7 +100,7 @@ SoC emulation, and ...</p>
 exception handling firmware. So now I'm able to write a basic stop-watch
 application, where the 7-segment display simply increments the count
 every second. Yes, this sounds basic, but there's a lot of complexity
-under the hood ...</p>
+under the hood! This is …</p>
   </div>
 </article>
 <hr />
@@ -114,7 +115,7 @@ nice.</p>
 to the upstream GNU tools:</p>
 <ul>
 <li><a href="http://sourceware.org/ml/gdb-patches/2009-09/msg00289.html">Add a device tree blob to the gdb simulator</a>. This lets us
-    describe the gdb sim ...</li></ul>
+    describe the gdb sim target to …</li></ul>
   </div>
 </article>
 <hr />
@@ -126,7 +127,7 @@ to the upstream GNU tools:</p>
     <p>I've spent a lot of time in airports/planes/hotels recently, which is
 good news for the moxie linux port. It runs about 6.5M instructions,
 booting up to the point where a couple of kernel threads are created.
-However, a few context switches later it all comes tumbling ...</p>
+However, a few context switches later it all comes tumbling down …</p>
   </div>
 </article>
 <hr />
@@ -143,7 +144,7 @@ However, a few context switches later it all comes tumbling ...</p>
 <li>The upstream qemu team have switched to git, so I've rebased
     MoxieDev's qemu against this new repository.</li>
 </ul>
-<p>Also ...</p>
+<p>Also, I've been …</p>
   </div>
 </article>
 <hr />
@@ -156,11 +157,11 @@ However, a few context switches later it all comes tumbling ...</p>
 add to a board is a Real Time Clock (RTC). Qemu comes with a simulation
 of Freescale's <a href="http://www.freescale.com/files/microcontrollers/doc/data_sheet/MC146818.pdf">MC146818</a> RTC chip. Adding it to our qemu-defined
 board was as simple as....</p>
-<div class="highlight"><pre>   rtc_mm_init(0x400, 0, 0, 0);
+<div class="highlight"><pre><span></span>   rtc_mm_init(0x400, 0, 0, 0);
 </pre></div>
 
 
-<p>This ...</p>
+<p>This makes …</p>
   </div>
 </article>
 <hr />
@@ -175,7 +176,7 @@ the <a href="http://moxielogic.org/wiki/index.php?title=Toolchain">moxie toolcha
 a specific hardware platform. This mostly involves linker scripts,
 platform initialization code, and hardware abstraction support
 libraries.</p>
-<p>Until recently the gdb sim ...</p>
+<p>Until recently the gdb sim was …</p>
   </div>
 </article>
 <hr />
@@ -188,7 +189,8 @@ libraries.</p>
 running on the qemu moxie simulator!</p>
 <p>The last little gotcha was that the simulated $pc wasn't being updated
 after single-stepping. This will get you nowhere fast! But it's all
-fixed now, and here's ...</p>
+fixed now, and here's how it works...</p>
+<p><code>$ qemu-system-moxie …</code></p>
   </div>
 </article>
 <hr />
@@ -200,7 +202,7 @@ fixed now, and here's ...</p>
     <p>I made some progress on using moxie-elf-gdb with qemu the other day.
 Qemu has an integrated gdb stub, so GDB speaks to it via the remote
 protocol. It's still not quite there, but getting close. I'm anxious to
-get it working, as it's the last step before ...</p>
+get it working, as it's the last step before hacking on the …</p>
   </div>
 </article>
 

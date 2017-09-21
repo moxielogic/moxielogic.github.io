@@ -74,7 +74,7 @@
 needed the ability to write to multiple registers before retiring that
 one instruction - something that would require extra instruction cycles
 or loads more logic. I recently came across some work by Charles Eric
-LaForest on <a href="http://www.eecg.utoronto.ca/~laforest/multiport/index.html" title="Efficient Multi-Ported Memories for FPGAs">Efficient Multi-Ported ...</a></p>
+LaForest on <a href="http://www.eecg.utoronto.ca/~laforest/multiport/index.html" title="Efficient Multi-Ported Memories for FPGAs">Efficient Multi-Ported …</a></p>
   </div>
 </article>
 <hr />
@@ -87,7 +87,8 @@ LaForest on <a href="http://www.eecg.utoronto.ca/~laforest/multiport/index.html"
 well as direct and indirect jumps. For jumps, I simply pass a branch
 signal from the execute stage back to the fetch stage, as well as the
 computed target address. Here's some code that works now:</p>
-<div class="highlight"><pre><span class="na">.text ...</span></pre></div>
+<div class="highlight"><pre><span></span><span class="na">.text</span>
+    <span class="nf">xor</span> <span class="no">$r0 …</span></pre></div>
   </div>
 </article>
 <hr />
@@ -98,12 +99,12 @@ computed target address. Here's some code that works now:</p>
   <div class="article_text">
     <p>A moxie-based SoC had it's first successful simulation run today....</p>
 <p><center>
-<img alt="gtkwave display of first code run" src="http://moxielogic.org/blog/wp-content/uploads/2011/09/gtkwave20110927-300x204.png" />
+<img alt="gtkwave display of first code run" src="http://moxielogic.org/blog/wp-content/uploads/2011/09/gtkwave20110927-300x204.png">
 </center></p>
 <p>Pretty exciting! So, here's what's happening...</p>
 <p>The SoC, code named "Muskoka", has three main components: the moxie
 core, a wishbone switch and a ROM device. The switch was easy to
-implement, as I just have a single ...</p>
+implement, as I just have a single bus master (moxie …</p>
   </div>
 </article>
 <hr />
@@ -116,7 +117,7 @@ implement, as I just have a single ...</p>
 <a href="http://github.com/atgreen/moxiedev/blob/master/moxie/rtl/verilog/cpu_decode.v">Decode</a>, <a href="http://github.com/atgreen/moxiedev/blob/master/moxie/rtl/verilog/cpu_execute.v">Execute</a>, and Write. After the relative complexity of the
 <a href="http://moxielogic.org/blog/?p=444">Fetch implementation</a>, the rest has been pretty straight forward, and
 I've started running the first bit of compiled code through the pipline.
-Here's that ...</p>
+Here's that start of our …</p>
   </div>
 </article>
 <hr />
@@ -129,7 +130,7 @@ Here's that ...</p>
 <p>For my initial implementation I'm assuming a 32-bit path to instruction
 memory. But moxie has both 16- and 48-bit instructions, so it's not like
 simple RISC cores that can feed the pipeline on every cycle. My solution
-is to feed 32-bit ...</p>
+is to feed 32-bit instruction memory …</p>
   </div>
 </article>
 <hr />
@@ -144,7 +145,7 @@ nice.</p>
 to the upstream GNU tools:</p>
 <ul>
 <li><a href="http://sourceware.org/ml/gdb-patches/2009-09/msg00289.html">Add a device tree blob to the gdb simulator</a>. This lets us
-    describe the gdb sim ...</li></ul>
+    describe the gdb sim target to …</li></ul>
   </div>
 </article>
 <hr />
@@ -156,7 +157,7 @@ to the upstream GNU tools:</p>
     <p>The moxie newlib port was <a href="http://sourceware.org/ml/newlib/2009/msg00520.html">just accepted</a>. The GCC port will take a
 little longer to review, but I hope that it will get accepted early next
 week. Already there has been some useful feedback resulting in a few
-improvements. For instance, the moxie libgcc.a now provides the soft-fp ...</p>
+improvements. For instance, the moxie libgcc.a now provides the soft-fp …</p>
   </div>
 </article>
 <hr />
@@ -168,7 +169,8 @@ improvements. For instance, the moxie libgcc.a now provides the soft-fp ...</p>
     <p>I've written my first bit of <a href="http://en.wikipedia.org/wiki/Verilog">verilog</a> tonight. It's not much, really,
 but it's a start. I'm using <a href="http://www.icarus.com/eda/verilog/">Icarus Verilog</a> (iverlog) to compile and
 simulate the code. I also plan on using <a href="http://www.gpleda.org/tools/gtkwave/index.html">GTKWave</a> to examine timing
-dumps from the iverilog simulator. Both of these tools are ...</p>
+dumps from the iverilog simulator. Both of these tools are part of my
+development …</p>
   </div>
 </article>
 <hr />
@@ -181,7 +183,7 @@ dumps from the iverilog simulator. Both of these tools are ...</p>
 Computer</a>. It refers to 2007 paper by Chuck Thacker at Microsoft
 Research describing a tiny 32-bit processor. Appendix A of the paper
 includes the entire synthesizeable verilog implementation in just a page
-and a half of code! Here ...</p>
+and a half of code! Here's …</p>
   </div>
 </article>
 

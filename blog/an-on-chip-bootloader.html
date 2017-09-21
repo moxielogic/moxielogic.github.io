@@ -87,13 +87,13 @@ separate my code from my logic.</p>
 FPGA bitstream as described above. It does some basic hardware
 initialization, and sends this message to the serial port:</p>
 <p><code>MOXIE On-Chip Bootloader v1.0 Copyright (c) 2013 Anthony Green</code></p>
-<p>Waiting for S-Record Download...<br />
+<p>Waiting for S-Record Download...<br>
 </code></p>
 <p>At which point I can send any program I like over my laptop's serial
 port in the form of an S-Record ASCII file. This generally looks
 like...  </p>
 <p><code>$ moxie-elf-gcc -Os hello.c marin.S -T../../moxie-marin.ld -o hello.elf -lnosys $ moxie-elf-objcopy -O srec --srec-forceS3 hello.elf hello.srec $ cat hello.srec &gt; /dev/ttyUSB1</code></p>
-<p>And then, back on the Nexys3 serial port I see:<br />
+<p>And then, back on the Nexys3 serial port I see:<br>
 <code>Jumping to code at 0x30000000. Hello World!</code></p>
 <p>A couple of things can happen now:</p>
 <ul>

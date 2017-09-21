@@ -74,19 +74,19 @@
 well as direct and indirect jumps. For jumps, I simply pass a branch
 signal from the execute stage back to the fetch stage, as well as the
 computed target address. Here's some code that works now:</p>
-<div class="highlight"><pre><span class="na">.text</span>
+<div class="highlight"><pre><span></span><span class="na">.text</span>
     <span class="nf">xor</span> <span class="no">$r0</span><span class="p">,</span> <span class="no">$r0</span> <span class="c"># Zero out $r0</span>
-    <span class="nf">mov</span> <span class="no">$r1</span><span class="p">,</span> <span class="no">$r0</span>
+    <span class="no">mov</span> <span class="no">$r1</span><span class="p">,</span> <span class="no">$r0</span>
     <span class="nf">mov</span> <span class="no">$r2</span><span class="p">,</span> <span class="no">$r0</span>
     <span class="nf">mov</span> <span class="no">$r3</span><span class="p">,</span> <span class="no">$r0</span>
     <span class="nf">mov</span> <span class="no">$r4</span><span class="p">,</span> <span class="no">$r0</span>
 <span class="nl">loop:</span>   <span class="nf">inc</span> <span class="no">$r0</span><span class="p">,</span> <span class="mi">0x1</span> <span class="c"># Increment $r0</span>
-    <span class="nf">inc</span> <span class="no">$r1</span><span class="p">,</span> <span class="mi">0x1</span>
+    <span class="no">inc</span> <span class="no">$r1</span><span class="p">,</span> <span class="mi">0x1</span>
     <span class="nf">inc</span> <span class="no">$r2</span><span class="p">,</span> <span class="mi">0x1</span>
     <span class="nf">inc</span> <span class="no">$r3</span><span class="p">,</span> <span class="mi">0x1</span> 
     <span class="no">inc</span> <span class="no">$r4</span><span class="p">,</span> <span class="mi">0x1</span> 
     <span class="no">jmpa</span>    <span class="no">loop</span><span class="err">+</span><span class="mi">0x1000</span> <span class="c"># Offset hack</span>
-    <span class="nf">nop</span>
+    <span class="no">nop</span>
     <span class="nf">nop</span>
 </pre></div>
 

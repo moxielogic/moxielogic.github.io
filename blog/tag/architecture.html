@@ -76,7 +76,7 @@ Today I'm introducing a few 32-bit instructions as well.</p>
 defined as...</p>
 <blockquote>
 <table width='100%'><tr><td><b>ldo.l</b></td><td align='right'><b>00001100AAAABBBB iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</b></td></tr></table>
-Load offset, long.  Loads into <b>$rA</b> the 32-bit value from memory pointed ...</blockquote>
+Load offset, long.  Loads into <b>$rA</b> the 32-bit value from memory pointed at by …</blockquote>
   </div>
 </article>
 <hr />
@@ -90,7 +90,7 @@ stressed before.  For example, they've been examining the code quality
 for their crypto libraries like
 <a href="https://github.com/bitcoin/secp256k1">libsecp256k1</a>, an elliptical
 curve crypto library in C.  One of their first feedbacks here was that
-moxie provides no native ...</p>
+moxie provides no native way to …</p>
   </div>
 </article>
 <hr />
@@ -103,7 +103,7 @@ moxie provides no native ...</p>
 <p>Intrepid hacker <a href="https://twitter.com/toptensoftware" title="Brad Robinson">Brad Robinson</a> created this moxie-compatible core as
 a peripheral controller for his SoC. He had been using a simple 8-bit
 core, but needed to address more memory than was possible with the 8-bit
-part. Moxie is a ...</p>
+part. Moxie is a nice …</p>
   </div>
 </article>
 <hr />
@@ -116,7 +116,7 @@ part. Moxie is a ...</p>
 system calls. The <code>swi</code> instruction creates a call frame on the stack
 and then jumps to a global exception handler routine. The exception
 handler for moxie-uClinux switches to the kernel stack before jumping to
-the relevant kernel routine. Returning from ...</p>
+the relevant kernel routine. Returning from …</p>
   </div>
 </article>
 <hr />
@@ -129,7 +129,7 @@ the relevant kernel routine. Returning from ...</p>
 <a href="http://0x10c.com/">next game</a>, most likely another hit. This one is interesting in that
 it includes an in-game 16-bit processor called the dcpu-16. Details are
 sparse, but it seems as though gamers will use this processor to control
-spacecraft and play ...</p>
+spacecraft and play …</p>
   </div>
 </article>
 <hr />
@@ -142,7 +142,8 @@ spacecraft and play ...</p>
 well as direct and indirect jumps. For jumps, I simply pass a branch
 signal from the execute stage back to the fetch stage, as well as the
 computed target address. Here's some code that works now:</p>
-<div class="highlight"><pre><span class="na">.text ...</span></pre></div>
+<div class="highlight"><pre><span></span><span class="na">.text</span>
+    <span class="nf">xor</span> <span class="no">$r0 …</span></pre></div>
   </div>
 </article>
 <hr />
@@ -153,12 +154,12 @@ computed target address. Here's some code that works now:</p>
   <div class="article_text">
     <p>A moxie-based SoC had it's first successful simulation run today....</p>
 <p><center>
-<img alt="gtkwave display of first code run" src="http://moxielogic.org/blog/wp-content/uploads/2011/09/gtkwave20110927-300x204.png" />
+<img alt="gtkwave display of first code run" src="http://moxielogic.org/blog/wp-content/uploads/2011/09/gtkwave20110927-300x204.png">
 </center></p>
 <p>Pretty exciting! So, here's what's happening...</p>
 <p>The SoC, code named "Muskoka", has three main components: the moxie
 core, a wishbone switch and a ROM device. The switch was easy to
-implement, as I just have a single ...</p>
+implement, as I just have a single bus master (moxie …</p>
   </div>
 </article>
 <hr />
@@ -171,7 +172,7 @@ implement, as I just have a single ...</p>
 order to test it on real hardware. For the most part, this means a
 memory controller and IO devices. I've decided to implement a shared-bus
 wishbone-style interconnect for these devices. <a href="http://en.wikipedia.org/wiki/Wishbone_%28computer_bus%29">Wishbone</a> is an open
-source on chip ...</p>
+source on chip bus …</p>
   </div>
 </article>
 <hr />
@@ -184,7 +185,7 @@ source on chip ...</p>
 <a href="http://github.com/atgreen/moxiedev/blob/master/moxie/rtl/verilog/cpu_decode.v">Decode</a>, <a href="http://github.com/atgreen/moxiedev/blob/master/moxie/rtl/verilog/cpu_execute.v">Execute</a>, and Write. After the relative complexity of the
 <a href="http://moxielogic.org/blog/?p=444">Fetch implementation</a>, the rest has been pretty straight forward, and
 I've started running the first bit of compiled code through the pipline.
-Here's that ...</p>
+Here's that start of our …</p>
   </div>
 </article>
 <hr />
@@ -197,7 +198,7 @@ Here's that ...</p>
 <p>For my initial implementation I'm assuming a 32-bit path to instruction
 memory. But moxie has both 16- and 48-bit instructions, so it's not like
 simple RISC cores that can feed the pipeline on every cycle. My solution
-is to feed 32-bit ...</p>
+is to feed 32-bit instruction memory …</p>
   </div>
 </article>
 

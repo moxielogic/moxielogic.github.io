@@ -72,14 +72,14 @@
   <div class="article_text">
     <p>Ok, not quite, but <a href="https://github.com/kl7107" title="Krister">Krister Lagerström</a> recently did something cool..</p>
 <p><center>
-<img alt="nethack" src="http://moxielogic.github.io/images/nethack.png" />
+<img alt="nethack" src="http://moxielogic.github.io/images/nethack.png">
 </center></p>
 <p>That's <a href="http://www.nethack.org/" title="NetHack">NetHack</a> ported to <a href="http://rtems.org" title="RTEMS">RTEMS</a> running on the moxie based <a href="http://github.org/atgreen/moxie-cores" title="Marin SoC">Marin
 SoC</a>.</p>
 <p>It runs on QEMU, via
 "<code>qemu-system-moxie --nographic --machine marin --kernel nethack.elf</code>",
 or on FPGA hardware. I tested with a Nexys 3 Spartan-6 board by simply
-converting ...</p>
+converting it …</p>
   </div>
 </article>
 <hr />
@@ -91,14 +91,14 @@ converting ...</p>
     <p>The on-chip <a href="https://github.com/atgreen/moxie-cores/blob/master/firmware/bootrom/tinystub.c" title="firmware">firmware</a> for the <a href="https://github.com/atgreen/moxie-cores/tree/master/soc/marin" title="Marin SoC">Marin SoC</a> has been updated with the
 gdb stub, so now when you program the FPGA, you'll see the following on
 the serial console:</p>
-<div class="highlight"><pre>MOXIE On-Chip Bootloader v2.0
+<div class="highlight"><pre><span></span>MOXIE On-Chip Bootloader v2.0
 Copyright (c) 2013 Anthony Green
 
 Waiting for an S-Record Download or Remote GDB Connection...
 </pre></div>
 
 
-<p>...and ...</p>
+<p>...and the …</p>
   </div>
 </article>
 <hr />
@@ -111,7 +111,7 @@ Waiting for an S-Record Download or Remote GDB Connection...
 <p>A couple of <a href="http://sourceware.org/libffi" title="libffi">libffi</a> releases got in the way of moxie hacking
 (although libffi 3.0.13 now includes full moxie support!), but things
 are picking up speed again.</p>
-<p>On the software side of ...</p>
+<p>On the software side of things …</p>
   </div>
 </article>
 <hr />
@@ -124,7 +124,7 @@ are picking up speed again.</p>
 Marin SoC.</p>
 <p>Rather than hook up the Nexys3 external RAM module, I'm using extra
 space on the FPGA itself for RAM. Most of the hard work was sorting out
-the <a href="https://github.com/atgreen/moxie-cores/blob/master/soc/marin/moxie-marin.ld">linker script</a> magic required to ...</p>
+the <a href="https://github.com/atgreen/moxie-cores/blob/master/soc/marin/moxie-marin.ld">linker script</a> magic required to generate an …</p>
   </div>
 </article>
 <hr />
@@ -140,7 +140,7 @@ the <a href="https://github.com/atgreen/moxie-cores/blob/master/soc/marin/moxie-
 <p>"Marin" is the name of my test SoC consisting of a <a href="http://en.wikipedia.org/wiki/Wishbone_(computer_bus)" title="wishbone">wishbone</a> wrapped
 75Mhz big-endian MoxieLite bus master, along with two slave devices:
 embedded ROM and the Nexys3's 7-segment display. So, right now I can
-write some code into FPGA embedded ROM to manipulate ...</p>
+write some code into FPGA embedded ROM to manipulate the …</p>
   </div>
 </article>
 <hr />
@@ -153,7 +153,7 @@ write some code into FPGA embedded ROM to manipulate ...</p>
 <p>Intrepid hacker <a href="https://twitter.com/toptensoftware" title="Brad Robinson">Brad Robinson</a> created this moxie-compatible core as
 a peripheral controller for his SoC. He had been using a simple 8-bit
 core, but needed to address more memory than was possible with the 8-bit
-part. Moxie is a ...</p>
+part. Moxie is a nice …</p>
   </div>
 </article>
 

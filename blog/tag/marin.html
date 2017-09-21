@@ -72,14 +72,14 @@
   <div class="article_text">
     <p>Ok, not quite, but <a href="https://github.com/kl7107" title="Krister">Krister Lagerström</a> recently did something cool..</p>
 <p><center>
-<img alt="nethack" src="http://moxielogic.github.io/images/nethack.png" />
+<img alt="nethack" src="http://moxielogic.github.io/images/nethack.png">
 </center></p>
 <p>That's <a href="http://www.nethack.org/" title="NetHack">NetHack</a> ported to <a href="http://rtems.org" title="RTEMS">RTEMS</a> running on the moxie based <a href="http://github.org/atgreen/moxie-cores" title="Marin SoC">Marin
 SoC</a>.</p>
 <p>It runs on QEMU, via
 "<code>qemu-system-moxie --nographic --machine marin --kernel nethack.elf</code>",
 or on FPGA hardware. I tested with a Nexys 3 Spartan-6 board by simply
-converting ...</p>
+converting it …</p>
   </div>
 </article>
 <hr />
@@ -91,14 +91,14 @@ converting ...</p>
     <p>The on-chip <a href="https://github.com/atgreen/moxie-cores/blob/master/firmware/bootrom/tinystub.c" title="firmware">firmware</a> for the <a href="https://github.com/atgreen/moxie-cores/tree/master/soc/marin" title="Marin SoC">Marin SoC</a> has been updated with the
 gdb stub, so now when you program the FPGA, you'll see the following on
 the serial console:</p>
-<div class="highlight"><pre>MOXIE On-Chip Bootloader v2.0
+<div class="highlight"><pre><span></span>MOXIE On-Chip Bootloader v2.0
 Copyright (c) 2013 Anthony Green
 
 Waiting for an S-Record Download or Remote GDB Connection...
 </pre></div>
 
 
-<p>...and ...</p>
+<p>...and the …</p>
   </div>
 </article>
 <hr />
@@ -110,7 +110,7 @@ Waiting for an S-Record Download or Remote GDB Connection...
     <p>I recently trimmed the Marin SoC's on-chip memory down to 4k. The
 existing firmware for downloading srecord programs into external RAM for
 execution was taking up about 2k. With 2k to spare, I was wondering if
-you could fit a GDB remote protocol stub in there as well. It ...</p>
+you could fit a GDB remote protocol stub in there as well. It turns …</p>
   </div>
 </article>
 <hr />
@@ -122,7 +122,8 @@ you could fit a GDB remote protocol stub in there as well. It ...</p>
     <p>I recently fired up the Altera software, Quartus II, and spent a little
 time porting the Marin SoC to the popular Cyclone II based DE2 board.
 There's no external memory support yet, but on-chip memory is working,
-and it looks like the on-chip bootloader is coming up properly. As ...</p>
+and it looks like the on-chip bootloader is coming up properly. As
+usual …</p>
   </div>
 </article>
 <hr />
@@ -135,7 +136,7 @@ and it looks like the on-chip bootloader is coming up properly. As ...</p>
 more..."</a> category I'm happy to say that it includes Moxie support!</p>
 <p>This release contains basic Moxie core support, with the imaginary
 "moxiesim" board support. I have some local changes that provide Marin
-SoC emulation, and ...</p>
+SoC emulation, and can …</p>
   </div>
 </article>
 <hr />
@@ -148,7 +149,7 @@ SoC emulation, and ...</p>
 RAM controller is working, and big programs can finally run on hardware.</p>
 <p>You may recall that I had previously only been accessing fake memory
 that was configured directly out of limited FPGA resources. I could
-squeeze a tiny ...</p>
+squeeze a tiny …</p>
   </div>
 </article>
 <hr />
@@ -161,7 +162,7 @@ squeeze a tiny ...</p>
 exception handling firmware. So now I'm able to write a basic stop-watch
 application, where the 7-segment display simply increments the count
 every second. Yes, this sounds basic, but there's a lot of complexity
-under the hood ...</p>
+under the hood! This is …</p>
   </div>
 </article>
 <hr />
@@ -174,7 +175,7 @@ under the hood ...</p>
 <p>A couple of <a href="http://sourceware.org/libffi" title="libffi">libffi</a> releases got in the way of moxie hacking
 (although libffi 3.0.13 now includes full moxie support!), but things
 are picking up speed again.</p>
-<p>On the software side of ...</p>
+<p>On the software side of things …</p>
   </div>
 </article>
 <hr />
@@ -187,7 +188,7 @@ are picking up speed again.</p>
 a <a href="http://en.wikipedia.org/wiki/Joint_Test_Action_Group">JTAG</a> connection to the board, and then some kind of protocol
 translation software that handles communication between GDB's remote
 serial protocol and the target JTAG port (see <a href="http://openocd.sourceforge.net/">OpenOCD</a>, for
-instance). The FPGA systems I'm working with ...</p>
+instance). The FPGA systems I'm working with include JTAG …</p>
   </div>
 </article>
 <hr />
@@ -200,7 +201,7 @@ instance). The FPGA systems I'm working with ...</p>
 Marin SoC.</p>
 <p>Rather than hook up the Nexys3 external RAM module, I'm using extra
 space on the FPGA itself for RAM. Most of the hard work was sorting out
-the <a href="https://github.com/atgreen/moxie-cores/blob/master/soc/marin/moxie-marin.ld">linker script</a> magic required to ...</p>
+the <a href="https://github.com/atgreen/moxie-cores/blob/master/soc/marin/moxie-marin.ld">linker script</a> magic required to generate an …</p>
   </div>
 </article>
 

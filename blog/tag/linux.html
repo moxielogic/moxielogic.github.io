@@ -74,7 +74,7 @@
 system calls. The <code>swi</code> instruction creates a call frame on the stack
 and then jumps to a global exception handler routine. The exception
 handler for moxie-uClinux switches to the kernel stack before jumping to
-the relevant kernel routine. Returning from ...</p>
+the relevant kernel routine. Returning from …</p>
   </div>
 </article>
 <hr />
@@ -86,7 +86,7 @@ the relevant kernel routine. Returning from ...</p>
     <p>I found some time to look at the Linux kernel port again, and discovered
 a bug in the forking code (the child process must return 0 after a
 fork!). What we're looking at here is the start of userland, post kernel
-boot, where busybox is trying to run an ...</p>
+boot, where busybox is trying to run an init …</p>
   </div>
 </article>
 <hr />
@@ -101,7 +101,7 @@ nice.</p>
 to the upstream GNU tools:</p>
 <ul>
 <li><a href="http://sourceware.org/ml/gdb-patches/2009-09/msg00289.html">Add a device tree blob to the gdb simulator</a>. This lets us
-    describe the gdb sim ...</li></ul>
+    describe the gdb sim target to …</li></ul>
   </div>
 </article>
 <hr />
@@ -113,7 +113,7 @@ to the upstream GNU tools:</p>
     <p>Tonight I got a hello world app to use uClibc's <code>puts()</code> routine! This
 is a big deal because it's the first time I've had system calls coming
 in from userland. I haven't checked the changes in yet, because they're
-a mess, but here's a ...</p>
+a mess, but here's a basic run-down of what I had …</p>
   </div>
 </article>
 <hr />
@@ -125,13 +125,13 @@ a mess, but here's a ...</p>
     <p>I've been taking advantage of the nice summer weather recently, so it's
 taken me a while to get around to this... but here's the first moxie
 userland app!</p>
-<div class="highlight"><pre><span class="cp">#include &lt;string.h&gt;</span>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
 
 <span class="cp">#define MSG &quot;Hello, World!\n&quot;</span>
 
 <span class="kt">void</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span> <span class="n">gloss_write</span> <span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">)</span> 
 <span class="p">{</span>
-  <span class="n">asm ...</span></pre></div>
+  <span class="k">asm</span><span class="p">(</span><span class="s">&quot;swi 5&quot;</span><span class="p">);</span> <span class="c1">// &quot;write …</span></pre></div>
   </div>
 </article>
 <hr />
@@ -145,7 +145,8 @@ like BusyBox can run.</p>
 <ul>
 <li><strong>The root filesystem</strong>. This one is easy. I just built a short
     Hello World application in C with moxie-uclinux-gcc. This produces
-    an executable in <a href="http://www.beyondlogic.org/uClinux/bflt.htm">BFLT format</a> which I call 'init'. The kernel ...</li></ul>
+    an executable in <a href="http://www.beyondlogic.org/uClinux/bflt.htm">BFLT format</a> which I call 'init'. The kernel
+    build …</li></ul>
   </div>
 </article>
 <hr />
@@ -160,7 +161,7 @@ technology...</p>
 <li><a href="http://www.uclibc.org">uClibc</a>: this is a popular embedded C library, like newlib, but
     used more often in Linux environments. I ported uClibc to the moxie
     core just like every other bit of software in this project: quickly!
-    My ...</li></ul>
+    My …</li></ul>
   </div>
 </article>
 <hr />
@@ -171,8 +172,8 @@ technology...</p>
   <div class="article_text">
     <p>Userland, here I come! Check out <a href="http://moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a>, run "ant build", then do
 the following...</p>
-<div class="highlight"><pre><span class="nv">$ </span>./root/usr/bin/moxie-elf-run linux-2.6/vmlinux
-Linux version 2.6.31-rc3-gb006656-dirty <span class="o">(</span>green@dev.moxielogic.com<span class="o">)</span> <span class="o">(</span>gcc version 4.5.0 <span class="m">20090715</span> <span class="o">(</span>experimental<span class="o">)</span> <span class="o">[</span>trunk revision 149693<span class="o">]</span> <span class="o">(</span>GCC<span class="o">)</span> <span class="o">)</span> <span class="c">#6 Sun Jul 26 12:03:14 EDT 2009 ...</span></pre></div>
+<div class="highlight"><pre><span></span>$ ./root/usr/bin/moxie-elf-run linux-2.6/vmlinux
+Linux version <span class="m">2</span>.6.31-rc3-gb006656-dirty <span class="o">(</span>green@dev.moxielogic.com<span class="o">)</span> <span class="o">(</span>gcc version <span class="m">4</span>.5.0 <span class="m">20090715</span> <span class="o">(</span>experimental<span class="o">)</span> <span class="o">[</span>trunk revision <span class="m">149693</span><span class="o">]</span> <span class="o">(</span>GCC<span class="o">)</span> <span class="o">)</span> <span class="c1">#6 Sun Jul 26 12:03:14 EDT 2009 …</span></pre></div>
   </div>
 </article>
 <hr />
@@ -184,7 +185,7 @@ Linux version 2.6.31-rc3-gb006656-dirty <span class="o">(</span>green@dev.moxiel
     <p>I've spent a lot of time in airports/planes/hotels recently, which is
 good news for the moxie linux port. It runs about 6.5M instructions,
 booting up to the point where a couple of kernel threads are created.
-However, a few context switches later it all comes tumbling ...</p>
+However, a few context switches later it all comes tumbling down …</p>
   </div>
 </article>
 <hr />
@@ -196,7 +197,7 @@ However, a few context switches later it all comes tumbling ...</p>
     <p>I've just checked the start of the kernel port into <a href="http://www.moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a>.
 Running "ant build" will produce tools, simulators, u-boot and now a
 vmlinux you can run with moxie-elf-run or in gdb. It crashes on startup
-right now, but that's to be expected. I just got it to the ...</p>
+right now, but that's to be expected. I just got it to the point where …</p>
   </div>
 </article>
 

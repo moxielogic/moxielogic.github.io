@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="../theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="../theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="../theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+  <link href="http://moxielogic.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Moxie Blog Atom" />
+  <link href="http://moxielogic.github.io/blog/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="The Moxie Blog RSS" />
+
+
+  <title>
+    The Moxie Blog
+&ndash; Tag: javascript  </title>
+
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+  var u="//piwik-moxielogic.rhcloud.com/";
+  _paq.push(['setTrackerUrl', u+'piwik.php']);
+  _paq.push(['setSiteId', 1]);
+  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+  g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//piwik-moxielogic.rhcloud.com/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="..">
+        <img src="http://moxielogic.github.io/images/ml.png" alt="logo">
+      </a>
+      <h2><a href="..">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+        <li><a href="../pages/about.html">About</a></li>
+        <li><a href="../pages/author.html">Author</a></li>
+        <li><a href="http://moxielogic.org/blog/pages/architecture.html" target="_blank">Architecture</a></li>
+        <li><a href="http://moxielogic.org/blog/pages/toolchain.html" target="_blank">Toolchain</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href="..">Index</a> &brvbar; <a href="../archives.html">Archives</a>
+      &brvbar; <a href="http://moxielogic.github.io/blog/feeds/all.atom.xml">Atom</a>
+      &brvbar; <a href="http://moxielogic.github.io/blog/feeds/all.rss.xml">RSS</a>
+&gt; Tag: javascript
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h3><a href="../introducing-moxiejs.html">moxiejs: another javascript Moxie simulator</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Here's something cool...</p>
+<script src="../js/moxieprocess.js"></script>
+
+<script src="../js/main.js"></script>
+
+<script async src="../js/moxiecpu.js" onload="OnAsmJsLoaded()"></script>
+
+<p><select id="program" name="program" onchange="OnProgramChange()">
+<option value="elf/binarytrees">binarytrees</option>
+<option value="elf/fasta">fasta</option>
+<option value="elf/fannkuchredux">fannkuchredux</option>
+<option value="elf/nbody">nbody</option>
+<option value="elf/lissa">lissa</option>
+</select>
+<input id="args" type="text">
+<button onclick="OnRunClick()">Run</button>
+<p>stdout:
+<pre id="stdout"></pre>
+<p>stderr:
+<pre id="stderr"></pre>
+<canvas id="canvas"></canvas></p>
+  </div>
+</article>
+
+<footer>
+<div id="paginator">
+
+</div>
+</footer>
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. </p>
+    </div>
+  </main>
+</body>
+</html>

@@ -76,7 +76,7 @@
 <p>"Marin" is the name of my test SoC consisting of a <a href="http://en.wikipedia.org/wiki/Wishbone_(computer_bus)" title="wishbone">wishbone</a> wrapped
 75Mhz big-endian MoxieLite bus master, along with two slave devices:
 embedded ROM and the Nexys3's 7-segment display. So, right now I can
-write some code into FPGA embedded ROM to manipulate ...</p>
+write some code into FPGA embedded ROM to manipulate the …</p>
   </div>
 </article>
 <hr />
@@ -97,13 +97,13 @@ Software EDA tools. Check it out here:
   </div>
   <div class="article_text">
     <p><center>
-<img alt="" src="http://moxielogic.org/images/MoxieLite-400.jpg" title="First MoxieLite Shot" />
+<img alt="" src="http://moxielogic.org/images/MoxieLite-400.jpg" title="First MoxieLite Shot">
 </center></p>
 <p>Brad Robinson just sent me this awesome shot of <a href="https://github.com/toptensoftware/MoxieLite" title="MoxieLite">MoxieLite</a> in action.
 His Xilinx Spartan-6 FPGA based SoC features a moxie core handling VGA
 video, keyboard and FAT-on-flash filesystem duties using custom firmware
 written in C. This is all in support of a second z80-based core on the
-same FPGA ...</p>
+same FPGA …</p>
   </div>
 </article>
 <hr />
@@ -116,7 +116,7 @@ same FPGA ...</p>
 <p>Intrepid hacker <a href="https://twitter.com/toptensoftware" title="Brad Robinson">Brad Robinson</a> created this moxie-compatible core as
 a peripheral controller for his SoC. He had been using a simple 8-bit
 core, but needed to address more memory than was possible with the 8-bit
-part. Moxie is a ...</p>
+part. Moxie is a nice …</p>
   </div>
 </article>
 <hr />
@@ -129,7 +129,7 @@ part. Moxie is a ...</p>
 Technology last fall called '<a href="http://jolt.law.harvard.edu/articles/pdf/v25/25HarvJLTech131.pdf">Open Source Semiconductor Core
 Licensing</a>'. I'm using the GPL as a place-holder in my verilog source,
 but I've always felt that the GPL/LGPL were inappropriate licenses for
-digital logic. Eli's ...</p>
+digital logic. Eli's article makes clear …</p>
   </div>
 </article>
 <hr />
@@ -142,7 +142,7 @@ digital logic. Eli's ...</p>
 system calls. The <code>swi</code> instruction creates a call frame on the stack
 and then jumps to a global exception handler routine. The exception
 handler for moxie-uClinux switches to the kernel stack before jumping to
-the relevant kernel routine. Returning from ...</p>
+the relevant kernel routine. Returning from …</p>
   </div>
 </article>
 <hr />
@@ -154,7 +154,7 @@ the relevant kernel routine. Returning from ...</p>
     <p>I found some time to look at the Linux kernel port again, and discovered
 a bug in the forking code (the child process must return 0 after a
 fork!). What we're looking at here is the start of userland, post kernel
-boot, where busybox is trying to run an ...</p>
+boot, where busybox is trying to run an init …</p>
   </div>
 </article>
 <hr />
@@ -167,7 +167,7 @@ boot, where busybox is trying to run an ...</p>
 needed the ability to write to multiple registers before retiring that
 one instruction - something that would require extra instruction cycles
 or loads more logic. I recently came across some work by Charles Eric
-LaForest on <a href="http://www.eecg.utoronto.ca/~laforest/multiport/index.html" title="Efficient Multi-Ported Memories for FPGAs">Efficient Multi-Ported ...</a></p>
+LaForest on <a href="http://www.eecg.utoronto.ca/~laforest/multiport/index.html" title="Efficient Multi-Ported Memories for FPGAs">Efficient Multi-Ported …</a></p>
   </div>
 </article>
 <hr />
@@ -180,7 +180,7 @@ LaForest on <a href="http://www.eecg.utoronto.ca/~laforest/multiport/index.html"
 <a href="http://0x10c.com/">next game</a>, most likely another hit. This one is interesting in that
 it includes an in-game 16-bit processor called the dcpu-16. Details are
 sparse, but it seems as though gamers will use this processor to control
-spacecraft and play ...</p>
+spacecraft and play …</p>
   </div>
 </article>
 <hr />
@@ -192,7 +192,7 @@ spacecraft and play ...</p>
     <p>Altera's Quartus tools include some special software to download
 bitstreams to their devices over USB (a DE-2 eval board, in my case).
 They require some tricky work to set up properly on Fedora - my dev host
-of choice. But you're in luck! I've packaged up an RPM ...</p>
+of choice. But you're in luck! I've packaged up an RPM that takes care …</p>
   </div>
 </article>
 
