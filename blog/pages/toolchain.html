@@ -23,19 +23,6 @@
     The Moxie Blog
 &ndash; Toolchain  </title>
 
-<script type="text/javascript">
-  var _paq = _paq || [];
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-  var u="//piwik-moxielogic.rhcloud.com/";
-  _paq.push(['setTrackerUrl', u+'piwik.php']);
-  _paq.push(['setSiteId', 1]);
-  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-  g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<noscript><p><img src="//piwik-moxielogic.rhcloud.com/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
 </head>
 
 <body>
@@ -66,7 +53,7 @@
 
 <article>
   <div class="article_title">
-    <h3><a href="../pages/toolchain.html">Toolchain</a></h3>
+    <h1><a href="../pages/toolchain.html">Toolchain</a></h1>
   </div>
   <div class="article_text">
     <h1>Overview</h1>
@@ -80,36 +67,53 @@
 </ul>
 <p>Supported target triplets include moxie-elf, moxie-rtems (for
 <a href="http://rtems.org">RTEMS</a> application development), and moxiebox (a
-special purpose configuration for the
-<a href="http://github.com/bloq/ora">moxiebox</a> bitcoin oracle
+special purpose configuration for <a href="http://bloq.com">Bloq</a>'s
+<a href="https://github.com/bloq/ora">Ora</a> bitcoin oracle
 project).</p>
 <h1>Getting and Building the Tools</h1>
 <h2>Binary Distributions</h2>
-<p>Packages for moxie-elf, moxie-rtems and moxiebox are available for
-64-bit x86 Linux in both RPM and DEB formats.</p>
-<ul>
-<li>RPMs: <a href="http://repos.moxielogic.org:7007/MoxieLogic">http://repos.moxielogic.org:7007/MoxieLogic</a></li>
-<li>DEBs: <a href="http://repos.moxielogic.org:7114/MoxieLogic">http://repos.moxielogic.org:7114/MoxieLogic</a></li>
-</ul>
-<p>The binaries are statically linked and should run on a wide variety of RPM and DEB based distros.</p>
-<p>On RPM based distros like Centos, RHEL and Fedora, please install the repo file found here: <a href="http://repos.moxielogic.org:7007/MoxieLogic/noarch/moxielogic-repo-latest.noarch.rpm">http://repos.moxielogic.org:7007/MoxieLogic/noarch/moxielogic-repo-latest.noarch.rpm</a>.</p>
+<p>64-bit x86 DEB and RPM Linux packages for moxie-elf, moxie-rtems and
+moxiebox tools are available for download.  The toolchains are
+statically linked, and should run on a wide range of distributions,
+including Ubuntu, Debian, Fedora, CentOS, RHEL, and more.  These
+binaries track upstream development branches and are updated
+frequently.</p>
+<h3>RPM Packages</h3>
+<p>For RPMs, simply download and install the repo package here:  <a href="http://repos.moxielogic.org:7007/MoxieLogic/noarch/moxielogic-repo-latest.rpm">http://repos.moxielogic.org:7007/MoxieLogic/noarch/moxielogic-repo-latest.rpm</a></p>
 <p>Example usage:</p>
-<div class="highlight"><pre><span></span>$ rpm -ivh http://repos.moxielogic.org:7007/MoxieLogic/noarch/moxielogic-repo-latest.noarch.rpm
-$ yum install -y moxielogic-moxiebox-gcc moxielogic-moxiebox-newlib moxielogic-moxiebox-gdb
+<div class="highlight"><pre><span></span>$ rpm -ivh http://repos.moxielogic.org:7007/MoxieLogic/noarch/moxielogic-repo-latest.rpm
+$ yum install -y moxielogic-moxiebox-gcc moxielogic-moxiebox-gdb
 $ /opt/moxielogic/bin/moxiebox-gcc 
-moxie-elf-gcc: fatal error: no input files
+moxiebox-gcc: fatal error: no input files
+compilation terminated.
+</pre></div>
+
+
+<h3>DEB Packages</h3>
+<p>For DEBs, simply add the apt repo to your system, like so:</p>
+<div class="highlight"><pre><span></span>$ apt-add-repository http://repos.moxielogic.org:7114/MoxieLogic moxiedev main
+</pre></div>
+
+
+<p>Example usage:</p>
+<div class="highlight"><pre><span></span>$ apt-add-repository http://repos.moxielogic.org:7114/MoxieLogic moxiedev main
+$ apt-get install -y moxielogic-moxiebox-gcc moxielogic-moxiebox-gdb
+$ /opt/moxielogic/bin/moxiebox-gcc 
+moxiebox-gcc: fatal error: no input files
 compilation terminated.
 </pre></div>
 
 
 <h2>Source Distributions</h2>
-<p>The <a href="http://github.com/atgreen/moxie-cores">moxie-cores</a> project
-provides scripts to download and build the toolchain on Linux hosts.
-The tools build scripts and source links are at
-<a href="https://github.com/atgreen/moxiedev-releng">https://github.com/atgreen/moxiedev-releng</a>.</p>
+<p>The <a href="http://github.com/atgreen/moxiedev-releng">moxiedev-releng</a> git
+repo provides scripts and tools required to rebuild these binaries
+from source.</p>
+<p>The RPM repo includes source RPMs from which all of the tools are
+built.  The DEB packages are converted from RPM using
+<a href="https://en.wikipedia.org/wiki/Alien_(software)">alien</a>.</p>
   </div>
   <div class="article_meta">
-    <p>Updated on: Wed 20 September 2017</p>
+    <p>Updated on: Sun 27 August 2017</p>
   </div>
 </article>
 
