@@ -203,9 +203,9 @@ consumed by the encodings below is filled with the <code>bad</code> instruction.
 <h2><table width='100%'><tr><td><code>or</code></td><td align='right'><code>00101011AAAABBBB</code></td></tr></table></h2>
 <p>Logical or.  Performs a logical or operation on the contents of registers <code>$rA</code> and <code>$rB</code> and stores the result in <code>$rA</code>.</p>
 <h2><table width='100%'><tr><td><code>pop</code></td><td align='right'><code>00000111AAAABBBB</code></td></tr></table></h2>
-<p>Pop the 32-bit contents of the top of the stack pointed to by <code>$rB</code> into <code>$rA</code> and update the stack pointer.  Stacks grown down.</p>
+<p>Pop the 32-bit contents of the top of the stack pointed to by <code>$rA</code> into <code>$rB</code> and update the stack pointer in <code>$rA</code>.  Stacks grown down.</p>
 <h2><table width='100%'><tr><td><code>push</code></td><td align='right'><code>00000110AAAABBBB</code></td></tr></table></h2>
-<p>Push the contents of <code>$rB</code> onto a stack pointed to by <code>$rA</code> and update the stack pointer.  Stacks grown down.</p>
+<p>Push the contents of <code>$rB</code> onto a stack pointed to by <code>$rA</code> and update the stack pointer in <code>$rA</code>.  Stacks grown down.</p>
 <h2><table width='100%'><tr><td><code>ret</code></td><td align='right'><code>00000100xxxxxxxx</code></td></tr></table></h2>
 <p>Return from subroutine.</p>
 <h2><table width='100%'><tr><td><code>sex.b</code></td><td align='right'><code>00010000AAAABBBB</code></td></tr></table></h2>
