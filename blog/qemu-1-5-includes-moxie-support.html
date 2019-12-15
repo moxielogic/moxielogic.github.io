@@ -65,18 +65,18 @@ SoC emulation, and can run the <a href="http://moxielogic.org/blog/?p=738">on-ch
 about</a>. In this example, for instance, we're sending the u-boot
 bootloader program in srecord format to qemu's emulated serial port on
 stdin. It looks just like the real hardware does...</p>
-<div class="highlight"><pre><span></span>$ cat ~/u-boot.srec <span class="p">|</span> qemu-system-moxie --machine marin --kernel bootrom.elf --nographic
-MOXIE On-Chip Bootloader v1.0
-Copyright <span class="o">(</span>c<span class="o">)</span> <span class="m">2013</span> Anthony Green
+<div class="highlight"><pre><span></span>$ <span class="nv">cat</span> <span class="o">~/</span><span class="nv">u</span><span class="o">-</span><span class="nv">boot</span>.<span class="nv">srec</span> <span class="o">|</span> <span class="nv">qemu</span><span class="o">-</span><span class="nv">system</span><span class="o">-</span><span class="nv">moxie</span> <span class="o">--</span><span class="nv">machine</span> <span class="nv">marin</span> <span class="o">--</span><span class="nv">kernel</span> <span class="nv">bootrom</span>.<span class="nv">elf</span> <span class="o">--</span><span class="nv">nographic</span>
+<span class="nv">MOXIE</span> <span class="nv">On</span><span class="o">-</span><span class="nv">Chip</span> <span class="nv">Bootloader</span> <span class="nv">v1</span>.<span class="mi">0</span>
+<span class="nv">Copyright</span> <span class="ss">(</span><span class="nv">c</span><span class="ss">)</span> <span class="mi">2013</span> <span class="nv">Anthony</span> <span class="nv">Green</span>
 
-Waiting <span class="k">for</span> S-Record Download...
-Jumping to code at 0x30000000.
-SDRAM :
-    U-Boot Start:0x30000000
-Using default environment
+<span class="nv">Waiting</span> <span class="k">for</span> <span class="nv">S</span><span class="o">-</span><span class="nv">Record</span> <span class="nv">Download</span>...
+<span class="nv">Jumping</span> <span class="nv">to</span> <span class="nv">code</span> <span class="nv">at</span> <span class="mi">0</span><span class="nv">x30000000</span>.
+<span class="nv">SDRAM</span> :
+    <span class="nv">U</span><span class="o">-</span><span class="nv">Boot</span> <span class="nv">Start</span>:<span class="mi">0</span><span class="nv">x30000000</span>
+<span class="nv">Using</span> <span class="nv">default</span> <span class="nv">environment</span>
 
-U-BOOT <span class="k">for</span> <span class="s2">&quot;marin&quot;</span>
-<span class="o">=</span>&gt;
+<span class="nv">U</span><span class="o">-</span><span class="nv">BOOT</span> <span class="k">for</span> <span class="s2">&quot;</span><span class="s">marin</span><span class="s2">&quot;</span>
+<span class="o">=&gt;</span>
 </pre></div>
 
 

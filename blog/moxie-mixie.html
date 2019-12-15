@@ -72,17 +72,17 @@ the Moxie Mixie architecture...</p>
 Moxie, but with random instruction encodings, making it difficult for
 remote attackers to generate payloads for execution.  Here's how it
 works. Consider this C source code:</p>
-<div class="highlight"><pre><span></span>int mycode (int a, int b)
+<div class="highlight"><pre><span></span><span class="nv">int</span> <span class="nv">mycode</span> <span class="ss">(</span><span class="nv">int</span> <span class="nv">a</span>, <span class="nv">int</span> <span class="nv">b</span><span class="ss">)</span>
 {
-  return a + b;
+  <span class="k">return</span> <span class="nv">a</span> <span class="o">+</span> <span class="nv">b</span><span class="c1">;</span>
 }
 </pre></div>
 
 
 <p>Here's what it would assemble to normally with the moxie GNU tools:</p>
-<div class="highlight"><pre><span></span>00000000 &lt;mycode&gt;:
-   0:    05 23          add     $r0, $r1
-   2:    04 00          ret
+<div class="highlight"><pre><span></span><span class="mi">00000000</span> <span class="o">&lt;</span><span class="n">mycode</span><span class="o">&gt;</span><span class="p">:</span>
+   <span class="mi">0</span><span class="p">:</span>    <span class="mi">05</span> <span class="mi">23</span>          <span class="k">add</span>     <span class="err">$</span><span class="n">r0</span><span class="p">,</span> <span class="err">$</span><span class="n">r1</span>
+   <span class="mi">2</span><span class="p">:</span>    <span class="mi">04</span> <span class="mi">00</span>          <span class="n">ret</span>
 </pre></div>
 
 
@@ -94,11 +94,11 @@ environment variable. So, for instance....</p>
 
 
 <p>...produces...</p>
-<div class="highlight"><pre><span></span>00000000 &lt;mycode&gt;:
-   0:    05 23 77 5f    add     $r0, $r1
-   4:    c6 1b
-   6:    04 00 c9 23    ret
-   a:    43 39
+<div class="highlight"><pre><span></span><span class="mi">00000000</span> <span class="o">&lt;</span><span class="n">mycode</span><span class="o">&gt;</span><span class="p">:</span>
+   <span class="mi">0</span><span class="p">:</span>    <span class="mi">05</span> <span class="mi">23</span> <span class="mi">77</span> <span class="mi">5</span><span class="n">f</span>    <span class="k">add</span>     <span class="err">$</span><span class="n">r0</span><span class="p">,</span> <span class="err">$</span><span class="n">r1</span>
+   <span class="mi">4</span><span class="p">:</span>    <span class="n">c6</span> <span class="mi">1</span><span class="n">b</span>
+   <span class="mi">6</span><span class="p">:</span>    <span class="mi">04</span> <span class="mi">00</span> <span class="n">c9</span> <span class="mi">23</span>    <span class="n">ret</span>
+   <span class="n">a</span><span class="p">:</span>    <span class="mi">43</span> <span class="mi">39</span>
 </pre></div>
 
 
@@ -111,11 +111,11 @@ key...</p>
 
 
 <p>...we get different instruction encodings....</p>
-<div class="highlight"><pre><span></span>00000000 &lt;mycode&gt;:
-   0:    05 23 19 03    add     $r0, $r1
-   4:    02 46
-   6:    04 00 52 f1    ret
-   a:    37 88
+<div class="highlight"><pre><span></span><span class="mi">00000000</span> <span class="o">&lt;</span><span class="n">mycode</span><span class="o">&gt;</span><span class="p">:</span>
+   <span class="mi">0</span><span class="p">:</span>    <span class="mi">05</span> <span class="mi">23</span> <span class="mi">19</span> <span class="mi">03</span>    <span class="k">add</span>     <span class="err">$</span><span class="n">r0</span><span class="p">,</span> <span class="err">$</span><span class="n">r1</span>
+   <span class="mi">4</span><span class="p">:</span>    <span class="mi">02</span> <span class="mi">46</span>
+   <span class="mi">6</span><span class="p">:</span>    <span class="mi">04</span> <span class="mi">00</span> <span class="mi">52</span> <span class="n">f1</span>    <span class="n">ret</span>
+   <span class="n">a</span><span class="p">:</span>    <span class="mi">37</span> <span class="mi">88</span>
 </pre></div>
 
 

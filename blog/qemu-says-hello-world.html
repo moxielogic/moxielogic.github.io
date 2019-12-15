@@ -85,12 +85,12 @@ compiler with simple optimization passes.</p>
 <p>In practice, this wasn't a huge amount of work. The translator still
 looks like a huge switch statement where we handle each opcode. For
 instance, here's a register-to-register move:</p>
-<div class="highlight"><pre><span></span> case 0x02:  /* mov (register-to-register) */
-   {
-     int dest = (opcode &gt;&gt; 4) &amp; 0xf;
-     int src = opcode &amp; 0xf;
-     tcg_gen_mov_i32(REG(dest), REG(src));
-   }
+<div class="highlight"><pre><span></span> <span class="k">case</span> <span class="mi">0</span><span class="n">x02</span><span class="p">:</span>  <span class="cm">/* mov (register-to-register) */</span>
+   <span class="err">{</span>
+     <span class="nb">int</span> <span class="n">dest</span> <span class="o">=</span> <span class="p">(</span><span class="n">opcode</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">0</span><span class="n">xf</span><span class="p">;</span>
+     <span class="nb">int</span> <span class="n">src</span> <span class="o">=</span> <span class="n">opcode</span> <span class="o">&amp;</span> <span class="mi">0</span><span class="n">xf</span><span class="p">;</span>
+     <span class="n">tcg_gen_mov_i32</span><span class="p">(</span><span class="n">REG</span><span class="p">(</span><span class="n">dest</span><span class="p">),</span> <span class="n">REG</span><span class="p">(</span><span class="n">src</span><span class="p">));</span>
+   <span class="err">}</span>
 </pre></div>
 
 
@@ -98,24 +98,24 @@ instance, here's a register-to-register move:</p>
 between registers.</p>
 <p>Once I had implemented support for enough instructions, I was able to
 run a trivial Hello World program straight through:  </p>
-<div class="highlight"><pre><span></span>$ cat hello.c
-<span class="c1">#include &lt;stdio.h&gt;</span>
+<div class="highlight"><pre><span></span>$ <span class="nv">cat</span> <span class="nv">hello</span>.<span class="nv">c</span>
+#<span class="k">include</span> <span class="o">&lt;</span><span class="nv">stdio</span>.<span class="nv">h</span><span class="o">&gt;</span>
 
-int main<span class="o">()</span>
-<span class="o">{</span>
-  puts <span class="o">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="o">)</span><span class="p">;</span>
-  <span class="k">return</span> <span class="m">0</span><span class="p">;</span>
-<span class="o">}</span>
-$ moxie-elf-gcc -o hello.x hello.c
-$ qemu-system-moxie -nographic -kernel hello.x
-qemu: fatal: Trying to execute code outside RAM or ROM at 0x00000000
+<span class="nv">int</span> <span class="nv">main</span><span class="ss">()</span>
+{
+  <span class="nv">puts</span> <span class="ss">(</span><span class="s2">&quot;</span><span class="s">Hello World!</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="c1">;</span>
+}
+$ <span class="nv">moxie</span><span class="o">-</span><span class="nv">elf</span><span class="o">-</span><span class="nv">gcc</span> <span class="o">-</span><span class="nv">o</span> <span class="nv">hello</span>.<span class="nv">x</span> <span class="nv">hello</span>.<span class="nv">c</span>
+$ <span class="nv">qemu</span><span class="o">-</span><span class="nv">system</span><span class="o">-</span><span class="nv">moxie</span> <span class="o">-</span><span class="nv">nographic</span> <span class="o">-</span><span class="nv">kernel</span> <span class="nv">hello</span>.<span class="nv">x</span>
+<span class="nv">qemu</span>: <span class="nv">fatal</span>: <span class="nv">Trying</span> <span class="nv">to</span> <span class="nv">execute</span> <span class="nv">code</span> <span class="nv">outside</span> <span class="nv">RAM</span> <span class="nv">or</span> <span class="nv">ROM</span> <span class="nv">at</span> <span class="mi">0</span><span class="nv">x00000000</span>
 
-<span class="nv">pc</span><span class="o">=</span>0x00000000
-<span class="nv">$fp</span><span class="o">=</span>0x00000000 <span class="nv">$sp</span><span class="o">=</span>0x0000000c <span class="nv">$r0</span><span class="o">=</span>0x00000001 <span class="nv">$r1</span><span class="o">=</span>0x000055c4
-<span class="nv">$r2</span><span class="o">=</span>0x00000000 <span class="nv">$r3</span><span class="o">=</span>0x00000000 <span class="nv">$r4</span><span class="o">=</span>0x001ffff4 <span class="nv">$r5</span><span class="o">=</span>0x00000000
-<span class="nv">$r6</span><span class="o">=</span>0x00000000 <span class="nv">$r7</span><span class="o">=</span>0x00000000 <span class="nv">$r8</span><span class="o">=</span>0x00000000 <span class="nv">$r9</span><span class="o">=</span>0x00000000
-<span class="nv">$r10</span><span class="o">=</span>0x00000000 <span class="nv">$r11</span><span class="o">=</span>0x00000000 <span class="nv">$r12</span><span class="o">=</span>0x00000000 <span class="nv">$r13</span><span class="o">=</span>0xfffffff4
-Aborted
+<span class="nv">pc</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000000</span>
+<span class="mh">$f</span><span class="nv">p</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000000</span> $<span class="nv">sp</span><span class="o">=</span><span class="mi">0</span><span class="nv">x0000000c</span> $<span class="nv">r0</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000001</span> $<span class="nv">r1</span><span class="o">=</span><span class="mi">0</span><span class="nv">x000055c4</span>
+$<span class="nv">r2</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000000</span> $<span class="nv">r3</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000000</span> $<span class="nv">r4</span><span class="o">=</span><span class="mi">0</span><span class="nv">x001ffff4</span> $<span class="nv">r5</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000000</span>
+$<span class="nv">r6</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000000</span> $<span class="nv">r7</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000000</span> $<span class="nv">r8</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000000</span> $<span class="nv">r9</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000000</span>
+$<span class="nv">r10</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000000</span> $<span class="nv">r11</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000000</span> $<span class="nv">r12</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000000</span> $<span class="nv">r13</span><span class="o">=</span><span class="mi">0</span><span class="nv">xfffffff4</span>
+<span class="nv">Aborted</span>
 </pre></div>
 
 
@@ -140,41 +140,41 @@ about qemu is that it comes with a wealth of simulated peripherals that
 you can hook up to your processor. So, for now, let's just send all
 output to a simulated serial port. Qemu makes this very simple. In the
 module that defines our hardware platform, we just add:  </p>
-<div class="highlight"><pre><span></span>    /* A single 16450 sits at offset 0x3f8.  */
-    if (serial_hds[0])
-      serial_mm_init(0x3f8, 0, env-&gt;irq[4], 8000000/16, serial_hds[0], 1);
+<div class="highlight"><pre><span></span>    <span class="cm">/* A single 16450 sits at offset 0x3f8.  */</span>
+    <span class="k">if</span> <span class="ss">(</span><span class="nv">serial_hds</span>[<span class="mi">0</span>]<span class="ss">)</span>
+      <span class="nv">serial_mm_init</span><span class="ss">(</span><span class="mi">0</span><span class="nv">x3f8</span>, <span class="mi">0</span>, <span class="nv">env</span><span class="o">-&gt;</span><span class="nv">irq</span>[<span class="mi">4</span>], <span class="mi">8000000</span><span class="o">/</span><span class="mi">16</span>, <span class="nv">serial_hds</span>[<span class="mi">0</span>], <span class="mi">1</span><span class="ss">)</span><span class="c1">;</span>
 </pre></div>
 
 
 <p>Now we just have to override the _write in libgloss to write to the
 16450 UART which has been mapped to memory at 0x3f8. Qemu's default
 setting has all serial port output going to the console. So now....</p>
-<div class="highlight"><pre><span></span>$ cat hello.c
-<span class="c1">#include &lt;stdio.h&gt;</span>
+<div class="highlight"><pre><span></span>$ <span class="nv">cat</span> <span class="nv">hello</span>.<span class="nv">c</span>
+#<span class="k">include</span> <span class="o">&lt;</span><span class="nv">stdio</span>.<span class="nv">h</span><span class="o">&gt;</span>
 
-int _write <span class="o">(</span>int fd, char *buf, int len<span class="o">)</span>
-<span class="o">{</span>
-  int <span class="nv">i</span> <span class="o">=</span> <span class="m">0</span><span class="p">;</span>
-  <span class="k">while</span> <span class="o">(</span>i &lt; len<span class="o">)</span>
-    *<span class="o">(</span>char *<span class="o">)</span><span class="nv">0x3f8</span> <span class="o">=</span> buf<span class="o">[</span>i++<span class="o">]</span><span class="p">;</span>
-  <span class="k">return</span> len<span class="p">;</span>
-<span class="o">}</span>
+<span class="nv">int</span> <span class="nv">_write</span> <span class="ss">(</span><span class="nv">int</span> <span class="nv">fd</span>, <span class="nv">char</span> <span class="o">*</span><span class="nv">buf</span>, <span class="nv">int</span> <span class="nv">len</span><span class="ss">)</span>
+{
+  <span class="nv">int</span> <span class="nv">i</span> <span class="o">=</span> <span class="mi">0</span><span class="c1">;</span>
+  <span class="k">while</span> <span class="ss">(</span><span class="nv">i</span> <span class="o">&lt;</span> <span class="nv">len</span><span class="ss">)</span>
+    <span class="o">*</span><span class="ss">(</span><span class="nv">char</span> <span class="o">*</span><span class="ss">)</span><span class="mi">0</span><span class="nv">x3f8</span> <span class="o">=</span> <span class="nv">buf</span>[<span class="nv">i</span><span class="o">++</span>]<span class="c1">;</span>
+  <span class="k">return</span> <span class="nv">len</span><span class="c1">;</span>
+}
 
-int main<span class="o">()</span>
-<span class="o">{</span>
-  puts <span class="o">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="o">)</span><span class="p">;</span>
-  <span class="k">return</span> <span class="m">0</span><span class="p">;</span>
-<span class="o">}</span>
-$ moxie-elf-gcc -o hello.x hello.c
-$ ./qemu-system-moxie -nographic -kernel hello.x
-Hello World!qemu: fatal: Trying to execute code outside RAM or ROM at 0x00000000
+<span class="nv">int</span> <span class="nv">main</span><span class="ss">()</span>
+{
+  <span class="nv">puts</span> <span class="ss">(</span><span class="s2">&quot;</span><span class="s">Hello World!</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="c1">;</span>
+}
+$ <span class="nv">moxie</span><span class="o">-</span><span class="nv">elf</span><span class="o">-</span><span class="nv">gcc</span> <span class="o">-</span><span class="nv">o</span> <span class="nv">hello</span>.<span class="nv">x</span> <span class="nv">hello</span>.<span class="nv">c</span>
+$ .<span class="o">/</span><span class="nv">qemu</span><span class="o">-</span><span class="nv">system</span><span class="o">-</span><span class="nv">moxie</span> <span class="o">-</span><span class="nv">nographic</span> <span class="o">-</span><span class="nv">kernel</span> <span class="nv">hello</span>.<span class="nv">x</span>
+<span class="nv">Hello</span> <span class="nv">World</span><span class="o">!</span><span class="nv">qemu</span>: <span class="nv">fatal</span>: <span class="nv">Trying</span> <span class="nv">to</span> <span class="nv">execute</span> <span class="nv">code</span> <span class="nv">outside</span> <span class="nv">RAM</span> <span class="nv">or</span> <span class="nv">ROM</span> <span class="nv">at</span> <span class="mi">0</span><span class="nv">x00000000</span>
 
-<span class="nv">pc</span><span class="o">=</span>0x00000000
-<span class="nv">$fp</span><span class="o">=</span>0x00000000 <span class="nv">$sp</span><span class="o">=</span>0x0000000c <span class="nv">$r0</span><span class="o">=</span>0x00000001 <span class="nv">$r1</span><span class="o">=</span>0x000055c4
-<span class="nv">$r2</span><span class="o">=</span>0x00000000 <span class="nv">$r3</span><span class="o">=</span>0x00000000 <span class="nv">$r4</span><span class="o">=</span>0x001ffff4 <span class="nv">$r5</span><span class="o">=</span>0x00000000
-<span class="nv">$r6</span><span class="o">=</span>0x00000000 <span class="nv">$r7</span><span class="o">=</span>0x00000000 <span class="nv">$r8</span><span class="o">=</span>0x00000000 <span class="nv">$r9</span><span class="o">=</span>0x00000000
-<span class="nv">$r10</span><span class="o">=</span>0x00000000 <span class="nv">$r11</span><span class="o">=</span>0x00000000 <span class="nv">$r12</span><span class="o">=</span>0x00000000 <span class="nv">$r13</span><span class="o">=</span>0xfffffff4
-Aborted
+<span class="nv">pc</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000000</span>
+<span class="mh">$f</span><span class="nv">p</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000000</span> $<span class="nv">sp</span><span class="o">=</span><span class="mi">0</span><span class="nv">x0000000c</span> $<span class="nv">r0</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000001</span> $<span class="nv">r1</span><span class="o">=</span><span class="mi">0</span><span class="nv">x000055c4</span>
+$<span class="nv">r2</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000000</span> $<span class="nv">r3</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000000</span> $<span class="nv">r4</span><span class="o">=</span><span class="mi">0</span><span class="nv">x001ffff4</span> $<span class="nv">r5</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000000</span>
+$<span class="nv">r6</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000000</span> $<span class="nv">r7</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000000</span> $<span class="nv">r8</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000000</span> $<span class="nv">r9</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000000</span>
+$<span class="nv">r10</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000000</span> $<span class="nv">r11</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000000</span> $<span class="nv">r12</span><span class="o">=</span><span class="mi">0</span><span class="nv">x00000000</span> $<span class="nv">r13</span><span class="o">=</span><span class="mi">0</span><span class="nv">xfffffff4</span>
+<span class="nv">Aborted</span>
 </pre></div>
 
 

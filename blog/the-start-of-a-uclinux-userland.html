@@ -66,12 +66,12 @@ technology...</p>
     My strategy has always been to make things link as quickly as
     possible, and then sort out the details later. This seems to be a
     workable strategy in the presence of good testsuites and the like.</li>
-<li><a href="http://cvs.uclinux.org/cgi-bin/cvsweb.cgi/elf2flt/">elf2flt</a>: this utility turns moxie ELF binaries into the ["Binary
-    Flat" (BFLT) format][] currently required by my Linux port. The BFLT
+<li><a href="http://cvs.uclinux.org/cgi-bin/cvsweb.cgi/elf2flt/">elf2flt</a>: this utility turns moxie ELF binaries into the <a href="http://www.beyondlogic.org/uClinux/bflt.htm">"Binary
+    Flat" (BFLT) format</a> currently required by my Linux port. The BFLT
     format is required because: (a) we don't have an MMU yet, so there's
     a single address space for the kernel and all applications, and (b)
-    my moxie tools port doesn't yet support something like the [FR-V's
-    FDPIC ABI][] that would allow for proper shared library support in
+    my moxie tools port doesn't yet support something like the <a href="ftp://ftp.redhat.com/pub/redhat/gnupro/FRV/FDPIC-ABI.txt">FR-V's
+    FDPIC ABI</a> that would allow for proper shared library support in
     the absence of an MMU. elf2flt ends up wrapping the installed
     linker, so builds actually produce BFLT binaries without any extra
     step.</li>

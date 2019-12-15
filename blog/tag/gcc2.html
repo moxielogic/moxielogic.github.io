@@ -100,13 +100,13 @@ like BusyBox can run.</p>
   <div class="article_text">
     <p>The Moxie ISA still needs quite a bit of tuning. Take branches, for
 instance. A <code>beq</code> instruction currently encoded <a href="http://www.moxielogic.org/wiki/index.php?title=Instruction_Set#beq">like so</a>...  </p>
-<div class="highlight"><pre><span></span>`00001111xxxxxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii`
+<div class="highlight"><pre><span></span><span class="o">`</span><span class="mi">00001111</span><span class="n">xxxxxxxx</span> <span class="n">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</span><span class="o">`</span>
 </pre></div>
 
 
 <p>...where the "<code>x</code>"s represent "don't care" bits, and "<code>i</code>"s are a
 32-bit absolute branch target. That's right -- branch targets are not PC
-relative! This is …</p>
+relative! This …</p>
   </div>
 </article>
 <hr />

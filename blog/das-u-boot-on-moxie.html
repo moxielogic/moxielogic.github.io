@@ -59,23 +59,23 @@
   <div class="article_text">
     <p>My moxie port of <a href="http://www.denx.de/wiki/U-Boot">U-Boot</a>, the Universal Boot Loader, has started
 working!</p>
-<div class="highlight"><pre><span></span>$ qemu-system-moxie -nographic -kernel u-boot
-SDRAM :
-        U-Boot Start:0x00001000
-Using default environment
+<div class="highlight"><pre><span></span>$ <span class="nv">qemu</span><span class="o">-</span><span class="nv">system</span><span class="o">-</span><span class="nv">moxie</span> <span class="o">-</span><span class="nv">nographic</span> <span class="o">-</span><span class="nv">kernel</span> <span class="nv">u</span><span class="o">-</span><span class="nv">boot</span>
+<span class="nv">SDRAM</span> :
+        <span class="nv">U</span><span class="o">-</span><span class="nv">Boot</span> <span class="nv">Start</span>:<span class="mi">0</span><span class="nv">x00001000</span>
+<span class="nv">Using</span> <span class="nv">default</span> <span class="nv">environment</span>
 
-U-BOOT <span class="k">for</span> <span class="s2">&quot;moxiesim&quot;</span>
+<span class="nv">U</span><span class="o">-</span><span class="nv">BOOT</span> <span class="k">for</span> <span class="s2">&quot;</span><span class="s">moxiesim</span><span class="s2">&quot;</span>
 
-<span class="o">=</span>&gt; version
+<span class="o">=&gt;</span> <span class="nv">version</span>
 
-U-Boot <span class="m">2009</span>.03-rc2-00013-gefb4734-dirty <span class="o">(</span>Apr <span class="m">02</span> <span class="m">2009</span> - <span class="m">20</span>:07:32<span class="o">)</span>
-<span class="o">=</span>&gt; printenv
-<span class="nv">bootargs</span><span class="o">=</span><span class="nv">root</span><span class="o">=</span>romfs
-<span class="nv">baudrate</span><span class="o">=</span><span class="m">38400</span>
-<span class="nv">hostname</span><span class="o">=</span><span class="s2">&quot;moxiesim&quot;</span>
+<span class="nv">U</span><span class="o">-</span><span class="nv">Boot</span> <span class="mi">2009</span>.<span class="mi">03</span><span class="o">-</span><span class="nv">rc2</span><span class="o">-</span><span class="mi">00013</span><span class="o">-</span><span class="nv">gefb4734</span><span class="o">-</span><span class="nv">dirty</span> <span class="ss">(</span><span class="nv">Apr</span> <span class="mi">02</span> <span class="mi">2009</span> <span class="o">-</span> <span class="mi">20</span>:<span class="mi">07</span>:<span class="mi">32</span><span class="ss">)</span>
+<span class="o">=&gt;</span> <span class="nv">printenv</span>
+<span class="nv">bootargs</span><span class="o">=</span><span class="nv">root</span><span class="o">=</span><span class="nv">romfs</span>
+<span class="nv">baudrate</span><span class="o">=</span><span class="mi">38400</span>
+<span class="nv">hostname</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">moxiesim</span><span class="s2">&quot;</span>
 
-Environment size: <span class="m">55</span>/4092 <span class="nv">bytes</span>
-<span class="o">=</span>&gt;
+<span class="nv">Environment</span> <span class="nv">size</span>: <span class="mi">55</span><span class="o">/</span><span class="mi">4092</span> <span class="nv">bytes</span>
+<span class="o">=&gt;</span>
 </pre></div>
 
 

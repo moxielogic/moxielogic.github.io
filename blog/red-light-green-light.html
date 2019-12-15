@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="./theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="./theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="./theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Anthony Green">
+  <meta name="description" content="Posts and writings by Anthony Green">
+
+  <link href="http://moxielogic.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="The Moxie Blog Atom" />
+  <link href="http://moxielogic.github.io/blog/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="The Moxie Blog RSS" />
+
+<meta name="keywords" content="rlgl">
+
+  <title>
+    The Moxie Blog
+&ndash; Evaluating DejaGnu results with Red Light Green Light  </title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href=".">
+        <img src="http://moxielogic.github.io/images/ml.png" alt="logo">
+      </a>
+      <h2><a href=".">The Moxie Blog</a></h2>
+      <p>A development blog for the <b>moxie processor</b>, an open source embedded soft-core processor.</p>
+      <ul>
+        <li><a href="./pages/about.html">About</a></li>
+        <li><a href="./pages/author.html">Author</a></li>
+        <li><a href="http://moxielogic.org/blog/pages/architecture.html" target="_blank">Architecture</a></li>
+        <li><a href="http://moxielogic.org/blog/pages/toolchain.html" target="_blank">Toolchain</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <p>
+      <a href=".">Index</a> &brvbar; <a href="./archives.html">Archives</a>
+      &brvbar; <a href="http://moxielogic.github.io/blog/feeds/all.atom.xml">Atom</a>
+      &brvbar; <a href="http://moxielogic.github.io/blog/feeds/all.rss.xml">RSS</a>
+      </p>
+    </header>
+
+<article>
+  <div class="article_title">
+    <h1><a href="./red-light-green-light.html">Evaluating DejaGnu results with Red Light Green Light</a></h1>
+  </div>
+  <div class="article_text">
+    <p>Last year I hacked up a tool in frustration called <a href="https://rl.gl">Red Light Green
+Light</a> (rlgl) -- a proof-of-concept effort to
+demonstrate a git-centric way to manage "quality gates" in a CI/CD
+pipeline.</p>
+<p>A CI/CD quality gate is a process that evaluates the quality of a
+software artefact before allowing it to proceed to the next stage of
+the pipeline.  For example, you may have a quality gate that examines
+the results of a container security scan report before pushing your
+container image into a registry.</p>
+<p>It's probably worth reading the <a href="https://github.com/atgreen/red-light-green-light/blob/master/README.md">Red Light Green Light
+README</a>
+before continuing here, but the basic idea is that we normalize test
+evaluation reports into JSON format, and them match those against JSON
+matching objects stored in a git repo to come up with either a Red
+Light or a Green Light.  The resulting rlgl HTML report identifies how
+the PASS/FAIL/XFAIL patterns were matched along with links to the git
+commits for the matching policy.  Here's a picture..</p>
+<p><center>
+<img alt="" src="http://moxielogic.github.io/images/rlgl-workflow.png">
+</center></p>
+<p>The benefits of this approach in a large regulated environment with
+segregated roles and duties are many:</p>
+<ul>
+<li>Evaluation policy is no longer locked within proprietary tools</li>
+<li>There's a well defined workflow for policy change management (pull requests)</li>
+<li>Authentication and authorization for policy management is a solved problem</li>
+<li>The policy change history is easily auditable</li>
+</ul>
+<p>But as I was preparing a new release of
+<a href="https://github.com/libffi/libffi">libffi</a>, another FOSS package I
+maintain, I realized that Red Light Green Light could easily be
+adapted to examine <a href="https://www.gnu.org/software/dejagnu/">DejaGnu</a>
+test results.  This turned out to be a great idea.</p>
+<p>We use <a href="https://travis-ci.org/libffi/libffi">travis-ci</a> to test
+changes to libffi.  This is critical because libffi is a complex and
+fragile peice of software -- a mix of C and assembly code that has
+been ported to almost 30 major processor architectures.  Automated CI
+testing is important because I can't expect every contributor to test
+their changes on those 30 targets (combined with different compiler
+and OS ABIs, the test matrix explodes quit quickly).</p>
+<p>I was recently looking at the moxie-elf GCC testresults (posted
+nightly to the <a href="https://gcc.gnu.org/ml/gcc-testresults/">gcc-testresults mailing
+list</a>) and realized that,
+once again, Red Light Green Light could help me get a handle on the
+test failures.  I was looking to solve three problems:</p>
+<ul>
+<li>
+<p>I needed a place to maintain state on test failures -- notes for
+  myself that I can refer to when I have time to continue
+  investigating.  I work on moxie sporadically, often with many month
+  gaps, so having the ability to annotate test failures with notes is
+  important.</p>
+</li>
+<li>
+<p>I needed a way to track regressions, so I can easily see when tests
+  that were once passing start failing.  This would be easy if every
+  test was known to pass, but I am far from that.</p>
+</li>
+<li>
+<p>I needed a way to track new failures for new test cases added by the
+  GCC developers.  Again, this would be easy if every test was known
+  to pass, but not so easy if you have a collection of failures
+  already.</p>
+</li>
+</ul>
+<p>Once again, this turned out to be a great idea.  I've tracked down
+almost every test failure and recorded them in a policy repo at
+<a href="https://github.com/moxielogic/rlgl-toolchain-policy">https://github.com/moxielogic/rlgl-toolchain-policy</a>.
+I'm able to watch for regressions, new test failures and keep notes
+related to my debugging efforts.  All of the good bits are in the
+policy's <a href="https://github.com/moxielogic/rlgl-toolchain-policy/blob/master/XFAIL">XFAIL
+file</a>.</p>
+<p>I run the test result evaluation after my nightly 'make check' run like so:</p>
+<div class="highlight"><pre><span></span>wget -qO - https://rl.gl/cli/rlgl-linux-amd64.tgz <span class="p">|</span> <span class="se">\</span>
+    tar --strip-components<span class="o">=</span><span class="m">2</span> -xvzf - ./rlgl/rlgl
+./rlgl login https://rl.gl
+<span class="nb">export</span> <span class="nv">RLGL</span><span class="o">=</span><span class="k">$(</span>./rlgl e --id<span class="o">=</span><span class="k">$(</span>./rlgl start<span class="k">)</span> --policy https://github.com/moxielogic/rlgl-toolchain-policy.git <span class="k">$(</span>find . -name gcc.sum<span class="k">)</span> <span class="o">||</span> <span class="nb">true</span><span class="k">)</span>
+</pre></div>
+
+
+<p>At this point the <code>RLGL</code> environment variable contains the result of
+the evaluation.  Something like <code>RED:
+https://rl.gl/doc?id=RLGL-2FWVG23I</code>, which I just paste into the
+results that get posted to the mailing list.</p>
+<p>Here's what a sample report looks like:
+<center>
+<img alt="" src="http://moxielogic.github.io/images/rlgl-dg.png">
+</center></p>
+<p>Feel free to try <a href="https://rl.gl">Red Light Green Light</a> out.  You can
+host it yourself, or use my experimental hosted version at
+<a href="https://rl.gl">https://rl.gl</a>.  All documents are reports are
+currently set to expire after 7 days.</p>
+<p>As always, feedback welcome!</p>
+  </div>
+  <div class="article_meta">
+    <p>Posted on: Sat 14 December 2019</p>
+    <p>Category: <a href="./category/moxie.html">moxie</a>
+ &ndash; Tags:
+      <a href="./tag/rlgl.html">rlgl</a>    </p>
+  </div>
+
+  <div id="article_comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_identifier = "red-light-green-light.html";
+        (function() {
+             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+             dsq.src = '//moxieblog.disqus.com/embed.js';
+             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+         })();
+    </script>
+  </div>
+
+</article>
+
+
+    <div id="ending_message">
+      <p>&copy; Anthony Green. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. </p>
+    </div>
+  </main>
+</body>
+</html>

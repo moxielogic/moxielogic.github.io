@@ -56,6 +56,18 @@
 
 <article>
   <div class="article_title">
+    <h1><a href="../kernel-update-device-trees-and-kernel-threads.html">Kernel update: device trees and kernel threads</a></h1>
+  </div>
+  <div class="article_text">
+    <p>I've spent a lot of time in airports/planes/hotels recently, which is
+good news for the moxie linux port. It runs about 6.5M instructions,
+booting up to the point where a couple of kernel threads are created.
+However, a few context switches later it all comes tumbling down …</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h1><a href="../the-moxie-linux-port.html">The Moxie Linux port</a></h1>
   </div>
   <div class="article_text">
@@ -123,13 +135,13 @@ should be particularly difficult.</p>
   <div class="article_text">
     <p>The Moxie ISA still needs quite a bit of tuning. Take branches, for
 instance. A <code>beq</code> instruction currently encoded <a href="http://www.moxielogic.org/wiki/index.php?title=Instruction_Set#beq">like so</a>...  </p>
-<div class="highlight"><pre><span></span>`00001111xxxxxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii`
+<div class="highlight"><pre><span></span><span class="o">`</span><span class="mi">00001111</span><span class="n">xxxxxxxx</span> <span class="n">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</span><span class="o">`</span>
 </pre></div>
 
 
 <p>...where the "<code>x</code>"s represent "don't care" bits, and "<code>i</code>"s are a
 32-bit absolute branch target. That's right -- branch targets are not PC
-relative! This is …</p>
+relative! This …</p>
   </div>
 </article>
 <hr />
@@ -176,23 +188,6 @@ $ yum groupinstall moxiedev
 <p>Seriously though... release engineering is at times both tedious and
 fascinating. But mostly tedious. Still, I was interested in tackling a
 little releng work this week …</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h1><a href="../quick-update.html">Quick update...</a></h1>
-  </div>
-  <div class="article_text">
-    <p>A few quick <a href="http://moxielogic.org/wiki/index.php?title=MoxieDev">MoxieDev</a> updates...</p>
-<ul>
-<li>The verilog output patch is in binutils</li>
-<li>The moxie ports for binutils, newlib, libgloss and gdb are all
-    upstream. Waiting on sim and gcc reviews.</li>
-<li>The upstream qemu team have switched to git, so I've rebased
-    MoxieDev's qemu against this new repository.</li>
-</ul>
-<p>Also, I've been …</p>
   </div>
 </article>
 

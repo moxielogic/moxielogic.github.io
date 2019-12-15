@@ -56,6 +56,19 @@
 
 <article>
   <div class="article_title">
+    <h1><a href="../fake-ram-loadstore-and-push.html">Fake RAM, load/store and push</a></h1>
+  </div>
+  <div class="article_text">
+    <p>Progress report time....</p>
+<p>I need RAM in order to implement/test most instructions. To that end,
+I've implemented a fake data cache that is always accessed within a
+single cycle during the WRITE pipeline stage. Eventually this will have
+to be replaced with a real data cache that reads/writes …</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h1><a href="../gtkwave-tip-2-translate-filter-files.html">GTKWave Tip #2: Translate Filter Files</a></h1>
   </div>
   <div class="article_text">
@@ -172,19 +185,6 @@ based …</p>
 <a href="http://moxielogic.org/blog/?p=444">Fetch implementation</a>, the rest has been pretty straight forward, and
 I've started running the first bit of compiled code through the pipline.
 Here's that start of our …</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h1><a href="../fetching-instructions.html">Fetching instructions</a></h1>
-  </div>
-  <div class="article_text">
-    <p>Moxie requires some interesting instruction fetch logic.</p>
-<p>For my initial implementation I'm assuming a 32-bit path to instruction
-memory. But moxie has both 16- and 48-bit instructions, so it's not like
-simple RISC cores that can feed the pipeline on every cycle. My solution
-is to feed 32-bit instruction memory …</p>
   </div>
 </article>
 

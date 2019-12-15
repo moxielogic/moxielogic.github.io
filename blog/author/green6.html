@@ -54,6 +54,18 @@
 
 <article>
   <div class="article_title">
+    <h1><a href="../the-first-moxie-linux-boot-output.html">The first moxie linux boot output...</a></h1>
+  </div>
+  <div class="article_text">
+    <p>Userland, here I come! Check out <a href="http://moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a>, run "ant build", then do
+the following...</p>
+<div class="highlight"><pre><span></span>$ .<span class="o">/</span><span class="nv">root</span><span class="o">/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">bin</span><span class="o">/</span><span class="nv">moxie</span><span class="o">-</span><span class="nv">elf</span><span class="o">-</span><span class="nv">run</span> <span class="nv">linux</span><span class="o">-</span><span class="mi">2</span>.<span class="mi">6</span><span class="o">/</span><span class="nv">vmlinux</span>
+<span class="nv">Linux</span> <span class="nv">version</span> <span class="mi">2</span>.<span class="mi">6</span>.<span class="mi">31</span><span class="o">-</span><span class="nv">rc3</span><span class="o">-</span><span class="nv">gb006656</span><span class="o">-</span><span class="nv">dirty</span> <span class="ss">(</span><span class="nv">green</span>@<span class="nv">dev</span>.<span class="nv">moxielogic</span>.<span class="nv">com</span><span class="ss">)</span> <span class="ss">(</span><span class="nv">gcc</span> <span class="nv">version</span> <span class="mi">4</span>.<span class="mi">5</span>.<span class="mi">0</span> <span class="mi">20090715</span> <span class="ss">(</span><span class="nv">experimental</span><span class="ss">)</span> [<span class="nv">trunk</span> <span class="nv">revision</span> <span class="mi">149693</span>] <span class="ss">(</span><span class="nv">GCC</span><span class="ss">)</span> <span class="ss">)</span> <span class="sc">#6</span> <span class="nv">Sun</span> <span class="nv">Jul …</span></pre></div>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h1><a href="../kernel-update-device-trees-and-kernel-threads.html">Kernel update: device trees and kernel threads</a></h1>
   </div>
   <div class="article_text">
@@ -133,13 +145,13 @@ should be particularly difficult.</p>
   <div class="article_text">
     <p>The Moxie ISA still needs quite a bit of tuning. Take branches, for
 instance. A <code>beq</code> instruction currently encoded <a href="http://www.moxielogic.org/wiki/index.php?title=Instruction_Set#beq">like so</a>...  </p>
-<div class="highlight"><pre><span></span>`00001111xxxxxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii`
+<div class="highlight"><pre><span></span><span class="o">`</span><span class="mi">00001111</span><span class="n">xxxxxxxx</span> <span class="n">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</span><span class="o">`</span>
 </pre></div>
 
 
 <p>...where the "<code>x</code>"s represent "don't care" bits, and "<code>i</code>"s are a
 32-bit absolute branch target. That's right -- branch targets are not PC
-relative! This is …</p>
+relative! This …</p>
   </div>
 </article>
 <hr />
@@ -168,19 +180,6 @@ on, so now the real repository is accessible via this command:</p>
 <li>moxiedev now contains a partial <a href="http://moxielogic.org/blog/?p=154">u-boot port</a>. It's "partial"
     because I fat fingered some commands and blew away four or five
     important files. They will have …</li></ul>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h1><a href="../the-race-for-a-new-game-machine-great-book.html">The Race For A New Game Machine: great book!</a></h1>
-  </div>
-  <div class="article_text">
-    <p>I just read <a href="http://raceforxbox360ps3.com/default.aspx">The Race For A New Game Machine</a> today on a cross-country
-flight, and wow.. fun read!</p>
-<p>If you've ever read Tracy Kidder's great book <a href="http://en.wikipedia.org/wiki/The_Soul_of_a_New_Machine">The Soul of a New
-Machine</a>, you'll know what to expect. But this book chronicles the
-SONY/Toshiba/IBM <a href="http://en.wikipedia.org/wiki/Cell_(microprocessor)">Cell</a> partnership, and the …</p>
   </div>
 </article>
 

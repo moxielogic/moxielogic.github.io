@@ -53,6 +53,31 @@
 
 <article>
   <div class="article_title">
+    <h1><a href="./nethack-in-your-browser.html">NetHack in your browser</a></h1>
+  </div>
+  <div class="article_text">
+    <p>This is a moxie-rtems port of NetHack running on a modified version of
+the gdb moxie simulator compiled to javascript with <a href="https://github.com/kripken/emscripten" title="emscripten">emscripten</a>.</p>
+<canvas id="tty" class="screen" width="640" height="384">
+                        Terminal uses canvas
+                    </canvas>
+
+<script src="http://kl7107.github.io/moxie-sim/c/terminal.js"></script>
+
+<script src="http://kl7107.github.io/moxie-sim/c/terminal-input.js"></script>
+
+<script src="http://kl7107.github.io/moxie-sim/c/moxie.js"></script>
+
+<script src="http://kl7107.github.io/moxie-sim/c/nethack.js"></script>
+
+<p><a href="http://github.com/kl7107">Krister Lagerström</a> is responsible for this marvellous hack.</p>
+<p>Also, I suppose this blog entry represents a distribution of some GPL'd
+source code from GDB, so …</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h1><a href="./the-moxie-game-console.html">The Moxie Game Console?</a></h1>
   </div>
   <div class="article_text">
@@ -77,14 +102,10 @@ converting it …</p>
     <p>The on-chip <a href="https://github.com/atgreen/moxie-cores/blob/master/firmware/bootrom/tinystub.c" title="firmware">firmware</a> for the <a href="https://github.com/atgreen/moxie-cores/tree/master/soc/marin" title="Marin SoC">Marin SoC</a> has been updated with the
 gdb stub, so now when you program the FPGA, you'll see the following on
 the serial console:</p>
-<div class="highlight"><pre><span></span>MOXIE On-Chip Bootloader v2.0
-Copyright (c) 2013 Anthony Green
+<div class="highlight"><pre><span></span><span class="nv">MOXIE</span> <span class="nv">On</span><span class="o">-</span><span class="nv">Chip</span> <span class="nv">Bootloader</span> <span class="nv">v2</span>.<span class="mi">0</span>
+<span class="nv">Copyright</span> <span class="ss">(</span><span class="nv">c</span><span class="ss">)</span> <span class="mi">2013</span> <span class="nv">Anthony</span> <span class="nv">Green</span>
 
-Waiting for an S-Record Download or Remote GDB Connection...
-</pre></div>
-
-
-<p>...and the …</p>
+<span class="nv">Waiting</span> <span class="k">for</span> <span class="nv">an</span> <span class="nv">S</span><span class="o">-</span><span class="nv">Record</span> <span class="nv">Download</span> <span class="nv">or</span> <span class="nv">Remote</span> <span class="nv">GDB</span> <span class="nv">Connection …</span></pre></div>
   </div>
 </article>
 <hr />
@@ -175,19 +196,6 @@ a <a href="http://en.wikipedia.org/wiki/Joint_Test_Action_Group">JTAG</a> connec
 translation software that handles communication between GDB's remote
 serial protocol and the target JTAG port (see <a href="http://openocd.sourceforge.net/">OpenOCD</a>, for
 instance). The FPGA systems I'm working with include JTAG …</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h1><a href="./running-a-c-program-on-the-marin-soc.html">Running a C Program on the Marin SoC</a></h1>
-  </div>
-  <div class="article_text">
-    <p>I've just committed the bits required to run a <a href="https://github.com/atgreen/moxie-cores/blob/master/firmware/mdata.c">C program</a> on the
-Marin SoC.</p>
-<p>Rather than hook up the Nexys3 external RAM module, I'm using extra
-space on the FPGA itself for RAM. Most of the hard work was sorting out
-the <a href="https://github.com/atgreen/moxie-cores/blob/master/soc/marin/moxie-marin.ld">linker script</a> magic required to generate an …</p>
   </div>
 </article>
 

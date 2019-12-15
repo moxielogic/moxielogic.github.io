@@ -56,20 +56,34 @@
 
 <article>
   <div class="article_title">
+    <h1><a href="../the-moxie-game-console.html">The Moxie Game Console?</a></h1>
+  </div>
+  <div class="article_text">
+    <p>Ok, not quite, but <a href="https://github.com/kl7107" title="Krister">Krister Lagerström</a> recently did something cool..</p>
+<p><center>
+<img alt="nethack" src="http://moxielogic.github.io/images/nethack.png">
+</center></p>
+<p>That's <a href="http://www.nethack.org/" title="NetHack">NetHack</a> ported to <a href="http://rtems.org" title="RTEMS">RTEMS</a> running on the moxie based <a href="http://github.org/atgreen/moxie-cores" title="Marin SoC">Marin
+SoC</a>.</p>
+<p>It runs on QEMU, via
+"<code>qemu-system-moxie --nographic --machine marin --kernel nethack.elf</code>",
+or on FPGA hardware. I tested with a Nexys 3 Spartan-6 board by simply
+converting it …</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h1><a href="../putting-it-together-on-chip-firmware.html">Putting it together: on-chip firmware</a></h1>
   </div>
   <div class="article_text">
     <p>The on-chip <a href="https://github.com/atgreen/moxie-cores/blob/master/firmware/bootrom/tinystub.c" title="firmware">firmware</a> for the <a href="https://github.com/atgreen/moxie-cores/tree/master/soc/marin" title="Marin SoC">Marin SoC</a> has been updated with the
 gdb stub, so now when you program the FPGA, you'll see the following on
 the serial console:</p>
-<div class="highlight"><pre><span></span>MOXIE On-Chip Bootloader v2.0
-Copyright (c) 2013 Anthony Green
+<div class="highlight"><pre><span></span><span class="nv">MOXIE</span> <span class="nv">On</span><span class="o">-</span><span class="nv">Chip</span> <span class="nv">Bootloader</span> <span class="nv">v2</span>.<span class="mi">0</span>
+<span class="nv">Copyright</span> <span class="ss">(</span><span class="nv">c</span><span class="ss">)</span> <span class="mi">2013</span> <span class="nv">Anthony</span> <span class="nv">Green</span>
 
-Waiting for an S-Record Download or Remote GDB Connection...
-</pre></div>
-
-
-<p>...and the …</p>
+<span class="nv">Waiting</span> <span class="k">for</span> <span class="nv">an</span> <span class="nv">S</span><span class="o">-</span><span class="nv">Record</span> <span class="nv">Download</span> <span class="nv">or</span> <span class="nv">Remote</span> <span class="nv">GDB</span> <span class="nv">Connection …</span></pre></div>
   </div>
 </article>
 <hr />
@@ -173,22 +187,6 @@ Marin SoC.</p>
 <p>Rather than hook up the Nexys3 external RAM module, I'm using extra
 space on the FPGA itself for RAM. Most of the hard work was sorting out
 the <a href="https://github.com/atgreen/moxie-cores/blob/master/soc/marin/moxie-marin.ld">linker script</a> magic required to generate an …</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h1><a href="../moxie-soc-progress.html">Moxie SoC Progress</a></h1>
-  </div>
-  <div class="article_text">
-    <p>Time for a quick update!</p>
-<p><center>
-<iframe width="560" height="315" src="http://www.youtube.com/embed/86-OkQcXEes" frameborder="0" allowfullscreen></iframe>
-</center></p>
-<p>"Marin" is the name of my test SoC consisting of a <a href="http://en.wikipedia.org/wiki/Wishbone_(computer_bus)" title="wishbone">wishbone</a> wrapped
-75Mhz big-endian MoxieLite bus master, along with two slave devices:
-embedded ROM and the Nexys3's 7-segment display. So, right now I can
-write some code into FPGA embedded ROM to manipulate the …</p>
   </div>
 </article>
 

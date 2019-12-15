@@ -53,6 +53,19 @@
 
 <article>
   <div class="article_title">
+    <h1><a href="./running-a-c-program-on-the-marin-soc.html">Running a C Program on the Marin SoC</a></h1>
+  </div>
+  <div class="article_text">
+    <p>I've just committed the bits required to run a <a href="https://github.com/atgreen/moxie-cores/blob/master/firmware/mdata.c">C program</a> on the
+Marin SoC.</p>
+<p>Rather than hook up the Nexys3 external RAM module, I'm using extra
+space on the FPGA itself for RAM. Most of the hard work was sorting out
+the <a href="https://github.com/atgreen/moxie-cores/blob/master/soc/marin/moxie-marin.ld">linker script</a> magic required to generate an …</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h1><a href="./moxie-soc-progress.html">Moxie SoC Progress</a></h1>
   </div>
   <div class="article_text">
@@ -168,18 +181,6 @@ LaForest on <a href="http://www.eecg.utoronto.ca/~laforest/multiport/index.html"
 it includes an in-game 16-bit processor called the dcpu-16. Details are
 sparse, but it seems as though gamers will use this processor to control
 spacecraft and play …</p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h1><a href="./using-the-altera-usb-blaster-on-fedora.html">Using the Altera USB-Blaster on Fedora</a></h1>
-  </div>
-  <div class="article_text">
-    <p>Altera's Quartus tools include some special software to download
-bitstreams to their devices over USB (a DE-2 eval board, in my case).
-They require some tricky work to set up properly on Fedora - my dev host
-of choice. But you're in luck! I've packaged up an RPM that takes care …</p>
   </div>
 </article>
 

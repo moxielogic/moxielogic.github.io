@@ -56,6 +56,23 @@
 
 <article>
   <div class="article_title">
+    <h1><a href="../quick-update.html">Quick update...</a></h1>
+  </div>
+  <div class="article_text">
+    <p>A few quick <a href="http://moxielogic.org/wiki/index.php?title=MoxieDev">MoxieDev</a> updates...</p>
+<ul>
+<li>The verilog output patch is in binutils</li>
+<li>The moxie ports for binutils, newlib, libgloss and gdb are all
+    upstream. Waiting on sim and gcc reviews.</li>
+<li>The upstream qemu team have switched to git, so I've rebased
+    MoxieDev's qemu against this new repository.</li>
+</ul>
+<p>Also, I've been …</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h1><a href="../loading-programs-into-the-verilog-simulation.html">Loading programs into the verilog simulation</a></h1>
   </div>
   <div class="article_text">
@@ -98,27 +115,18 @@ development …</p>
   <div class="article_text">
     <p>My moxie port of <a href="http://www.denx.de/wiki/U-Boot">U-Boot</a>, the Universal Boot Loader, has started
 working!</p>
-<div class="highlight"><pre><span></span>$ qemu-system-moxie -nographic -kernel u-boot
-SDRAM :
-        U-Boot Start:0x00001000
-Using default environment
+<div class="highlight"><pre><span></span>$ <span class="nv">qemu</span><span class="o">-</span><span class="nv">system</span><span class="o">-</span><span class="nv">moxie</span> <span class="o">-</span><span class="nv">nographic</span> <span class="o">-</span><span class="nv">kernel</span> <span class="nv">u</span><span class="o">-</span><span class="nv">boot</span>
+<span class="nv">SDRAM</span> :
+        <span class="nv">U</span><span class="o">-</span><span class="nv">Boot</span> <span class="nv">Start</span>:<span class="mi">0</span><span class="nv">x00001000</span>
+<span class="nv">Using</span> <span class="nv">default</span> <span class="nv">environment</span>
 
-U-BOOT <span class="k">for</span> <span class="s2">&quot;moxiesim&quot;</span>
+<span class="nv">U</span><span class="o">-</span><span class="nv">BOOT</span> <span class="k">for</span> <span class="s2">&quot;</span><span class="s">moxiesim</span><span class="s2">&quot;</span>
 
-<span class="o">=</span>&gt; version
+<span class="o">=&gt;</span> <span class="nv">version</span>
 
-U-Boot <span class="m">2009</span>.03-rc2-00013-gefb4734-dirty <span class="o">(</span>Apr <span class="m">02</span> <span class="m">2009</span> - <span class="m">20</span>:07:32<span class="o">)</span>
-<span class="o">=</span>&gt; printenv
-<span class="nv">bootargs</span><span class="o">=</span><span class="nv">root</span><span class="o">=</span>romfs
-<span class="nv">baudrate</span><span class="o">=</span><span class="m">38400</span>
-<span class="nv">hostname</span><span class="o">=</span><span class="s2">&quot;moxiesim&quot;</span>
-
-Environment size: <span class="m">55</span>/4092 <span class="nv">bytes</span>
-<span class="o">=</span>&gt;
-</pre></div>
-
-
-<p>It's …</p>
+<span class="nv">U</span><span class="o">-</span><span class="nv">Boot</span> <span class="mi">2009</span>.<span class="mi">03</span><span class="o">-</span><span class="nv">rc2</span><span class="o">-</span><span class="mi">00013</span><span class="o">-</span><span class="nv">gefb4734</span><span class="o">-</span><span class="nv">dirty</span> <span class="ss">(</span><span class="nv">Apr</span> <span class="mi">02</span> <span class="mi">2009</span> <span class="o">-</span> <span class="mi">20</span>:<span class="mi">07</span>:<span class="mi">32</span><span class="ss">)</span>
+<span class="o">=&gt;</span> <span class="nv">printenv</span>
+<span class="nv">bootargs</span><span class="o">=</span><span class="nv">root …</span></pre></div>
   </div>
 </article>
 <hr />
@@ -130,10 +138,10 @@ Environment size: <span class="m">55</span>/4092 <span class="nv">bytes</span>
     <p>My first go at exceptions is working well. The basic idea is that moxie
 will have a single exception handling routine whose address lives in
 special register 1. You set the exception handler like so:</p>
-<div class="highlight"><pre><span></span>void install_handler(void (*handler)(void))
-{
-  printf (&quot;Installing handler 0x%x\n&quot;, (unsigned) handler);
-  asm(&quot;ssr …</pre></div>
+<div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">install_handler</span><span class="p">(</span><span class="n">void</span> <span class="p">(</span><span class="o">*</span><span class="k">handler</span><span class="p">)(</span><span class="n">void</span><span class="p">))</span>
+<span class="err">{</span>
+  <span class="n">printf</span> <span class="p">(</span><span class="ss">&quot;Installing handler 0x%x\n&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">unsigned</span><span class="p">)</span> <span class="k">handler</span><span class="p">);</span>
+  <span class="n">asm</span><span class="p">(</span><span class="ss">&quot;ssr …</span></pre></div>
   </div>
 </article>
 <hr />
@@ -159,11 +167,11 @@ address and lets the …</p>
 add to a board is a Real Time Clock (RTC). Qemu comes with a simulation
 of Freescale's <a href="http://www.freescale.com/files/microcontrollers/doc/data_sheet/MC146818.pdf">MC146818</a> RTC chip. Adding it to our qemu-defined
 board was as simple as....</p>
-<div class="highlight"><pre><span></span>   rtc_mm_init(0x400, 0, 0, 0);
+<div class="highlight"><pre><span></span>   <span class="n">rtc_mm_init</span><span class="p">(</span><span class="mi">0</span><span class="n">x400</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
 </pre></div>
 
 
-<p>This makes …</p>
+<p>This …</p>
   </div>
 </article>
 <hr />
@@ -193,19 +201,6 @@ running on the qemu moxie simulator!</p>
 after single-stepping. This will get you nowhere fast! But it's all
 fixed now, and here's how it works...</p>
 <p><code>$ qemu-system-moxie …</code></p>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h1><a href="../a-tiny-computer.html">A Tiny Computer</a></h1>
-  </div>
-  <div class="article_text">
-    <p><a href="http://lambda-the-ultimate.org/">Lambda the Ultimate</a> today posted a interesting blog entry on <a href="http://lambda-the-ultimate.org/node/3232">A Tiny
-Computer</a>. It refers to 2007 paper by Chuck Thacker at Microsoft
-Research describing a tiny 32-bit processor. Appendix A of the paper
-includes the entire synthesizeable verilog implementation in just a page
-and a half of code! Here's …</p>
   </div>
 </article>
 

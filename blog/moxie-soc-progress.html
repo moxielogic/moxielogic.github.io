@@ -66,25 +66,25 @@
 embedded ROM and the Nexys3's 7-segment display. So, right now I can
 write some code into FPGA embedded ROM to manipulate the display. For
 example...</p>
-<div class="highlight"><pre><span></span>        .text
-    .p2align        1
-        .global MarinDisplayTest
+<div class="highlight"><pre><span></span>        .<span class="nv">text</span>
+    .<span class="nv">p2align</span>        <span class="mi">1</span>
+        .<span class="nv">global</span> <span class="nv">MarinDisplayTest</span>
 
-        .equ BIG_ENDIAN,1
+        .<span class="nv">equ</span> <span class="nv">BIG_ENDIAN</span>,<span class="mi">1</span>
 
-        # This is where 7-segment display is mapped to memory
-        .equ DISPLAY_ADDR,0x00100000
+        # <span class="nv">This</span> <span class="nv">is</span> <span class="nv">where</span> <span class="mi">7</span><span class="o">-</span><span class="nv">segment</span> <span class="nv">display</span> <span class="nv">is</span> <span class="nv">mapped</span> <span class="nv">to</span> <span class="nv">memory</span>
+        .<span class="nv">equ</span> <span class="nv">DISPLAY_ADDR</span>,<span class="mi">0</span><span class="nv">x00100000</span>
 
-MarinDisplayTest:
-        ldi.l   $r1, 0x1234
-        ldi.l   $r3, 0x0
-loop:   sta.s   DISPLAY_ADDR, $r1
-        dec     $r1, 1
-        ldi.l   $r2, 5000000
-delay:  dec     $r2, 1
-        cmp     $r2, $r3
-        bne     delay
-        jmpa    loop
+<span class="nv">MarinDisplayTest</span>:
+        <span class="nv">ldi</span>.<span class="nv">l</span>   $<span class="nv">r1</span>, <span class="mi">0</span><span class="nv">x1234</span>
+        <span class="nv">ldi</span>.<span class="nv">l</span>   $<span class="nv">r3</span>, <span class="mi">0</span><span class="nv">x0</span>
+<span class="k">loop</span>:   <span class="nv">sta</span>.<span class="nv">s</span>   <span class="nv">DISPLAY_ADDR</span>, $<span class="nv">r1</span>
+        <span class="nv">dec</span>     $<span class="nv">r1</span>, <span class="mi">1</span>
+        <span class="nv">ldi</span>.<span class="nv">l</span>   $<span class="nv">r2</span>, <span class="mi">5000000</span>
+<span class="nv">delay</span>:  <span class="nv">dec</span>     $<span class="nv">r2</span>, <span class="mi">1</span>
+        <span class="nv">cmp</span>     $<span class="nv">r2</span>, $<span class="nv">r3</span>
+        <span class="nv">bne</span>     <span class="nv">delay</span>
+        <span class="nv">jmpa</span>    <span class="k">loop</span>
 </pre></div>
 
 

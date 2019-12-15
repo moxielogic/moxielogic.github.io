@@ -101,13 +101,13 @@ should be particularly difficult.</p>
   <div class="article_text">
     <p>The Moxie ISA still needs quite a bit of tuning. Take branches, for
 instance. A <code>beq</code> instruction currently encoded <a href="http://www.moxielogic.org/wiki/index.php?title=Instruction_Set#beq">like so</a>...  </p>
-<div class="highlight"><pre><span></span>`00001111xxxxxxxx iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii`
+<div class="highlight"><pre><span></span><span class="o">`</span><span class="mi">00001111</span><span class="n">xxxxxxxx</span> <span class="n">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</span><span class="o">`</span>
 </pre></div>
 
 
 <p>...where the "<code>x</code>"s represent "don't care" bits, and "<code>i</code>"s are a
 32-bit absolute branch target. That's right -- branch targets are not PC
-relative! This is …</p>
+relative! This …</p>
   </div>
 </article>
 <hr />
@@ -119,10 +119,10 @@ relative! This is …</p>
     <p>My first go at exceptions is working well. The basic idea is that moxie
 will have a single exception handling routine whose address lives in
 special register 1. You set the exception handler like so:</p>
-<div class="highlight"><pre><span></span>void install_handler(void (*handler)(void))
-{
-  printf (&quot;Installing handler 0x%x\n&quot;, (unsigned) handler);
-  asm(&quot;ssr …</pre></div>
+<div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">install_handler</span><span class="p">(</span><span class="n">void</span> <span class="p">(</span><span class="o">*</span><span class="k">handler</span><span class="p">)(</span><span class="n">void</span><span class="p">))</span>
+<span class="err">{</span>
+  <span class="n">printf</span> <span class="p">(</span><span class="ss">&quot;Installing handler 0x%x\n&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">unsigned</span><span class="p">)</span> <span class="k">handler</span><span class="p">);</span>
+  <span class="n">asm</span><span class="p">(</span><span class="ss">&quot;ssr …</span></pre></div>
   </div>
 </article>
 

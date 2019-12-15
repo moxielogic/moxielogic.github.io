@@ -53,6 +53,19 @@
 
 <article>
   <div class="article_title">
+    <h1><a href="./pipeline-hazards.html">Pipeline hazards</a></h1>
+  </div>
+  <div class="article_text">
+    <p>I've coded up a first go at four pipeline stages so far: <a href="http://github.com/atgreen/moxiedev/blob/master/moxie/rtl/verilog/cpu_fetch.v">Fetch</a>,
+<a href="http://github.com/atgreen/moxiedev/blob/master/moxie/rtl/verilog/cpu_decode.v">Decode</a>, <a href="http://github.com/atgreen/moxiedev/blob/master/moxie/rtl/verilog/cpu_execute.v">Execute</a>, and Write. After the relative complexity of the
+<a href="http://moxielogic.org/blog/?p=444">Fetch implementation</a>, the rest has been pretty straight forward, and
+I've started running the first bit of compiled code through the pipline.
+Here's that start of our …</p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
     <h1><a href="./fetching-instructions.html">Fetching instructions</a></h1>
   </div>
   <div class="article_text">
@@ -142,13 +155,13 @@ a mess, but here's a basic run-down of what I had …</p>
     <p>I've been taking advantage of the nice summer weather recently, so it's
 taken me a while to get around to this... but here's the first moxie
 userland app!</p>
-<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+<div class="highlight"><pre><span></span>#<span class="k">include</span> <span class="o">&lt;</span><span class="nv">string</span>.<span class="nv">h</span><span class="o">&gt;</span>
 
-<span class="cp">#define MSG &quot;Hello, World!\n&quot;</span>
+#<span class="nv">define</span> <span class="nv">MSG</span> <span class="s2">&quot;</span><span class="s">Hello, World!</span><span class="se">\n</span><span class="s2">&quot;</span>
 
-<span class="kt">void</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span> <span class="n">gloss_write</span> <span class="p">(</span><span class="kt">int</span> <span class="n">fd</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">)</span> 
-<span class="p">{</span>
-  <span class="k">asm</span><span class="p">(</span><span class="s">&quot;swi 5&quot;</span><span class="p">);</span> <span class="c1">// &quot;write …</span></pre></div>
+<span class="nv">void</span> <span class="nv">__attribute__</span><span class="ss">((</span><span class="nv">noinline</span><span class="ss">))</span> <span class="nv">gloss_write</span> <span class="ss">(</span><span class="nv">int</span> <span class="nv">fd</span>, <span class="nv">char</span> <span class="o">*</span><span class="nv">ptr</span>, <span class="nv">int</span> <span class="nv">len</span><span class="ss">)</span> 
+{
+  <span class="nv">asm</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">swi 5</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">; // &quot;write …</span></pre></div>
   </div>
 </article>
 <hr />
@@ -179,18 +192,6 @@ technology...</p>
     used more often in Linux environments. I ported uClibc to the moxie
     core just like every other bit of software in this project: quickly!
     My …</li></ul>
-  </div>
-</article>
-<hr />
-<article>
-  <div class="article_title">
-    <h1><a href="./the-first-moxie-linux-boot-output.html">The first moxie linux boot output...</a></h1>
-  </div>
-  <div class="article_text">
-    <p>Userland, here I come! Check out <a href="http://moxielogic.org/wiki/index.php?title=MoxieDev">moxiedev</a>, run "ant build", then do
-the following...</p>
-<div class="highlight"><pre><span></span>$ ./root/usr/bin/moxie-elf-run linux-2.6/vmlinux
-Linux version <span class="m">2</span>.6.31-rc3-gb006656-dirty <span class="o">(</span>green@dev.moxielogic.com<span class="o">)</span> <span class="o">(</span>gcc version <span class="m">4</span>.5.0 <span class="m">20090715</span> <span class="o">(</span>experimental<span class="o">)</span> <span class="o">[</span>trunk revision <span class="m">149693</span><span class="o">]</span> <span class="o">(</span>GCC<span class="o">)</span> <span class="o">)</span> <span class="c1">#6 Sun Jul 26 12:03:14 EDT 2009 …</span></pre></div>
   </div>
 </article>
 
